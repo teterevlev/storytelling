@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment and secrets
+.env
+*.env
+
+# Local app data
+db.sqlite
+*.sqlite
+*.sqlite3
+structure_*.json
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# other
+/data/
