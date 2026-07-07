@@ -45,6 +45,16 @@ def load_local_env():
 
 load_local_env()
 
+
+def resolve_openai_api_key(provided_key: Optional[str] = None) -> Optional[str]:
+    """Env key takes precedence; otherwise use key supplied by the client."""
+    env_key = os.environ.get("OPENAI_API_KEY", "").strip()
+    if env_key:
+        return env_key
+    provided = (provided_key or "").strip()
+    return provided or None
+
+
 app = FastAPI(title="Narrative Story Structure Extractor")
 
 
@@ -196,7 +206,13 @@ def db_update_task(task_id: str, status: str, error_message: Optional[str] = Non
 # Background processing function
 # -----------------------------------------------------------------------------
 
-def process_scenario(task_id: str, raw_text: Optional[str], filename: str, pre_segmented_blocks: Optional[list] = None):
+def process_scenario(
+    task_id: str,
+    raw_text: Optional[str],
+    filename: str,
+    pre_segmented_blocks: Optional[list] = None,
+    openai_api_key: Optional[str] = None,
+):
     db_update_task(task_id, "processing")
     db_add_log(task_id, f"Started processing file: {filename}")
     
@@ -205,9 +221,9 @@ def process_scenario(task_id: str, raw_text: Optional[str], filename: str, pre_s
             db_add_log(task_id, "JSON file upload detected. Skipping chunking and OpenAI segmentation.")
             all_blocks = pre_segmented_blocks
         else:
-            api_key = os.environ.get("OPENAI_API_KEY")
+            api_key = resolve_openai_api_key(openai_api_key)
             if not api_key:
-                err_msg = "OPENAI_API_KEY environment variable is not set. Cannot perform segmentation."
+                err_msg = "OpenAI API key is not set. Add OPENAI_API_KEY to env or enter it in the interface."
                 db_add_log(task_id, f"ERROR: {err_msg}")
                 db_update_task(task_id, "failed", error_message=err_msg)
                 return
@@ -317,6 +333,7 @@ def upload_file(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
     source: str = Form(""),
+    openai_api_key: str = Form(""),
 ):
     if not (file.filename.endswith('.txt') or file.filename.endswith('.json')):
         raise HTTPException(status_code=400, detail="Only .txt and .json files are supported.")
@@ -358,9 +375,14 @@ def upload_file(
             segmented_blocks=json.dumps(blocks, ensure_ascii=False),
             source=source,
         )
-        background_tasks.add_task(process_scenario, task_id, None, file.filename, blocks)
+        background_tasks.add_task(process_scenario, task_id, None, file.filename, blocks, openai_api_key)
         
     else:
+        if not resolve_openai_api_key(openai_api_key):
+            raise HTTPException(
+                status_code=400,
+                detail="OpenAI API key is required for text segmentation. Set OPENAI_API_KEY or enter it in the interface.",
+            )
         try:
             content = file.file.read().decode("utf-8")
         except UnicodeDecodeError:
@@ -371,7 +393,7 @@ def upload_file(
                 raise HTTPException(status_code=400, detail="Unable to decode file. Please upload a UTF-8 or CP1251 text file.")
                 
         db_create_task(task_id, file.filename, raw_text=content, source=source)
-        background_tasks.add_task(process_scenario, task_id, content, file.filename, None)
+        background_tasks.add_task(process_scenario, task_id, content, file.filename, None, openai_api_key)
         
     return {"task_id": task_id}
 
@@ -1301,6 +1323,56 @@ def index():
             flex-shrink: 0;
         }}
 
+        .api-key-panel {{
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }}
+
+        .api-key-panel h3 {{
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }}
+
+        .api-key-panel p {{
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.45;
+            margin-bottom: 0.85rem;
+        }}
+
+        .api-key-row {{
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }}
+
+        .api-key-input {{
+            flex: 1;
+            min-width: 240px;
+            padding: 0.55rem 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.72);
+            color: var(--text-main);
+            font: inherit;
+            outline: none;
+        }}
+
+        .api-key-input:focus {{
+            border-color: var(--accent-secondary);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.12);
+        }}
+
+        .api-key-hint {{
+            margin-top: 0.65rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }}
+
         .spinner {{
             width: 1.25rem;
             height: 1.25rem;
@@ -1446,9 +1518,9 @@ def index():
             </svg>
             Storytelling Extractor
         </div>
-        <div class="api-badge">
-            <span class="dot { "active" if openai_key_set == "true" else "missing" }"></span>
-            { "OPENAI_API_KEY Активен" if openai_key_set == "true" else "OPENAI_API_KEY Отсутствует" }
+        <div class="api-badge" id="apiKeyBadge">
+            <span class="dot { "active" if openai_key_set == "true" else "missing" }" id="apiKeyDot"></span>
+            <span id="apiKeyBadgeText">{ "OPENAI_API_KEY Активен" if openai_key_set == "true" else "OPENAI_API_KEY Отсутствует" }</span>
         </div>
     </header>
 
@@ -1465,11 +1537,15 @@ def index():
         <main class="workspace" id="workspace">
             <!-- Warning if key is missing -->
             { f'''
-            <div class="warn-banner">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                </svg>
-                <span><strong>Внимание!</strong> Переменная окружения <code>OPENAI_API_KEY</code> не обнаружена. Сервер не сможет выполнять разметку через GPT-4o. Пожалуйста, запустите сервер с установленным ключом API.</span>
+            <div class="api-key-panel" id="apiKeyPanel">
+                <h3>OpenAI API Key</h3>
+                <p>Переменная окружения <code>OPENAI_API_KEY</code> не обнаружена. Введите ключ ниже — он сохранится в браузере и будет использоваться для сегментации текста.</p>
+                <div class="api-key-row">
+                    <input type="password" class="api-key-input" id="openaiApiKeyInput" placeholder="sk-..." autocomplete="off">
+                    <button type="button" class="btn btn-primary" onclick="saveOpenAiApiKey()">Сохранить ключ</button>
+                    <button type="button" class="btn" onclick="clearOpenAiApiKey()">Очистить</button>
+                </div>
+                <div class="api-key-hint">Ключ хранится только в sessionStorage этого браузера и не сохраняется на сервере.</div>
             </div>
             ''' if openai_key_set == "false" else "" }
 
@@ -1588,6 +1664,8 @@ def index():
         let currentTaskData = null;
         let sourceModalResolver = null;
         let dragDepth = 0;
+        const OPENAI_KEY_FROM_ENV = {"true" if openai_key_set == "true" else "false"};
+        const OPENAI_KEY_STORAGE = 'storytelling_openai_api_key';
         const TAG_LEGEND = {tag_legend_json};
 
         // On Load
@@ -1595,7 +1673,67 @@ def index():
             loadHistory();
             setupDragAndDrop();
             setupSourceModal();
+            initOpenAiApiKeyUi();
         }});
+
+        function initOpenAiApiKeyUi() {{
+            if (OPENAI_KEY_FROM_ENV) return;
+            const input = document.getElementById('openaiApiKeyInput');
+            const stored = sessionStorage.getItem(OPENAI_KEY_STORAGE);
+            if (input && stored) input.value = stored;
+            updateApiKeyBadge();
+        }}
+
+        function getStoredOpenAiApiKey() {{
+            if (OPENAI_KEY_FROM_ENV) return '';
+            return (sessionStorage.getItem(OPENAI_KEY_STORAGE) || '').trim();
+        }}
+
+        function saveOpenAiApiKey() {{
+            const input = document.getElementById('openaiApiKeyInput');
+            if (!input) return;
+            const key = input.value.trim();
+            if (!key) {{
+                alert('Введите OpenAI API key.');
+                input.focus();
+                return;
+            }}
+            sessionStorage.setItem(OPENAI_KEY_STORAGE, key);
+            updateApiKeyBadge();
+        }}
+
+        function clearOpenAiApiKey() {{
+            sessionStorage.removeItem(OPENAI_KEY_STORAGE);
+            const input = document.getElementById('openaiApiKeyInput');
+            if (input) input.value = '';
+            updateApiKeyBadge();
+        }}
+
+        function updateApiKeyBadge() {{
+            if (OPENAI_KEY_FROM_ENV) return;
+            const dot = document.getElementById('apiKeyDot');
+            const text = document.getElementById('apiKeyBadgeText');
+            const hasKey = !!getStoredOpenAiApiKey();
+            if (!dot || !text) return;
+            dot.className = `dot ${{hasKey ? 'active' : 'missing'}}`;
+            text.innerText = hasKey ? 'OPENAI_API_KEY в браузере' : 'OPENAI_API_KEY Отсутствует';
+        }}
+
+        function appendOpenAiApiKeyToFormData(formData) {{
+            if (OPENAI_KEY_FROM_ENV) return;
+            const key = getStoredOpenAiApiKey();
+            if (key) formData.append('openai_api_key', key);
+        }}
+
+        function requireOpenAiApiKeyForTextUpload() {{
+            if (OPENAI_KEY_FROM_ENV) return true;
+            const key = getStoredOpenAiApiKey();
+            if (key) return true;
+            alert('Для сегментации текста нужен OpenAI API key. Введите и сохраните ключ в блоке выше.');
+            document.getElementById('apiKeyPanel')?.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+            document.getElementById('openaiApiKeyInput')?.focus();
+            return false;
+        }}
 
         function setupSourceModal() {{
             document.getElementById('sourceModalCancel').addEventListener('click', () => {{
@@ -1715,6 +1853,12 @@ def index():
                 return false;
             }}
 
+            const isTextUpload = file.name.endsWith('.txt');
+            if (isTextUpload && !requireOpenAiApiKeyForTextUpload()) {{
+                document.getElementById('fileInput').value = '';
+                return false;
+            }}
+
             let source = options.source || '';
             if (options.requestSource !== false) {{
                 source = await openSourceModal({{
@@ -1732,6 +1876,7 @@ def index():
             const formData = new FormData();
             formData.append('file', file);
             formData.append('source', source);
+            appendOpenAiApiKeyToFormData(formData);
 
             // Change UI state
             document.getElementById('uploadSection').style.display = 'none';
