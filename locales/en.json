@@ -1,0 +1,129 @@
+{
+  "pageTitle": "Story Structure Extractor",
+  "header": {
+    "logo": "Storytelling Extractor"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "start": "Start",
+    "save": "Save"
+  },
+  "apiKey": {
+    "active": "OPENAI_API_KEY active",
+    "missing": "OPENAI_API_KEY missing",
+    "browser": "OPENAI_API_KEY in browser",
+    "panelTitle": "OpenAI API Key",
+    "panelDescription": "Environment variable OPENAI_API_KEY was not found. Enter your key below — it will be stored in the browser and used for text segmentation.",
+    "placeholder": "sk-...",
+    "save": "Save key",
+    "clear": "Clear",
+    "hint": "The key is stored only in this browser's sessionStorage and is not saved on the server.",
+    "enterKey": "Enter an OpenAI API key.",
+    "requiredForText": "OpenAI API key is required for text segmentation. Enter and save the key in the panel above."
+  },
+  "sidebar": {
+    "history": "Processing history",
+    "empty": "Your previous runs will appear here"
+  },
+  "upload": {
+    "title": "Upload a script",
+    "description": "Drag a .txt or .json file anywhere in the window, or click to browse",
+    "pasteTitle": "Or paste script text",
+    "pasteDescription": "Paste text below and start analysis without choosing a file or extra dialogs.",
+    "pastePlaceholder": "Paste your script here...",
+    "analyze": "Analyze text",
+    "pasteRequired": "Paste script text before starting analysis.",
+    "invalidFormat": "Please choose a .txt or .json file"
+  },
+  "dragOverlay": {
+    "title": "Drop the file to upload",
+    "hint": ".txt and .json supported"
+  },
+  "source": {
+    "label": "Source:",
+    "notSet": "not specified",
+    "modalTitle": "Video source",
+    "modalDescription": "Add a comment or link to where the video came from.",
+    "modalPlaceholder": "e.g. https://youtu.be/... or a source note",
+    "editTitle": "Edit source",
+    "editDescription": "Change the comment or link for this video.",
+    "uploadTitle": "Video source",
+    "uploadDescription": "Before starting, add a comment or link to where the video came from.",
+    "saveFailed": "Could not save source."
+  },
+  "title": {
+    "edit": "Edit",
+    "modalTitle": "Edit title",
+    "editDescription": "Enter a new name for this run.",
+    "empty": "Title cannot be empty.",
+    "saveFailed": "Could not save title."
+  },
+  "task": {
+    "edit": "Edit",
+    "newFile": "New file",
+    "downloadJson": "Download JSON",
+    "tabStructure": "Script structure",
+    "tabJson": "Raw JSON",
+    "structurePending": "Structure will appear after analysis completes.",
+    "copyJson": "Copy to clipboard",
+    "consoleTitle": "Process log",
+    "consoleWaiting": "Waiting for logs...",
+    "uploading": "Uploading file to server...\n",
+    "jsonPlaceholder": "// JSON will appear here...",
+    "analyzing": "Running linguistic analysis of the script...",
+    "uploadFailed": "Could not upload file.",
+    "uploadError": "File upload error: {{message}}",
+    "fetchFailed": "Could not load task data.",
+    "processing": "// Processing, please wait...",
+    "marking": "Segmenting script...",
+    "runError": "Script processing error:",
+    "errorPrefix": "// Execution error:\n// {{message}}",
+    "deleteConfirm": "Are you sure you want to delete this entry?",
+    "deleteTitle": "Delete"
+  },
+  "status": {
+    "pending": "pending",
+    "processing": "processing",
+    "completed": "completed",
+    "failed": "failed"
+  },
+  "structure": {
+    "legendTitle": "Tag reference",
+    "copyColumn": "Copy column tags",
+    "intro": "Intro",
+    "story": "Story #{{n}}",
+    "outro": "Outro",
+    "noData": "No data",
+    "noDisplay": "Nothing to display",
+    "noTags": "No tags"
+  },
+  "clipboard": {
+    "jsonCopied": "JSON copied to clipboard!",
+    "jsonFailed": "Could not copy JSON: {{error}}",
+    "copyFailed": "Could not copy: {{error}}"
+  },
+  "tags": {
+    "VIDEO_HOOK": "The very first hook of the entire video — a shock thesis promising the full episode.",
+    "VIDEO_PROMISE": "Overall value promise for the whole video (what the viewer will learn by the end).",
+    "VIDEO_OUTRO": "Final point of the entire video — summary, moral, emotional closing for the whole episode.",
+    "STORY_BOUNDARY": "STRICT technical marker: EXACTLY once per story in the video. Fires ONLY in the block where the proper name of a specific technical object/device — the hero of that story — is first mentioned (exact make/model/index or established nickname of that object). Do NOT use for place names, eras, organizations, time periods, or other dramatic turns (e.g. 'Afghanistan', 'early seventies', 'Ministry of Defense') — even if a vivid new arc starts there, that is NOT a new hero, so NOT STORY_BOUNDARY (use ARC_OPEN). If there was a teaser without a name before the explicit naming ('there was a machine, assembled flawlessly...') — that teaser is NOT STORY_BOUNDARY, tag it OPEN_LOOP. Any REPEAT mentions of an already named hero later in the text — also NOT STORY_BOUNDARY, even if scene/location/drama changes (use ARC_OPEN). Mentioning a hero from the PREVIOUS story inside TRANSITION_BRIDGE — also NOT STORY_BOUNDARY.",
+    "ARC_OPEN": "Start of a sub-arc WITHIN an ongoing story (e.g. beginning of a segment about a specific technical problem of the same machine) — NOT for boundaries between stories; use STORY_BOUNDARY for that.",
+    "ARC_CLOSE": "Final point of a sub-arc (moral/conclusion on a specific problem or on the whole story if it is the last block before moving to the next).",
+    "TRANSITION_BRIDGE": "Bridge between two stories: closes the previous topic and thematically prepares the next, without a separate OPEN_LOOP/CLOSE_LOOP.",
+    "QUESTION_STACK": "Series of 2+ rhetorical questions in a row without answers, building intrigue.",
+    "OPEN_LOOP": "Opening a specific intrigue/mystery whose answer will come later (not to be confused with QUESTION_STACK — here a specific promised fact is fixed).",
+    "CLOSE_LOOP": "Reveal/answer to a previously opened loop (OPEN_LOOP).",
+    "CONTEXT": "Necessary background/historical context for understanding the plot.",
+    "FALSE_PROMISE": "A 'everything seems fine' moment — false sense of wellbeing before a break/turn.",
+    "TURN": "Turning point: moment where illusion/expectation crashes into reality.",
+    "TENSION": "Building tension — description of problem, risk, conflict, rising danger.",
+    "TENSION_PEAK": "Climactic tension point within an episode (not necessarily the whole story) — the most emotionally intense moment of a specific scene.",
+    "PROOF": "Argument, demonstration, number, fact supporting the thesis.",
+    "MICRO_PAYOFF": "Intermediate partial payoff that relieves some tension but does not close the whole story.",
+    "SCENE": "Specific illustrative mini-episode/scene with action (not abstract reasoning).",
+    "RELIEF": "Emotional release after a dense block (in this genre often bitter humor, not light).",
+    "PACING_BEAT": "Short rhythmic connector phrase without new information, keeping pace.",
+    "CTA": "Direct call to action (subscribe, like, comment, click).",
+    "CUSTOM": "Custom tag when no standard tag fits."
+  }
+}

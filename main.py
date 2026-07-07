@@ -17,10 +17,11 @@ from pipeline.chunker import chunk_text
 from pipeline.segmenter import segment_text
 from pipeline.tree_builder import build_tree, annotate_stats
 from pipeline.structure_extractor import extract_structure
-from pipeline.taxonomy import TAG_DEFINITIONS
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = "db.sqlite"
+LOCALE_DIR = os.path.join(BASE_DIR, "locales")
+AVAILABLE_LOCALES = ("en", "ru")
 
 
 def load_local_env():
@@ -544,11 +545,6 @@ TAG_COLORS = {
     "CUSTOM": "#4b5563",
 }
 
-TAG_LEGEND = {
-    **TAG_DEFINITIONS,
-    "CUSTOM": "Произвольный тег, когда ни один стандартный не подходит.",
-}
-
 def strip_structure_blocks(structure: Optional[dict]) -> Optional[dict]:
     """Убирает blocks из structure — они нужны только для UI-подсказок."""
     if not structure:
@@ -563,10 +559,20 @@ def strip_structure_blocks(structure: Optional[dict]) -> Optional[dict]:
             story.pop("blocks", None)
     return cleaned
 
+@app.get("/locales/{locale}.json")
+def get_locale(locale: str):
+    if locale not in AVAILABLE_LOCALES:
+        raise HTTPException(status_code=404, detail="Locale not found.")
+    locale_path = os.path.join(LOCALE_DIR, f"{locale}.json")
+    if not os.path.exists(locale_path):
+        raise HTTPException(status_code=404, detail="Locale file not found.")
+    with open(locale_path, "r", encoding="utf-8") as f:
+        return JSONResponse(content=json.load(f))
+
+
 @app.get("/", response_class=HTMLResponse)
 def index():
     openai_key_set = "true" if os.environ.get("OPENAI_API_KEY") else "false"
-    tag_legend_json = json.dumps(TAG_LEGEND, ensure_ascii=False)
     tag_color_css = "\n".join(
         f"        .vtag-{tag} {{ background: {color}; }}"
         for tag, color in TAG_COLORS.items()
@@ -574,11 +580,11 @@ def index():
 
     html_content = f"""
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Экстрактор структуры сценариев</title>
+    <title>Story Structure Extractor</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -670,6 +676,43 @@ def index():
         .dot.missing {{
             background-color: var(--accent-danger);
             box-shadow: 0 0 8px var(--accent-danger);
+        }}
+
+        .header-actions {{
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }}
+
+        .lang-switcher {{
+            display: flex;
+            gap: 0.25rem;
+            padding: 0.2rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+        }}
+
+        .lang-switcher button {{
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.55rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }}
+
+        .lang-switcher button:hover {{
+            color: var(--text-main);
+        }}
+
+        .lang-switcher button.active {{
+            background: rgba(139, 92, 246, 0.25);
+            color: var(--text-main);
         }}
 
         .main-container {{
@@ -1516,18 +1559,24 @@ def index():
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-primary)">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
-            Storytelling Extractor
+            <span data-i18n="header.logo">Storytelling Extractor</span>
         </div>
-        <div class="api-badge" id="apiKeyBadge">
-            <span class="dot { "active" if openai_key_set == "true" else "missing" }" id="apiKeyDot"></span>
-            <span id="apiKeyBadgeText">{ "OPENAI_API_KEY Активен" if openai_key_set == "true" else "OPENAI_API_KEY Отсутствует" }</span>
+        <div class="header-actions">
+            <div class="lang-switcher">
+                <button type="button" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button type="button" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            </div>
+            <div class="api-badge" id="apiKeyBadge">
+                <span class="dot { "active" if openai_key_set == "true" else "missing" }" id="apiKeyDot"></span>
+                <span id="apiKeyBadgeText"></span>
+            </div>
         </div>
     </header>
 
     <div class="main-container">
         <!-- Sidebar containing list of runs -->
         <aside class="sidebar">
-            <div class="sidebar-header">История обработок</div>
+            <div class="sidebar-header" data-i18n="sidebar.history">Processing history</div>
             <ul class="history-list" id="historyList">
                 <!-- Javascript populated -->
             </ul>
@@ -1538,14 +1587,14 @@ def index():
             <!-- Warning if key is missing -->
             { f'''
             <div class="api-key-panel" id="apiKeyPanel">
-                <h3>OpenAI API Key</h3>
-                <p>Переменная окружения <code>OPENAI_API_KEY</code> не обнаружена. Введите ключ ниже — он сохранится в браузере и будет использоваться для сегментации текста.</p>
+                <h3 data-i18n="apiKey.panelTitle">OpenAI API Key</h3>
+                <p data-i18n="apiKey.panelDescription">Environment variable OPENAI_API_KEY was not found.</p>
                 <div class="api-key-row">
-                    <input type="password" class="api-key-input" id="openaiApiKeyInput" placeholder="sk-..." autocomplete="off">
-                    <button type="button" class="btn btn-primary" onclick="saveOpenAiApiKey()">Сохранить ключ</button>
-                    <button type="button" class="btn" onclick="clearOpenAiApiKey()">Очистить</button>
+                    <input type="password" class="api-key-input" id="openaiApiKeyInput" data-i18n-placeholder="apiKey.placeholder" placeholder="sk-..." autocomplete="off">
+                    <button type="button" class="btn btn-primary" onclick="saveOpenAiApiKey()" data-i18n="apiKey.save">Save key</button>
+                    <button type="button" class="btn" onclick="clearOpenAiApiKey()" data-i18n="apiKey.clear">Clear</button>
                 </div>
-                <div class="api-key-hint">Ключ хранится только в sessionStorage этого браузера и не сохраняется на сервере.</div>
+                <div class="api-key-hint" data-i18n="apiKey.hint">The key is stored only in this browser.</div>
             </div>
             ''' if openai_key_set == "false" else "" }
 
@@ -1555,17 +1604,17 @@ def index():
                     <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path>
                     </svg>
-                    <h3>Загрузить сценарий</h3>
-                    <p>Перетащите файл .txt или .json в любое место окна или нажмите для выбора</p>
+                    <h3 data-i18n="upload.title">Upload a script</h3>
+                    <p data-i18n="upload.description">Drag a .txt or .json file anywhere in the window, or click to browse</p>
                     <input type="file" id="fileInput" accept=".txt,.json" onchange="handleFileSelect(event)">
                 </div>
 
                 <div class="paste-section">
-                    <h3>Или вставьте текст сценария</h3>
-                    <p>Вставьте текст ниже и запустите анализ сразу, без выбора файла и дополнительных окон.</p>
-                    <textarea class="paste-input" id="pasteTextInput" placeholder="Вставьте сценарий сюда..."></textarea>
+                    <h3 data-i18n="upload.pasteTitle">Or paste script text</h3>
+                    <p data-i18n="upload.pasteDescription">Paste text below and start analysis without choosing a file.</p>
+                    <textarea class="paste-input" id="pasteTextInput" data-i18n-placeholder="upload.pastePlaceholder" placeholder="Paste your script here..."></textarea>
                     <div class="paste-actions">
-                        <button class="btn btn-primary" onclick="uploadPastedText()">Анализировать текст</button>
+                        <button class="btn btn-primary" onclick="uploadPastedText()" data-i18n="upload.analyze">Analyze text</button>
                     </div>
                 </div>
             </div>
@@ -1576,26 +1625,26 @@ def index():
                     <div>
                         <div class="title-row">
                             <h2 id="taskFilename">filename.txt</h2>
-                            <button type="button" class="source-edit-btn" onclick="editCurrentTaskTitle()">Редактировать</button>
+                            <button type="button" class="source-edit-btn" onclick="editCurrentTaskTitle()" data-i18n="title.edit">Edit</button>
                         </div>
                         <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.25rem;">
                             <span class="status-badge" id="taskStatus">completed</span>
                             <span style="font-size: 0.8rem; color: var(--text-muted);" id="taskDate">2026-07-01</span>
                         </div>
                         <div class="source-row">
-                            <span>Источник:</span>
-                            <span class="source-value" id="taskSourceValue">не указан</span>
-                            <button type="button" class="source-edit-btn" onclick="editCurrentTaskSource()">Редактировать</button>
+                            <span data-i18n="source.label">Source:</span>
+                            <span class="source-value" id="taskSourceValue"></span>
+                            <button type="button" class="source-edit-btn" onclick="editCurrentTaskSource()" data-i18n="task.edit">Edit</button>
                         </div>
                     </div>
                     <div class="details-actions">
                         <button class="btn" onclick="resetWorkspace()">
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path></svg>
-                            Новый файл
+                            <span data-i18n="task.newFile">New file</span>
                         </button>
                         <button class="btn btn-primary" id="downloadBtn" style="display: none;" onclick="downloadStructure()">
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            Скачать JSON
+                            <span data-i18n="task.downloadJson">Download JSON</span>
                         </button>
                     </div>
                 </div>
@@ -1604,15 +1653,15 @@ def index():
                     <!-- Outputs: Visual representation / JSON Code -->
                     <div class="output-panel">
                         <div class="tabs-header">
-                            <button class="tab-btn active" onclick="switchTab('visualTab')">Структура сценария</button>
-                            <button class="tab-btn" onclick="switchTab('jsonTab')">Исходный JSON</button>
+                            <button class="tab-btn active" onclick="switchTab('visualTab')" data-i18n="task.tabStructure">Script structure</button>
+                            <button class="tab-btn" onclick="switchTab('jsonTab')" data-i18n="task.tabJson">Raw JSON</button>
                         </div>
                         
                         <!-- Visual Tab -->
                         <div class="tab-content active" id="visualTab">
                             <div id="visualStructureContent">
-                                <div style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-top: 3rem;">
-                                    Структура будет отображена после завершения анализа.
+                                <div id="visualStructurePending" style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-top: 3rem;" data-i18n="task.structurePending">
+                                    Structure will appear after analysis completes.
                                 </div>
                             </div>
                         </div>
@@ -1620,16 +1669,16 @@ def index():
                         <!-- JSON Tab -->
                         <div class="tab-content" id="jsonTab">
                             <div style="display: flex; justify-content: flex-end; margin-bottom: 0.5rem;">
-                                <button class="btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="copyJsonToClipboard()">Копировать в буфер</button>
+                                <button class="btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="copyJsonToClipboard()" data-i18n="task.copyJson">Copy to clipboard</button>
                             </div>
-                            <pre><code id="jsonContent">// JSON появится здесь...</code></pre>
+                            <pre><code id="jsonContent"></code></pre>
                         </div>
                     </div>
 
                     <!-- Logs Output -->
                     <div class="console-panel">
-                        <div class="panel-title">Лог выполнения процесса</div>
-                        <div class="console-output" id="consoleOutput">Ожидание логов...</div>
+                        <div class="panel-title" data-i18n="task.consoleTitle">Process log</div>
+                        <div class="console-output" id="consoleOutput"></div>
                     </div>
                 </div>
             </div>
@@ -1640,19 +1689,19 @@ def index():
 
     <div class="drag-overlay" id="dragOverlay">
         <div class="drag-overlay-content">
-            Отпустите файл, чтобы загрузить
-            <span>Поддерживаются .txt и .json</span>
+            <span data-i18n="dragOverlay.title">Drop the file to upload</span>
+            <span data-i18n="dragOverlay.hint">.txt and .json supported</span>
         </div>
     </div>
 
     <div class="modal-backdrop" id="sourceModal">
         <div class="source-modal">
-            <h3 id="sourceModalTitle">Источник видео</h3>
-            <p id="sourceModalDescription">Добавьте комментарий или ссылку, откуда взялось видео.</p>
-            <textarea id="sourceModalInput" placeholder="Например: https://youtu.be/... или заметка об источнике"></textarea>
+            <h3 id="sourceModalTitle"></h3>
+            <p id="sourceModalDescription"></p>
+            <textarea id="sourceModalInput"></textarea>
             <div class="source-modal-actions">
-                <button type="button" class="btn" id="sourceModalCancel">Отмена</button>
-                <button type="button" class="btn btn-primary" id="sourceModalConfirm">Начать</button>
+                <button type="button" class="btn" id="sourceModalCancel" data-i18n="common.cancel">Cancel</button>
+                <button type="button" class="btn btn-primary" id="sourceModalConfirm"></button>
             </div>
         </div>
     </div>
@@ -1664,17 +1713,106 @@ def index():
         let currentTaskData = null;
         let sourceModalResolver = null;
         let dragDepth = 0;
+        let currentLang = 'en';
+        let I18N = {{}};
+        let lastRenderedStructure = null;
         const OPENAI_KEY_FROM_ENV = {"true" if openai_key_set == "true" else "false"};
         const OPENAI_KEY_STORAGE = 'storytelling_openai_api_key';
-        const TAG_LEGEND = {tag_legend_json};
+        const LANG_STORAGE = 'storytelling_lang';
 
-        // On Load
-        window.addEventListener('DOMContentLoaded', () => {{
-            loadHistory();
+        window.addEventListener('DOMContentLoaded', async () => {{
+            await initI18n();
             setupDragAndDrop();
             setupSourceModal();
             initOpenAiApiKeyUi();
+            loadHistory();
         }});
+
+        async function initI18n() {{
+            const stored = localStorage.getItem(LANG_STORAGE);
+            const browserLang = (navigator.language || 'en').toLowerCase().startsWith('ru') ? 'ru' : 'en';
+            currentLang = stored || browserLang;
+            await loadLocale(currentLang);
+            applyTranslations();
+            updateApiKeyBadge();
+        }}
+
+        async function setLanguage(lang) {{
+            if (!['en', 'ru'].includes(lang) || lang === currentLang) return;
+            currentLang = lang;
+            localStorage.setItem(LANG_STORAGE, lang);
+            await loadLocale(lang);
+            applyTranslations();
+            updateApiKeyBadge();
+            loadHistory();
+            if (lastRenderedStructure) {{
+                renderVisualStructure(
+                    lastRenderedStructure.structure,
+                    lastRenderedStructure.segmentedBlocks,
+                    lastRenderedStructure.treeJson
+                );
+            }}
+            if (currentTaskId) {{
+                await fetchAndRenderTask(currentTaskId);
+            }} else {{
+                resetConsolePlaceholder();
+            }}
+        }}
+
+        async function loadLocale(lang) {{
+            const res = await fetch(`/locales/${{lang}}.json`);
+            if (!res.ok) throw new Error(`Locale not found: ${{lang}}`);
+            I18N = await res.json();
+        }}
+
+        function t(key, vars = {{}}) {{
+            const parts = key.split('.');
+            let val = I18N;
+            for (const part of parts) {{
+                val = val?.[part];
+            }}
+            if (typeof val !== 'string') return key;
+            return val.replace(/\\{{\\{{(\\w+)\\}}\\}}/g, (_, k) => vars[k] ?? '');
+        }}
+
+        function applyTranslations() {{
+            document.documentElement.lang = currentLang;
+            document.title = t('pageTitle');
+            document.querySelectorAll('[data-i18n]').forEach(el => {{
+                el.textContent = t(el.dataset.i18n);
+            }});
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {{
+                el.placeholder = t(el.dataset.i18nPlaceholder);
+            }});
+            document.querySelectorAll('[data-i18n-title]').forEach(el => {{
+                el.title = t(el.dataset.i18nTitle);
+            }});
+            document.querySelectorAll('.lang-switcher button').forEach(btn => {{
+                btn.classList.toggle('active', btn.dataset.lang === currentLang);
+            }});
+            const sourceInput = document.getElementById('sourceModalInput');
+            if (sourceInput) sourceInput.placeholder = t('source.modalPlaceholder');
+            if (!currentTaskId) {{
+                const jsonEl = document.getElementById('jsonContent');
+                if (jsonEl) jsonEl.innerText = t('task.jsonPlaceholder');
+                resetConsolePlaceholder();
+            }}
+        }}
+
+        function localeTag() {{
+            return currentLang === 'ru' ? 'ru-RU' : 'en-US';
+        }}
+
+        function formatStatus(status) {{
+            return t(`status.${{status}}`) || status;
+        }}
+
+        function resetConsolePlaceholder() {{
+            const logBox = document.getElementById('consoleOutput');
+            if (logBox && !currentTaskId) {{
+                logBox.innerText = t('task.consoleWaiting');
+            }}
+        }}
 
         function initOpenAiApiKeyUi() {{
             if (OPENAI_KEY_FROM_ENV) return;
@@ -1694,7 +1832,7 @@ def index():
             if (!input) return;
             const key = input.value.trim();
             if (!key) {{
-                alert('Введите OpenAI API key.');
+                alert(t('apiKey.enterKey'));
                 input.focus();
                 return;
             }}
@@ -1710,13 +1848,17 @@ def index():
         }}
 
         function updateApiKeyBadge() {{
-            if (OPENAI_KEY_FROM_ENV) return;
             const dot = document.getElementById('apiKeyDot');
             const text = document.getElementById('apiKeyBadgeText');
-            const hasKey = !!getStoredOpenAiApiKey();
             if (!dot || !text) return;
+            if (OPENAI_KEY_FROM_ENV) {{
+                dot.className = 'dot active';
+                text.innerText = t('apiKey.active');
+                return;
+            }}
+            const hasKey = !!getStoredOpenAiApiKey();
             dot.className = `dot ${{hasKey ? 'active' : 'missing'}}`;
-            text.innerText = hasKey ? 'OPENAI_API_KEY в браузере' : 'OPENAI_API_KEY Отсутствует';
+            text.innerText = hasKey ? t('apiKey.browser') : t('apiKey.missing');
         }}
 
         function appendOpenAiApiKeyToFormData(formData) {{
@@ -1729,7 +1871,7 @@ def index():
             if (OPENAI_KEY_FROM_ENV) return true;
             const key = getStoredOpenAiApiKey();
             if (key) return true;
-            alert('Для сегментации текста нужен OpenAI API key. Введите и сохраните ключ в блоке выше.');
+            alert(t('apiKey.requiredForText'));
             document.getElementById('apiKeyPanel')?.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
             document.getElementById('openaiApiKeyInput')?.focus();
             return false;
@@ -1831,7 +1973,7 @@ def index():
             const input = document.getElementById('pasteTextInput');
             const text = input.value.trim();
             if (!text) {{
-                alert('Вставьте текст сценария перед запуском анализа.');
+                alert(t('upload.pasteRequired'));
                 input.focus();
                 return;
             }}
@@ -1849,7 +1991,7 @@ def index():
         // Upload File
         async function uploadFile(file, options = {{}}) {{
             if (!(file.name.endsWith('.txt') || file.name.endsWith('.json'))) {{
-                alert('Пожалуйста, выберите файл в формате .txt или .json');
+                alert(t('upload.invalidFormat'));
                 return false;
             }}
 
@@ -1862,9 +2004,9 @@ def index():
             let source = options.source || '';
             if (options.requestSource !== false) {{
                 source = await openSourceModal({{
-                    title: 'Источник видео',
-                    description: 'Перед стартом добавьте комментарий или ссылку, откуда взялось видео.',
-                    confirmText: 'Начать',
+                    title: t('source.uploadTitle'),
+                    description: t('source.uploadDescription'),
+                    confirmText: t('common.start'),
                 }});
                 if (source === null) {{
                     document.getElementById('fileInput').value = '';
@@ -1883,18 +2025,19 @@ def index():
             document.getElementById('detailsContainer').style.display = 'grid';
             document.getElementById('taskFilename').innerText = file.name;
             document.getElementById('taskStatus').className = 'status-badge status-pending';
-            document.getElementById('taskStatus').innerText = 'pending';
+            document.getElementById('taskStatus').innerText = formatStatus('pending');
             renderTaskSource(source.startsWith('http://') || source.startsWith('https://')
                 ? {{ source_url: source, source_note: null }}
                 : {{ source_url: null, source_note: source }});
-            document.getElementById('consoleOutput').innerText = 'Отправка файла на сервер...\\n';
+            document.getElementById('consoleOutput').innerText = t('task.uploading');
             document.getElementById('downloadBtn').style.display = 'none';
-            document.getElementById('jsonContent').innerText = '// JSON появится здесь...';
+            document.getElementById('jsonContent').innerText = t('task.jsonPlaceholder');
             document.getElementById('visualStructureContent').innerHTML = 
                 `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 1rem; color: var(--text-muted); margin-top: 3rem;">
                     <div class="spinner"></div>
-                    Выполняется лингвистический анализ структуры сценария...
+                    ${{escapeHtml(t('task.analyzing'))}}
                  </div>`;
+            lastRenderedStructure = null;
 
             try {{
                 const res = await fetch('/upload', {{
@@ -1903,7 +2046,7 @@ def index():
                 }});
                 if (!res.ok) {{
                     const err = await res.json();
-                    throw new Error(err.detail || 'Не удалось загрузить файл.');
+                    throw new Error(err.detail || t('task.uploadFailed'));
                 }}
                 const data = await res.json();
                 currentTaskId = data.task_id;
@@ -1921,12 +2064,12 @@ def index():
                 startPolling(currentTaskId);
                 return true;
             }} catch (error) {{
-                document.getElementById('consoleOutput').innerHTML += `\\n[ОШИБКА] ${{error.message}}\\n`;
+                document.getElementById('consoleOutput').innerHTML += `\\n[ERROR] ${{escapeHtml(error.message)}}\\n`;
                 document.getElementById('taskStatus').className = 'status-badge status-failed';
-                document.getElementById('taskStatus').innerText = 'failed';
+                document.getElementById('taskStatus').innerText = formatStatus('failed');
                 document.getElementById('visualStructureContent').innerHTML = 
                     `<div style="color: var(--accent-danger); text-align: center; margin-top: 3rem;">
-                        Ошибка загрузки файла: ${{error.message}}
+                        ${{escapeHtml(t('task.uploadError', {{ message: error.message }}))}}
                      </div>`;
                 return false;
             }}
@@ -1943,36 +2086,36 @@ def index():
                 if (tasks.length === 0) {{
                     listEl.innerHTML = `
                         <div class="empty-history">
-                            Здесь появятся результаты ваших предыдущих запусков
+                            ${{escapeHtml(t('sidebar.empty'))}}
                         </div>`;
                     return;
                 }}
 
-                tasks.forEach(t => {{
+                tasks.forEach(tItem => {{
                     const item = document.createElement('li');
-                    item.className = `history-item ${{t.id === currentTaskId ? 'active' : ''}}`;
+                    item.className = `history-item ${{tItem.id === currentTaskId ? 'active' : ''}}`;
                     item.onclick = (e) => {{
                         if (e.target.closest('.delete-btn')) return;
-                        selectTask(t.id);
+                        selectTask(tItem.id);
                     }};
 
-                    const formattedDate = new Date(t.created_at).toLocaleString('ru-RU', {{
+                    const formattedDate = new Date(tItem.created_at).toLocaleString(localeTag(), {{
                         month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
                     }});
 
                     item.innerHTML = `
-                        <button class="delete-btn" title="Удалить" onclick="deleteTask('${{t.id}}', event)">&times;</button>
-                        <div class="history-title">${{escapeHtml(t.filename)}}</div>
-                        ${{renderHistorySource(t)}}
+                        <button class="delete-btn" title="${{escapeHtml(t('task.deleteTitle'))}}" onclick="deleteTask('${{tItem.id}}', event)">&times;</button>
+                        <div class="history-title">${{escapeHtml(tItem.filename)}}</div>
+                        ${{renderHistorySource(tItem)}}
                         <div class="history-meta">
                             <span>${{formattedDate}}</span>
-                            <span class="status-badge status-${{t.status}}">${{t.status}}</span>
+                            <span class="status-badge status-${{tItem.status}}">${{formatStatus(tItem.status)}}</span>
                         </div>
                     `;
                     listEl.appendChild(item);
                 }});
             }} catch (err) {{
-                console.error('Ошибка загрузки истории:', err);
+                console.error('History load error:', err);
             }}
         }}
 
@@ -1996,15 +2139,15 @@ def index():
         async function fetchAndRenderTask(taskId) {{
             try {{
                 const res = await fetch(`/tasks/${{taskId}}`);
-                if (!res.ok) throw new Error('Не удалось получить данные по задаче.');
+                if (!res.ok) throw new Error(t('task.fetchFailed'));
                 const task = await res.json();
                 currentTaskData = task;
 
                 document.getElementById('taskFilename').innerText = task.filename;
                 document.getElementById('taskStatus').className = `status-badge status-${{task.status}}`;
-                document.getElementById('taskStatus').innerText = task.status;
+                document.getElementById('taskStatus').innerText = formatStatus(task.status);
                 
-                const formattedDate = new Date(task.created_at).toLocaleString('ru-RU');
+                const formattedDate = new Date(task.created_at).toLocaleString(localeTag());
                 document.getElementById('taskDate').innerText = formattedDate;
                 renderTaskSource(task);
 
@@ -2015,12 +2158,13 @@ def index():
 
                 if (task.status === 'processing' || task.status === 'pending') {{
                     document.getElementById('downloadBtn').style.display = 'none';
-                    document.getElementById('jsonContent').innerText = '// Идет обработка, подождите...';
+                    document.getElementById('jsonContent').innerText = t('task.processing');
                     document.getElementById('visualStructureContent').innerHTML = 
                         `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 1rem; color: var(--text-muted); margin-top: 3rem;">
                             <div class="spinner"></div>
-                            Идет разметка сценария...
+                            ${{escapeHtml(t('task.marking'))}}
                          </div>`;
+                    lastRenderedStructure = null;
                     startPolling(taskId);
                 }} else if (task.status === 'completed') {{
                     document.getElementById('downloadBtn').style.display = 'flex';
@@ -2030,12 +2174,13 @@ def index():
                     renderVisualStructure(task.structure_json, task.segmented_blocks, task.tree_json);
                 }} else {{
                     document.getElementById('downloadBtn').style.display = 'none';
-                    document.getElementById('jsonContent').innerText = `// Ошибка выполнения:\\n// ${{task.error_message}}`;
+                    document.getElementById('jsonContent').innerText = t('task.errorPrefix', {{ message: task.error_message || '' }});
                     document.getElementById('visualStructureContent').innerHTML = 
                         `<div style="color: var(--accent-danger); text-align: center; margin-top: 3rem; font-weight: 500;">
-                            Ошибка обработки сценария:<br>
-                            <span style="font-size: 0.85rem; color: var(--text-muted); font-family: monospace; display: block; margin-top: 0.5rem;">${{task.error_message}}</span>
+                            ${{escapeHtml(t('task.runError'))}}<br>
+                            <span style="font-size: 0.85rem; color: var(--text-muted); font-family: monospace; display: block; margin-top: 0.5rem;">${{escapeHtml(task.error_message)}}</span>
                          </div>`;
+                    lastRenderedStructure = null;
                 }}
             }} catch (error) {{
                 console.error(error);
@@ -2056,7 +2201,7 @@ def index():
                     logBox.scrollTop = logBox.scrollHeight;
                     
                     document.getElementById('taskStatus').className = `status-badge status-${{task.status}}`;
-                    document.getElementById('taskStatus').innerText = task.status;
+                    document.getElementById('taskStatus').innerText = formatStatus(task.status);
 
                     if (task.status !== 'processing' && task.status !== 'pending') {{
                         clearInterval(pollInterval);
@@ -2065,7 +2210,7 @@ def index():
                         fetchAndRenderTask(taskId);
                     }}
                 }} catch (err) {{
-                    console.error('Ошибка опроса статуса:', err);
+                    console.error('Polling error:', err);
                 }}
             }}, 1200);
         }}
@@ -2073,7 +2218,7 @@ def index():
         // Delete Task
         async function deleteTask(taskId, event) {{
             event.stopPropagation();
-            if (!confirm('Вы уверены, что хотите удалить эту запись?')) return;
+            if (!confirm(t('task.deleteConfirm'))) return;
             try {{
                 const res = await fetch(`/tasks/${{taskId}}`, {{ method: 'DELETE' }});
                 if (res.ok) {{
@@ -2091,11 +2236,13 @@ def index():
         function resetWorkspace() {{
             currentTaskId = null;
             currentTaskData = null;
+            lastRenderedStructure = null;
             if (pollInterval) clearInterval(pollInterval);
             
             document.getElementById('detailsContainer').style.display = 'none';
             document.getElementById('uploadSection').style.display = 'flex';
             document.getElementById('fileInput').value = '';
+            resetConsolePlaceholder();
             
             document.querySelectorAll('.history-item').forEach(item => {{
                 item.classList.remove('active');
@@ -2109,7 +2256,7 @@ def index():
 
         function renderSourceHtml(task) {{
             if (!task || (!task.source_url && !task.source_note)) {{
-                return '<span style="color: var(--text-muted);">не указан</span>';
+                return `<span style="color: var(--text-muted);">${{escapeHtml(t('source.notSet'))}}</span>`;
             }}
             if (task.source_url) {{
                 const url = escapeHtml(task.source_url);
@@ -2131,9 +2278,9 @@ def index():
         async function editCurrentTaskSource() {{
             if (!currentTaskData || !currentTaskData.id) return;
             const source = await openSourceModal({{
-                title: 'Редактировать источник',
-                description: 'Измените комментарий или ссылку, откуда взялось видео.',
-                confirmText: 'Сохранить',
+                title: t('source.editTitle'),
+                description: t('source.editDescription'),
+                confirmText: t('common.save'),
                 initialValue: getSourceValue(currentTaskData),
             }});
             if (source === null) return;
@@ -2146,7 +2293,7 @@ def index():
                 }});
                 if (!res.ok) {{
                     const err = await res.json();
-                    throw new Error(err.detail || 'Не удалось сохранить источник.');
+                    throw new Error(err.detail || t('source.saveFailed'));
                 }}
                 const data = await res.json();
                 currentTaskData.source_note = data.source_note;
@@ -2161,16 +2308,16 @@ def index():
         async function editCurrentTaskTitle() {{
             if (!currentTaskData || !currentTaskData.id) return;
             const filename = await openSourceModal({{
-                title: 'Редактировать название',
-                description: 'Введите новое название для этой обработки.',
-                confirmText: 'Сохранить',
+                title: t('title.modalTitle'),
+                description: t('title.editDescription'),
+                confirmText: t('common.save'),
                 initialValue: currentTaskData.filename || '',
             }});
             if (filename === null) return;
 
             const trimmed = filename.trim();
             if (!trimmed) {{
-                alert('Название не может быть пустым.');
+                alert(t('title.empty'));
                 return;
             }}
 
@@ -2182,7 +2329,7 @@ def index():
                 }});
                 if (!res.ok) {{
                     const err = await res.json();
-                    throw new Error(err.detail || 'Не удалось сохранить название.');
+                    throw new Error(err.detail || t('title.saveFailed'));
                 }}
                 const data = await res.json();
                 currentTaskData.filename = data.filename;
@@ -2194,15 +2341,16 @@ def index():
         }}
 
         function renderTagLegend() {{
-            const items = Object.entries(TAG_LEGEND).map(([tag, desc]) => `
+            const tags = I18N.tags || {{}};
+            const items = Object.entries(tags).map(([tag, desc]) => `
                 <div class="tag-legend-item">
                     <span class="visual-tag vtag-${{tag}}" title="${{tag}}">${{tag}}</span>
-                    <span class="tag-legend-desc">${{desc}}</span>
+                    <span class="tag-legend-desc">${{escapeHtml(desc)}}</span>
                 </div>
             `).join('');
             return `
                 <div class="tag-legend">
-                    <div class="tag-legend-title">Справка по тегам</div>
+                    <div class="tag-legend-title">${{escapeHtml(t('structure.legendTitle'))}}</div>
                     <div class="tag-legend-list">${{items}}</div>
                 </div>
             `;
@@ -2213,9 +2361,9 @@ def index():
                 <div class="tag-group-title">
                     <span class="tag-group-title-label">
                         ${{iconSvg}}
-                        ${{label}}
+                        ${{escapeHtml(label)}}
                     </span>
-                    <button type="button" class="btn-copy-column" onclick="copyColumnTags(this)" title="Копировать теги колонки">⎘</button>
+                    <button type="button" class="btn-copy-column" onclick="copyColumnTags(this)" title="${{escapeHtml(t('structure.copyColumn'))}}">⎘</button>
                 </div>
             `;
         }}
@@ -2230,7 +2378,7 @@ def index():
                 btn.textContent = '✓';
                 setTimeout(() => {{ btn.textContent = prev; }}, 1200);
             }}).catch(err => {{
-                alert('Не удалось скопировать: ' + err);
+                alert(t('clipboard.copyFailed', {{ error: err }}));
             }});
         }}
 
@@ -2391,8 +2539,9 @@ def index():
 
         function renderVisualStructure(structure, segmentedBlocks, treeJson) {{
             const container = document.getElementById('visualStructureContent');
+            lastRenderedStructure = {{ structure, segmentedBlocks, treeJson }};
             if (!structure) {{
-                container.innerHTML = 'Нет данных';
+                container.innerHTML = escapeHtml(t('structure.noData'));
                 return;
             }}
 
@@ -2409,7 +2558,7 @@ def index():
             if (structure.intro && structure.intro.tag_pattern && structure.intro.tag_pattern.length > 0) {{
                 columns.push(`
                 <div class="structure-column">
-                    ${{renderColumnTitle('Вступление (Intro)', introIcon)}}
+                    ${{renderColumnTitle(t('structure.intro'), introIcon)}}
                     <div class="tag-flow">
                         ${{renderTagsList(structure.intro.tag_pattern, structure.intro.blocks, beatIdCounter)}}
                     </div>
@@ -2423,7 +2572,7 @@ def index():
                     beatIdCounter += (story.tag_pattern || []).length;
                     columns.push(`
                     <div class="structure-column">
-                        ${{renderColumnTitle('История #' + (idx + 1), storyIcon)}}
+                        ${{renderColumnTitle(t('structure.story', {{ n: idx + 1 }}), storyIcon)}}
                         <div class="tag-flow">
                             ${{listHtml}}
                         </div>
@@ -2434,7 +2583,7 @@ def index():
             if (structure.outro && structure.outro.tag_pattern && structure.outro.tag_pattern.length > 0) {{
                 columns.push(`
                 <div class="structure-column">
-                    ${{renderColumnTitle('Концовка (Outro)', outroIcon)}}
+                    ${{renderColumnTitle(t('structure.outro'), outroIcon)}}
                     <div class="tag-flow">
                         ${{renderTagsList(structure.outro.tag_pattern, structure.outro.blocks, beatIdCounter)}}
                     </div>
@@ -2443,13 +2592,13 @@ def index():
 
             container.innerHTML = columns.length > 0
                 ? renderTagLegend() + `<div class="structure-scroll"><div class="structure-columns">${{columns.join('')}}</div></div>`
-                : '<span style="color: var(--text-muted); font-size: 0.9rem;">Нет данных для отображения</span>';
+                : `<span style="color: var(--text-muted); font-size: 0.9rem;">${{escapeHtml(t('structure.noDisplay'))}}</span>`;
 
             bindBeatTooltips();
         }}
 
         function renderTagsList(tagPattern, blocks, idOffset = 0) {{
-            if (!tagPattern || tagPattern.length === 0) return '<span style="color: var(--text-muted); font-size: 0.8rem;">Нет тегов</span>';
+            if (!tagPattern || tagPattern.length === 0) return `<span style="color: var(--text-muted); font-size: 0.8rem;">${{escapeHtml(t('structure.noTags'))}}</span>`;
             return tagPattern.map((tag, idx) => {{
                 const block = (blocks && blocks[idx]) ? blocks[idx] : {{
                     text: '',
@@ -2474,9 +2623,9 @@ def index():
         function copyJsonToClipboard() {{
             const codeText = document.getElementById('jsonContent').innerText;
             navigator.clipboard.writeText(codeText).then(() => {{
-                alert('JSON скопирован в буфер обмена!');
+                alert(t('clipboard.jsonCopied'));
             }}).catch(err => {{
-                alert('Не удалось скопировать JSON: ' + err);
+                alert(t('clipboard.jsonFailed', {{ error: err }}));
             }});
         }}
 

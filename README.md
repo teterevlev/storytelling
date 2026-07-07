@@ -1,119 +1,67 @@
 # Storytelling Structure Extractor
 
-Локальное веб-приложение для анализа структуры сценариев видео. Оно сегментирует текст через OpenAI, строит дерево повествования и показывает упрощённую структуру: intro, истории и outro как последовательности функциональных тегов.
+A local tool for breaking down long-form video scripts into a reusable narrative structure. Paste or upload a script, and the app labels each passage with functional storytelling tags, groups them into stories, and produces a compact pattern you can compare across videos.
 
-## Установка
+![Storytelling Structure Extractor](pic.png)
+
+Built for multi-story formats — “top N” compilations, documentary anthologies, list-style YouTube essays — where one video contains several self-contained arcs under a shared intro and outro.
+
+## What it does
+
+1. **Segments the script** — splits raw text into labeled blocks (hook, open loop, tension, payoff, transition, etc.).
+2. **Builds a narrative tree** — detects story boundaries, sub-arcs, and video-level framing.
+3. **Extracts a structure template** — intro, individual stories, and outro as sequences of tags, without the original wording.
+
+The output is meant for analysis and reuse: study how successful videos are paced, spot recurring patterns, and draft new scripts against a proven structure.
+
+## Typical workflow
+
+- Upload a `.txt` script, drop a file anywhere on the page, or paste text directly.
+- Optionally attach a source note or URL (e.g. the original YouTube link) for your reference library.
+- Review the result in the browser; download `structure.json` when processing finishes.
+- Browse past runs in local history; edit titles and sources as needed.
+
+Pre-segmented `.json` files can be uploaded to skip the AI step and run only tree building and structure extraction.
+
+## Setup
 
 ```bash
 pip install fastapi uvicorn openai python-multipart
 ```
 
-## Настройка ключа
+Set an OpenAI API key via `OPENAI_API_KEY` (environment variable or `storytelling/.env`). If none is configured, you can enter a key in the web UI for the current browser session.
 
-Ключ можно передать через переменную окружения:
-
-```bash
-export OPENAI_API_KEY=sk-...
-```
-
-Также приложение автоматически читает локальный файл `.env` в папке `storytelling`:
-
-```bash
-OPENAI_API_KEY=sk-...
-```
-
-Если ключ не задан в окружении, его можно ввести прямо в интерфейсе — он сохранится в `sessionStorage` браузера и будет отправляться с запросами на сегментацию `.txt`. Ключ не сохраняется на сервере и не попадает в базу данных.
-
-## Запуск
-
-Из папки `storytelling`:
+From the `storytelling` directory:
 
 ```bash
 python3 main.py
 ```
 
-После запуска открой:
+Open `http://127.0.0.1:8000`.
 
-```text
-http://127.0.0.1:8000
-```
+## Inputs and outputs
 
-## Что умеет интерфейс
+**TXT** — plain script text; chunked and segmented automatically.
 
-- Загрузка `.txt` и `.json` файлов.
-- Drag-and-drop файла в любое место окна.
-- Вставка текста сценария прямо в textarea без выбора файла.
-- Перед загрузкой файла можно указать комментарий или ссылку на источник видео.
-- Источник сохраняется в SQLite; ссылки отображаются кликабельными.
-- Название обработки и источник можно редактировать после создания.
-- История обработок хранится локально в `db.sqlite`.
-- Для завершённых задач можно скачать `structure.json`.
+**JSON** — existing segmentation as a list of blocks or `{ "blocks": [...] }`, each block with at least `text`, `tag`, and related metadata.
 
-## Визуализация структуры
+**Stored per task:**
 
-Во вкладке «Структура сценария» отображаются:
+| Artifact | Purpose |
+|----------|---------|
+| `segmented_blocks` | Full labeled segmentation with text and model reasoning |
+| `tree_json` | Hierarchical narrative tree |
+| `structure_json` | Downloadable tag pattern (intro / stories / outro) |
 
-- справка по тегам;
-- intro, истории и outro колонками слева направо;
-- теги внутри каждой колонки сверху вниз;
-- горизонтальный скролл только для блока с колонками;
-- кнопка копирования тегов у каждой колонки;
-- tooltip при наведении на тег с полями `text`, `tag`, `tension_score`, `loop_id`, `reasoning`, `chunk_index`.
+Downloaded `structure.json` contains only abstract tag sequences — no source text or hover details.
 
-## Форматы загрузки
+## Project layout
 
-### TXT
+- `main.py` — web app, API, and UI
+- `pipeline/taxonomy.py` — tag definitions
+- `pipeline/segmenter.py` — AI segmentation
+- `pipeline/chunker.py` — text chunking
+- `pipeline/tree_builder.py` — narrative tree
+- `pipeline/structure_extractor.py` — structure template
 
-Обычный текст сценария. Он будет разбит на чанки, сегментирован через OpenAI и сохранён как список блоков.
-
-### JSON
-
-Можно загрузить уже готовую сегментацию:
-
-```json
-{
-  "blocks": [
-    {
-      "text": "...",
-      "tag": "VIDEO_HOOK",
-      "tension_score": 7,
-      "loop_id": null,
-      "reasoning": "...",
-      "chunk_index": 0
-    }
-  ]
-}
-```
-
-Также поддерживается JSON-массив блоков без внешнего ключа `blocks`.
-
-## Результаты
-
-Приложение сохраняет:
-
-- `segmented_blocks` — полная сегментация с текстом и reasoning;
-- `tree_json` — дерево повествования;
-- `structure_json` — упрощённая структура для скачивания.
-
-Скачиваемый `structure.json` содержит только абстрактную структуру (`tag_pattern`) и не включает исходные тексты блоков, source-поля или детали hover-подсказок.
-
-## Основные файлы
-
-- `main.py` — FastAPI-приложение, база, API и HTML-интерфейс.
-- `pipeline/taxonomy.py` — список тегов и их определения.
-- `pipeline/segmenter.py` — сегментация текста через OpenAI.
-- `pipeline/chunker.py` — разбиение длинного текста на чанки.
-- `pipeline/tree_builder.py` — построение дерева повествования.
-- `pipeline/structure_extractor.py` — извлечение упрощённой структуры.
-
-## CLI-режим
-
-Отдельные pipeline-скрипты можно запускать вручную:
-
-```bash
-python3 pipeline/segmenter.py input.txt segmented.json
-python3 pipeline/tree_builder.py segmented.json tree.json
-python3 pipeline/structure_extractor.py tree.json structure.json
-```
-
-Для обычной работы удобнее использовать веб-интерфейс.
+Pipeline scripts can also be run standalone from the command line; the web UI is the primary entry point.
