@@ -80,7 +80,12 @@
     "pastePlaceholder": "Paste your script here...",
     "analyze": "Analyze text",
     "pasteRequired": "Paste script text before starting analysis.",
-    "invalidFormat": "Please choose a .txt or .json file"
+    "invalidFormat": "Please choose a .txt or .json file",
+    "contentLang": "Script language",
+    "contentLangAuto": "Auto",
+    "contentLangRu": "Russian",
+    "contentLangEn": "English",
+    "contentLangHint": "Language of the script text (not the UI). Auto detects from the text."
   },
   "dragOverlay": {
     "title": "Drop the file to upload",
@@ -138,7 +143,10 @@
     "classifyFailed": "Classification failed: {{error}}",
     "classifyNeedKey": "OpenAI API key is required for classification.",
     "subclustersLoading": "Loading subtypes…",
-    "subclustersLoadFailed": "Could not load subtypes."
+    "subclustersLoadFailed": "Could not load subtypes.",
+    "contentLang": "Script:",
+    "contentLangChange": "Change script language",
+    "contentLangSaveFailed": "Could not save script language."
   },
   "status": {
     "pending": "pending",
@@ -154,7 +162,14 @@
     "outro": "Outro",
     "noData": "No data",
     "noDisplay": "Nothing to display",
-    "noTags": "No tags"
+    "noTags": "No tags",
+    "tooltipSubcluster": "subtype",
+    "tooltipFormula": "formula",
+    "tooltipAbstract": "abstract",
+    "tooltipTension": "tension",
+    "tooltipLoopId": "loop_id",
+    "tooltipReasoning": "reasoning",
+    "tooltipChunk": "chunk"
   },
   "clipboard": {
     "jsonCopied": "JSON copied to clipboard!",

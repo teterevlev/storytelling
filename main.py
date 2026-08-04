@@ -14,11 +14,12 @@ from pydantic import BaseModel
 from openai import OpenAI
 
 # Import pipeline modules
+from pipeline.taxonomy import TAG_DEFINITIONS
+from pipeline.content_lang import detect_content_lang, normalize_content_lang, resolve_content_lang
 from pipeline.chunker import chunk_text
-from pipeline.segmenter import segment_text
+from pipeline.segmenter import segment_text, build_chunk_context_note
 from pipeline.tree_builder import build_tree, annotate_stats
 from pipeline.structure_extractor import extract_structure
-from pipeline.taxonomy import TAG_DEFINITIONS
 from pipeline.subcluster_seed import seed_tag_subclusters, demote_domain_leaky_subclusters
 from pipeline.subcluster_classifier import (
     classify_unassigned_blocks,
@@ -80,6 +81,10 @@ class SourceUpdate(BaseModel):
 
 class TitleUpdate(BaseModel):
     filename: str
+
+
+class ContentLangUpdate(BaseModel):
+    content_lang: str
 
 
 class BlockSubclustersUpdate(BaseModel):
@@ -188,6 +193,16 @@ def db_init():
             conn.execute("ALTER TABLE tasks ADD COLUMN source_note TEXT")
         if "source_url" not in existing_columns:
             conn.execute("ALTER TABLE tasks ADD COLUMN source_url TEXT")
+        if "content_lang" not in existing_columns:
+            conn.execute(
+                "ALTER TABLE tasks ADD COLUMN content_lang TEXT NOT NULL DEFAULT 'ru'"
+            )
+            for row in conn.execute("SELECT id, raw_text FROM tasks").fetchall():
+                lang = detect_content_lang(row["raw_text"], default="ru")
+                conn.execute(
+                    "UPDATE tasks SET content_lang = ? WHERE id = ?",
+                    (lang, row["id"]),
+                )
 
         conn.execute("""
             CREATE TABLE IF NOT EXISTS blocks (
@@ -264,15 +279,28 @@ def db_create_task(
     raw_text: Optional[str] = None,
     segmented_blocks: Optional[str] = None,
     source: Optional[str] = None,
+    content_lang: Optional[str] = None,
 ):
     log = [f"[{datetime.datetime.now().strftime('%H:%M:%S')}] Task created. Waiting to start..."]
     source_note, source_url = normalize_source(source)
+    sample_text = raw_text
+    if not sample_text and segmented_blocks:
+        try:
+            blocks = json.loads(segmented_blocks)
+            if isinstance(blocks, list):
+                sample_text = "\n".join(
+                    (b.get("text") or "") for b in blocks[:30] if isinstance(b, dict)
+                )
+        except (TypeError, json.JSONDecodeError):
+            sample_text = None
+    lang = resolve_content_lang(content_lang, sample_text)
     with get_db() as conn:
         conn.execute(
             """
             INSERT INTO tasks
-                (id, filename, status, progress_log, raw_text, segmented_blocks, source_note, source_url)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                (id, filename, status, progress_log, raw_text, segmented_blocks,
+                 source_note, source_url, content_lang)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 task_id,
@@ -283,6 +311,7 @@ def db_create_task(
                 segmented_blocks,
                 source_note,
                 source_url,
+                lang,
             )
         )
         if segmented_blocks:
@@ -293,6 +322,28 @@ def db_create_task(
             if isinstance(blocks, list):
                 db_replace_blocks(conn, task_id, blocks)
         conn.commit()
+
+
+def db_update_content_lang(task_id: str, content_lang: str) -> bool:
+    lang = normalize_content_lang(content_lang)
+    with get_db() as conn:
+        cursor = conn.execute(
+            "UPDATE tasks SET content_lang = ? WHERE id = ?",
+            (lang, task_id),
+        )
+        conn.commit()
+        return cursor.rowcount > 0
+
+
+def db_get_content_lang(task_id: str) -> str:
+    with get_db() as conn:
+        row = conn.execute(
+            "SELECT content_lang FROM tasks WHERE id = ?", (task_id,)
+        ).fetchone()
+        if not row:
+            return "ru"
+        return normalize_content_lang(row["content_lang"])
+
 
 def db_update_source(task_id: str, source: Optional[str]) -> bool:
     source_note, source_url = normalize_source(source)
@@ -393,6 +444,8 @@ def process_scenario(
                 return
             
             client = OpenAI(api_key=api_key)
+            content_lang = db_get_content_lang(task_id)
+            db_add_log(task_id, f"Script language: {content_lang}")
             
             # 1. Chunker
             db_add_log(task_id, "Splitting scenario text into chunks...")
@@ -409,24 +462,13 @@ def process_scenario(
                 db_add_log(task_id, f"Processing chunk {i+1}/{len(chunks)} ({len(chunk.split())} words) via OpenAI GPT-4o...")
                 context_note = ""
                 if i > 0:
-                    heroes_note = "; ".join(introduced_heroes) if introduced_heroes else "пока никого"
-                    context_note = (
-                        f"Предыдущий фрагмент заканчивался так: \"...{prev_tail[-200:]}\". "
-                        f"Открытые ранее петли (loop_id), которые ещё могут закрываться здесь: "
-                        f"{sorted(open_loop_ids) if open_loop_ids else 'нет'}. "
-                        f"УЖЕ ВВЕДЁННЫЕ ГЕРОИ (через STORY_BOUNDARY) ранее в этом видео: {heroes_note}. "
-                        f"Если кто-то из них упоминается в этом фрагменте снова — это НЕ STORY_BOUNDARY "
-                        f"(используй ARC_OPEN/TENSION/CONTEXT/итд. по смыслу). STORY_BOUNDARY можно "
-                        f"использовать в этом фрагменте только для объекта, которого нет в списке выше.\n\n"
-                        f"ВАЖНЫЙ ПРИМЕР: называние героя не всегда прямое ('это машина X'). Иногда оно "
-                        f"подаётся косвенно — например через вовлекающий рассказ от 2-го лица "
-                        f"('ты подходишь к машине... тебе выдали не пятьдесят третий, тебе выдали "
-                        f"пятьдесят второй') или просто через номер/индекс без явного 'это ГАЗ-52'. "
-                        f"Такой косвенный, но фактически ПЕРВЫЙ момент опознания героя — это тоже "
-                        f"STORY_BOUNDARY, даже без хрестоматийной фразы-объявления."
+                    context_note = build_chunk_context_note(
+                        content_lang, prev_tail, open_loop_ids, introduced_heroes
                     )
                 
-                result = segment_text(client, chunk, context_note)
+                result = segment_text(
+                    client, chunk, context_note, content_lang=content_lang
+                )
                 blocks = result.get("blocks", [])
                 
                 for b in blocks:
@@ -498,6 +540,7 @@ def upload_file(
     file: UploadFile = File(...),
     source: str = Form(""),
     openai_api_key: str = Form(""),
+    content_lang: str = Form(""),
 ):
     if not (file.filename.endswith('.txt') or file.filename.endswith('.json')):
         raise HTTPException(status_code=400, detail="Only .txt and .json files are supported.")
@@ -538,6 +581,7 @@ def upload_file(
             raw_text=None,
             segmented_blocks=json.dumps(blocks, ensure_ascii=False),
             source=source,
+            content_lang=content_lang,
         )
         background_tasks.add_task(process_scenario, task_id, None, file.filename, blocks, openai_api_key)
         
@@ -556,10 +600,16 @@ def upload_file(
             except UnicodeDecodeError:
                 raise HTTPException(status_code=400, detail="Unable to decode file. Please upload a UTF-8 or CP1251 text file.")
                 
-        db_create_task(task_id, file.filename, raw_text=content, source=source)
+        db_create_task(
+            task_id,
+            file.filename,
+            raw_text=content,
+            source=source,
+            content_lang=content_lang,
+        )
         background_tasks.add_task(process_scenario, task_id, content, file.filename, None, openai_api_key)
         
-    return {"task_id": task_id}
+    return {"task_id": task_id, "content_lang": db_get_content_lang(task_id)}
 
 @app.get("/tasks")
 def list_tasks():
@@ -567,7 +617,7 @@ def list_tasks():
         cursor = conn.cursor()
         cursor.execute(
             """
-            SELECT id, filename, status, created_at, source_note, source_url
+            SELECT id, filename, status, created_at, source_note, source_url, content_lang
             FROM tasks
             ORDER BY created_at DESC
             """
@@ -585,6 +635,16 @@ def update_task_source(task_id: str, payload: SourceUpdate):
         "source_note": source_note,
         "source_url": source_url,
     }
+
+
+@app.patch("/tasks/{task_id}/content-lang")
+def update_task_content_lang(task_id: str, payload: ContentLangUpdate):
+    lang = normalize_content_lang(payload.content_lang)
+    if lang not in ("en", "ru"):
+        raise HTTPException(status_code=400, detail="content_lang must be 'en' or 'ru'")
+    if not db_update_content_lang(task_id, lang):
+        raise HTTPException(status_code=404, detail="Task not found")
+    return {"status": "ok", "content_lang": lang}
 
 @app.patch("/tasks/{task_id}/title")
 def update_task_title(task_id: str, payload: TitleUpdate):

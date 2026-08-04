@@ -8,14 +8,65 @@ import os
 import sys
 import json
 from openai import OpenAI
-from .taxonomy import TAG_DEFINITIONS, TAG_LIST
+from .taxonomy import TAG_LIST, get_tag_definitions
 from .chunker import chunk_text
+from .content_lang import normalize_content_lang
 
 
 MODEL = "gpt-4o"
 
-SYSTEM_PROMPT = f"""Ты — аналитик структуры видео-сторителлингов (жанр: "топ-N худших/лучших объектов",
+
+def build_system_prompt(content_lang: str = "ru") -> str:
+    lang = normalize_content_lang(content_lang)
+    definitions = get_tag_definitions(lang)
+    defs_json = json.dumps(definitions, ensure_ascii=False, indent=2)
+
+    if lang == "en":
+        return f"""You are an analyst of long-form video storytelling structure (genre: "top-N worst/best objects",
+narrative YouTube videos, automatic transcripts that may include [music] markers).
+
+The INPUT SCRIPT LANGUAGE is English. Tag codes must stay Latin (from the whitelist). Write reasoning in English.
+
+Your task: split the given text fragment into functional meaning blocks and assign each block exactly one
+function (tag) from the closed list below. A block is not a sentence or paragraph by form — it is the
+minimal text unit that performs ONE function. One block may span half a sentence to several sentences
+if they share the same function.
+
+TAG LIST (use ONLY these values for the tag field):
+{defs_json}
+
+If no tag fits — use "CUSTOM:<short_name>" (e.g. "CUSTOM:IRONY"). Use CUSTOM rarely.
+
+IMPORTANT about STORY_BOUNDARY: it is a strict technical counter tag with the narrowest firing rule.
+Use it ONLY in the block where the story hero is named for the FIRST TIME — exact name/model/nickname.
+A mysterious teaser without a name is OPEN_LOOP, not STORY_BOUNDARY. Later mentions of an already-named
+hero are NOT STORY_BOUNDARY (use ARC_OPEN etc.). A previous-story hero inside TRANSITION_BRIDGE is also
+not STORY_BOUNDARY. Mentally check: exactly one STORY_BOUNDARY per story — the first naming.
+
+Naming may be indirect (second-person address, index without "this is GAZ-52"). The first recognition
+moment still counts as STORY_BOUNDARY.
+
+CRITICAL: each block's "text" must be an EXACT verbatim substring of the source (minimal whitespace
+normalization only), covering the fragment sequentially with no gaps or overlaps.
+
+For each block also provide:
+- tension_score: 0-10 emotional/dramatic tension of this block
+- loop_id: for OPEN_LOOP/CLOSE_LOOP a short human id shared by open/close; else null
+- reasoning: one short phrase why this function
+
+Respond with STRICT valid JSON only:
+{{
+  "blocks": [
+    {{"text": "...", "tag": "...", "tension_score": 0, "loop_id": null, "reasoning": "..."}}
+  ]
+}}
+No text before or after JSON.
+"""
+
+    return f"""Ты — аналитик структуры видео-сторителлингов (жанр: "топ-N худших/лучших объектов",
 длинные нарративные ролики на YouTube, автоматическая транскрипция с разметкой [музыка]).
+
+ЯЗЫК ВХОДНОГО СКРИПТА: русский. Коды тегов — латиницей из whitelist. Reasoning пиши по-русски.
 
 Твоя задача — разбить присланный фрагмент текста на смысловые функциональные блоки и для каждого
 блока определить его функцию (тег) из закрытого списка ниже. Блок — это не предложение и не абзац
@@ -23,7 +74,7 @@ SYSTEM_PROMPT = f"""Ты — аналитик структуры видео-ст
 предложения до нескольких предложений подряд, если они выполняют одну и ту же функцию.
 
 СПИСОК ТЕГОВ (используй ТОЛЬКО эти значения для поля tag):
-{json.dumps(TAG_DEFINITIONS, ensure_ascii=False, indent=2)}
+{defs_json}
 
 Если ни один тег не подходит — используй "CUSTOM:<своё_короткое_название>" (например "CUSTOM:IRONY").
 Старайся использовать CUSTOM редко, только когда блок реально не описывается списком.
@@ -65,18 +116,69 @@ STORY_BOUNDARY. Перед финальным ответом мысленно п
 """
 
 
-def segment_text(client: OpenAI, text: str, context_note: str = "") -> dict:
+def build_chunk_context_note(
+    content_lang: str,
+    prev_tail: str,
+    open_loop_ids: set,
+    introduced_heroes: list,
+) -> str:
+    lang = normalize_content_lang(content_lang)
+    heroes_note = "; ".join(introduced_heroes) if introduced_heroes else (
+        "none yet" if lang == "en" else "пока никого"
+    )
+    loops = sorted(open_loop_ids) if open_loop_ids else (
+        "none" if lang == "en" else "нет"
+    )
+    tail = prev_tail[-200:]
+    if lang == "en":
+        return (
+            f'The previous fragment ended with: "...{tail}". '
+            f"Open loop_ids that may still close here: {loops}. "
+            f"HEROES ALREADY INTRODUCED (via STORY_BOUNDARY) earlier in this video: {heroes_note}. "
+            f"If any of them is mentioned again in this fragment — that is NOT STORY_BOUNDARY "
+            f"(use ARC_OPEN/TENSION/CONTEXT/etc.). STORY_BOUNDARY in this fragment is only for an "
+            f"object NOT in the list above.\n\n"
+            f"IMPORTANT: naming may be indirect (second-person address, index without "
+            f"'this is MODEL-X'). The first recognition moment is still STORY_BOUNDARY."
+        )
+    return (
+        f"Предыдущий фрагмент заканчивался так: \"...{tail}\". "
+        f"Открытые ранее петли (loop_id), которые ещё могут закрываться здесь: {loops}. "
+        f"УЖЕ ВВЕДЁННЫЕ ГЕРОИ (через STORY_BOUNDARY) ранее в этом видео: {heroes_note}. "
+        f"Если кто-то из них упоминается в этом фрагменте снова — это НЕ STORY_BOUNDARY "
+        f"(используй ARC_OPEN/TENSION/CONTEXT/итд. по смыслу). STORY_BOUNDARY можно "
+        f"использовать в этом фрагменте только для объекта, которого нет в списке выше.\n\n"
+        f"ВАЖНЫЙ ПРИМЕР: называние героя не всегда прямое ('это машина X'). Иногда оно "
+        f"подаётся косвенно — например через вовлекающий рассказ от 2-го лица "
+        f"('ты подходишь к машине... тебе выдали не пятьдесят третий, тебе выдали "
+        f"пятьдесят второй') или просто через номер/индекс без явного 'это ГАЗ-52'. "
+        f"Такой косвенный, но фактически ПЕРВЫЙ момент опознания героя — это тоже "
+        f"STORY_BOUNDARY, даже без хрестоматийной фразы-объявления."
+    )
+
+
+def segment_text(
+    client: OpenAI,
+    text: str,
+    context_note: str = "",
+    content_lang: str = "ru",
+) -> dict:
+    lang = normalize_content_lang(content_lang)
     user_content = text
     if context_note:
-        user_content = (
-            f"[КОНТЕКСТ: это продолжение текста, не начало. {context_note}]\n\n"
-            f"{text}"
-        )
+        if lang == "en":
+            user_content = (
+                f"[CONTEXT: this is a continuation, not the start. {context_note}]\n\n{text}"
+            )
+        else:
+            user_content = (
+                f"[КОНТЕКСТ: это продолжение текста, не начало. {context_note}]\n\n{text}"
+            )
     response = client.chat.completions.create(
         model=MODEL,
         temperature=0.2,
         messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": build_system_prompt(lang)},
             {"role": "user", "content": user_content},
         ],
         response_format={"type": "json_object"},
@@ -105,33 +207,18 @@ def main():
 
     all_blocks = []
     open_loop_ids = set()
-    introduced_heroes = []  # тексты уже подтверждённых STORY_BOUNDARY блоков
+    introduced_heroes = []
     prev_tail = ""
 
     for i, chunk in enumerate(chunks):
         context_note = ""
         if i > 0:
-            heroes_note = (
-                "; ".join(introduced_heroes) if introduced_heroes else "пока никого"
-            )
-            context_note = (
-                f"Предыдущий фрагмент заканчивался так: \"...{prev_tail[-200:]}\". "
-                f"Открытые ранее петли (loop_id), которые ещё могут закрываться здесь: "
-                f"{sorted(open_loop_ids) if open_loop_ids else 'нет'}. "
-                f"УЖЕ ВВЕДЁННЫЕ ГЕРОИ (через STORY_BOUNDARY) ранее в этом видео: {heroes_note}. "
-                f"Если кто-то из них упоминается в этом фрагменте снова — это НЕ STORY_BOUNDARY "
-                f"(используй ARC_OPEN/TENSION/CONTEXT/итд. по смыслу). STORY_BOUNDARY можно "
-                f"использовать в этом фрагменте только для объекта, которого нет в списке выше.\n\n"
-                f"ВАЖНЫЙ ПРИМЕР: называние героя не всегда прямое ('это машина X'). Иногда оно "
-                f"подаётся косвенно — например через вовлекающий рассказ от 2-го лица "
-                f"('ты подходишь к машине... тебе выдали не пятьдесят третий, тебе выдали "
-                f"пятьдесят второй') или просто через номер/индекс без явного 'это ГАЗ-52'. "
-                f"Такой косвенный, но фактически ПЕРВЫЙ момент опознания героя — это тоже "
-                f"STORY_BOUNDARY, даже без хрестоматийной фразы-объявления."
+            context_note = build_chunk_context_note(
+                "ru", prev_tail, open_loop_ids, introduced_heroes
             )
 
         print(f"  Обрабатываю чанк {i+1}/{len(chunks)} ({len(chunk.split())} слов)...")
-        result = segment_text(client, chunk, context_note)
+        result = segment_text(client, chunk, context_note, content_lang="ru")
         blocks = result.get("blocks", [])
 
         for b in blocks:
@@ -150,11 +237,7 @@ def main():
 
     final = {"blocks": all_blocks, "num_chunks": len(chunks)}
 
-    # Постобработка: если несколько STORY_BOUNDARY идут кучно (тизер + раскрытие имени),
-    # это почти всегда одна и та же граница, разбитая на 2 шага саспенса.
-    # Оставляем последний (обычно самый содержательный — с явным именем), остальные
-    # в кластере понижаем до OPEN_LOOP (чем они по сути и являются).
-    CLUSTER_WINDOW = 20  # макс. расстояние в блоках, чтобы считать кластером
+    CLUSTER_WINDOW = 20
     boundary_indices = [i for i, b in enumerate(all_blocks) if b.get("tag") == "STORY_BOUNDARY"]
     clusters = []
     for idx in boundary_indices:
@@ -166,7 +249,6 @@ def main():
     demoted = []
     for cluster in clusters:
         if len(cluster) > 1:
-            keep = cluster[-1]  # оставляем последний — обычно явное называние имени
             for idx in cluster[:-1]:
                 all_blocks[idx]["tag"] = "OPEN_LOOP"
                 all_blocks[idx]["_auto_demoted_from"] = "STORY_BOUNDARY"
@@ -190,11 +272,7 @@ def main():
     if expected_stories is not None and boundary_count != expected_stories:
         print(
             f"\nℹ️  Для справки: по заголовку/твоим словам ожидалось ~{expected_stories} главных "
-            f"линий, нашлось {boundary_count}. Это НЕ обязательно ошибка — структура может "
-            f"легитимно иметь другое число главных линий, либо часть найденных STORY_BOUNDARY "
-            f"на самом деле являются под-сюжетами (тогда им место в ARC_OPEN, а не в "
-            f"STORY_BOUNDARY) — стоит посмотреть глазами на список выше, а не считать это "
-            f"автоматическим браком."
+            f"линий, нашлось {boundary_count}."
         )
 
 

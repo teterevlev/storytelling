@@ -80,7 +80,12 @@
     "pastePlaceholder": "Вставьте сценарий сюда...",
     "analyze": "Анализировать текст",
     "pasteRequired": "Вставьте текст сценария перед запуском анализа.",
-    "invalidFormat": "Пожалуйста, выберите файл в формате .txt или .json"
+    "invalidFormat": "Пожалуйста, выберите файл в формате .txt или .json",
+    "contentLang": "Язык скрипта",
+    "contentLangAuto": "Авто",
+    "contentLangRu": "Русский",
+    "contentLangEn": "English",
+    "contentLangHint": "Язык текста сценария (не интерфейса). Авто — определить по тексту."
   },
   "dragOverlay": {
     "title": "Отпустите файл, чтобы загрузить",
@@ -138,7 +143,10 @@
     "classifyFailed": "Ошибка классификации: {{error}}",
     "classifyNeedKey": "Нужен OpenAI API key для классификации.",
     "subclustersLoading": "Загрузка подтипов…",
-    "subclustersLoadFailed": "Не удалось загрузить подтипы."
+    "subclustersLoadFailed": "Не удалось загрузить подтипы.",
+    "contentLang": "Скрипт:",
+    "contentLangChange": "Сменить язык скрипта",
+    "contentLangSaveFailed": "Не удалось сохранить язык скрипта."
   },
   "status": {
     "pending": "pending",
@@ -154,7 +162,14 @@
     "outro": "Концовка (Outro)",
     "noData": "Нет данных",
     "noDisplay": "Нет данных для отображения",
-    "noTags": "Нет тегов"
+    "noTags": "Нет тегов",
+    "tooltipSubcluster": "подтип",
+    "tooltipFormula": "формула",
+    "tooltipAbstract": "абстрактно",
+    "tooltipTension": "напряжение",
+    "tooltipLoopId": "loop_id",
+    "tooltipReasoning": "reasoning",
+    "tooltipChunk": "chunk"
   },
   "clipboard": {
     "jsonCopied": "JSON скопирован в буфер обмена!",

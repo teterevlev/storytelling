@@ -380,8 +380,93 @@
 
         .paste-actions {
             display: flex;
-            justify-content: flex-end;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
             margin-top: 0.85rem;
+        }
+
+        .content-lang-field {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .content-lang-field label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .content-lang-select {
+            appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.72);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 0.35rem 1.75rem 0.35rem 0.65rem;
+            font: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+        }
+
+        .content-lang-select:focus {
+            outline: none;
+            border-color: var(--accent-secondary);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.12);
+        }
+
+        .content-lang-hint {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            width: 100%;
+        }
+
+        .content-lang-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            background: rgba(148, 163, 184, 0.12);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .content-lang-badge.lang-en {
+            background: rgba(6, 182, 212, 0.12);
+            color: var(--accent-secondary);
+            border-color: rgba(6, 182, 212, 0.28);
+        }
+
+        .content-lang-badge.lang-ru {
+            background: rgba(251, 146, 60, 0.12);
+            color: #fb923c;
+            border-color: rgba(251, 146, 60, 0.28);
+        }
+
+        .task-content-lang-row {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-top: 0.35rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .task-content-lang-row .content-lang-select {
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
         }
 
         .drag-overlay {
@@ -1664,6 +1749,15 @@ __TAG_COLOR_CSS__
                 <div class="paste-section">
                     <h3 data-i18n="upload.pasteTitle">Or paste script text</h3>
                     <p data-i18n="upload.pasteDescription">Paste text below and start analysis without choosing a file.</p>
+                    <div class="content-lang-field" style="margin-bottom: 0.75rem;">
+                        <label for="uploadContentLang" data-i18n="upload.contentLang">Script language</label>
+                        <select id="uploadContentLang" class="content-lang-select" aria-describedby="uploadContentLangHint">
+                            <option value="auto" data-i18n="upload.contentLangAuto">Auto</option>
+                            <option value="ru" data-i18n="upload.contentLangRu">Russian</option>
+                            <option value="en" data-i18n="upload.contentLangEn">English</option>
+                        </select>
+                        <span class="content-lang-hint" id="uploadContentLangHint" data-i18n="upload.contentLangHint">Language of the script text (not the UI). Auto detects from the text.</span>
+                    </div>
                     <textarea class="paste-input" id="pasteTextInput" data-i18n-placeholder="upload.pastePlaceholder" placeholder="Paste your script here..."></textarea>
                     <div class="paste-actions">
                         <button class="btn btn-primary" onclick="uploadPastedText()" data-i18n="upload.analyze">Analyze text</button>
@@ -1682,6 +1776,14 @@ __TAG_COLOR_CSS__
                         <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.25rem;">
                             <span class="status-badge" id="taskStatus">completed</span>
                             <span style="font-size: 0.8rem; color: var(--text-muted);" id="taskDate">2026-07-01</span>
+                        </div>
+                        <div class="task-content-lang-row" id="taskContentLangRow">
+                            <span data-i18n="task.contentLang">Script:</span>
+                            <span class="content-lang-badge" id="taskContentLangBadge">RU</span>
+                            <select id="taskContentLangSelect" class="content-lang-select" title="" onchange="changeTaskContentLang(this.value)" data-i18n-title="task.contentLangChange">
+                                <option value="ru" data-i18n="upload.contentLangRu">Russian</option>
+                                <option value="en" data-i18n="upload.contentLangEn">English</option>
+                            </select>
                         </div>
                         <div class="source-row">
                             <span data-i18n="source.label">Source:</span>
@@ -1873,6 +1975,10 @@ __TAG_COLOR_CSS__
         function applyTranslations() {
             document.documentElement.lang = currentLang;
             document.title = t('pageTitle');
+            const uploadLangEl = document.getElementById('uploadContentLang');
+            const taskLangEl = document.getElementById('taskContentLangSelect');
+            const preservedUploadLang = uploadLangEl ? uploadLangEl.value : 'auto';
+            const preservedTaskLang = taskLangEl ? taskLangEl.value : '';
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 el.textContent = t(el.dataset.i18n);
             });
@@ -1882,6 +1988,8 @@ __TAG_COLOR_CSS__
             document.querySelectorAll('[data-i18n-title]').forEach(el => {
                 el.title = t(el.dataset.i18nTitle);
             });
+            if (uploadLangEl) uploadLangEl.value = preservedUploadLang;
+            if (taskLangEl && preservedTaskLang) taskLangEl.value = preservedTaskLang;
             document.querySelectorAll('.lang-switcher button').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === currentLang);
             });
@@ -1892,6 +2000,7 @@ __TAG_COLOR_CSS__
                 if (jsonEl) jsonEl.innerText = t('task.jsonPlaceholder');
                 resetConsolePlaceholder();
             }
+            if (currentTaskData) renderTaskContentLang(currentTaskData);
         }
 
         function localeTag() {
@@ -2069,6 +2178,64 @@ __TAG_COLOR_CSS__
             }
         }
 
+        function getUploadContentLang() {
+            const el = document.getElementById('uploadContentLang');
+            const value = (el && el.value || 'auto').trim().toLowerCase();
+            return (value === 'en' || value === 'ru') ? value : '';
+        }
+
+        function normalizeTaskContentLang(value) {
+            const raw = String(value || '').trim().toLowerCase();
+            if (raw.startsWith('en')) return 'en';
+            if (raw.startsWith('ru')) return 'ru';
+            return 'ru';
+        }
+
+        function contentLangLabel(lang) {
+            return normalizeTaskContentLang(lang).toUpperCase();
+        }
+
+        function renderContentLangBadge(lang) {
+            const normalized = normalizeTaskContentLang(lang);
+            return `<span class="content-lang-badge lang-${normalized}">${contentLangLabel(normalized)}</span>`;
+        }
+
+        function renderTaskContentLang(task) {
+            const lang = normalizeTaskContentLang(task && task.content_lang);
+            const badge = document.getElementById('taskContentLangBadge');
+            const select = document.getElementById('taskContentLangSelect');
+            if (badge) {
+                badge.className = `content-lang-badge lang-${lang}`;
+                badge.textContent = contentLangLabel(lang);
+            }
+            if (select) select.value = lang;
+        }
+
+        async function changeTaskContentLang(nextLang) {
+            if (!currentTaskId) return;
+            const lang = normalizeTaskContentLang(nextLang);
+            const prev = normalizeTaskContentLang(currentTaskData && currentTaskData.content_lang);
+            if (lang === prev) return;
+            try {
+                const res = await fetch(`/tasks/${currentTaskId}/content-lang`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ content_lang: lang }),
+                });
+                if (!res.ok) {
+                    const err = await res.json().catch(() => ({}));
+                    throw new Error(err.detail || t('task.contentLangSaveFailed'));
+                }
+                const data = await res.json();
+                if (currentTaskData) currentTaskData.content_lang = data.content_lang || lang;
+                renderTaskContentLang({ content_lang: data.content_lang || lang });
+                loadHistory();
+            } catch (error) {
+                alert(error.message || t('task.contentLangSaveFailed'));
+                renderTaskContentLang(currentTaskData || { content_lang: prev });
+            }
+        }
+
         async function uploadPastedText() {
             const input = document.getElementById('pasteTextInput');
             const text = input.value.trim();
@@ -2119,6 +2286,8 @@ __TAG_COLOR_CSS__
             formData.append('file', file);
             formData.append('source', source);
             appendOpenAiApiKeyToFormData(formData);
+            const contentLang = getUploadContentLang();
+            if (contentLang) formData.append('content_lang', contentLang);
 
             // Change UI state
             document.getElementById('uploadSection').style.display = 'none';
@@ -2155,7 +2324,9 @@ __TAG_COLOR_CSS__
                     filename: file.name,
                     source_note: source.startsWith('http://') || source.startsWith('https://') ? null : source,
                     source_url: source.startsWith('http://') || source.startsWith('https://') ? source : null,
+                    content_lang: data.content_lang || contentLang || 'ru',
                 };
+                renderTaskContentLang(currentTaskData);
                 
                 // Add temporary history item
                 loadHistory();
@@ -2209,7 +2380,10 @@ __TAG_COLOR_CSS__
                         ${renderHistorySource(tItem)}
                         <div class="history-meta">
                             <span>${formattedDate}</span>
-                            <span class="status-badge status-${tItem.status}">${formatStatus(tItem.status)}</span>
+                            <span style="display:inline-flex; gap:0.35rem; align-items:center;">
+                                ${renderContentLangBadge(tItem.content_lang)}
+                                <span class="status-badge status-${tItem.status}">${formatStatus(tItem.status)}</span>
+                            </span>
                         </div>
                     `;
                     listEl.appendChild(item);
@@ -2255,6 +2429,7 @@ __TAG_COLOR_CSS__
                 const formattedDate = new Date(task.created_at).toLocaleString(localeTag());
                 document.getElementById('taskDate').innerText = formattedDate;
                 renderTaskSource(task);
+                renderTaskContentLang(task);
 
                 // Logs
                 const logBox = document.getElementById('consoleOutput');
@@ -2599,25 +2774,49 @@ __TAG_COLOR_CSS__
             };
         }
 
+        function isPlaceholderSubclusterName(name) {
+            return !name || /^cluster[-\s]?\d+$/i.test(String(name).trim());
+        }
+
+        function resolveSubclusterLabel(sc) {
+            if (!sc) return '';
+            const name = String(sc.subcluster_name || sc.name || '').trim();
+            const formula = String(sc.subcluster_formula || sc.formula || '').trim();
+            const abstract = String(sc.subcluster_abstract || sc.abstract || '').trim();
+            if (name && !isPlaceholderSubclusterName(name)) return name;
+            if (formula) return formula.split('\n')[0].trim();
+            if (abstract) {
+                const oneLine = abstract.replace(/\s+/g, ' ').trim();
+                return oneLine.length > 120 ? `${oneLine.slice(0, 117)}…` : oneLine;
+            }
+            return name;
+        }
+
+        function formatSubclusterHeading(sc) {
+            if (!sc || sc.subcluster_sort_order == null && sc.sort_order == null) return '';
+            const order = sc.subcluster_sort_order != null ? sc.subcluster_sort_order : sc.sort_order;
+            const label = resolveSubclusterLabel(sc);
+            return label ? `${order} — ${label}` : String(order);
+        }
+
         function formatBeatTooltipHtml(block) {
+            const clusterHeading = formatSubclusterHeading(block);
             const fields = [
                 ['text', block.text],
                 ['tag', block.tag],
-                ['subcluster', block.subcluster_sort_order != null
-                    ? `${block.subcluster_sort_order} — ${block.subcluster_name || ''}`
-                    : null],
-                ['formula', block.subcluster_formula],
-                ['abstract', block.subcluster_abstract],
-                ['tension_score', block.tension_score],
-                ['loop_id', block.loop_id],
-                ['reasoning', block.reasoning],
-                ['chunk_index', block.chunk_index],
+                [t('structure.tooltipSubcluster'), clusterHeading || null],
+                [t('structure.tooltipFormula'), block.subcluster_formula],
+                [t('structure.tooltipAbstract'), block.subcluster_abstract],
+                [t('structure.tooltipTension'), block.tension_score],
+                [t('structure.tooltipLoopId'), block.loop_id],
+                [t('structure.tooltipReasoning'), block.reasoning],
+                [t('structure.tooltipChunk'), block.chunk_index],
             ];
             return fields
                 .filter(([, val]) => val !== null && val !== undefined && String(val).trim() !== '')
                 .map(([key, val]) => `
                 <div class="tag-tooltip-row">
-                    <span class="tag-tooltip-key">${key}:</span>
+                    <span class="tag-tooltip-key">${escapeHtml(key)}:</span>
                     <span class="tag-tooltip-val">${escapeHtml(val)}</span>
                 </div>
             `).join('');
@@ -2739,8 +2938,9 @@ __TAG_COLOR_CSS__
                 beatTooltipStore[beatId] = block;
                 const cleanTag = tag.startsWith('CUSTOM:') ? 'CUSTOM' : tag;
                 const order = block.subcluster_sort_order;
+                const clusterLabel = resolveSubclusterLabel(block);
                 const badge = (taskSubclusterByPosition != null && order != null)
-                    ? `<span class="tag-cluster-num" title="${escapeHtml(block.subcluster_name || '')}">${Number(order)}</span>`
+                    ? `<span class="tag-cluster-num" title="${escapeHtml(formatSubclusterHeading(block) || clusterLabel || String(order))}">${Number(order)}</span>`
                     : '';
                 return `
                     <div class="visual-tag-wrap" data-beat-id="${beatId}">
@@ -2834,14 +3034,13 @@ __TAG_COLOR_CSS__
             }
 
             const groups = tagGuideData.groups || {};
-            const definitions = tagGuideData.definitions || {};
             const sections = [];
 
             for (const tag of tagGuideData.tags) {
                 const clusters = groups[tag] || [];
                 if (!clusters.length) continue;
                 const cleanTag = tag.startsWith('CUSTOM:') ? 'CUSTOM' : tag;
-                const desc = definitions[tag] || (I18N.tags && I18N.tags[tag]) || '';
+                const desc = (I18N.tags && I18N.tags[tag]) || '';
                 const clusterRows = clusters.map(sc => {
                     const examples = (sc.examples || []).slice(0, 2);
                     const examplesHtml = examples.length
@@ -2851,9 +3050,10 @@ __TAG_COLOR_CSS__
                             return `<span class="tag-guide-example">${n}${escapeHtml(text)}</span>`;
                         }).join('')
                         : `<span class="tag-guide-example" style="color: var(--text-muted);">${escapeHtml(t('tagGuide.noExamples'))}</span>`;
+                    const clusterLabel = resolveSubclusterLabel(sc) || sc.name || '';
                     return `
                         <tr>
-                            <td class="tag-guide-cluster">${sc.sort_order} — ${escapeHtml(sc.name || '')}</td>
+                            <td class="tag-guide-cluster">${sc.sort_order} — ${escapeHtml(clusterLabel)}</td>
                             <td class="tag-guide-formula">${escapeHtml(sc.formula || '—')}</td>
                             <td class="tag-guide-abstract">${escapeHtml(sc.abstract || '—')}</td>
                             <td class="tag-guide-examples">${examplesHtml}</td>
@@ -3021,10 +3221,12 @@ __TAG_COLOR_CSS__
         }
 
         function formatSubtypeCell(ex) {
-            if (ex && ex.subcluster_sort_order != null && ex.subcluster_name) {
+            if (ex && ex.subcluster_sort_order != null) {
+                const label = resolveSubclusterLabel(ex);
+                const heading = formatSubclusterHeading(ex);
                 return `
-                    <span class="tag-ref-subtype-num" title="${escapeHtml(ex.subcluster_name)}">${Number(ex.subcluster_sort_order)}</span>
-                    <span>${escapeHtml(ex.subcluster_name)}</span>
+                    <span class="tag-ref-subtype-num" title="${escapeHtml(heading || label)}">${Number(ex.subcluster_sort_order)}</span>
+                    <span>${escapeHtml(label || t('tagRef.unclassified'))}</span>
                 `;
             }
             return `<span style="color: var(--text-muted);">${escapeHtml(t('tagRef.unclassified'))}</span>`;

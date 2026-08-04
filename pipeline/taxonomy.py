@@ -1,6 +1,12 @@
 # Таксономия функциональных тегов для длинных видео-сторителлингов
 # (многосюжетные ролики "топ-N историй", напр. "7 худших советских грузовиков")
 
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Optional
+
 TAG_DEFINITIONS = {
     # --- Уровень всего видео (рамка) ---
     "VIDEO_HOOK": "Самый первый крючок ролика целиком — шок-тезис, обещающий весь выпуск.",
@@ -46,3 +52,27 @@ TAG_DEFINITIONS = {
 
 # Список тегов для structured output schema (без CUSTOM — он добавляется отдельным полем)
 TAG_LIST = list(TAG_DEFINITIONS.keys())
+
+
+def _load_locale_tag_definitions(locale: str) -> dict[str, str]:
+    path = Path(__file__).resolve().parents[1] / "locales" / f"{locale}.json"
+    if not path.is_file():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    tags = data.get("tags") or {}
+    return {k: tags[k] for k in TAG_DEFINITIONS if k in tags and tags[k]}
+
+
+TAG_DEFINITIONS_EN = _load_locale_tag_definitions("en") or dict(TAG_DEFINITIONS)
+
+
+def get_tag_definitions(content_lang: Optional[str] = "ru") -> dict[str, str]:
+    lang = (content_lang or "ru").strip().lower()
+    if lang.startswith("en"):
+        out = dict(TAG_DEFINITIONS)
+        out.update(TAG_DEFINITIONS_EN)
+        return out
+    return TAG_DEFINITIONS

@@ -10,6 +10,8 @@ from typing import Any, Optional
 
 from openai import OpenAI
 
+from .content_lang import detect_content_lang, normalize_content_lang
+
 MODEL = "gpt-4o"
 BATCH_SIZE = 25
 
@@ -38,51 +40,90 @@ def load_active_subclusters(conn, parent_tag: str) -> list[dict]:
     return out
 
 
-def build_classify_system_prompt(parent_tag: str, subclusters: list[dict]) -> str:
+def build_classify_system_prompt(
+    parent_tag: str,
+    subclusters: list[dict],
+    content_lang: str = "ru",
+) -> str:
+    lang = normalize_content_lang(content_lang)
     allowed_orders = [int(sc["sort_order"]) for sc in subclusters]
     allowed_slugs = [str(sc["slug"]) for sc in subclusters]
-    parts = [
-        f"Ты классифицируешь story-beat блоки с тегом {parent_tag} по психологическому механизму.",
-        "",
-        "Правила (обязательны):",
-        "- Игнорируй тему, сюжет, персонажей, объекты, страны и факты.",
-        "- Смотри только на психологический механизм воздействия на зрителя.",
-        "- Выбери РОВНО один кластер из whitelist ниже для каждого блока.",
-        "- ЗАПРЕЩЕНО придумывать новые номера, slug или названия кластеров.",
-        "- Если ни один не подходит идеально — выбери ближайший по механизму из whitelist.",
-        "- Не путай номер примера (n) с номером кластера.",
-        "",
-        f"WHITELIST sort_order: {json.dumps(allowed_orders)}",
-        f"WHITELIST slug: {json.dumps(allowed_slugs, ensure_ascii=False)}",
-        "",
-        "СПИСОК КЛАСТЕРОВ (только эти):",
-    ]
+    if lang == "en":
+        parts = [
+            f"You classify story-beat blocks tagged {parent_tag} by psychological mechanism.",
+            "",
+            "SCRIPT LANGUAGE: English. Cluster catalog labels may be in another language — "
+            "ignore catalog language/domain wording; match by mechanism only.",
+            "",
+            "Hard rules:",
+            "- Ignore topic, plot, characters, objects, countries, and facts.",
+            "- Look only at the psychological mechanism of impact on the viewer.",
+            "- Choose EXACTLY one cluster from the whitelist below for each block.",
+            "- Do NOT invent new sort_order, slug, or cluster names.",
+            "- If none fits perfectly — pick the closest mechanism from the whitelist.",
+            "- Do not confuse example numbers (n) with cluster numbers.",
+            "",
+            f"WHITELIST sort_order: {json.dumps(allowed_orders)}",
+            f"WHITELIST slug: {json.dumps(allowed_slugs, ensure_ascii=False)}",
+            "",
+            "CLUSTER LIST (only these):",
+        ]
+    else:
+        parts = [
+            f"Ты классифицируешь story-beat блоки с тегом {parent_tag} по психологическому механизму.",
+            "",
+            "ЯЗЫК СКРИПТА: русский. Подписи кластеров в каталоге могут быть на другом языке — "
+            "игнорируй язык/домен каталога; сопоставляй только по механизму.",
+            "",
+            "Правила (обязательны):",
+            "- Игнорируй тему, сюжет, персонажей, объекты, страны и факты.",
+            "- Смотри только на психологический механизм воздействия на зрителя.",
+            "- Выбери РОВНО один кластер из whitelist ниже для каждого блока.",
+            "- ЗАПРЕЩЕНО придумывать новые номера, slug или названия кластеров.",
+            "- Если ни один не подходит идеально — выбери ближайший по механизму из whitelist.",
+            "- Не путай номер примера (n) с номером кластера.",
+            "",
+            f"WHITELIST sort_order: {json.dumps(allowed_orders)}",
+            f"WHITELIST slug: {json.dumps(allowed_slugs, ensure_ascii=False)}",
+            "",
+            "СПИСОК КЛАСТЕРОВ (только эти):",
+        ]
     for sc in subclusters:
         parts.append("")
         parts.append(f"### Кластер {sc['sort_order']} — {sc['name']} (slug={sc['slug']})")
         if sc.get("formula"):
-            parts.append("Формула:")
+            parts.append("Formula:" if lang == "en" else "Формула:")
             parts.append(sc["formula"])
         if sc.get("abstract"):
-            parts.append(f'Абстрактно: "{sc["abstract"]}"')
+            label = "Abstract" if lang == "en" else "Абстрактно"
+            parts.append(f'{label}: "{sc["abstract"]}"')
         examples = sc.get("examples") or []
         if examples:
-            parts.append("Эталонные примеры:")
+            parts.append("Reference examples:" if lang == "en" else "Эталонные примеры:")
             for ex in examples[:3]:
                 text = (ex.get("text") or "").strip().replace("\n", " ")
                 if len(text) > 320:
                     text = text[:317] + "..."
                 parts.append(f"- (n={ex.get('n')}) {text}")
         if sc.get("notes"):
-            parts.append(f"Заметка: {sc['notes']}")
+            parts.append(("Note: " if lang == "en" else "Заметка: ") + sc["notes"])
 
-    parts.extend([
-        "",
-        "Ответь СТРОГО валидным JSON без текста вокруг:",
-        '{"assignments": [{"block_id": 123, "subcluster_sort_order": 1, "subcluster_slug": "01"}]}',
-        "Для каждого входного block_id должна быть ровно одна запись.",
-        "subcluster_sort_order и subcluster_slug ОБЯЗАНЫ быть из WHITELIST выше.",
-    ])
+    if lang == "en":
+        parts.extend([
+            "",
+            "Reply with STRICT valid JSON only:",
+            '{"assignments": [{"block_id": 123, "subcluster_sort_order": 1, "subcluster_slug": "01"}]}',
+            "Exactly one record per input block_id.",
+            "subcluster_sort_order and subcluster_slug MUST be from the WHITELIST above.",
+        ])
+    else:
+        parts.extend([
+            "",
+            "Ответь СТРОГО валидным JSON без текста вокруг:",
+            '{"assignments": [{"block_id": 123, "subcluster_sort_order": 1, "subcluster_slug": "01"}]}',
+            "Для каждого входного block_id должна быть ровно одна запись.",
+            "subcluster_sort_order и subcluster_slug ОБЯЗАНЫ быть из WHITELIST выше.",
+        ])
     return "\n".join(parts)
 
 
@@ -137,6 +178,7 @@ def classify_blocks_batch(
     parent_tag: str,
     subclusters: list[dict],
     blocks: list[dict],
+    content_lang: Optional[str] = None,
 ) -> list[dict]:
     """blocks: [{id, text}]. Returns assignments with block_id + subcluster_sort_order.
 
@@ -144,17 +186,28 @@ def classify_blocks_batch(
     """
     if not blocks or not subclusters:
         return []
-    system = build_classify_system_prompt(parent_tag, subclusters)
+    lang = normalize_content_lang(
+        content_lang
+        or detect_content_lang("\n".join((b.get("text") or "")[:400] for b in blocks))
+    )
+    system = build_classify_system_prompt(parent_tag, subclusters, content_lang=lang)
     allowed_block_ids = {int(b["id"]) for b in blocks}
     payload = [
         {"block_id": b["id"], "text": (b.get("text") or "")[:1200]}
         for b in blocks
     ]
-    user = (
-        "Классифицируй следующие блоки. Верни JSON assignments.\n"
-        "Используй ТОЛЬКО whitelist sort_order/slug из system prompt.\n\n"
-        + json.dumps(payload, ensure_ascii=False, indent=2)
-    )
+    if lang == "en":
+        user = (
+            "Classify the following blocks. Return JSON assignments.\n"
+            "Use ONLY whitelist sort_order/slug from the system prompt.\n\n"
+            + json.dumps(payload, ensure_ascii=False, indent=2)
+        )
+    else:
+        user = (
+            "Классифицируй следующие блоки. Верни JSON assignments.\n"
+            "Используй ТОЛЬКО whitelist sort_order/slug из system prompt.\n\n"
+            + json.dumps(payload, ensure_ascii=False, indent=2)
+        )
     response = client.chat.completions.create(
         model=MODEL,
         temperature=0.1,
@@ -169,15 +222,22 @@ def classify_blocks_batch(
 
     missing = allowed_block_ids - {a["block_id"] for a in cleaned}
     if missing:
-        # One repair pass: remap only missing/invalid ids — still restricted to whitelist
         allowed_orders = [int(sc["sort_order"]) for sc in subclusters]
         repair_payload = [b for b in payload if int(b["block_id"]) in missing]
-        repair_user = (
-            "Для этих блоков предыдущий ответ был пустым или с недопустимым кластером.\n"
-            f"Выбери ТОЛЬКО из whitelist sort_order={json.dumps(allowed_orders)}.\n"
-            "Не создавай новые кластеры. Верни JSON assignments.\n\n"
-            + json.dumps(repair_payload, ensure_ascii=False, indent=2)
-        )
+        if lang == "en":
+            repair_user = (
+                "For these blocks the previous answer was empty or used an invalid cluster.\n"
+                f"Choose ONLY from whitelist sort_order={json.dumps(allowed_orders)}.\n"
+                "Do not invent clusters. Return JSON assignments.\n\n"
+                + json.dumps(repair_payload, ensure_ascii=False, indent=2)
+            )
+        else:
+            repair_user = (
+                "Для этих блоков предыдущий ответ был пустым или с недопустимым кластером.\n"
+                f"Выбери ТОЛЬКО из whitelist sort_order={json.dumps(allowed_orders)}.\n"
+                "Не создавай новые кластеры. Верни JSON assignments.\n\n"
+                + json.dumps(repair_payload, ensure_ascii=False, indent=2)
+            )
         repair = client.chat.completions.create(
             model=MODEL,
             temperature=0,
@@ -203,6 +263,7 @@ def classify_unassigned_blocks(
     parent_tag: str,
     task_id: Optional[str] = None,
     on_batch_done=None,
+    content_lang: Optional[str] = None,
 ) -> dict[str, Any]:
     """Classify unassigned blocks for parent_tag (optionally limited to one task)."""
     subclusters = load_active_subclusters(conn, parent_tag)
@@ -210,6 +271,16 @@ def classify_unassigned_blocks(
         return {"assigned": 0, "pending": 0, "error": "no_subclusters"}
 
     order_to_id = {int(sc["sort_order"]): int(sc["id"]) for sc in subclusters}
+    resolved_lang = None
+    if content_lang:
+        resolved_lang = normalize_content_lang(content_lang)
+    elif task_id:
+        row = conn.execute(
+            "SELECT content_lang FROM tasks WHERE id = ?", (task_id,)
+        ).fetchone()
+        if row and row["content_lang"]:
+            resolved_lang = normalize_content_lang(row["content_lang"])
+
     params: list = [parent_tag]
     task_clause = ""
     if task_id:
@@ -217,8 +288,9 @@ def classify_unassigned_blocks(
         params.append(task_id)
     rows = conn.execute(
         f"""
-        SELECT b.id, b.text
+        SELECT b.id, b.text, t.content_lang AS task_content_lang
         FROM blocks b
+        LEFT JOIN tasks t ON t.id = b.task_id
         WHERE b.tag = ?
           {task_clause}
           AND NOT EXISTS (
@@ -228,13 +300,34 @@ def classify_unassigned_blocks(
         """,
         params,
     ).fetchall()
-    blocks = [{"id": r["id"], "text": r["text"]} for r in rows]
+    blocks = [
+        {
+            "id": r["id"],
+            "text": r["text"],
+            "content_lang": normalize_content_lang(r["task_content_lang"])
+            if r["task_content_lang"]
+            else None,
+        }
+        for r in rows
+    ]
     total_pending = len(blocks)
     assigned = 0
 
     for start in range(0, len(blocks), BATCH_SIZE):
         batch = blocks[start:start + BATCH_SIZE]
-        results = classify_blocks_batch(client, parent_tag, subclusters, batch)
+        if resolved_lang:
+            batch_lang = resolved_lang
+        else:
+            langs = {b.get("content_lang") for b in batch if b.get("content_lang")}
+            if len(langs) == 1:
+                batch_lang = next(iter(langs))
+            else:
+                batch_lang = detect_content_lang(
+                    "\n".join((b.get("text") or "")[:400] for b in batch)
+                )
+        results = classify_blocks_batch(
+            client, parent_tag, subclusters, batch, content_lang=batch_lang
+        )
         for a in results:
             sc_id = order_to_id.get(a["subcluster_sort_order"])
             if not sc_id:
@@ -277,6 +370,12 @@ def classify_task_unassigned_blocks(
     on_progress=None,
 ) -> dict[str, Any]:
     """Classify all unassigned blocks of a task, tag by tag."""
+    task_row = conn.execute(
+        "SELECT content_lang FROM tasks WHERE id = ?", (task_id,)
+    ).fetchone()
+    content_lang = normalize_content_lang(
+        (task_row["content_lang"] if task_row else None) or "ru"
+    )
     tags = [
         row["tag"]
         for row in conn.execute(
@@ -302,6 +401,7 @@ def classify_task_unassigned_blocks(
             conn,
             tag,
             task_id=task_id,
+            content_lang=content_lang,
             on_batch_done=(
                 (lambda a, p, _tag=tag: on_progress(_tag, a, p)) if on_progress else None
             ),
