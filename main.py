@@ -66,17 +66,87 @@ class SourceUpdate(BaseModel):
 class TitleUpdate(BaseModel):
     filename: str
 
+
+class BlockSubclustersUpdate(BaseModel):
+    primary_subcluster_id: Optional[int] = None
+    secondary_subcluster_ids: list[int] = []
+    source: str = "manual"
+    notes: Optional[str] = None
+
+
+BLOCK_CORE_KEYS = frozenset({
+    "tag", "text", "reasoning", "loop_id", "tension_score", "chunk_index",
+})
+
 # -----------------------------------------------------------------------------
 # Database Setup and Helpers
 # -----------------------------------------------------------------------------
 
 def get_db():
-    conn = sqlite3.connect(DB_PATH, check_same_thread=False)
+    conn = sqlite3.connect(DB_PATH, check_same_thread=False, timeout=30)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON")
     return conn
+
+
+def _block_row_values(task_id: str, position: int, block: dict) -> tuple:
+    meta = {k: v for k, v in block.items() if k not in BLOCK_CORE_KEYS}
+    return (
+        task_id,
+        position,
+        (block.get("tag") or "").strip() or None,
+        block.get("text"),
+        block.get("reasoning"),
+        block.get("loop_id"),
+        block.get("tension_score"),
+        block.get("chunk_index"),
+        json.dumps(meta, ensure_ascii=False) if meta else None,
+    )
+
+
+def db_replace_blocks(conn: sqlite3.Connection, task_id: str, blocks: list) -> None:
+    """Replace all blocks for a task. Assignments cascade-delete with blocks."""
+    conn.execute("DELETE FROM blocks WHERE task_id = ?", (task_id,))
+    if not blocks:
+        return
+    rows = [
+        _block_row_values(task_id, i, b)
+        for i, b in enumerate(blocks)
+        if isinstance(b, dict)
+    ]
+    conn.executemany(
+        """
+        INSERT INTO blocks
+            (task_id, position, tag, text, reasoning, loop_id, tension_score, chunk_index, meta_json)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        rows,
+    )
+
+
+def db_migrate_segmented_blocks(conn: sqlite3.Connection) -> None:
+    """Idempotent: unpack tasks.segmented_blocks into blocks when missing."""
+    cursor = conn.execute(
+        """
+        SELECT t.id, t.segmented_blocks
+        FROM tasks t
+        WHERE t.segmented_blocks IS NOT NULL AND t.segmented_blocks != ''
+          AND NOT EXISTS (SELECT 1 FROM blocks b WHERE b.task_id = t.id)
+        """
+    )
+    for row in cursor.fetchall():
+        try:
+            blocks = json.loads(row["segmented_blocks"])
+        except (TypeError, json.JSONDecodeError):
+            continue
+        if not isinstance(blocks, list):
+            continue
+        db_replace_blocks(conn, row["id"], blocks)
+
 
 def db_init():
     with get_db() as conn:
+        conn.execute("PRAGMA journal_mode = WAL")
         conn.execute("""
             CREATE TABLE IF NOT EXISTS tasks (
                 id TEXT PRIMARY KEY,
@@ -85,7 +155,7 @@ def db_init():
                 progress_log TEXT,     -- JSON array of strings
                 error_message TEXT,
                 raw_text TEXT,
-                segmented_blocks TEXT, -- JSON string
+                segmented_blocks TEXT, -- JSON string (legacy mirror)
                 tree_json TEXT,        -- JSON string
                 structure_json TEXT,   -- JSON string
                 source_note TEXT,
@@ -99,7 +169,56 @@ def db_init():
             conn.execute("ALTER TABLE tasks ADD COLUMN source_note TEXT")
         if "source_url" not in existing_columns:
             conn.execute("ALTER TABLE tasks ADD COLUMN source_url TEXT")
+
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS blocks (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                task_id TEXT NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
+                position INTEGER NOT NULL,
+                tag TEXT,
+                text TEXT,
+                reasoning TEXT,
+                loop_id TEXT,
+                tension_score REAL,
+                chunk_index INTEGER,
+                meta_json TEXT,
+                UNIQUE(task_id, position)
+            )
+        """)
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS tag_subclusters (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                parent_tag TEXT NOT NULL,
+                slug TEXT NOT NULL,
+                name TEXT NOT NULL,
+                formula TEXT,
+                abstract TEXT,
+                sort_order INTEGER DEFAULT 0,
+                status TEXT NOT NULL DEFAULT 'active',
+                UNIQUE(parent_tag, slug)
+            )
+        """)
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS block_subcluster_assignments (
+                block_id INTEGER NOT NULL REFERENCES blocks(id) ON DELETE CASCADE,
+                subcluster_id INTEGER NOT NULL REFERENCES tag_subclusters(id) ON DELETE CASCADE,
+                is_primary INTEGER NOT NULL DEFAULT 0,
+                source TEXT NOT NULL DEFAULT 'manual',
+                notes TEXT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (block_id, subcluster_id)
+            )
+        """)
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_blocks_tag ON blocks(tag)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_blocks_task_position ON blocks(task_id, position)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_tag_subclusters_parent ON tag_subclusters(parent_tag)")
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_assignments_subcluster "
+            "ON block_subcluster_assignments(subcluster_id)"
+        )
+        db_migrate_segmented_blocks(conn)
         conn.commit()
+
 
 db_init()
 
@@ -138,6 +257,13 @@ def db_create_task(
                 source_url,
             )
         )
+        if segmented_blocks:
+            try:
+                blocks = json.loads(segmented_blocks)
+            except (TypeError, json.JSONDecodeError):
+                blocks = None
+            if isinstance(blocks, list):
+                db_replace_blocks(conn, task_id, blocks)
         conn.commit()
 
 def db_update_source(task_id: str, source: Optional[str]) -> bool:
@@ -201,6 +327,15 @@ def db_update_task(task_id: str, status: str, error_message: Optional[str] = Non
         params.append(task_id)
         
         conn.execute(query, tuple(params))
+        if segmented_blocks is not None:
+            try:
+                blocks = json.loads(segmented_blocks)
+            except (TypeError, json.JSONDecodeError):
+                blocks = []
+            if isinstance(blocks, list):
+                db_replace_blocks(conn, task_id, blocks)
+            else:
+                db_replace_blocks(conn, task_id, [])
         conn.commit()
 
 # -----------------------------------------------------------------------------
@@ -572,50 +707,172 @@ def get_locale(locale: str):
 
 @app.get("/tags/reference")
 def get_tag_reference():
-    """Aggregate segmented block texts by tag across all tasks."""
+    """Aggregate block texts by tag across all tasks (from normalized blocks table)."""
     examples: dict[str, list] = {tag: [] for tag in TAG_COLORS}
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute(
             """
-            SELECT id, filename, source_note, source_url, segmented_blocks
-            FROM tasks
-            WHERE segmented_blocks IS NOT NULL AND segmented_blocks != ''
-            ORDER BY created_at DESC
+            SELECT
+                b.tag,
+                b.text,
+                b.reasoning,
+                b.loop_id,
+                b.tension_score,
+                b.task_id,
+                t.filename,
+                t.source_note,
+                t.source_url
+            FROM blocks b
+            JOIN tasks t ON t.id = b.task_id
+            WHERE b.tag IS NOT NULL AND b.tag != ''
+              AND b.text IS NOT NULL AND TRIM(b.text) != ''
+            ORDER BY t.created_at DESC, b.position ASC
             """
         )
         for row in cursor.fetchall():
-            try:
-                blocks = json.loads(row["segmented_blocks"])
-            except (TypeError, json.JSONDecodeError):
+            tag = (row["tag"] or "").strip()
+            text = (row["text"] or "").strip()
+            if not tag or not text:
                 continue
-            if not isinstance(blocks, list):
-                continue
-            for block in blocks:
-                if not isinstance(block, dict):
-                    continue
-                tag = (block.get("tag") or "").strip()
-                text = (block.get("text") or "").strip()
-                if not tag or not text:
-                    continue
-                if tag not in examples:
-                    examples[tag] = []
-                examples[tag].append({
-                    "text": text,
-                    "task_id": row["id"],
-                    "filename": row["filename"],
-                    "source_note": row["source_note"],
-                    "source_url": row["source_url"],
-                    "reasoning": block.get("reasoning") or "",
-                    "loop_id": block.get("loop_id"),
-                    "tension_score": block.get("tension_score"),
-                })
+            if tag not in examples:
+                examples[tag] = []
+            examples[tag].append({
+                "text": text,
+                "task_id": row["task_id"],
+                "filename": row["filename"],
+                "source_note": row["source_note"],
+                "source_url": row["source_url"],
+                "reasoning": row["reasoning"] or "",
+                "loop_id": row["loop_id"],
+                "tension_score": row["tension_score"],
+            })
     counts = {tag: len(items) for tag, items in examples.items()}
     return {
         "tags": list(TAG_COLORS.keys()),
         "counts": counts,
         "examples": examples,
     }
+
+
+@app.get("/tags/{tag}/subclusters")
+def list_tag_subclusters(tag: str):
+    with get_db() as conn:
+        rows = conn.execute(
+            """
+            SELECT id, parent_tag, slug, name, formula, abstract, sort_order, status
+            FROM tag_subclusters
+            WHERE parent_tag = ?
+            ORDER BY sort_order ASC, id ASC
+            """,
+            (tag,),
+        ).fetchall()
+        return [dict(row) for row in rows]
+
+
+@app.get("/tags/{tag}/blocks")
+def list_tag_blocks(tag: str, unassigned: int = 0):
+    query = """
+        SELECT
+            b.id,
+            b.task_id,
+            b.position,
+            b.tag,
+            b.text,
+            b.reasoning,
+            b.loop_id,
+            b.tension_score,
+            b.chunk_index,
+            t.filename,
+            t.source_note,
+            t.source_url
+        FROM blocks b
+        JOIN tasks t ON t.id = b.task_id
+        WHERE b.tag = ?
+    """
+    params: list = [tag]
+    if unassigned:
+        query += """
+            AND NOT EXISTS (
+                SELECT 1 FROM block_subcluster_assignments a WHERE a.block_id = b.id
+            )
+        """
+    query += " ORDER BY t.created_at DESC, b.position ASC"
+    with get_db() as conn:
+        rows = conn.execute(query, params).fetchall()
+        return [dict(row) for row in rows]
+
+
+@app.put("/blocks/{block_id}/subclusters")
+def update_block_subclusters(block_id: int, payload: BlockSubclustersUpdate):
+    source = (payload.source or "manual").strip() or "manual"
+    if source not in ("manual", "import", "llm"):
+        raise HTTPException(status_code=400, detail="source must be manual, import, or llm")
+
+    primary_id = payload.primary_subcluster_id
+    secondary_ids = list(payload.secondary_subcluster_ids or [])
+    if primary_id is not None and primary_id in secondary_ids:
+        secondary_ids = [sid for sid in secondary_ids if sid != primary_id]
+
+    with get_db() as conn:
+        block = conn.execute("SELECT id, tag FROM blocks WHERE id = ?", (block_id,)).fetchone()
+        if not block:
+            raise HTTPException(status_code=404, detail="Block not found")
+
+        wanted_ids = ([primary_id] if primary_id is not None else []) + secondary_ids
+        if wanted_ids:
+            placeholders = ",".join("?" * len(wanted_ids))
+            found = conn.execute(
+                f"SELECT id, parent_tag FROM tag_subclusters WHERE id IN ({placeholders})",
+                wanted_ids,
+            ).fetchall()
+            if len(found) != len(set(wanted_ids)):
+                raise HTTPException(status_code=400, detail="Unknown subcluster id")
+            parent_tag = block["tag"]
+            for row in found:
+                if row["parent_tag"] != parent_tag:
+                    raise HTTPException(
+                        status_code=400,
+                        detail=f"Subcluster {row['id']} belongs to {row['parent_tag']}, not {parent_tag}",
+                    )
+
+        conn.execute(
+            "DELETE FROM block_subcluster_assignments WHERE block_id = ?",
+            (block_id,),
+        )
+        for sid in wanted_ids:
+            conn.execute(
+                """
+                INSERT INTO block_subcluster_assignments
+                    (block_id, subcluster_id, is_primary, source, notes)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (
+                    block_id,
+                    sid,
+                    1 if sid == primary_id else 0,
+                    source,
+                    payload.notes,
+                ),
+            )
+        conn.commit()
+
+        rows = conn.execute(
+            """
+            SELECT a.subcluster_id, a.is_primary, a.source, a.notes,
+                   s.slug, s.name, s.parent_tag
+            FROM block_subcluster_assignments a
+            JOIN tag_subclusters s ON s.id = a.subcluster_id
+            WHERE a.block_id = ?
+            ORDER BY a.is_primary DESC, a.subcluster_id ASC
+            """,
+            (block_id,),
+        ).fetchall()
+        return {
+            "status": "ok",
+            "block_id": block_id,
+            "assignments": [dict(row) for row in rows],
+        }
 
 
 @app.get("/", response_class=HTMLResponse)
