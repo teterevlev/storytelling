@@ -1,0 +1,37 @@
+{
+  "tag": "CTA",
+  "total_examples": 4,
+  "discovery_n": 3,
+  "holdout_n": 1,
+  "soft_target": [
+    1,
+    3
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Call to Action",
+      "formula": "X → Audience takes action Y",
+      "abstract": "Prompting the audience to take a specific action through engagement, direction, or urgency.",
+      "members": [
+        2,
+        4,
+        1
+      ],
+      "sort_order": 1
+    }
+  ],
+  "residual": [],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 3,
+        "cluster_id": 1,
+        "confidence": "medium"
+      }
+    ],
+    "summary": "The mechanism described in the holdout aligns with the concept of a Call to Action, as it involves prompting the audience to take specific actions related to support and participation. This fits within the existing cluster for Call to Action."
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

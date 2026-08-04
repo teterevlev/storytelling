@@ -1,0 +1,738 @@
+[
+  {
+    "n": 8,
+    "mechanism": "Создание неожиданности через нарушение ожиданий.",
+    "steps": [
+      "X → ожидание, что Y будет происходить как обычно.",
+      "X → Y не происходит, создавая неожиданность."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 28,
+    "mechanism": "Создание атмосферы безысходности и упадка.",
+    "steps": [
+      "X описывается как погружающийся в тьму, символизирующую упадок и безысходность.",
+      "Y вводится как причина или катализатор этого состояния.",
+      "Z усиливает ощущение безысходности через использование сильных метафор."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 41,
+    "mechanism": "Shift in perception or understanding of a situation.",
+    "steps": [
+      "X is initially perceived as significant or threatening.",
+      "Y reveals that X has diminished in impact or relevance.",
+      "Z reflects on the change, noting the reduced threat or importance."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 70,
+    "mechanism": "Внезапное изменение ситуации вызывает удивление и напряжение.",
+    "steps": [
+      "X вызывает резкое изменение в Y, что приводит к неожиданным последствиям."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 65,
+    "mechanism": "Expectation is set for a significant challenge or limitation, leading to a sense of awe or realization of current technological boundaries.",
+    "steps": [
+      "X establishes a high expectation or challenge.",
+      "Y reveals the current inability to meet this expectation.",
+      "Z results in a sense of awe or realization of limitations."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 10,
+    "mechanism": "Unexpected shift in actions creates surprise and tension.",
+    "steps": [
+      "X is expected to protect or benefit Y → X unexpectedly harms Y, creating surprise and tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 31,
+    "mechanism": "Персонаж принимает неожиданное решение в условиях кризиса.",
+    "steps": [
+      "X сталкивается с безысходностью → X ищет нестандартное решение в неожиданном месте"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 48,
+    "mechanism": "Создание напряжения через ощущение упущенной возможности.",
+    "steps": [
+      "X осознаёт, что ситуация ухудшается.",
+      "X понимает, что нужно было действовать раньше.",
+      "X не успевает вовремя изменить ситуацию.",
+      "Зритель ощущает напряжение и беспокойство из-за упущенной возможности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 63,
+    "mechanism": "Создание ожидания и его последующее усложнение.",
+    "steps": [
+      "X → ожидание простоты",
+      "Y → усложнение через введение ограничения"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 68,
+    "mechanism": "Создание неожиданного контраста для усиления восприятия.",
+    "steps": [
+      "X воспринимается как спокойное и статичное.",
+      "X оказывается динамичным и драматичным."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 6,
+    "mechanism": "Поворотный момент, когда осознание приводит к изменению восприятия ситуации.",
+    "steps": [
+      "X сталкивается с новой информацией → X осознает масштабы проблемы → X меняет восприятие ситуации"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 27,
+    "mechanism": "Поворотный момент, который меняет ожидания и восприятие.",
+    "steps": [
+      "X → неожиданное событие Y, которое меняет ситуацию"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 46,
+    "mechanism": "Создание неожиданного поворота, который меняет восприятие ситуации.",
+    "steps": [
+      "X → осознание, что Y не является тем, чем казалось, создавая новый контекст и вызывая удивление."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 66,
+    "mechanism": "Создание ожидания и его последующее разрушение.",
+    "steps": [
+      "X создаёт ожидание Y.",
+      "Y усиливается через детали и контекст.",
+      "Z разрушает ожидание, показывая, что Y не произойдёт в ближайшее время."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 7,
+    "mechanism": "Revealing a hidden negative aspect creates tension and intrigue.",
+    "steps": [
+      "X is initially presented as impressive or positive.",
+      "A hidden negative aspect of X is revealed."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 67,
+    "mechanism": "Reveal of unexpected origin or cause.",
+    "steps": [
+      "X is initially perceived as orderly or intentional.",
+      "It is revealed that X is actually the result of chaotic or random events."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 25,
+    "mechanism": "Создание ощущения безвозвратности и неизбежности.",
+    "steps": [
+      "X → осознание, что путь в одну сторону, без возможности вернуться"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 64,
+    "mechanism": "Создание контраста между ожиданиями и реальностью для усиления эффекта разочарования.",
+    "steps": [
+      "X вызывает ожидание высокого качества.",
+      "Y оказывается хуже, чем ожидалось."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 57,
+    "mechanism": "Создание ожидания и его разрешение через перемещение.",
+    "steps": [
+      "X сталкивается с необходимостью перемещения.",
+      "X перемещает объект в новое место.",
+      "Зритель ожидает, что перемещение приведет к изменениям или последствиям."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 15,
+    "mechanism": "Создание неожиданного поворота через отказ в ожиданиях.",
+    "steps": [
+      "X ожидает получить Y, но сталкивается с отказом или отсутствием Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 69,
+    "mechanism": "Контраст между внешним видом и скрытой реальностью вызывает удивление и переосмысление.",
+    "steps": [
+      "X выглядит как гармония → Y раскрывает скрытую историю насилия и случайностей → Z вызывает удивление и переосмысление у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 32,
+    "mechanism": "Создание неожиданного контраста для усиления эффекта удивления.",
+    "steps": [
+      "X (тяжёлый объект) → Y (неожиданное место)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 60,
+    "mechanism": "Осознание изменения ситуации через внутреннее размышление.",
+    "steps": [
+      "X размышляет о текущей ситуации.",
+      "X осознает, что произошло изменение.",
+      "X понимает, что это изменение повлияло на определенные события."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 61,
+    "mechanism": "Создание контраста между ожиданиями и реальностью.",
+    "steps": [
+      "X представляет желаемое состояние.",
+      "Y указывает на текущую недостижимость X.",
+      "Z вызывает у зрителя чувство сожаления или разочарования."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание неожиданного эмоционального сдвига через физическое действие.",
+    "steps": [
+      "X выполняет последовательность действий, связанных с объектом.",
+      "Последнее действие вызывает резкую эмоциональную реакцию у X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 39,
+    "mechanism": "Создание напряжения через утверждение о возможности преодоления препятствия.",
+    "steps": [
+      "X утверждает, что нет ничего невозможного в преодолении Y.",
+      "Это вызывает у зрителя ожидание и интерес к тому, как X справится с Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 18,
+    "mechanism": "Создание эмоционального напряжения через контраст между личным страданием и безличной системой.",
+    "steps": [
+      "X испытывает страдание из-за Y.",
+      "Z представляет безличную систему, которая игнорирует страдание X.",
+      "Контраст между страданием X и безразличием Z вызывает у зрителя чувство несправедливости."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 62,
+    "mechanism": "Создание неожиданного поворота через усложнение ситуации.",
+    "steps": [
+      "X → Утверждение о простоте → Утверждение о сложности"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 13,
+    "mechanism": "Создание неожиданности через контраст ожиданий и реальности.",
+    "steps": [
+      "X получает Y → Ожидается радость → X не радуется → Зритель удивляется."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 29,
+    "mechanism": "Unexpected repetition creates a sense of confusion or emphasis.",
+    "steps": [
+      "X repeats X in an unexpected way → Audience feels confused or pays extra attention."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 49,
+    "mechanism": "Персонаж выражает мнение, которое может вызвать у зрителя размышления о правильности действий.",
+    "steps": [
+      "X выражает мнение о действиях Y → Зритель задумывается о правильности этих действий"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 9,
+    "mechanism": "Создание контраста между ожиданиями и реальностью для усиления эмоционального эффекта.",
+    "steps": [
+      "X создаёт ожидание Y → X неожиданно приводит к Z, противоположному Y, вызывая удивление и интерес."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 22,
+    "mechanism": "Unexpected decision or change in plans creates surprise or tension.",
+    "steps": [
+      "X decides not to proceed with a previously expected or planned action, leading to a shift in expectations or outcomes."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 2,
+    "mechanism": "Unexpected reality disrupts an idealized perception, causing a shift in understanding.",
+    "steps": [
+      "X is an idealized perception or belief.",
+      "Y is an unexpected reality that contradicts X.",
+      "Z is the realization or shift in understanding caused by Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 59,
+    "mechanism": "Создание напряжения через угрозу возможных последствий.",
+    "steps": [
+      "X упоминает о риске, связанном с Y.",
+      "Y подразумевает негативные последствия для X.",
+      "Зритель ощущает напряжение из-за возможных последствий для X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 37,
+    "mechanism": "Ожидание смены подхода после внешнего вмешательства.",
+    "steps": [
+      "X наблюдает за Y и видит Z.",
+      "X принимает решение изменить Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 44,
+    "mechanism": "Создание напряжения через угрозу раскрытия и последствий.",
+    "steps": [
+      "X → Угроза раскрытия Y → Возможные последствия Z → Напряжение и ожидание развязки"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 14,
+    "mechanism": "Внезапное изменение ситуации вызывает у персонажей чувство беспомощности.",
+    "steps": [
+      "X принимает неожиданное решение → Y чувствует себя подавленным и беспомощным"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 3,
+    "mechanism": "Shift in perspective to highlight individual sacrifice.",
+    "steps": [
+      "X shifts focus from a general entity to a specific individual, emphasizing personal impact."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 19,
+    "mechanism": "Создание неожиданного поворота через раскрытие шокирующей информации.",
+    "steps": [
+      "X → раскрытие шокирующей информации о Y, вызывающее удивление и страх у Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 43,
+    "mechanism": "Unexpected reoccurrence of a problem creates tension and surprise.",
+    "steps": [
+      "X → Unexpected reoccurrence of a problem → Tension and surprise for the audience."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 35,
+    "mechanism": "Создание напряжения через ограничение выбора.",
+    "steps": [
+      "X сталкивается с ситуацией, где нет альтернатив.",
+      "X вынужден принять единственное доступное решение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 16,
+    "mechanism": "Создание неожиданного поворота через радикальное изменение привычного объекта.",
+    "steps": [
+      "X → радикальное изменение Y → неожиданность для зрителя"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 54,
+    "mechanism": "Shift in environment or context creates a sense of novelty or surprise.",
+    "steps": [
+      "X changes location or context, leading to new dynamics or challenges."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 5,
+    "mechanism": "Unexpected change in strategy creates tension and uncertainty.",
+    "steps": [
+      "X expects a direct confrontation → X learns that Y will not engage in expected manner → X feels uncertain about future actions and outcomes."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 21,
+    "mechanism": "Создание неожиданного поворота через разочарование.",
+    "steps": [
+      "X вызывает ожидание положительного результата.",
+      "Реализация X приводит к неожиданно негативному результату."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 52,
+    "mechanism": "Shift in expectations through a change in plan or location.",
+    "steps": [
+      "X decides to change the location of an action, leading to new possibilities or challenges."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 12,
+    "mechanism": "Создание напряжения и морального конфликта через неожиданное решение.",
+    "steps": [
+      "X сталкивается с трудной ситуацией.",
+      "X принимает решение, которое кажется аморальным или шокирующим.",
+      "Зритель испытывает напряжение и задается вопросами о мотивах и последствиях."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 26,
+    "mechanism": "Создание резкого контраста между ожиданиями и реальностью для усиления эмоционального воздействия.",
+    "steps": [
+      "X (мечта) → Y (разрушение)",
+      "Z (музыка) усиливает контраст"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 45,
+    "mechanism": "Создание напряжения через неожиданное изменение ситуации.",
+    "steps": [
+      "X → Описание спокойной или ожидаемой ситуации.",
+      "Y → Внезапное изменение, которое нарушает ожидания.",
+      "Z → Усиление эффекта через детали, подчеркивающие неожиданность."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 1,
+    "mechanism": "Surprise and intrigue through unexpected change in direction or capability.",
+    "steps": [
+      "X is known for doing Y, but now X is tasked with doing Z, which is unexpected or outside their expertise."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 38,
+    "mechanism": "Создание неожиданного поворота, который меняет восприятие ситуации.",
+    "steps": [
+      "X → Ожидание завершения Y.",
+      "Y → Внезапное раскрытие Z, показывающее, что Y продолжается в другом месте."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 55,
+    "mechanism": "Предложение альтернативного плана или решения, чтобы изменить текущую ситуацию или перспективу.",
+    "steps": [
+      "X предлагает Y рассмотреть другой подход или действие, чтобы улучшить или изменить ситуацию."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 20,
+    "mechanism": "Unexpected event creates tension and surprise.",
+    "steps": [
+      "X is moving → Y unexpectedly changes → Z is revealed, causing surprise."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 4,
+    "mechanism": "Создание неожиданности через изменение ожиданий.",
+    "steps": [
+      "X → ожидание использования для Y → X используется для Z вместо Y"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 30,
+    "mechanism": "Unexpected event creates surprise and tension.",
+    "steps": [
+      "X is performing a routine task → Unexpected event Y occurs, causing surprise and tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 56,
+    "mechanism": "Создание ожидания и его нарушение для усиления интереса.",
+    "steps": [
+      "X создаёт ожидание, что Y будет происходить определённым образом.",
+      "Внезапно X меняет направление или результат, нарушая ожидание.",
+      "Зритель испытывает удивление или интерес из-за неожиданного поворота."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 23,
+    "mechanism": "Создание напряжения через изменение обстановки.",
+    "steps": [
+      "X находится в безопасной обстановке.",
+      "X перемещается в более опасную обстановку.",
+      "Зритель ощущает нарастающее напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 53,
+    "mechanism": "Предложение альтернативного решения вызывает переоценку ситуации.",
+    "steps": [
+      "X предлагает Y альтернативное решение.",
+      "Y начинает переоценивать текущую ситуацию и свои действия."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 40,
+    "mechanism": "Shift in perception or understanding.",
+    "steps": [
+      "X is expected to work → X does not work, causing surprise or reevaluation."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 34,
+    "mechanism": "Demonstrating the conflict between desire and rationality.",
+    "steps": [
+      "X (desire) is shown to overpower Y (rationality) in a situation."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 47,
+    "mechanism": "Создание неожиданного поворота через изменение ожиданий.",
+    "steps": [
+      "X создаёт ожидание, что Y произойдёт.",
+      "Z неожиданно меняет ситуацию, показывая, что Y невозможно."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 17,
+    "mechanism": "Surprise through unexpected solution.",
+    "steps": [
+      "X faces a problem with a large object.",
+      "Y, a seemingly unrelated or small solution, is introduced.",
+      "Z, the solution is applied in an unexpected way, creating surprise."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 58,
+    "mechanism": "Demonstrating disregard or indifference to advice or examples.",
+    "steps": [
+      "X receives advice or examples from Y.",
+      "X acknowledges Y's input superficially.",
+      "X chooses to ignore Y's input and does not apply it."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 36,
+    "mechanism": "Создание ожидания улучшения, за которым следует разочарование.",
+    "steps": [
+      "X создаёт ожидание улучшения через Y.",
+      "Z показывает, что улучшение иллюзорно, вызывая разочарование."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 50,
+    "mechanism": "Создание неожиданного поворота в восприятии зрителя.",
+    "steps": [
+      "X → Заявление о прекращении Y.",
+      "Y → Ожидание продолжения X.",
+      "X → Неожиданное завершение Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 33,
+    "mechanism": "Создание неожиданного контраста между ожиданием и реальностью.",
+    "steps": [
+      "X вызывает ожидание положительного результата.",
+      "Y оказывается неожиданно негативным и шокирующим."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 42,
+    "mechanism": "Создание неожиданного поворота, чтобы вызвать удивление и интерес.",
+    "steps": [
+      "X → Ожидание одного исхода",
+      "Y → Внезапное изменение ситуации",
+      "Z → Удивление и интерес зрителя"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  }
+]

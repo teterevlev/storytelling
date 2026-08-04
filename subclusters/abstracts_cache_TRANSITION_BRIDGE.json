@@ -1,0 +1,126 @@
+[
+  {
+    "n": 2,
+    "mechanism": "Transition from discussing a specific issue to a broader or related topic.",
+    "steps": [
+      "X discusses a specific issue → Transition to a broader or related topic Y"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 7,
+    "mechanism": "Контраст между двумя явлениями усиливает восприятие второго явления.",
+    "steps": [
+      "X демонстрирует ожидаемое поведение в сложных условиях.",
+      "Y представляет собой неожиданный феномен в аналогичных условиях.",
+      "Контраст между X и Y подчеркивает уникальность Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 9,
+    "mechanism": "Создание плавного перехода между двумя элементами через общую характеристику или тему.",
+    "steps": [
+      "X и Y имеют общую характеристику Z.",
+      "X упоминается первым, создавая ожидание.",
+      "Y следует за X, используя Z как мост для перехода."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание перехода между темами через вопрос.",
+    "steps": [
+      "X задаёт вопрос о Y, чтобы плавно перейти к обсуждению новой темы."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 1,
+    "mechanism": "Контрастное сравнение для усиления восприятия.",
+    "steps": [
+      "X описывается с негативными характеристиками.",
+      "Y противопоставляется X с другими характеристиками."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 5,
+    "mechanism": "Contrast between two entities to highlight incompetence.",
+    "steps": [
+      "X struggles with a problem, leading to frustration.",
+      "Y, a similar entity, performs even worse, emphasizing the incompetence of both."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 10,
+    "mechanism": "Transition from one topic or context to another by highlighting a contrast or difference.",
+    "steps": [
+      "X is described or discussed.",
+      "A contrasting or different aspect Y is introduced to shift focus.",
+      "The transition is completed by emphasizing the difference between X and Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 3,
+    "mechanism": "Создание контраста для усиления восприятия следующего события.",
+    "steps": [
+      "X создаёт ожидание, что ситуация уже плохая.",
+      "Y вводит новый элемент, который делает ситуацию ещё хуже.",
+      "Z усиливает восприятие, подчёркивая, что предыдущая ситуация была не пределом."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 6,
+    "mechanism": "Highlighting the passage of time to create a sense of progression and context.",
+    "steps": [
+      "X references past era → Y references current era → Z references future era"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 4,
+    "mechanism": "Сравнение двух X для создания контраста и перехода к новому Y.",
+    "steps": [
+      "X1 имеет отрицательные качества.",
+      "X2 имеет положительные качества.",
+      "Контраст между X1 и X2 создаёт переход к обсуждению Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 8,
+    "mechanism": "Создание плавного перехода между двумя темами для удержания внимания.",
+    "steps": [
+      "X завершает обсуждение текущей темы.",
+      "Y вводит новую тему, связанную с предыдущей.",
+      "Z продолжает обсуждение новой темы."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  }
+]

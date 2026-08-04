@@ -1,0 +1,40 @@
+{
+  "tag": "VIDEO_HOOK",
+  "total_examples": 3,
+  "discovery_n": 3,
+  "holdout_n": 0,
+  "soft_target": [
+    1,
+    1
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Интрига и ожидание",
+      "formula": "X → Y → Z",
+      "abstract": "Создание интереса через контраст и преувеличение, усиливающее ожидание и оставляющее зрителя в интриге.",
+      "members": [
+        1,
+        3
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "Неожиданность и шок",
+      "formula": "X → Y",
+      "abstract": "Создание ожидания нормального исхода, за которым следует внезапное нарушение ожиданий, вызывающее шок.",
+      "members": [
+        2
+      ],
+      "sort_order": 2
+    }
+  ],
+  "residual": [],
+  "holdout": {
+    "assignments": [],
+    "summary": "skip"
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

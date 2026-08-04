@@ -1,0 +1,14 @@
+[
+  {
+    "n": 1,
+    "mechanism": "Repetition creates a rhythmic and hypnotic effect, emphasizing the theme.",
+    "steps": [
+      "X repeats a phrase multiple times, creating a rhythm.",
+      "Y emphasizes the theme through repetition.",
+      "Z evokes a hypnotic or meditative state in the audience."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  }
+]

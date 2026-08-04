@@ -1,0 +1,29 @@
+{
+  "tag": "CUSTOM:IRONY",
+  "catalog": [
+    {
+      "id": 1,
+      "sort_order": 1,
+      "name": "Ирония",
+      "formula": "X (ожидание) → Y (реальность, которая сильно отличается от ожидания)",
+      "abstract": "Создание контраста между ожиданием и реальностью для усиления комического эффекта.",
+      "members": [
+        1,
+        2
+      ]
+    }
+  ],
+  "residual": [],
+  "holdout": {
+    "assignments": [],
+    "summary": "tiny tag"
+  },
+  "total_examples": 2,
+  "discovery_n": 2,
+  "holdout_n": 0,
+  "soft_target": [
+    1,
+    1
+  ],
+  "domain_leaks": []
+}

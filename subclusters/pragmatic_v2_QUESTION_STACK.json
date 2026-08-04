@@ -1,0 +1,385 @@
+{
+  "tag": "QUESTION_STACK",
+  "total_examples": 126,
+  "discovery_n": 69,
+  "holdout_n": 30,
+  "soft_target": [
+    10,
+    18
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Напряжение и противоречия",
+      "formula": "X → противоположные действия\n→ противоречие",
+      "abstract": "Создание напряжения через противоположные действия и противоречия.",
+      "members": [
+        17,
+        27,
+        34
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "Ожидание и разрешение",
+      "formula": "X → ожидание\n→ разрешение/разочарование",
+      "abstract": "Создание ожидания и последующего разрешения или разочарования.",
+      "members": [
+        111,
+        28,
+        121
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Неизвестность и ожидание",
+      "formula": "X → неизвестность\n→ ожидание",
+      "abstract": "Создание напряжения через неизвестность и ожидание.",
+      "members": [
+        47,
+        112,
+        46
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "Контраст ожиданий и реальности",
+      "formula": "X → ожидания\n→ реальность",
+      "abstract": "Контраст между ожиданиями и реальностью для усиления эмоционального эффекта.",
+      "members": [
+        23,
+        45,
+        22
+      ],
+      "sort_order": 4
+    },
+    {
+      "id": 5,
+      "name": "Интрига и размышления",
+      "formula": "X → интрига\n→ размышления",
+      "abstract": "Создание интриги и стимулирование размышлений через вопросы и неизвестные элементы.",
+      "members": [
+        123,
+        7,
+        117
+      ],
+      "sort_order": 5
+    },
+    {
+      "id": 6,
+      "name": "Угроза и уязвимость",
+      "formula": "X → угроза\n→ уязвимость",
+      "abstract": "Создание напряжения через обсуждение угрозы и уязвимости.",
+      "members": [
+        55,
+        61,
+        13
+      ],
+      "sort_order": 6
+    },
+    {
+      "id": 7,
+      "name": "Удивление и абсурд",
+      "formula": "X → знакомое\n→ необычный контекст",
+      "abstract": "Создание чувства удивления и любопытства через представление о знакомом в необычном контексте или абсурдных событиях.",
+      "members": [
+        107,
+        6,
+        12
+      ],
+      "sort_order": 7
+    },
+    {
+      "id": 8,
+      "name": "Внезапное изменение",
+      "formula": "X → внезапное изменение\n→ опасность",
+      "abstract": "Создание напряжения через внезапное изменение ситуации или опасность.",
+      "members": [
+        2,
+        5,
+        3
+      ],
+      "sort_order": 8
+    },
+    {
+      "id": 9,
+      "name": "Абсурд и контраст",
+      "formula": "X → преувеличение\n→ контраст",
+      "abstract": "Создание ощущения абсурда через преувеличение и контраст.",
+      "members": [
+        39,
+        35,
+        11
+      ],
+      "sort_order": 9
+    },
+    {
+      "id": 10,
+      "name": "Неопределенность и интрига",
+      "formula": "X → вопросы\n→ возможности",
+      "abstract": "Создание чувства неопределенности и интриги через постановку вопросов и обсуждение возможностей.",
+      "members": [
+        108,
+        109,
+        120
+      ],
+      "sort_order": 10
+    },
+    {
+      "id": 11,
+      "name": "Опасность и хаос",
+      "formula": "X → опасность\n→ хаос",
+      "abstract": "Создание напряжения через описание опасности и хаоса.",
+      "members": [
+        14,
+        42,
+        16
+      ],
+      "sort_order": 11
+    },
+    {
+      "id": 12,
+      "name": "Моральная дилемма",
+      "formula": "X → ожидания\n→ реальность",
+      "abstract": "Создание моральной дилеммы или когнитивного диссонанса через контраст между ожиданиями и реальностью.",
+      "members": [
+        30,
+        26,
+        65
+      ],
+      "sort_order": 12
+    },
+    {
+      "id": 13,
+      "name": "Несправедливость и разочарование",
+      "formula": "X → ожидания\n→ реальность",
+      "abstract": "Создание чувства несправедливости и разочарования через контраст между ожиданиями и реальностью.",
+      "members": [
+        20,
+        24,
+        23
+      ],
+      "sort_order": 13
+    },
+    {
+      "id": 14,
+      "name": "Власть и выбор",
+      "formula": "X → мотивация\n→ возможности",
+      "abstract": "Создание ощущения власти и свободы выбора через вопросы о мотивации и возможностях.",
+      "members": [
+        43,
+        121,
+        116
+      ],
+      "sort_order": 14
+    },
+    {
+      "id": 15,
+      "name": "Изоляция и абсурд",
+      "formula": "X → изоляция\n→ абсурд",
+      "abstract": "Создание чувства изоляции и бесполезности через описание абсурдной ситуации.",
+      "members": [
+        10,
+        12
+      ],
+      "sort_order": 15
+    },
+    {
+      "id": 16,
+      "name": "Доступность ресурса",
+      "formula": "X → доступность\n→ ресурс",
+      "abstract": "Clarification of availability or access to a resource.",
+      "members": [
+        87
+      ],
+      "sort_order": 16
+    },
+    {
+      "id": 17,
+      "name": "Технологические возможности",
+      "formula": "X → ожидание\n→ технологии",
+      "abstract": "Expectation and curiosity about technological capabilities.",
+      "members": [
+        115
+      ],
+      "sort_order": 17
+    },
+    {
+      "id": 18,
+      "name": "Социальная идентичность",
+      "formula": "X → осуждение\n→ идентичность",
+      "abstract": "Преодоление общественного осуждения и восстановление социальной идентичности.",
+      "members": [
+        104
+      ],
+      "sort_order": 18
+    }
+  ],
+  "residual": [
+    33,
+    59,
+    25,
+    91,
+    122
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 33,
+        "cluster_id": 14,
+        "confidence": "medium"
+      },
+      {
+        "n": 71,
+        "cluster_id": 10,
+        "confidence": "high"
+      },
+      {
+        "n": 124,
+        "cluster_id": 10,
+        "confidence": "high"
+      },
+      {
+        "n": 59,
+        "cluster_id": 14,
+        "confidence": "medium"
+      },
+      {
+        "n": 119,
+        "cluster_id": 10,
+        "confidence": "high"
+      },
+      {
+        "n": 125,
+        "cluster_id": 7,
+        "confidence": "medium"
+      },
+      {
+        "n": 15,
+        "cluster_id": 18,
+        "confidence": "medium"
+      },
+      {
+        "n": 40,
+        "cluster_id": 13,
+        "confidence": "medium"
+      },
+      {
+        "n": 126,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 93,
+        "cluster_id": 11,
+        "confidence": "medium"
+      },
+      {
+        "n": 18,
+        "cluster_id": 11,
+        "confidence": "medium"
+      },
+      {
+        "n": 25,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 122,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 29,
+        "cluster_id": 13,
+        "confidence": "high"
+      },
+      {
+        "n": 49,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 114,
+        "cluster_id": 10,
+        "confidence": "high"
+      },
+      {
+        "n": 110,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 56,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 91,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 118,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 79,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 36,
+        "cluster_id": 4,
+        "confidence": "high"
+      },
+      {
+        "n": 102,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 83,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 113,
+        "cluster_id": 5,
+        "confidence": "medium"
+      },
+      {
+        "n": 32,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 19,
+        "cluster_id": 9,
+        "confidence": "medium"
+      },
+      {
+        "n": 96,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 8,
+        "cluster_id": 9,
+        "confidence": "high"
+      },
+      {
+        "n": 38,
+        "cluster_id": 1,
+        "confidence": "medium"
+      }
+    ],
+    "summary": "rechecked 30"
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

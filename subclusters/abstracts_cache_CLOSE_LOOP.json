@@ -1,0 +1,466 @@
+[
+  {
+    "n": 12,
+    "mechanism": "Surprise through unexpected placement of an object.",
+    "steps": [
+      "X is placed in an unusual or unexpected location, causing surprise or curiosity."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 8,
+    "mechanism": "Создание контраста для усиления восприятия.",
+    "steps": [
+      "Ожидание X → Получение Y → Усиление эффекта через контраст"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 34,
+    "mechanism": "Закрытие петли через разрешение задачи.",
+    "steps": [
+      "X предоставляет информацию, чтобы завершить начатый процесс."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 20,
+    "mechanism": "Закрытие петли через обнаружение и реакцию на аномалию.",
+    "steps": [
+      "X обнаруживает аномалию в Y.",
+      "X сигнализирует Z о необходимости действия.",
+      "Z реагирует на сигнал и предпринимает меры."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 4,
+    "mechanism": "Создание напряжения через нарушение ожиданий и моральных норм.",
+    "steps": [
+      "X (солдаты) выполняют Y (манипуляцию с тросиками), что нарушает Z (ожидания или нормы)."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 42,
+    "mechanism": "Создание завершенности через возвращение к началу.",
+    "steps": [
+      "X начинается с Y.",
+      "X проходит через изменения и развитие.",
+      "X возвращается к Y, создавая ощущение завершенности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 19,
+    "mechanism": "Revisiting a past element to create a sense of continuity and closure.",
+    "steps": [
+      "X is introduced in the past.",
+      "X is mentioned again in the present, linking past and present."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 13,
+    "mechanism": "Создание предостережения через передачу традиции.",
+    "steps": [
+      "X передает Y важное правило.",
+      "Y запоминает правило как важное предостережение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 41,
+    "mechanism": "Осознание необходимости нового элемента для решения проблемы.",
+    "steps": [
+      "X накапливается → Y осознает необходимость Z"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 40,
+    "mechanism": "Создание эффекта усиления через использование X и Y.",
+    "steps": [
+      "X размещается в точке фокуса.",
+      "Y усиливает эффект X.",
+      "Система становится эквивалентной более мощной системе."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 3,
+    "mechanism": "Resolution through unexpected solution.",
+    "steps": [
+      "X faces a challenge with Y.",
+      "X uses an unconventional method to address Y.",
+      "The method surprisingly resolves the challenge."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 16,
+    "mechanism": "Создание незавершенности и ожидания.",
+    "steps": [
+      "X создается почти полностью, но не завершается.",
+      "Y ожидает завершения X, но сталкивается с неожиданным прекращением.",
+      "Z возникает чувство незавершенности и ожидания, что будет дальше."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 32,
+    "mechanism": "Закрытие петли через разрешение проблемы или завершение задачи.",
+    "steps": [
+      "X сталкивается с проблемой или задачей.",
+      "X предпринимает действия для её решения.",
+      "X достигает результата, который закрывает начальную проблему или задачу."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 27,
+    "mechanism": "Resolution of an unresolved situation through a final action or decision.",
+    "steps": [
+      "X is unresolved, causing tension.",
+      "Y takes a decisive action to resolve X.",
+      "Z is the outcome, providing closure."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 17,
+    "mechanism": "Создание напряжения через описание опасности.",
+    "steps": [
+      "X описывает потенциальную угрозу для Y.",
+      "Y представляет себе последствия этой угрозы.",
+      "Z испытывает напряжение и беспокойство."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 9,
+    "mechanism": "Создание напряжения и драматического эффекта через безысходность ситуации.",
+    "steps": [
+      "X → Описание ситуации, где Y не имеет шансов на успех или выживание.",
+      "Y → Подчеркивание серьезности и опасности ситуации.",
+      "Z → Усиление эмоционального воздействия на зрителя через акцент на безысходности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 39,
+    "mechanism": "Использование X в качестве Y для достижения Z.",
+    "steps": [
+      "X используется в качестве Y.",
+      "Это приводит к достижению Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 6,
+    "mechanism": "Создание напряжения через внезапное изменение состояния.",
+    "steps": [
+      "X внезапно изменяет состояние, создавая ощущение надвигающейся проблемы."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание напряжения через физический дискомфорт и его последствия.",
+    "steps": [
+      "X испытывает физический дискомфорт → Y усиливается до потери чувствительности → Z вызывает напряжение у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 25,
+    "mechanism": "Закрытие сюжетной линии через разрешение конфликта или проблемы.",
+    "steps": [
+      "X сталкивается с проблемой Y.",
+      "X предпринимает действия для решения Y.",
+      "Y разрешается, и X получает результат."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 22,
+    "mechanism": "Revealing a requirement for authenticity to resolve a situation.",
+    "steps": [
+      "X emphasizes the need for an original document to validate authenticity."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 30,
+    "mechanism": "Закрытие петли через возвращение к ранее обсуждаемой теме и её разрешение.",
+    "steps": [
+      "X обсуждается ранее → X возвращается в разговор → X получает разрешение или объяснение"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 7,
+    "mechanism": "Решение проблемы с использованием доступных ресурсов.",
+    "steps": [
+      "X → Обнаружение нехватки ресурса.",
+      "Y → Наличие другого ресурса.",
+      "Z → Комбинирование доступного ресурса с новым элементом для достижения цели."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 10,
+    "mechanism": "Создание ощущения бессмысленности и потери времени.",
+    "steps": [
+      "X (персонажи) занимаются Y (деятельностью) в течение Z (длительного времени), но Y оказывается бесполезным."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 14,
+    "mechanism": "Closure through returning to an earlier topic or element.",
+    "steps": [
+      "X is introduced at the beginning.",
+      "Y is discussed or explored.",
+      "X is revisited or resolved, creating a sense of closure."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 24,
+    "mechanism": "The mechanism involves resolving a previously introduced uncertainty or question, creating a sense of closure or completion.",
+    "steps": [
+      "X introduces an uncertainty or question.",
+      "Y provides a resolution or answer, closing the loop."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 36,
+    "mechanism": "Создание завершённости через возвращение к началу.",
+    "steps": [
+      "X упоминается в начале.",
+      "Y развивается в середине.",
+      "X возвращается в конце, создавая завершённость."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 5,
+    "mechanism": "Создание неожиданности через раскрытие истинной природы объекта.",
+    "steps": [
+      "X воспринимается как Y → X оказывается Z, что вызывает удивление."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 15,
+    "mechanism": "Создание ощущения тревоги и нестабильности.",
+    "steps": [
+      "X → Подчёркивание отсутствия Y → Усиление восприятия Z"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 23,
+    "mechanism": "Закрытие незавершённого действия или ситуации для создания ощущения завершённости.",
+    "steps": [
+      "X завершает незавершённое действие или ситуацию, создавая ощущение завершённости."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 37,
+    "mechanism": "Создание неожиданного поворота через раскрытие скрытой информации.",
+    "steps": [
+      "X создает впечатление, что ситуация развивается в одном направлении.",
+      "Y раскрывает новую информацию, которая меняет понимание ситуации.",
+      "Z приводит к неожиданному повороту, который удивляет зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 1,
+    "mechanism": "Создание напряжения и демонстрация трудностей через физическое усилие и эмоциональную реакцию.",
+    "steps": [
+      "X сталкивается с препятствием (перевал) → X использует сложный метод (разворот и задняя передача) → X испытывает физическое и эмоциональное напряжение (матерясь и обливаясь потом) → Y (зритель) ощущает напряжение и сочувствие."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 28,
+    "mechanism": "Закрытие петли через возвращение к ранее упомянутой теме или вопросу, чтобы подчеркнуть изменение или развитие мышления.",
+    "steps": [
+      "X упоминает тему или вопрос в начале.",
+      "Y возвращается к этой теме или вопросу позже.",
+      "Z демонстрирует изменение или развитие мышления по отношению к X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 35,
+    "mechanism": "Создание удивления через преувеличение.",
+    "steps": [
+      "X → Утверждение о размере Y, который значительно превышает обычные ожидания.",
+      "Y → Осознание чрезмерности Y вызывает удивление и недоверие."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 18,
+    "mechanism": "Demonstrating a solution to a problem by explaining a process.",
+    "steps": [
+      "X explains how to bypass a restriction by performing a specific action, leading to a desired outcome."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 2,
+    "mechanism": "Creating tension and relief through physical challenge.",
+    "steps": [
+      "X faces a daunting physical obstacle.",
+      "X struggles to overcome the obstacle, creating tension.",
+      "X successfully overcomes the obstacle, providing relief."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 26,
+    "mechanism": "Closure through resolution of past conflicts.",
+    "steps": [
+      "X had unresolved issues with others.",
+      "X negotiated and settled these issues.",
+      "X now feels a sense of closure and relief."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 31,
+    "mechanism": "Using analogy to simplify complex concepts.",
+    "steps": [
+      "X (complex concept) is compared to Y (simple concept) to make it more understandable."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 21,
+    "mechanism": "Создание напряжения через осознание неизбежности события.",
+    "steps": [
+      "X осознает, что Y неизбежно произойдет.",
+      "X принимает Y как данность, усиливая напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 29,
+    "mechanism": "Создание завершенности через достижение цели.",
+    "steps": [
+      "X отправляется к Y → X достигает Y → цель достигнута, создается чувство завершенности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 38,
+    "mechanism": "Closure through resolution of a complex problem.",
+    "steps": [
+      "X is introduced as a complex problem.",
+      "Y is applied as a method to resolve X.",
+      "Z is achieved as a familiar outcome, providing closure."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 33,
+    "mechanism": "Создание завершенности через возвращение к началу.",
+    "steps": [
+      "X происходит в начале.",
+      "Y происходит в середине, создавая ожидание.",
+      "Z возвращает к X, завершая цикл."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  }
+]

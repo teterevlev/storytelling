@@ -1,0 +1,306 @@
+{
+  "tag": "RELIEF",
+  "total_examples": 94,
+  "discovery_n": 51,
+  "holdout_n": 30,
+  "soft_target": [
+    8,
+    16
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Контраст ожиданий",
+      "formula": "Ожидание → Реальность\n→ Облегчение",
+      "abstract": "Создание контраста между ожиданиями и реальностью для усиления чувства облегчения.",
+      "members": [
+        8,
+        57,
+        40,
+        19,
+        16,
+        21,
+        9,
+        15,
+        29,
+        27,
+        44
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "Разрешение проблемы",
+      "formula": "Проблема → Решение\n→ Облегчение",
+      "abstract": "Создание ощущения облегчения через разрешение проблемы или напряженности.",
+      "members": [
+        81,
+        92,
+        38,
+        82,
+        61,
+        87,
+        6,
+        77,
+        91,
+        88,
+        11,
+        2,
+        47,
+        63
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Юмор и ирония",
+      "formula": "Напряжение → Юмор\n→ Облегчение",
+      "abstract": "Создание облегчения через юмор или иронию.",
+      "members": [
+        7,
+        26,
+        45,
+        52,
+        14
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "Снятие угрозы",
+      "formula": "Угроза → Устранение\n→ Облегчение",
+      "abstract": "Создание облегчения через снятие угрозы или опасности.",
+      "members": [
+        38,
+        50,
+        82,
+        62
+      ],
+      "sort_order": 4
+    },
+    {
+      "id": 5,
+      "name": "Сравнение условий",
+      "formula": "Сложные условия → Сравнение\n→ Облегчение",
+      "abstract": "Создание облегчения через сравнение с более сложными условиями или ситуациями.",
+      "members": [
+        85,
+        90,
+        84,
+        13
+      ],
+      "sort_order": 5
+    },
+    {
+      "id": 6,
+      "name": "Разрешение конфликта",
+      "formula": "Конфликт → Разрешение\n→ Облегчение",
+      "abstract": "Создание облегчения через разрешение конфликта или недопонимания.",
+      "members": [
+        51,
+        70,
+        74
+      ],
+      "sort_order": 6
+    },
+    {
+      "id": 7,
+      "name": "Достижение цели",
+      "formula": "Ожидание → Достижение\n→ Облегчение",
+      "abstract": "Создание облегчения через достижение цели или завершение ожидания.",
+      "members": [
+        91,
+        83
+      ],
+      "sort_order": 7
+    },
+    {
+      "id": 8,
+      "name": "Физическое действие",
+      "formula": "Напряжение → Действие\n→ Облегчение",
+      "abstract": "Создание облегчения через физическое действие или состояние.",
+      "members": [
+        3,
+        18
+      ],
+      "sort_order": 8
+    },
+    {
+      "id": 9,
+      "name": "Стабильность в хаосе",
+      "formula": "Хаос → Стабильность\n→ Облегчение",
+      "abstract": "Создание ощущения стабильности и надежности в хаотичной ситуации.",
+      "members": [
+        93,
+        94
+      ],
+      "sort_order": 9
+    }
+  ],
+  "residual": [
+    35,
+    10,
+    86,
+    55,
+    20,
+    89,
+    5
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 35,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 10,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 86,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 55,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 20,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 89,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 5,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 12,
+        "cluster_id": 4,
+        "confidence": "medium"
+      },
+      {
+        "n": 32,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 68,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 1,
+        "cluster_id": 5,
+        "confidence": "medium"
+      },
+      {
+        "n": 41,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 71,
+        "cluster_id": 6,
+        "confidence": "high"
+      },
+      {
+        "n": 4,
+        "cluster_id": 6,
+        "confidence": "high"
+      },
+      {
+        "n": 28,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 60,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 22,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 69,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 43,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 72,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 25,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 73,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 78,
+        "cluster_id": 4,
+        "confidence": "medium"
+      },
+      {
+        "n": 31,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 46,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 48,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 30,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 42,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 75,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 53,
+        "cluster_id": 1,
+        "confidence": "high"
+      }
+    ],
+    "summary": "rechecked 30"
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

@@ -1,0 +1,281 @@
+[
+  {
+    "n": 2,
+    "mechanism": "Создание напряжения и облегчения через описание опасности и спасения.",
+    "steps": [
+      "X испытывает серьёзную опасность → Y получает травмы, но остаётся жив → Z объясняет, как это произошло, создавая облегчение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 6,
+    "mechanism": "Создание ощущения решительности и обновления через метафорическое описание действий.",
+    "steps": [
+      "X описывает действие как резкое и решительное.",
+      "Y использует метафоры, чтобы подчеркнуть необходимость изменений.",
+      "Z вызывает у зрителя чувство обновления и избавления от старого."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 24,
+    "mechanism": "Создание ожидания и его удовлетворение через уточнение.",
+    "steps": [
+      "X создаёт ожидание возможности улучшения.",
+      "Y уточняет, как именно можно улучшить."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 14,
+    "mechanism": "Создание ощущения завершенности и удовлетворения от выполненной задачи.",
+    "steps": [
+      "X завершает действие, которое ранее было начато.",
+      "Y оценивает результат действия как успешный.",
+      "Z испытывает чувство удовлетворения от завершения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 25,
+    "mechanism": "Создание ожидания и его удовлетворение.",
+    "steps": [
+      "X создаёт ожидание.",
+      "Y удовлетворяет это ожидание."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 1,
+    "mechanism": "Создание напряжения через преодоление трудностей.",
+    "steps": [
+      "X сталкивается с трудностью, которая требует усилий для преодоления.",
+      "X преодолевает трудность, показывая свою способность справляться с вызовами."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 5,
+    "mechanism": "Создание ощущения доступности и простоты.",
+    "steps": [
+      "X выбирает Y из-за его простоты и доступности.",
+      "Y легко чинится и его части доступны повсеместно.",
+      "Зритель ощущает, что Y является практичным и удобным выбором."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 16,
+    "mechanism": "Создание ощущения завершенности через подтверждение мнения.",
+    "steps": [
+      "X выражает мнение о Y.",
+      "X подтверждает мнение о Y, усиливая его значимость."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 22,
+    "mechanism": "Создание контраста для усиления впечатления от достижения.",
+    "steps": [
+      "X обладает ограничениями.",
+      "Y превосходит X в определенной области.",
+      "Z подчеркивает превосходство Y над X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 4,
+    "mechanism": "Создание неожиданного контраста для усиления впечатления.",
+    "steps": [
+      "X (ожидание) → Y (неожиданное действие) → Z (реакция окружающих)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 3,
+    "mechanism": "Contrast between old and new creates a sense of relief and progress.",
+    "steps": [
+      "X (old, inadequate) is replaced by Y (new, improved), creating a sense of relief."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 12,
+    "mechanism": "Создание неожиданного поворота через раскрытие скрытой информации.",
+    "steps": [
+      "X делает заявление, которое противоречит ожиданиям зрителя.",
+      "Зритель пересматривает предыдущие события с новой точки зрения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 21,
+    "mechanism": "Resolution improvement leads to clarity.",
+    "steps": [
+      "X is unclear due to low resolution.",
+      "Y improves resolution.",
+      "X becomes clear and distinct."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 13,
+    "mechanism": "Expectation of severe consequence is subverted by a lighter outcome.",
+    "steps": [
+      "X anticipates a harsh penalty for an action.",
+      "Y reveals mitigating factors that reduce the severity.",
+      "Z concludes with a surprisingly lenient consequence."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 19,
+    "mechanism": "Создание ощущения завершенности и удовлетворения у зрителя.",
+    "steps": [
+      "X упоминает, что Y уже существует.",
+      "Зритель понимает, что Z уже решено или достигнуто."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 7,
+    "mechanism": "Создание неожиданного контраста для юмора.",
+    "steps": [
+      "X создаёт ожидание серьёзности.",
+      "Y добавляет неожиданную лёгкость или простоту.",
+      "Контраст между X и Y вызывает улыбку."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 23,
+    "mechanism": "Создание контраста между двумя изменяющимися условиями для усиления восприятия изменений.",
+    "steps": [
+      "X (эффект преломления) остаётся значительным → Y (облака) становятся менее значительными → Контраст между X и Y усиливает восприятие изменений."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 17,
+    "mechanism": "Reassurance through practical solution.",
+    "steps": [
+      "X presents a problem or concern.",
+      "Y offers a simple, practical solution.",
+      "X feels reassured or relieved."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание кратковременного удовлетворения через выполнение задачи.",
+    "steps": [
+      "X сталкивается с задачей.",
+      "X выполняет задачу.",
+      "X получает небольшое удовлетворение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 20,
+    "mechanism": "Recognition of achievement through specific tools or methods.",
+    "steps": [
+      "X (tools/methods) → Recognition of achievement (seeing rare objects)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 15,
+    "mechanism": "Создание ожидания и его удовлетворение.",
+    "steps": [
+      "X вызывает ожидание.",
+      "Ожидание удовлетворяется через Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 8,
+    "mechanism": "Surprise through contrast between expectation and reality.",
+    "steps": [
+      "Expectation of difficulty → Reality of ease → Surprise and humor."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 9,
+    "mechanism": "Создание удовлетворения через выполнение задачи.",
+    "steps": [
+      "X сталкивается с задачей.",
+      "X решает задачу.",
+      "X испытывает удовлетворение от выполнения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 18,
+    "mechanism": "Создание ожидания и его удовлетворение через простое действие.",
+    "steps": [
+      "X создаёт ожидание простого действия.",
+      "Y выполняет это действие, удовлетворяя ожидание."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 10,
+    "mechanism": "Уменьшение значимости действия для создания легкости.",
+    "steps": [
+      "X утверждает, что действие не требует особых навыков.",
+      "Y воспринимает действие как более доступное и легкое."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  }
+]

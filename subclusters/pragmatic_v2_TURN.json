@@ -1,0 +1,253 @@
+{
+  "tag": "TURN",
+  "total_examples": 70,
+  "discovery_n": 38,
+  "holdout_n": 30,
+  "soft_target": [
+    8,
+    16
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Нарушение ожиданий",
+      "formula": "X → ожидание Y\n→ Y не происходит",
+      "abstract": "Создание неожиданности через нарушение ожиданий и контраст.",
+      "members": [
+        8,
+        10,
+        15,
+        22,
+        27,
+        66,
+        9,
+        13,
+        64,
+        61,
+        63,
+        62,
+        32,
+        68
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "Изменение восприятия",
+      "formula": "X → новая информация\n→ изменение восприятия",
+      "abstract": "Изменение восприятия или понимания ситуации через осознание или новую информацию.",
+      "members": [
+        6,
+        41,
+        46,
+        60,
+        2,
+        69
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Напряжение через угрозу",
+      "formula": "X → риск Y\n→ напряжение из-за последствий",
+      "abstract": "Создание напряжения через угрозу или возможность негативных последствий.",
+      "members": [
+        59,
+        44,
+        39,
+        48
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "Атмосфера безысходности",
+      "formula": "X → погружение в тьму\n→ Y как катализатор",
+      "abstract": "Создание атмосферы безысходности и упадка.",
+      "members": [
+        28,
+        31,
+        25
+      ],
+      "sort_order": 4
+    },
+    {
+      "id": 5,
+      "name": "Контраст страдания и системы",
+      "formula": "X → страдание от Y\n→ Z игнорирует X",
+      "abstract": "Создание эмоционального напряжения через контраст между личным страданием и безличной системой.",
+      "members": [
+        18
+      ],
+      "sort_order": 5
+    }
+  ],
+  "residual": [
+    65,
+    67,
+    7,
+    11,
+    29,
+    49,
+    37,
+    3,
+    57
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 70,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 65,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 7,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 67,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 57,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 11,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 29,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 49,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 37,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 14,
+        "cluster_id": 4,
+        "confidence": "medium"
+      },
+      {
+        "n": 3,
+        "cluster_id": 5,
+        "confidence": "medium"
+      },
+      {
+        "n": 19,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 43,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 35,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 16,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 54,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 5,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 21,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 52,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 12,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 26,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 45,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 1,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 38,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 55,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 20,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 4,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 30,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 56,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 23,
+        "cluster_id": 3,
+        "confidence": "high"
+      }
+    ],
+    "summary": "rechecked 30"
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

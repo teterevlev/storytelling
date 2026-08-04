@@ -1,0 +1,75 @@
+{
+  "tag": "TRANSITION_BRIDGE",
+  "total_examples": 11,
+  "discovery_n": 9,
+  "holdout_n": 2,
+  "soft_target": [
+    3,
+    8
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Contrast Emphasis",
+      "formula": "X → Y (contrast)\n→ Emphasis on Y",
+      "abstract": "Using contrast between two entities or events to emphasize the uniqueness or incompetence of one.",
+      "members": [
+        1,
+        5,
+        7,
+        3
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "Transition Bridge",
+      "formula": "X → Transition Element\n→ Y",
+      "abstract": "Transitioning between topics using a common element or characteristic as a bridge.",
+      "members": [
+        2,
+        9,
+        11
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Contrast Transition",
+      "formula": "X → Y (contrast)\n→ Transition via difference",
+      "abstract": "Facilitating a transition between topics by highlighting contrasts or differences.",
+      "members": [
+        10
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "Temporal Progression",
+      "formula": "Past (X) → Present (Y)\n→ Future (Z)",
+      "abstract": "Highlighting the passage of time to create a sense of progression and context.",
+      "members": [
+        6
+      ],
+      "sort_order": 4
+    }
+  ],
+  "residual": [],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 4,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 8,
+        "cluster_id": 2,
+        "confidence": "high"
+      }
+    ],
+    "summary": "Assignment of n=4 to cluster_id=3 is based on the use of contrast to facilitate a transition, which aligns with the 'Contrast Transition' mechanism. Assignment of n=8 to cluster_id=2 is due to the use of a transition element to bridge between topics, fitting the 'Transition Bridge' mechanism."
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

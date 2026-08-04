@@ -1,0 +1,284 @@
+{
+  "tag": "ARC_CLOSE",
+  "total_examples": 88,
+  "discovery_n": 48,
+  "holdout_n": 30,
+  "soft_target": [
+    8,
+    16
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Контраст ожиданий и реальности",
+      "formula": "X → контраст ожиданий и реальности\n→ эмоциональная реакция",
+      "abstract": "Контраст между ожиданиями и реальностью вызывает различные эмоциональные реакции, такие как удивление, юмор или разочарование.",
+      "members": [
+        10,
+        16,
+        21,
+        39,
+        81
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "Завершение и удовлетворение",
+      "formula": "X → завершение действия или периода\n→ чувство завершенности",
+      "abstract": "Завершение действия или периода вызывает чувство завершенности и удовлетворения, иногда сопровождаемое ностальгией.",
+      "members": [
+        23,
+        63,
+        69,
+        77
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Напряжение и ожидание последствий",
+      "formula": "X → ожидание или неизбежность негативных последствий\n→ напряжение",
+      "abstract": "Ожидание или неизбежность негативных последствий создают напряжение и ощущение опасности.",
+      "members": [
+        5,
+        7,
+        25,
+        31,
+        50
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "Осознание изменений или потерь",
+      "formula": "X → осознание изменений или потерь\n→ чувство утраты",
+      "abstract": "Осознание изменений или потерь вызывает чувство утраты или сожаления.",
+      "members": [
+        30,
+        55
+      ],
+      "sort_order": 4
+    },
+    {
+      "id": 5,
+      "name": "Ожидание будущих событий",
+      "formula": "X → ожидание будущих событий\n→ надежда",
+      "abstract": "Создание ожидания будущих событий или изменений вызывает надежду.",
+      "members": [
+        86,
+        87
+      ],
+      "sort_order": 5
+    },
+    {
+      "id": 6,
+      "name": "Неизбежность и отсутствие выбора",
+      "formula": "X → осознание неизбежности\n→ отсутствие выбора",
+      "abstract": "Осознание неизбежности или отсутствия выбора вызывает чувство завершенности.",
+      "members": [
+        22,
+        60
+      ],
+      "sort_order": 6
+    },
+    {
+      "id": 7,
+      "name": "Ностальгия через сравнение",
+      "formula": "X → сравнение прошлого и настоящего\n→ ностальгия",
+      "abstract": "Ностальгия создается через сравнение прошлого и настоящего.",
+      "members": [
+        74
+      ],
+      "sort_order": 7
+    },
+    {
+      "id": 8,
+      "name": "Удовлетворение от преодоления",
+      "formula": "X → преодоление трудностей\n→ удовлетворение",
+      "abstract": "Удовлетворение достигается через преодоление трудностей.",
+      "members": [
+        42
+      ],
+      "sort_order": 8
+    }
+  ],
+  "residual": [
+    15,
+    29,
+    76,
+    83,
+    88,
+    6,
+    36,
+    49,
+    84,
+    18,
+    73,
+    85,
+    78,
+    13,
+    24,
+    40,
+    57,
+    79,
+    2
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 15,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 29,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 76,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 14,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 83,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 88,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 47,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 35,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 82,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 6,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 36,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 49,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 84,
+        "cluster_id": 5,
+        "confidence": "medium"
+      },
+      {
+        "n": 18,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 73,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 85,
+        "cluster_id": 5,
+        "confidence": "medium"
+      },
+      {
+        "n": 78,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 13,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 24,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 17,
+        "cluster_id": 6,
+        "confidence": "high"
+      },
+      {
+        "n": 80,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 11,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 40,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 57,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 79,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 2,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 12,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 20,
+        "cluster_id": 8,
+        "confidence": "medium"
+      },
+      {
+        "n": 46,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 3,
+        "cluster_id": 3,
+        "confidence": "medium"
+      }
+    ],
+    "summary": "rechecked 30"
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

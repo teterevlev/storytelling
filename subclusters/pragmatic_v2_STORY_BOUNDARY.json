@@ -1,0 +1,175 @@
+{
+  "tag": "STORY_BOUNDARY",
+  "total_examples": 31,
+  "discovery_n": 20,
+  "holdout_n": 11,
+  "soft_target": [
+    5,
+    12
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Ожидание и интрига",
+      "formula": "X → ожидание\n→ интрига",
+      "abstract": "Создание ожидания и интереса через упоминание значимых объектов или событий.",
+      "members": [
+        2,
+        5,
+        14,
+        28
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "cluster-2",
+      "formula": "",
+      "abstract": "Создание напряжения через нестабильность или риск.",
+      "members": [
+        15,
+        21
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "cluster-3",
+      "formula": "",
+      "abstract": "Создание интриги и напряжения через постепенное или неожиданное раскрытие информации.",
+      "members": [
+        22,
+        25
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "cluster-4",
+      "formula": "",
+      "abstract": "Создание чувства древности, таинственности или ностальгии через упоминание объектов или событий.",
+      "members": [
+        3,
+        18,
+        31
+      ],
+      "sort_order": 4
+    },
+    {
+      "id": 5,
+      "name": "cluster-5",
+      "formula": "",
+      "abstract": "Создание ассоциации с надежностью или знакомством через упоминание известных объектов или личностей.",
+      "members": [
+        7,
+        23
+      ],
+      "sort_order": 5
+    },
+    {
+      "id": 6,
+      "name": "cluster-6",
+      "formula": "",
+      "abstract": "Создание контекста или сцены через введение новых элементов или технологий.",
+      "members": [
+        4,
+        8
+      ],
+      "sort_order": 6
+    },
+    {
+      "id": 7,
+      "name": "cluster-7",
+      "formula": "",
+      "abstract": "Создание напряжения через раскрытие сложных или специализированных планов и схем.",
+      "members": [
+        19,
+        24
+      ],
+      "sort_order": 7
+    }
+  ],
+  "residual": [
+    1,
+    13,
+    26,
+    27
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 27,
+        "cluster_id": 5,
+        "confidence": "high"
+      },
+      {
+        "n": 26,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 13,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 11,
+        "cluster_id": 5,
+        "confidence": "medium"
+      },
+      {
+        "n": 20,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 29,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 6,
+        "cluster_id": 4,
+        "confidence": "high"
+      },
+      {
+        "n": 1,
+        "cluster_id": 4,
+        "confidence": "medium"
+      },
+      {
+        "n": 12,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 30,
+        "cluster_id": 6,
+        "confidence": "medium"
+      },
+      {
+        "n": 16,
+        "cluster_id": 4,
+        "confidence": "high"
+      },
+      {
+        "n": 17,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 10,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 9,
+        "cluster_id": 1,
+        "confidence": "high"
+      }
+    ],
+    "summary": "rechecked 14"
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

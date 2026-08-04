@@ -1,0 +1,373 @@
+tags: 29 ['TENSION', 'CONTEXT', 'SCENE', 'PROOF', 'TENSION_PEAK', 'QUESTION_STACK', 'OPEN_LOOP', 'ARC_OPEN', 'RELIEF', 'ARC_CLOSE'] ...
+[TENSION] keep existing v2
+[CONTEXT] n=391 soft_target=10-18
+  [CONTEXT] abstracting 110...
+  [CONTEXT] abstracts 10/110
+  [CONTEXT] abstracts 20/110
+  [CONTEXT] abstracts 30/110
+  [CONTEXT] abstracts 40/110
+  [CONTEXT] abstracts 50/110
+  [CONTEXT] abstracts 60/110
+  [CONTEXT] abstracts 70/110
+  [CONTEXT] abstracts 80/110
+  [CONTEXT] abstracts 90/110
+  [CONTEXT] abstracts 100/110
+  [CONTEXT] abstracts 110/110
+[CONTEXT] cluster 80...
+[CONTEXT] revise...
+[CONTEXT] name...
+[CONTEXT] holdout 30...
+[CONTEXT] done clusters=16 residual=24 leaks=[]
+[SCENE] n=176 soft_target=10-18
+  [SCENE] abstracting 110...
+  [SCENE] abstracts 10/110
+  [SCENE] abstracts 20/110
+  [SCENE] abstracts 30/110
+  [SCENE] abstracts 40/110
+  [SCENE] abstracts 50/110
+  [SCENE] abstracts 60/110
+  [SCENE] abstracts 70/110
+  [SCENE] abstracts 80/110
+  [SCENE] abstracts 90/110
+  [SCENE] abstracts 100/110
+  [SCENE] abstracts 110/110
+[SCENE] cluster 80...
+[SCENE] revise...
+[SCENE] name...
+[SCENE] holdout 30...
+[SCENE] done clusters=18 residual=9 leaks=[]
+[PROOF] n=134 soft_target=10-18
+  [PROOF] abstracting 103...
+  [PROOF] abstracts 10/103
+  [PROOF] abstracts 20/103
+  [PROOF] abstracts 30/103
+  [PROOF] abstracts 40/103
+  [PROOF] abstracts 50/103
+  [PROOF] abstracts 60/103
+  [PROOF] abstracts 70/103
+  [PROOF] abstracts 80/103
+  [PROOF] abstracts 90/103
+  [PROOF] abstracts 100/103
+  [PROOF] abstracts 103/103
+[PROOF] cluster 73...
+[PROOF] revise...
+[PROOF] name...
+[PROOF] holdout 30...
+[PROOF] done clusters=18 residual=27 leaks=[]
+[TENSION_PEAK] n=126 soft_target=10-18
+  [TENSION_PEAK] abstracting 99...
+  [TENSION_PEAK] abstracts 10/99
+  [TENSION_PEAK] abstracts 20/99
+  [TENSION_PEAK] abstracts 30/99
+  [TENSION_PEAK] abstracts 40/99
+  [TENSION_PEAK] abstracts 50/99
+  [TENSION_PEAK] abstracts 60/99
+  [TENSION_PEAK] abstracts 70/99
+  [TENSION_PEAK] abstracts 80/99
+  [TENSION_PEAK] abstracts 90/99
+  [TENSION_PEAK] abstracts 99/99
+[TENSION_PEAK] cluster 69...
+[TENSION_PEAK] revise...
+[TENSION_PEAK] name...
+[TENSION_PEAK] holdout 30...
+[TENSION_PEAK] done clusters=16 residual=15 leaks=[]
+[QUESTION_STACK] n=126 soft_target=10-18
+  [QUESTION_STACK] abstracting 99...
+  [QUESTION_STACK] abstracts 10/99
+  [QUESTION_STACK] abstracts 20/99
+  [QUESTION_STACK] abstracts 30/99
+  [QUESTION_STACK] abstracts 40/99
+  [QUESTION_STACK] abstracts 50/99
+  [QUESTION_STACK] abstracts 60/99
+  [QUESTION_STACK] abstracts 70/99
+  [QUESTION_STACK] abstracts 80/99
+  [QUESTION_STACK] abstracts 90/99
+  [QUESTION_STACK] abstracts 99/99
+[QUESTION_STACK] cluster 69...
+[QUESTION_STACK] revise...
+[QUESTION_STACK] name...
+[QUESTION_STACK] holdout 30...
+[QUESTION_STACK] done clusters=18 residual=5 leaks=[]
+[OPEN_LOOP] keep existing v2
+[ARC_OPEN] n=100 soft_target=8-16
+  [ARC_OPEN] abstracting 85...
+  [ARC_OPEN] abstracts 10/85
+  [ARC_OPEN] abstracts 20/85
+  [ARC_OPEN] abstracts 30/85
+  [ARC_OPEN] abstracts 40/85
+  [ARC_OPEN] abstracts 50/85
+  [ARC_OPEN] abstracts 60/85
+  [ARC_OPEN] abstracts 70/85
+  [ARC_OPEN] abstracts 80/85
+  [ARC_OPEN] abstracts 85/85
+[ARC_OPEN] cluster 55...
+[ARC_OPEN] revise...
+[ARC_OPEN] name...
+Traceback (most recent call last):
+  File "/Users/oleg/code/py/yt-scenarios/storytelling/subclusters/run_pragmatic_all.py", line 631, in <module>
+    main()
+  File "/Users/oleg/code/py/yt-scenarios/storytelling/subclusters/run_pragmatic_all.py", line 515, in main
+    results[tag] = process_tag(cli, tag, blocks)
+  File "/Users/oleg/code/py/yt-scenarios/storytelling/subclusters/run_pragmatic_all.py", line 390, in process_tag
+    catalog = to_catalog(revised, named)
+  File "/Users/oleg/code/py/yt-scenarios/storytelling/subclusters/run_pragmatic_all.py", line 290, in to_catalog
+    tid = int(c["temp_id"])
+KeyError: 'temp_id'
+tags: 29 ['TENSION', 'CONTEXT', 'SCENE', 'PROOF', 'TENSION_PEAK', 'QUESTION_STACK', 'OPEN_LOOP', 'ARC_OPEN', 'RELIEF', 'ARC_CLOSE'] ...
+[TENSION] resume existing (10 clusters)
+[CONTEXT] resume existing (16 clusters)
+[SCENE] resume existing (18 clusters)
+[PROOF] resume existing (18 clusters)
+[TENSION_PEAK] resume existing (16 clusters)
+[QUESTION_STACK] resume existing (18 clusters)
+[OPEN_LOOP] resume existing (6 clusters)
+[ARC_OPEN] n=100 soft_target=8-16
+  [ARC_OPEN] abstracts cache hit 85
+[ARC_OPEN] cluster 55...
+[ARC_OPEN] revise...
+[ARC_OPEN] name...
+[ARC_OPEN] holdout 30...
+[ARC_OPEN] done clusters=15 residual=14 leaks=[]
+[RELIEF] n=94 soft_target=8-16
+  [RELIEF] abstracting 81...
+  [RELIEF] abstracts 10/81
+  [RELIEF] abstracts 20/81
+  [RELIEF] abstracts 30/81
+  [RELIEF] abstracts 40/81
+  [RELIEF] abstracts 50/81
+  [RELIEF] abstracts 60/81
+  [RELIEF] abstracts 70/81
+  [RELIEF] abstracts 80/81
+  [RELIEF] abstracts 81/81
+[RELIEF] cluster 51...
+[RELIEF] revise...
+[RELIEF] name...
+[RELIEF] holdout 30...
+[RELIEF] done clusters=9 residual=7 leaks=[]
+[ARC_CLOSE] n=88 soft_target=8-16
+  [ARC_CLOSE] abstracting 78...
+  [ARC_CLOSE] abstracts 10/78
+  [ARC_CLOSE] abstracts 20/78
+  [ARC_CLOSE] abstracts 30/78
+  [ARC_CLOSE] abstracts 40/78
+  [ARC_CLOSE] abstracts 50/78
+  [ARC_CLOSE] abstracts 60/78
+  [ARC_CLOSE] abstracts 70/78
+  [ARC_CLOSE] abstracts 78/78
+[ARC_CLOSE] cluster 48...
+[ARC_CLOSE] revise...
+[ARC_CLOSE] name...
+[ARC_CLOSE] holdout 30...
+[ARC_CLOSE] done clusters=8 residual=19 leaks=[]
+[TURN] n=70 soft_target=8-16
+  [TURN] abstracting 68...
+  [TURN] abstracts 10/68
+  [TURN] abstracts 20/68
+  [TURN] abstracts 30/68
+  [TURN] abstracts 40/68
+  [TURN] abstracts 50/68
+  [TURN] abstracts 60/68
+  [TURN] abstracts 68/68
+[TURN] cluster 38...
+[TURN] revise...
+[TURN] name...
+[TURN] holdout 30...
+[TURN] done clusters=5 residual=9 leaks=[]
+[FALSE_PROMISE] n=52 soft_target=8-16
+  [FALSE_PROMISE] abstracting 52...
+  [FALSE_PROMISE] abstracts 10/52
+  [FALSE_PROMISE] abstracts 20/52
+  [FALSE_PROMISE] abstracts 30/52
+  [FALSE_PROMISE] abstracts 40/52
+  [FALSE_PROMISE] abstracts 50/52
+  [FALSE_PROMISE] abstracts 52/52
+[FALSE_PROMISE] cluster 28...
+[FALSE_PROMISE] revise...
+[FALSE_PROMISE] name...
+[FALSE_PROMISE] holdout 24...
+[FALSE_PROMISE] done clusters=8 residual=5 leaks=[]
+[PACING_BEAT] n=51 soft_target=8-16
+  [PACING_BEAT] abstracting 51...
+  [PACING_BEAT] abstracts 10/51
+  [PACING_BEAT] abstracts 20/51
+  [PACING_BEAT] abstracts 30/51
+  [PACING_BEAT] abstracts 40/51
+  [PACING_BEAT] abstracts 50/51
+  [PACING_BEAT] abstracts 51/51
+[PACING_BEAT] cluster 28...
+[PACING_BEAT] revise...
+[PACING_BEAT] name...
+[PACING_BEAT] holdout 23...
+[PACING_BEAT] done clusters=14 residual=6 leaks=[]
+[CLOSE_LOOP] n=42 soft_target=5-12
+  [CLOSE_LOOP] abstracting 42...
+  [CLOSE_LOOP] abstracts 10/42
+  [CLOSE_LOOP] abstracts 20/42
+  [CLOSE_LOOP] abstracts 30/42
+  [CLOSE_LOOP] abstracts 40/42
+  [CLOSE_LOOP] abstracts 42/42
+[CLOSE_LOOP] cluster 23...
+[CLOSE_LOOP] revise...
+[CLOSE_LOOP] name...
+[CLOSE_LOOP] holdout 19...
+[CLOSE_LOOP] done clusters=5 residual=3 leaks=[]
+[STORY_BOUNDARY] n=31 soft_target=5-12
+  [STORY_BOUNDARY] abstracting 31...
+  [STORY_BOUNDARY] abstracts 10/31
+  [STORY_BOUNDARY] abstracts 20/31
+  [STORY_BOUNDARY] abstracts 30/31
+  [STORY_BOUNDARY] abstracts 31/31
+[STORY_BOUNDARY] cluster 20...
+[STORY_BOUNDARY] revise...
+[STORY_BOUNDARY] name...
+[STORY_BOUNDARY] holdout 11...
+[STORY_BOUNDARY] done clusters=7 residual=4 leaks=[]
+[MICRO_PAYOFF] n=25 soft_target=5-12
+  [MICRO_PAYOFF] abstracting 25...
+  [MICRO_PAYOFF] abstracts 10/25
+  [MICRO_PAYOFF] abstracts 20/25
+  [MICRO_PAYOFF] abstracts 25/25
+[MICRO_PAYOFF] cluster 20...
+[MICRO_PAYOFF] revise...
+[MICRO_PAYOFF] name...
+[MICRO_PAYOFF] holdout 5...
+[MICRO_PAYOFF] done clusters=7 residual=3 leaks=[]
+[TRANSITION_BRIDGE] n=11 soft_target=3-8
+  [TRANSITION_BRIDGE] abstracting 11...
+  [TRANSITION_BRIDGE] abstracts 10/11
+  [TRANSITION_BRIDGE] abstracts 11/11
+[TRANSITION_BRIDGE] cluster 9...
+[TRANSITION_BRIDGE] revise...
+[TRANSITION_BRIDGE] name...
+[TRANSITION_BRIDGE] holdout 2...
+[TRANSITION_BRIDGE] done clusters=4 residual=0 leaks=[]
+[VIDEO_PROMISE] n=9 soft_target=3-8
+  [VIDEO_PROMISE] abstracting 9...
+  [VIDEO_PROMISE] abstracts 9/9
+[VIDEO_PROMISE] cluster 7...
+[VIDEO_PROMISE] revise...
+[VIDEO_PROMISE] name...
+[VIDEO_PROMISE] holdout 2...
+[VIDEO_PROMISE] done clusters=1 residual=0 leaks=[]
+[VIDEO_OUTRO] n=4 soft_target=1-3
+  [VIDEO_OUTRO] abstracting 4...
+  [VIDEO_OUTRO] abstracts 4/4
+[VIDEO_OUTRO] cluster 3...
+[VIDEO_OUTRO] revise...
+[VIDEO_OUTRO] name...
+[VIDEO_OUTRO] holdout 1...
+[VIDEO_OUTRO] done clusters=2 residual=0 leaks=[]
+[CTA] n=4 soft_target=1-3
+  [CTA] abstracting 4...
+  [CTA] abstracts 4/4
+[CTA] cluster 3...
+[CTA] revise...
+[CTA] name...
+[CTA] holdout 1...
+[CTA] done clusters=1 residual=0 leaks=[]
+[VIDEO_HOOK] n=3 soft_target=1-1
+  [VIDEO_HOOK] abstracting 3...
+  [VIDEO_HOOK] abstracts 3/3
+[VIDEO_HOOK] cluster 3...
+[VIDEO_HOOK] revise...
+[VIDEO_HOOK] name...
+[VIDEO_HOOK] holdout 0...
+[VIDEO_HOOK] done clusters=2 residual=0 leaks=[]
+[CUSTOM:IRONY] n=2 soft_target=1-1
+  [CUSTOM:IRONY] abstracting 2...
+  [CUSTOM:IRONY] abstracts 2/2
+[CUSTOM:POETRY] n=1 soft_target=1-1
+  [CUSTOM:POETRY] abstracting 1...
+  [CUSTOM:POETRY] abstracts 1/1
+[CUSTOM:MUSIC] n=1 soft_target=1-1
+  [CUSTOM:MUSIC] abstracting 1...
+  [CUSTOM:MUSIC] abstracts 1/1
+[CUSTOM:INTRODUCTION] n=1 soft_target=1-1
+  [CUSTOM:INTRODUCTION] abstracting 1...
+  [CUSTOM:INTRODUCTION] abstracts 1/1
+[CUSTOM:INCOMPLETE] n=1 soft_target=1-1
+  [CUSTOM:INCOMPLETE] abstracting 1...
+  [CUSTOM:INCOMPLETE] abstracts 1/1
+[CUSTOM:BENEFITS] n=1 soft_target=1-1
+  [CUSTOM:BENEFITS] abstracting 1...
+  [CUSTOM:BENEFITS] abstracts 1/1
+[CUSTOM:AGREEMENT] n=1 soft_target=1-1
+  [CUSTOM:AGREEMENT] abstracting 1...
+  [CUSTOM:AGREEMENT] abstracts 1/1
+[ANALOGY] n=1 soft_target=1-1
+  [ANALOGY] abstracting 1...
+  [ANALOGY] abstracts 1/1
+wrote /Users/oleg/code/py/yt-scenarios/storytelling/subclusters/clusters_canon.md
+# Pragmatic v2 — all tags
+
+OK=29  WARN=0  BAD=0
+
+| Tag | n | soft | clusters | residual | holdout | leaks | verdict |
+|-----|---|------|----------|----------|---------|-------|---------|
+| TENSION | 487 | 10–18 | 10 | 24 | 30/30 | — | OK |
+| CONTEXT | 391 | 10–18 | 16 | 24 | 1/1 | — | OK |
+| SCENE | 176 | 10–18 | 18 | 9 | 1/1 | — | OK |
+| PROOF | 134 | 10–18 | 18 | 27 | 1/1 | — | OK |
+| TENSION_PEAK | 126 | 10–18 | 16 | 15 | 1/1 | — | OK |
+| QUESTION_STACK | 126 | 10–18 | 18 | 5 | 1/1 | — | OK |
+| OPEN_LOOP | 102 | 8–16 | 6 | 10 | 30/30 | — | OK |
+| ARC_OPEN | 100 | 8–16 | 15 | 14 | 1/1 | — | OK |
+| RELIEF | 94 | 8–16 | 9 | 7 | 1/1 | — | OK |
+| ARC_CLOSE | 88 | 8–16 | 8 | 19 | 1/1 | — | OK |
+| TURN | 70 | 8–16 | 5 | 9 | 1/1 | — | OK |
+| FALSE_PROMISE | 52 | 8–16 | 8 | 5 | 1/1 | — | OK |
+| PACING_BEAT | 51 | 8–16 | 14 | 6 | 23/23 | — | OK |
+| CLOSE_LOOP | 42 | 5–12 | 5 | 3 | 1/1 | — | OK |
+| STORY_BOUNDARY | 31 | 5–12 | 7 | 4 | 1/1 | — | OK |
+| MICRO_PAYOFF | 25 | 5–12 | 7 | 3 | 1/1 | — | OK |
+| TRANSITION_BRIDGE | 11 | 3–8 | 4 | 0 | 2/2 | — | OK |
+| VIDEO_PROMISE | 9 | 3–8 | 1 | 0 | 1/1 | — | OK |
+| VIDEO_OUTRO | 4 | 1–3 | 2 | 0 | 1/1 | — | OK |
+| CTA | 4 | 1–3 | 1 | 0 | 1/1 | — | OK |
+| VIDEO_HOOK | 3 | 1–1 | 2 | 0 | 0/0 | — | OK |
+| CUSTOM:IRONY | 2 | 1–1 | 1 | 0 | 0/0 | — | OK |
+| CUSTOM:POETRY | 1 | 1–1 | 1 | 0 | 0/0 | — | OK |
+| CUSTOM:MUSIC | 1 | 1–1 | 1 | 0 | 0/0 | — | OK |
+| CUSTOM:INTRODUCTION | 1 | 1–1 | 1 | 0 | 0/0 | — | OK |
+| CUSTOM:INCOMPLETE | 1 | 1–1 | 1 | 0 | 0/0 | — | OK |
+| CUSTOM:BENEFITS | 1 | 1–1 | 1 | 0 | 0/0 | — | OK |
+| CUSTOM:AGREEMENT | 1 | 1–1 | 1 | 0 | 0/0 | — | OK |
+| ANALOGY | 1 | 1–1 | 1 | 0 | 0/0 | — | OK |
+
+## Notes
+
+- OK: без доменных утечек, каталог непустой, holdout в основном в whitelist.
+- COARSE: мало кластеров относительно мягкого ориентира (терпимо).
+- WEAK_HOLDOUT: holdout часто в residual.
+- LEAK/EMPTY: смотреть вручную.
+
+seeded 214 demoted 0
+  PROOF: 18
+  QUESTION_STACK: 18
+  SCENE: 18
+  CONTEXT: 16
+  TENSION_PEAK: 16
+  ARC_OPEN: 15
+  PACING_BEAT: 14
+  TENSION: 10
+  RELIEF: 9
+  ARC_CLOSE: 8
+  FALSE_PROMISE: 8
+  MICRO_PAYOFF: 7
+  STORY_BOUNDARY: 7
+  OPEN_LOOP: 6
+  CLOSE_LOOP: 5
+  TURN: 5
+  TRANSITION_BRIDGE: 4
+  VIDEO_HOOK: 2
+  VIDEO_OUTRO: 2
+  ANALOGY: 1
+  CTA: 1
+  CUSTOM:AGREEMENT: 1
+  CUSTOM:BENEFITS: 1
+  CUSTOM:INCOMPLETE: 1
+  CUSTOM:INTRODUCTION: 1
+  CUSTOM:IRONY: 1
+  CUSTOM:MUSIC: 1
+  CUSTOM:POETRY: 1
+  VIDEO_PROMISE: 1

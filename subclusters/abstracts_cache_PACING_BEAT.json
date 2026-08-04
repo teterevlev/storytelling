@@ -1,0 +1,572 @@
+[
+  {
+    "n": 3,
+    "mechanism": "Создание ожидания через контраст.",
+    "steps": [
+      "X → ожидание Y",
+      "Y → контраст с X"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 9,
+    "mechanism": "Создание ощущения повторяющегося действия для усиления восприятия рутины или массовости.",
+    "steps": [
+      "X повторяется несколько раз, чтобы подчеркнуть его распространенность или обыденность."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 23,
+    "mechanism": "Создание ощущения масштаба и значимости через упоминание расстояний.",
+    "steps": [
+      "X упоминает расстояния → Y задумывается о масштабе и значимости ситуации."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 40,
+    "mechanism": "Создание напряжения и ожидания через намек на дополнительные условия или проблемы.",
+    "steps": [
+      "X упоминает условие или проблему.",
+      "X добавляет, что это не единственное условие или проблема.",
+      "Зритель ожидает раскрытия дополнительных условий или проблем."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 51,
+    "mechanism": "Создание ожидания и интереса через возврат к предыдущим событиям.",
+    "steps": [
+      "X → возврат к предыдущим событиям → ожидание и интерес"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 2,
+    "mechanism": "Ускорение темпа повествования через введение рационального подхода.",
+    "steps": [
+      "X предлагает использовать рациональный подход, чтобы быстрее решить проблему.",
+      "Y принимает предложение X, что ускоряет развитие событий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 26,
+    "mechanism": "Building anticipation through a pause or transition.",
+    "steps": [
+      "X introduces a pause or transition → Audience anticipates what follows"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 8,
+    "mechanism": "Создание акцента на важности информации.",
+    "steps": [
+      "X использует паузу и изменение тона, чтобы подчеркнуть значимость следующего сообщения.",
+      "Y привлекает внимание аудитории, создавая ожидание важного заявления.",
+      "Z усиливает восприятие, делая информацию более запоминающейся."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 50,
+    "mechanism": "Создание ожидания и последующего удовлетворения через повторение и вариацию.",
+    "steps": [
+      "X повторяется несколько раз, создавая ожидание.",
+      "Вариация X появляется, удовлетворяя ожидание."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 4,
+    "mechanism": "Establishes authority and urgency.",
+    "steps": [
+      "X receives a command from a higher authority.",
+      "X feels the pressure to act quickly."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 7,
+    "mechanism": "Создание напряжения через постепенное увеличение риска или сложности.",
+    "steps": [
+      "X увеличивается каждый день, создавая ощущение нарастающей угрозы или давления."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 22,
+    "mechanism": "Создание интриги и ожидания у зрителя.",
+    "steps": [
+      "X упоминает нечто неопределённое или загадочное.",
+      "Y не раскрывает детали сразу.",
+      "Z вызывает у зрителя желание узнать больше."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 49,
+    "mechanism": "Shift focus back to a previous topic or element to maintain continuity and coherence.",
+    "steps": [
+      "X introduces a new topic or element.",
+      "Y explores or elaborates on the new topic or element.",
+      "Z shifts focus back to X to maintain continuity."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 1,
+    "mechanism": "Establishing clarity and setting expectations.",
+    "steps": [
+      "X initiates a conversation to clarify intentions or expectations.",
+      "Y responds or listens, leading to a mutual understanding or agreement."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 5,
+    "mechanism": "Создание напряжения через ожидание и контраст.",
+    "steps": [
+      "X представляет два объекта.",
+      "Y описывает первый объект, создавая ожидание.",
+      "Z описывает второй объект, контрастируя с первым."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 20,
+    "mechanism": "Создание паузы для размышления и усиления значимости сказанного.",
+    "steps": [
+      "X делает паузу, чтобы подчеркнуть важность своих слов.",
+      "Y использует неформальные выражения, чтобы смягчить тон.",
+      "Z воспринимает паузу как момент для обдумывания и оценки сказанного."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 45,
+    "mechanism": "Создание напряжения через вопрос и его немедленный ответ.",
+    "steps": [
+      "X задает вопрос, вызывая у Y интерес и ожидание.",
+      "X сразу же отвечает на вопрос, удовлетворяя любопытство Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 10,
+    "mechanism": "Создание ощущения честности и зрелости.",
+    "steps": [
+      "X предлагает Y рассмотреть ситуацию объективно и без иллюзий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 27,
+    "mechanism": "Создание напряжения через сомнение и его разрешение.",
+    "steps": [
+      "X вызывает сомнение в своей правоте.",
+      "Y подтверждает или опровергает сомнение X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 46,
+    "mechanism": "Создание ощущения завершенности и удовлетворения.",
+    "steps": [
+      "X → все элементы истории объединяются в единое целое",
+      "Y → зритель осознает, что все части истории имеют смысл",
+      "Z → зритель испытывает чувство завершенности и удовлетворения"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 35,
+    "mechanism": "Clarification and anticipation.",
+    "steps": [
+      "X clarifies a misunderstanding, setting up anticipation for the next topic."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание напряжения и ожидания.",
+    "steps": [
+      "X упоминает проблему Y, но добавляет, что это лишь часть более сложной ситуации.",
+      "Это вызывает у зрителя чувство, что есть более серьёзная проблема Z, которая ещё не раскрыта.",
+      "Зритель начинает ожидать раскрытия Z, что усиливает напряжение и интерес."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 41,
+    "mechanism": "Создание ожидания через упоминание инструмента или средства.",
+    "steps": [
+      "X упоминается как средство для достижения Y.",
+      "Возникает ожидание, как X поможет в достижении Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 6,
+    "mechanism": "Создание ожидания и вовлечения через обещание раскрытия сложной информации.",
+    "steps": [
+      "X предлагает Y углубиться в сложную тему.",
+      "Y ожидает, что X раскроет детали.",
+      "Y вовлекается в процесс ожидания и предвкушения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 24,
+    "mechanism": "Создание напряжения через ожидание и изменение ситуации.",
+    "steps": [
+      "X создаёт ожидание.",
+      "Y меняет ситуацию, усиливая напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 17,
+    "mechanism": "Создание напряжения через намеренное действие.",
+    "steps": [
+      "X делает что-то намеренно, чтобы вызвать реакцию у Y.",
+      "Y осознает намерение X и реагирует на это.",
+      "Напряжение между X и Y усиливается."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 47,
+    "mechanism": "Создание контраста для усиления восприятия.",
+    "steps": [
+      "X и Y представлены как сравнение.",
+      "Подчеркиваются различия между X и Y.",
+      "Зритель оценивает преимущества и недостатки каждого.",
+      "Зритель формирует мнение о предпочтительности одного из них."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 38,
+    "mechanism": "Создание ожидания и вовлечение аудитории.",
+    "steps": [
+      "X сообщает о предстоящем обсуждении темы.",
+      "Y упоминает, что будет рассмотрено больше, чем заявлено.",
+      "Z вызывает интерес и ожидание у аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 37,
+    "mechanism": "Создание паузы для усиления значимости сказанного.",
+    "steps": [
+      "X → пауза → Y → усиление значимости"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 42,
+    "mechanism": "Создание ожидания и углубление в тему.",
+    "steps": [
+      "X упоминается вскользь → Y предлагает вернуться к X → Z обещает более детальное обсуждение X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 33,
+    "mechanism": "Создание неопределенности и напряжения через выражение сомнения.",
+    "steps": [
+      "X выражает сомнение в Y.",
+      "Зритель чувствует неопределенность из-за отсутствия ясности.",
+      "Напряжение возрастает, так как исход остается неизвестным."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 48,
+    "mechanism": "Создание ожидания и напряжения через повторение.",
+    "steps": [
+      "X повторяется, чтобы усилить ожидание и напряжение.",
+      "Y упоминается снова, чтобы подчеркнуть его важность.",
+      "Z создается как кульминация ожидания."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 43,
+    "mechanism": "Создание контраста для усиления восприятия.",
+    "steps": [
+      "X утверждение → Y смягчающее замечание"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 16,
+    "mechanism": "Создание паузы для усиления внимания и ожидания.",
+    "steps": [
+      "X → Введение паузы через упоминание имени → Усиление внимания и ожидания у зрителя"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 29,
+    "mechanism": "Создание ожидания и напряжения через постепенное раскрытие информации.",
+    "steps": [
+      "X упоминается вскользь, создавая интерес.",
+      "Y добавляется, усиливая интригу.",
+      "Z раскрывается, удовлетворяя любопытство."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 39,
+    "mechanism": "Создание ожидания и вовлечение через интерактивность.",
+    "steps": [
+      "X предлагает проверить что-то ещё, создавая ожидание.",
+      "Y вовлекается в процесс, следуя предложению X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 21,
+    "mechanism": "Создание напряжения через краткий ответ.",
+    "steps": [
+      "X задает вопрос или делает заявление.",
+      "Y отвечает коротко, используя одно слово.",
+      "Z ощущает напряжение или неопределенность из-за краткости ответа."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 44,
+    "mechanism": "Уточнение запроса для получения ясности.",
+    "steps": [
+      "X задает общий вопрос → Y получает неясный ответ → X уточняет вопрос → Y дает конкретный ответ."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 31,
+    "mechanism": "Creating a sense of mystery and suspense.",
+    "steps": [
+      "X introduces an unexplained disappearance.",
+      "Y highlights the absence and its impact.",
+      "Z leaves the audience questioning the reasons behind the disappearance."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 15,
+    "mechanism": "Создание паузы для усиления эмоционального воздействия.",
+    "steps": [
+      "X делает утверждение.",
+      "Y отвечает коротко и уверенно.",
+      "Пауза создаёт напряжение или акцентирует внимание на сказанном."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 36,
+    "mechanism": "Создание ожидания и его удовлетворение через повторение действия.",
+    "steps": [
+      "X происходит, создавая ожидание.",
+      "X повторяется, удовлетворяя ожидание."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 32,
+    "mechanism": "Создание напряжения через ожидание и задержку.",
+    "steps": [
+      "X ожидает Y, но Y задерживается.",
+      "X начинает сомневаться в Y.",
+      "Напряжение нарастает, пока Y не происходит."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 34,
+    "mechanism": "Создание напряжения через временное отступление.",
+    "steps": [
+      "X происходит, затем временное отступление от основного действия, чтобы создать ожидание.",
+      "Возвращение к X, усиливающее интерес и напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 28,
+    "mechanism": "Создание ожидания и вовлечение через предложение совместного действия.",
+    "steps": [
+      "X предлагает Y сделать что-то вместе.",
+      "Y соглашается с предложением X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 19,
+    "mechanism": "Создание ощущения решимости и готовности к действию.",
+    "steps": [
+      "X выражает готовность к Y.",
+      "X демонстрирует решимость и уверенность.",
+      "Зритель ощущает напряжение и ожидание действия."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 18,
+    "mechanism": "Создание момента осознания или принятия.",
+    "steps": [
+      "X → осознает или принимает информацию.",
+      "Y → подтверждает это словами или действиями."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 14,
+    "mechanism": "Создание паузы для усиления внимания и ожидания.",
+    "steps": [
+      "X произносит имя Y, создавая паузу.",
+      "Пауза привлекает внимание и вызывает ожидание.",
+      "Зритель ожидает дальнейшего развития или реакции."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 12,
+    "mechanism": "Создание ожидания и напряжения через паузу.",
+    "steps": [
+      "X происходит, затем пауза, создающая ожидание.",
+      "Y следует после паузы, усиливая эффект от X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 13,
+    "mechanism": "Создание неожиданного контраста для привлечения внимания.",
+    "steps": [
+      "X → Введение неожиданного элемента → Привлечение внимания зрителя"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 25,
+    "mechanism": "Создание паузы для усиления ожидания и акцента на следующем событии.",
+    "steps": [
+      "X → Создание паузы → Усиление ожидания → Акцент на следующем событии"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 30,
+    "mechanism": "Создание ощущения согласия и завершенности.",
+    "steps": [
+      "X предлагает что-то.",
+      "Y отвечает утвердительно.",
+      "Зритель ощущает согласие и завершенность."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  }
+]

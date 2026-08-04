@@ -1,0 +1,49 @@
+[
+  {
+    "n": 2,
+    "mechanism": "Encouraging audience engagement through direct invitation.",
+    "steps": [
+      "X invites audience to take action Y.",
+      "Audience is prompted to engage with content."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 4,
+    "mechanism": "Создание ожидания и предоставление направления для действия.",
+    "steps": [
+      "X упоминает, что Y будет доступно в Z.",
+      "X указывает, где именно можно найти Y.",
+      "X побуждает аудиторию к действию, чтобы получить Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 1,
+    "mechanism": "Создание чувства срочности и побуждение к действию.",
+    "steps": [
+      "X предлагает быстрое решение проблемы.",
+      "Y предоставляет простые шаги для достижения результата.",
+      "Z указывает на доступность ресурса."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 3,
+    "mechanism": "Создание чувства участия и поддержки.",
+    "steps": [
+      "X упоминает возможность поддержки через Y.",
+      "X перечисляет несколько способов поддержки.",
+      "X напоминает о важности поддержки для Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  }
+]

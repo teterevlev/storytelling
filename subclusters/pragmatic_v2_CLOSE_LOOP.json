@@ -1,0 +1,199 @@
+{
+  "tag": "CLOSE_LOOP",
+  "total_examples": 42,
+  "discovery_n": 23,
+  "holdout_n": 19,
+  "soft_target": [
+    5,
+    12
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Напряжение и дискомфорт",
+      "formula": "X → нарушение ожиданий\n→ напряжение",
+      "abstract": "Создание напряжения через неожиданные изменения, опасность или дискомфорт.",
+      "members": [
+        4,
+        6,
+        9,
+        11,
+        17
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "cluster-2",
+      "formula": "",
+      "abstract": "These mechanisms involve resolving a situation or completing a process, often leading to closure or satisfaction.",
+      "members": [
+        3,
+        20,
+        25,
+        27,
+        32,
+        34
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "cluster-3",
+      "formula": "",
+      "abstract": "These mechanisms involve revisiting past elements or returning to the beginning to create a sense of continuity or closure.",
+      "members": [
+        19,
+        30,
+        42
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "cluster-4",
+      "formula": "",
+      "abstract": "These mechanisms involve creating a contrast or surprise to enhance perception or effect.",
+      "members": [
+        8,
+        12,
+        40
+      ],
+      "sort_order": 4
+    },
+    {
+      "id": 5,
+      "name": "cluster-5",
+      "formula": "",
+      "abstract": "These mechanisms involve recognizing the need for a new element or resource to solve a problem or complete a task.",
+      "members": [
+        7,
+        22,
+        41
+      ],
+      "sort_order": 5
+    }
+  ],
+  "residual": [
+    13,
+    16,
+    39
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 13,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 16,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 39,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 10,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 14,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 24,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 36,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 5,
+        "cluster_id": 4,
+        "confidence": "medium"
+      },
+      {
+        "n": 15,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 23,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 37,
+        "cluster_id": 4,
+        "confidence": "medium"
+      },
+      {
+        "n": 1,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 28,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 35,
+        "cluster_id": 4,
+        "confidence": "medium"
+      },
+      {
+        "n": 18,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 2,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 26,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 31,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 21,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 29,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 38,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 33,
+        "cluster_id": 3,
+        "confidence": "high"
+      }
+    ],
+    "summary": "rechecked 22"
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

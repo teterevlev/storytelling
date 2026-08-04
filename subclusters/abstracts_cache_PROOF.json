@@ -1,0 +1,1114 @@
+[
+  {
+    "n": 14,
+    "mechanism": "Создание впечатления надежности и точности через использование конкретных данных.",
+    "steps": [
+      "X предоставляет точные данные → Y воспринимает X как надежный источник."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 28,
+    "mechanism": "Comparison highlights superiority and evokes a sense of quality.",
+    "steps": [
+      "X is described with positive attributes, emphasizing its superiority over Y.",
+      "Y is depicted negatively, enhancing the perceived quality of X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 51,
+    "mechanism": "Создание ощущения разрушения и хаоса.",
+    "steps": [
+      "X → перечисление множества элементов, которые разрушаются"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 101,
+    "mechanism": "Demonstrating the enhancement of capability through collaboration.",
+    "steps": [
+      "X (individual components) work together → Y (combined system) achieves greater capability."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 131,
+    "mechanism": "Создание ощущения гармонии и баланса через взаимодействие элементов.",
+    "steps": [
+      "X взаимодействует с Y, создавая ощущение Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 13,
+    "mechanism": "Создание впечатления мощи и силы через описание характеристик.",
+    "steps": [
+      "X описывает характеристики Y, чтобы подчеркнуть мощь и силу."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 22,
+    "mechanism": "Создание напряжения через разрушение.",
+    "steps": [
+      "X подвергается разрушению, что вызывает у зрителя чувство тревоги и ожидания."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 44,
+    "mechanism": "Создание впечатления значимости и успеха через упоминание больших чисел.",
+    "steps": [
+      "X упоминает большие числа, связанные с продуктом или услугой.",
+      "Y воспринимает это как признак значимости или успеха.",
+      "Z усиливается доверие или интерес к X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 126,
+    "mechanism": "Создание ощущения достоверности через предоставление научного объяснения.",
+    "steps": [
+      "X утверждение → подкрепление научным объяснением → усиление доверия к информации."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 132,
+    "mechanism": "Подтверждение теории через наблюдение.",
+    "steps": [
+      "X наблюдает Y, что соответствует предсказаниям теории.",
+      "Y подтверждает правильность теории.",
+      "Зритель ощущает удовлетворение от подтверждения знаний."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 5,
+    "mechanism": "Создание впечатления мощи и силы.",
+    "steps": [
+      "X → Взять мощный элемент.",
+      "Y → Соединить его с другим элементом.",
+      "Z → Подчеркнуть простоту и прямоту действий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 29,
+    "mechanism": "Создание ощущения комфорта и технологического совершенства.",
+    "steps": [
+      "X описывает комфортные условия в Y, подчеркивая отсутствие проблем благодаря Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 64,
+    "mechanism": "Demonstrating competence in an unexpected context.",
+    "steps": [
+      "X (unexpected context) → Y (competent individuals)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 84,
+    "mechanism": "Создание контраста для усиления восприятия различий.",
+    "steps": [
+      "X показывает небольшие значения для первых элементов.",
+      "Y демонстрирует резкий рост значений для последующих элементов.",
+      "Z усиливает восприятие различий между X и Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 133,
+    "mechanism": "Утверждение подкрепляется доказательствами для усиления доверия и авторитета.",
+    "steps": [
+      "X предоставляет доказательства, чтобы подтвердить утверждение Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 34,
+    "mechanism": "Создание впечатления улучшения и модернизации через добавление новых элементов.",
+    "steps": [
+      "X добавляет Y к Z, чтобы показать улучшение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 10,
+    "mechanism": "Использование физического барьера для поглощения и рассеивания энергии, чтобы защитить внутреннее содержимое.",
+    "steps": [
+      "X (металлическая структура) принимает на себя энергию Y (взрыв), поглощает её и рассеивает, защищая Z (внутреннее содержимое) от повреждений."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 41,
+    "mechanism": "X приводит к осознанию Y через сравнение и оценку.",
+    "steps": [
+      "X → сравнение стоимости разных частей → оценка общей стоимости → осознание Y"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 87,
+    "mechanism": "Создание контраста для выявления скрытого объекта.",
+    "steps": [
+      "X блокирует яркий источник света.",
+      "Y становится видимым на фоне уменьшенной яркости X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 134,
+    "mechanism": "Подтверждение гипотезы через сравнение данных.",
+    "steps": [
+      "X сравнивают с Y",
+      "X и Y совпадают",
+      "Получают подтверждение гипотезы"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 6,
+    "mechanism": "The statement provides a technical detail to establish credibility or expertise.",
+    "steps": [
+      "X mentions a specific technical feature → Audience perceives X as knowledgeable or credible."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 35,
+    "mechanism": "X is quickly recognized and acted upon, leading to Y.",
+    "steps": [
+      "X is identified → Y is implemented as a response"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 71,
+    "mechanism": "Clarification of a concept or rule through dialogue.",
+    "steps": [
+      "X asks for clarification on a concept or rule.",
+      "Y provides an explanation or correction.",
+      "X confirms understanding or asks further questions."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 104,
+    "mechanism": "Расширение восприятия через детализацию.",
+    "steps": [
+      "X → Y (получение информации о предмете)",
+      "Y → Z (изменение восприятия предмета)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 8,
+    "mechanism": "Создание впечатления удивления и восхищения через описание необычных возможностей объекта.",
+    "steps": [
+      "X демонстрирует способности, которые кажутся невероятными или невозможными.",
+      "Y преодолевает препятствия, которые обычно считаются непреодолимыми.",
+      "Z вызывает у зрителя чувство удивления и восхищения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 38,
+    "mechanism": "Создание впечатления о недостаточном развитии или стагнации.",
+    "steps": [
+      "X не вкладывает ресурсы в Y → создается впечатление, что X не развивается или стагнирует."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 55,
+    "mechanism": "Создание ощущения контроля и безопасности через наблюдение.",
+    "steps": [
+      "X (человек) наблюдает за Y (другим человеком) для обеспечения безопасности.",
+      "Y осознает, что за ним наблюдают, что вызывает чувство контроля и защищенности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 94,
+    "mechanism": "Создание ожидания и удовлетворение любопытства.",
+    "steps": [
+      "X → ожидание информации",
+      "ожидание информации → удовлетворение любопытства через детализацию"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 17,
+    "mechanism": "Создание ощущения усталости и неудовлетворенности от постоянной необходимости в обслуживании.",
+    "steps": [
+      "X требует постоянного внимания и усилий.",
+      "Y вызывает чувство усталости и раздражения.",
+      "Z подчеркивает неизбежность и бесконечность процесса."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 20,
+    "mechanism": "Demonstrating resilience through historical challenges.",
+    "steps": [
+      "X experiences significant historical events.",
+      "X survives and adapts to each event.",
+      "X's survival highlights resilience and endurance."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 49,
+    "mechanism": "Создание ощущения универсальности и надежности.",
+    "steps": [
+      "X (объект) → ассоциация с возможностью продать всё → чувство уверенности и надежности у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 83,
+    "mechanism": "Highlighting a pattern to reinforce understanding.",
+    "steps": [
+      "X presents data in a structured format.",
+      "Y draws attention to a specific column.",
+      "Z identifies a common pattern in the data."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 30,
+    "mechanism": "Создание ощущения эксклюзивности и ценности через сравнение.",
+    "steps": [
+      "X стоит дороже Y и Z → X воспринимается как более ценный и эксклюзивный."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 7,
+    "mechanism": "Создание впечатления надежности и безопасности.",
+    "steps": [
+      "X упоминает систему, которая обеспечивает Y.",
+      "Y ассоциируется с безопасностью и надежностью.",
+      "Зритель чувствует уверенность в X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 68,
+    "mechanism": "Создание доверия к персонажу через демонстрацию его опыта и навыков.",
+    "steps": [
+      "X утверждает, что Y профессионал в Z.",
+      "X подчеркивает, что Y давно в Z.",
+      "X перечисляет навыки Y в Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 105,
+    "mechanism": "Создание ощущения научного открытия или понимания через визуализацию данных.",
+    "steps": [
+      "X (карта) → Y (распределение температуры) → Z (ощущение открытия или понимания)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание впечатления превосходства и уникальности через утверждение о достижении.",
+    "steps": [
+      "X утверждает, что Y является абсолютным шедевром, создавая впечатление уникальности и превосходства."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 23,
+    "mechanism": "Создание визуального восхищения и эстетического удовольствия.",
+    "steps": [
+      "X описывает визуальные характеристики объекта.",
+      "Y использует прилагательные, чтобы подчеркнуть красоту и уникальность.",
+      "Z вызывает у зрителя чувство восхищения и эстетического удовольствия."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 75,
+    "mechanism": "Создание ожидания через упоминание процесса и необходимости.",
+    "steps": [
+      "X упоминает процесс Y, который требует Z.",
+      "Z вызывает ожидание будущих действий или изменений."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 127,
+    "mechanism": "Использование научного объяснения для создания удивления или осознания.",
+    "steps": [
+      "X объясняет, как Y влияет на Z, создавая неожиданный эффект."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 16,
+    "mechanism": "Создание напряжения через техническую проблему.",
+    "steps": [
+      "X сталкивается с повторяющейся проблемой Y, вызывающей беспокойство и напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 24,
+    "mechanism": "Сравнение внешнего вида X с Y и Z вызывает ассоциации и узнавание.",
+    "steps": [
+      "X вызывает ассоциации с Y и Z из-за схожих черт."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 46,
+    "mechanism": "Создание напряжения через обсуждение технической возможности.",
+    "steps": [
+      "X обсуждает возможность Y без физического присутствия.",
+      "Y подразумевает сложность или риск.",
+      "Зритель ощущает напряжение из-за потенциальной опасности или нарушения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 78,
+    "mechanism": "Создание ощущения прогресса и достижения в исследовании.",
+    "steps": [
+      "X → получение более детализированной информации → возможность увидеть детали"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 2,
+    "mechanism": "Создание напряжения через объяснение причины.",
+    "steps": [
+      "X задает вопрос о причине.",
+      "Y объясняет причину, используя технические детали.",
+      "Z создает напряжение через понимание сложности ситуации."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 39,
+    "mechanism": "Использование барьера для ограничения доступа к ресурсу.",
+    "steps": [
+      "X создаёт барьер, чтобы ограничить доступ Y к ресурсу Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 56,
+    "mechanism": "Создание ощущения угрозы и напряжения через описание технической оснащенности группы.",
+    "steps": [
+      "X описывает группу как технически оснащенную → Y чувствует угрозу и напряжение из-за возможной опасности от группы."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 79,
+    "mechanism": "Переход от одного состояния к другому через изменение восприятия или классификации.",
+    "steps": [
+      "X воспринимается как Y",
+      "X переходит в категорию Z"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 12,
+    "mechanism": "Создание уверенности в надежности и эффективности X.",
+    "steps": [
+      "X обладает качествами, которые делают его устойчивым к Y.",
+      "X демонстрирует экономичность и мощность.",
+      "Эти характеристики вызывают доверие и уверенность в X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 21,
+    "mechanism": "Создание ощущения крайней нужды и безысходности.",
+    "steps": [
+      "X описывает ситуацию крайней бедности.",
+      "Y подчеркивает отсутствие более доступных вариантов.",
+      "Z усиливает чувство безысходности и необходимости выбора."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 45,
+    "mechanism": "The mechanism involves creating a sense of exaggeration or absurdity by combining unrelated or mismatched elements.",
+    "steps": [
+      "X combines with Y, leading to an exaggerated or absurd outcome."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 100,
+    "mechanism": "Comparison to establish credibility or impressiveness.",
+    "steps": [
+      "X is compared to Y to highlight its impressive quality or capability."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 19,
+    "mechanism": "Утверждение достоверности информации вызывает доверие и интерес.",
+    "steps": [
+      "X утверждает, что информация достоверна → Y начинает доверять информации и проявляет интерес"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 3,
+    "mechanism": "Создание ощущения реальности и серьёзности ситуации.",
+    "steps": [
+      "X утверждает, что событие связано с реальными последствиями.",
+      "Y подчёркивает масштаб и серьёзность, используя большие числа.",
+      "Z усиливает эффект, связывая событие с конкретным местом или временем."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 62,
+    "mechanism": "Использование неуверенности и повторений для создания ощущения неформальности и приближенности.",
+    "steps": [
+      "X использует слова-паразиты и повторения → Y чувствует неформальность и приближенность."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 97,
+    "mechanism": "Demonstrating a calculation to support a claim.",
+    "steps": [
+      "X inputs specific values into a tool.",
+      "X performs a calculation.",
+      "X observes the result.",
+      "X uses the result to support a claim."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 15,
+    "mechanism": "Justification of a negative aspect by highlighting a unique advantage.",
+    "steps": [
+      "X has a negative aspect Y.",
+      "Y is justified by the unique advantage Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 37,
+    "mechanism": "Highlighting the contrast between the poor quality and low cost to evoke a sense of irony or criticism.",
+    "steps": [
+      "X (poor quality) → Y (low cost) → Z (irony/criticism)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 65,
+    "mechanism": "Demonstrating the high cost of maintaining a specific item to emphasize its impracticality or exclusivity.",
+    "steps": [
+      "X is presented as having a relatively low initial cost.",
+      "Y, associated with X, is revealed to have a disproportionately high ongoing cost.",
+      "The contrast between X and Y highlights the impracticality or exclusivity of X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 116,
+    "mechanism": "Преобразование данных в визуальную информацию для понимания структуры.",
+    "steps": [
+      "X (данные) → обработка алгоритмами → Y (визуальная карта)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 18,
+    "mechanism": "Expectation of failure due to historical context.",
+    "steps": [
+      "X is described as having a short lifespan before needing major repairs.",
+      "Y is given as an example of a significant problem that occurs after this lifespan.",
+      "Z is used as a metaphor to emphasize the severity of the problem."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 31,
+    "mechanism": "Создание впечатления разнообразия и инноваций.",
+    "steps": [
+      "X упоминает множество вариантов Y, чтобы подчеркнуть разнообразие и инновации."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 54,
+    "mechanism": "Показать ценность и востребованность вещей через их продажу.",
+    "steps": [
+      "X → Упоминание о продаже Y → Подчёркивание значимости Y через его продажу"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 123,
+    "mechanism": "Создание ощущения возможности и научного прогресса.",
+    "steps": [
+      "X утверждает, что Y возможно в теории.",
+      "X упоминает симуляции, которые показывают Z.",
+      "Z иллюстрирует потенциальный результат, усиливая ощущение реальности и достижимости."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 9,
+    "mechanism": "Создание ощущения сложности и опасности.",
+    "steps": [
+      "X → Описание труднопроходимой местности → Усиление чувства опасности и сложности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 27,
+    "mechanism": "Highlighting comfort and ease of use to create a positive impression.",
+    "steps": [
+      "X describes the softness and ease of use of an object, leading to a positive feeling."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 76,
+    "mechanism": "Демонстрация доказательства для подтверждения утверждения.",
+    "steps": [
+      "X утверждает, что Y произошло.",
+      "Z спрашивает, как это можно доказать.",
+      "X предоставляет конкретные доказательства, такие как видеозапись и помеченные деньги, чтобы подтвердить своё утверждение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 89,
+    "mechanism": "Увеличение размера X приводит к увеличению количества Y, что усиливает восприятие Z.",
+    "steps": [
+      "Увеличение размера X → Увеличение количества Y → Усиление восприятия Z"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 1,
+    "mechanism": "Увеличение вместимости через изменение структуры.",
+    "steps": [
+      "X изменяется → Y увеличивается → Z становится возможным"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 33,
+    "mechanism": "Demonstrating progress or advancement through acquisition.",
+    "steps": [
+      "X acquires advanced tools from Y, Z, and W to show improvement."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 66,
+    "mechanism": "Создание контраста между стоимостью и доступностью для усиления восприятия ценности.",
+    "steps": [
+      "X (доступность) → Y (стоимость) → Z (восприятие ценности)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 4,
+    "mechanism": "Emphasizing precision and durability to create a sense of reliability and strength.",
+    "steps": [
+      "X is described with extreme precision and adherence to strict standards, highlighting its reliability and strength."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 106,
+    "mechanism": "Comparison of different areas to highlight variations.",
+    "steps": [
+      "X shows a visual representation of temperature differences.",
+      "Y identifies areas with higher temperatures.",
+      "Z identifies areas with lower temperatures."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 26,
+    "mechanism": "Создание ощущения простора и комфорта.",
+    "steps": [
+      "X (описание пространства) → Y (ощущение простора и комфорта)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 67,
+    "mechanism": "Постепенное уменьшение значений создает ощущение сужения или концентрации.",
+    "steps": [
+      "X начинает с большого значения.",
+      "X постепенно уменьшается до меньшего значения.",
+      "Зритель ощущает сужение или концентрацию."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 32,
+    "mechanism": "Создание ощущения значимости и масштаба события.",
+    "steps": [
+      "X выделяет значительные ресурсы → Y воспринимает событие как важное и масштабное."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 109,
+    "mechanism": "Контраст между двумя элементами создаёт ожидание и интерес.",
+    "steps": [
+      "X (более тёмная) и Y (более светлая) создают контраст.",
+      "Контраст вызывает ожидание и интерес до того, как Z (снимки) увидены."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 72,
+    "mechanism": "Усиление навыков приводит к улучшению результата.",
+    "steps": [
+      "X улучшает навыки → Y становится более эффективным в задаче → Z достигает лучшего результата"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 96,
+    "mechanism": "Создание впечатления высокой точности или качества.",
+    "steps": [
+      "X утверждает, что разрешение достигает Y угловой секунды.",
+      "Y угловая секунда воспринимается как показатель высокой точности.",
+      "Зритель впечатляется высоким уровнем детализации или качеством X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 40,
+    "mechanism": "Создание ощущения несправедливости или возмущения у зрителя.",
+    "steps": [
+      "X получает значительное вознаграждение за Y, что может восприниматься как чрезмерное или незаслуженное."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 42,
+    "mechanism": "Clarification of a complex concept through analogy.",
+    "steps": [
+      "X is compared to Y to simplify understanding."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 125,
+    "mechanism": "Создание ощущения недостаточности или ограничения.",
+    "steps": [
+      "X (масса) → недостаточно для Y (эффект)",
+      "Y (эффект) → невозможность использования"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 25,
+    "mechanism": "Создание впечатления значимости и надежности объекта.",
+    "steps": [
+      "X описывается как огромный и тяжёлый, чтобы подчеркнуть его значимость.",
+      "Y добавляется как солидный, чтобы усилить ощущение надежности.",
+      "Z упоминается как пятидверный хэтчбэк, чтобы дать представление о функциональности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 69,
+    "mechanism": "Создание контраста между затратами и доходами для демонстрации выгоды или проблемы.",
+    "steps": [
+      "X показывает, что себестоимость Y очень низкая.",
+      "X сравнивает себестоимость Y с ценой продажи.",
+      "X подчеркивает значительную разницу между затратами и доходами."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 99,
+    "mechanism": "Использование инструмента для получения более детализированного изображения объектов.",
+    "steps": [
+      "X использует инструмент для наблюдения за Y.",
+      "Инструмент увеличивает разрешение изображения Y.",
+      "X видит детали Y, которые ранее были неразличимы."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 36,
+    "mechanism": "Создание впечатления чрезмерной нагрузки и эффективности.",
+    "steps": [
+      "X описывает стандартную нагрузку для Y.",
+      "Y превышает стандартную нагрузку, демонстрируя Z.",
+      "Z вызывает удивление и восхищение у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 47,
+    "mechanism": "Demonstrating a complex process to create a sense of expertise and challenge.",
+    "steps": [
+      "X describes a technical process involving multiple steps and specialized knowledge.",
+      "Y emphasizes the complexity and precision required.",
+      "Z implies that only someone with specific skills can accomplish it."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 121,
+    "mechanism": "Создание доверия через упоминание успешного опыта.",
+    "steps": [
+      "X упоминает успешное использование Y в прошлом, чтобы создать доверие к текущему утверждению."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 59,
+    "mechanism": "Создание уважения и доверия к X через подчеркивание их компетентности.",
+    "steps": [
+      "X → Подчеркивание технической подкованности → Уважение и доверие к X"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 85,
+    "mechanism": "Создание впечатления точности и научной достоверности.",
+    "steps": [
+      "X предоставляет числовые данные → Y воспринимает информацию как точную и научно обоснованную."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 52,
+    "mechanism": "Создание уверенности в доступности и распространенности X.",
+    "steps": [
+      "X → Утверждение о легкости приобретения Y → Уверенность в доступности X"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 60,
+    "mechanism": "Создание ожидания и интереса через упоминание неизвестного объекта.",
+    "steps": [
+      "X упоминает неизвестный объект Y, вызывая у зрителя желание узнать больше о Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 86,
+    "mechanism": "Создание контраста для усиления восприятия масштаба.",
+    "steps": [
+      "X → сравнение с Y → осознание малости X"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 114,
+    "mechanism": "Контраст восприятия через изменение цвета.",
+    "steps": [
+      "X замечает, что на одной стороне объекта цвет изменяется сильнее, чем на другой.",
+      "Это вызывает у X интерес и желание понять причину изменения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 130,
+    "mechanism": "Усиление слабого сигнала для достижения заметного эффекта.",
+    "steps": [
+      "X (слабый сигнал) → Y (усиление) → Z (заметный сигнал)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 61,
+    "mechanism": "Сравнение стоимости вызывает ощущение выгодности.",
+    "steps": [
+      "X сравнивает стоимость Y с Z → X ощущает выгодность Y"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 117,
+    "mechanism": "Постепенное раскрытие информации ведет к удивлению и восхищению зрителя.",
+    "steps": [
+      "X собирает данные через регулярные наблюдения.",
+      "Y анализирует данные с помощью алгоритмов.",
+      "Z реконструирует узнаваемое изображение из данных.",
+      "Зритель удивляется точности и возможностям технологий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 50,
+    "mechanism": "The mechanism involves demonstrating the importance of safety by emphasizing the ease and effectiveness of using a complete solution rather than modifying existing components.",
+    "steps": [
+      "X emphasizes the importance of safety by comparing the ease of using a complete solution to modifying existing components.",
+      "Y highlights the effectiveness of the complete solution, reinforcing the safety message."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 58,
+    "mechanism": "Создание напряжения через ожидание неизбежного события.",
+    "steps": [
+      "X сообщает о неизбежном действии Y, создавая ожидание.",
+      "Y вызывает у зрителя чувство напряжения и тревоги."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 108,
+    "mechanism": "Создание контраста между двумя элементами для усиления восприятия.",
+    "steps": [
+      "X упоминается как первый элемент.",
+      "Y упоминается как второй элемент, создавая контраст с X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 74,
+    "mechanism": "Создание впечатления о высоком уровне навыков или ресурсов у X.",
+    "steps": [
+      "X обладает специальными инструментами или знаниями.",
+      "X успешно выполняет сложные задачи.",
+      "Y делает вывод о высоком уровне X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 53,
+    "mechanism": "Emphasizing abundance and completeness to create a sense of overwhelming availability.",
+    "steps": [
+      "X lists a wide range of items → Y emphasizes that everything imaginable is included → Z reinforces the idea of total availability."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 90,
+    "mechanism": "Demonstrating a counterintuitive relationship to provoke curiosity and engagement.",
+    "steps": [
+      "X is smaller → Y is higher, contrary to typical expectations."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  }
+]

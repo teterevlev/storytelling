@@ -1,0 +1,397 @@
+{
+  "tag": "SCENE",
+  "total_examples": 176,
+  "discovery_n": 80,
+  "holdout_n": 30,
+  "soft_target": [
+    10,
+    18
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Tension and anticipation",
+      "formula": "X → limited visibility/unexpected outcome/unresolved situation → Z anticipates resolution",
+      "abstract": "Scenes create tension and anticipation through mechanisms like limited visibility, unexpected outcomes, and unresolved situations, leading to a desire for resolution.",
+      "members": [
+        55,
+        108,
+        20,
+        71,
+        4,
+        105,
+        140
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "cluster-2",
+      "formula": "X describes Y (cosmic phenomena, scale, historical significance) → Z feels wonder, awe, or grandeur.",
+      "abstract": "Scenes create a sense of wonder, awe, or grandeur through descriptions of scale, cosmic phenomena, or historical significance.",
+      "members": [
+        163,
+        170,
+        176,
+        173,
+        174
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "cluster-3",
+      "formula": "X faces challenge Y → X uses skill/resourcefulness to overcome Y → Z observes and feels admiration or tension.",
+      "abstract": "Scenes demonstrate effort, resourcefulness, or skill in overcoming challenges or achieving goals.",
+      "members": [
+        39,
+        21,
+        127,
+        102
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "cluster-4",
+      "formula": "X notices Y (unpredictable behavior, instability) → X feels discomfort or tension.",
+      "abstract": "Scenes create a sense of instability or discomfort through unpredictable or unsettling elements.",
+      "members": [
+        89,
+        90,
+        62
+      ],
+      "sort_order": 4
+    },
+    {
+      "id": 5,
+      "name": "cluster-5",
+      "formula": "X encounters unexpected element Y → Z feels intrigue or curiosity.",
+      "abstract": "Scenes create intrigue or curiosity through unexpected elements or mysterious signals.",
+      "members": [
+        165,
+        171,
+        80
+      ],
+      "sort_order": 5
+    },
+    {
+      "id": 6,
+      "name": "cluster-6",
+      "formula": "X repeats or varies Y → Z introduces unexpected element → Audience feels surprise or humor.",
+      "abstract": "Scenes use repetition, variation, or unexpected connections to create surprise or humor.",
+      "members": [
+        130,
+        74,
+        46
+      ],
+      "sort_order": 6
+    },
+    {
+      "id": 7,
+      "name": "cluster-7",
+      "formula": "X mentions time/resource constraint → Y feels urgency or pressure.",
+      "abstract": "Scenes create a sense of urgency or pressure through time constraints or rapid depletion of resources.",
+      "members": [
+        150,
+        22,
+        122
+      ],
+      "sort_order": 7
+    },
+    {
+      "id": 8,
+      "name": "cluster-8",
+      "formula": "X uses dialogue/setting to create tension → Y experiences suspense or surprise.",
+      "abstract": "Scenes create tension or suspense through dialogue, setting, or unexpected success.",
+      "members": [
+        142,
+        113,
+        86
+      ],
+      "sort_order": 8
+    },
+    {
+      "id": 9,
+      "name": "cluster-9",
+      "formula": "X compares Y with Z → Audience perceives scale or importance.",
+      "abstract": "Scenes evoke a sense of scale or importance through comparisons or measurements.",
+      "members": [
+        160,
+        156,
+        159
+      ],
+      "sort_order": 9
+    },
+    {
+      "id": 10,
+      "name": "cluster-10",
+      "formula": "X initiates movement/preparation → Y perceives readiness or transition.",
+      "abstract": "Scenes create a sense of movement, preparation, or transition.",
+      "members": [
+        10,
+        31,
+        50
+      ],
+      "sort_order": 10
+    },
+    {
+      "id": 11,
+      "name": "cluster-11",
+      "formula": "X demonstrates vulnerability/risk → Y feels tension or empathy.",
+      "abstract": "Scenes create tension through physical vulnerability or risky actions.",
+      "members": [
+        68,
+        59,
+        37
+      ],
+      "sort_order": 11
+    },
+    {
+      "id": 12,
+      "name": "cluster-12",
+      "formula": "X demonstrates abundance/stability → Y feels secure or reassured.",
+      "abstract": "Scenes create a sense of abundance, stability, or security.",
+      "members": [
+        24,
+        12,
+        77
+      ],
+      "sort_order": 12
+    },
+    {
+      "id": 13,
+      "name": "cluster-13",
+      "formula": "X and Y are compared → Audience perceives contrast or harmony.",
+      "abstract": "Scenes highlight differences or similarities to create contrast or harmony.",
+      "members": [
+        151,
+        164,
+        61
+      ],
+      "sort_order": 13
+    },
+    {
+      "id": 14,
+      "name": "cluster-14",
+      "formula": "X mentions familiar element → Audience recalls personal experience → Audience feels nostalgia or connection.",
+      "abstract": "Scenes evoke a sense of nostalgia or connection through familiar elements or personal experiences.",
+      "members": [
+        125,
+        78
+      ],
+      "sort_order": 14
+    },
+    {
+      "id": 15,
+      "name": "cluster-15",
+      "formula": "X shows limitation/imperfect result → Audience relates to X and feels humility.",
+      "abstract": "Scenes demonstrate limitations or imperfections to evoke relatability or humility.",
+      "members": [
+        146,
+        129
+      ],
+      "sort_order": 15
+    },
+    {
+      "id": 16,
+      "name": "cluster-16",
+      "formula": "X encounters unexpected signal/anomaly → Audience feels mystery or expectation.",
+      "abstract": "Scenes create a sense of mystery or expectation through unexpected signals or anomalies.",
+      "members": [
+        175,
+        171
+      ],
+      "sort_order": 16
+    },
+    {
+      "id": 17,
+      "name": "cluster-17",
+      "formula": "X introduces concept → X uses example/demonstration → Audience understands concept.",
+      "abstract": "Scenes illustrate concepts or ideas through practical examples or demonstrations.",
+      "members": [
+        154,
+        147
+      ],
+      "sort_order": 17
+    },
+    {
+      "id": 18,
+      "name": "cluster-18",
+      "formula": "X approaches Y → Audience feels intimacy or focus.",
+      "abstract": "Scenes create a sense of intimacy or focus through proximity or detailed observation.",
+      "members": [
+        152
+      ],
+      "sort_order": 18
+    }
+  ],
+  "residual": [
+    82,
+    94,
+    106,
+    109,
+    131,
+    145,
+    149,
+    158,
+    167
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 172,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 82,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 103,
+        "cluster_id": 9,
+        "confidence": "medium"
+      },
+      {
+        "n": 157,
+        "cluster_id": 9,
+        "confidence": "high"
+      },
+      {
+        "n": 70,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 124,
+        "cluster_id": "residual",
+        "confidence": "low"
+      },
+      {
+        "n": 17,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 94,
+        "cluster_id": 4,
+        "confidence": "high"
+      },
+      {
+        "n": 161,
+        "cluster_id": 9,
+        "confidence": "medium"
+      },
+      {
+        "n": 169,
+        "cluster_id": 2,
+        "confidence": "high"
+      },
+      {
+        "n": 87,
+        "cluster_id": 7,
+        "confidence": "medium"
+      },
+      {
+        "n": 56,
+        "cluster_id": 4,
+        "confidence": "high"
+      },
+      {
+        "n": 106,
+        "cluster_id": 7,
+        "confidence": "medium"
+      },
+      {
+        "n": 137,
+        "cluster_id": 8,
+        "confidence": "medium"
+      },
+      {
+        "n": 34,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 76,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 117,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 109,
+        "cluster_id": 6,
+        "confidence": "medium"
+      },
+      {
+        "n": 149,
+        "cluster_id": 9,
+        "confidence": "high"
+      },
+      {
+        "n": 32,
+        "cluster_id": 3,
+        "confidence": "medium"
+      },
+      {
+        "n": 99,
+        "cluster_id": 7,
+        "confidence": "medium"
+      },
+      {
+        "n": 145,
+        "cluster_id": 7,
+        "confidence": "medium"
+      },
+      {
+        "n": 131,
+        "cluster_id": 6,
+        "confidence": "medium"
+      },
+      {
+        "n": 158,
+        "cluster_id": 9,
+        "confidence": "medium"
+      },
+      {
+        "n": 104,
+        "cluster_id": 9,
+        "confidence": "medium"
+      },
+      {
+        "n": 167,
+        "cluster_id": 6,
+        "confidence": "medium"
+      },
+      {
+        "n": 51,
+        "cluster_id": 1,
+        "confidence": "medium"
+      },
+      {
+        "n": 96,
+        "cluster_id": 13,
+        "confidence": "medium"
+      },
+      {
+        "n": 136,
+        "cluster_id": 11,
+        "confidence": "medium"
+      },
+      {
+        "n": 155,
+        "cluster_id": 13,
+        "confidence": "medium"
+      }
+    ],
+    "summary": "rechecked 30"
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

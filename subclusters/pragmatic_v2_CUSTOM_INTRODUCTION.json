@@ -1,0 +1,28 @@
+{
+  "tag": "CUSTOM:INTRODUCTION",
+  "catalog": [
+    {
+      "id": 1,
+      "sort_order": 1,
+      "name": "Механизм установления доверия",
+      "formula": "X → Y доверяет X",
+      "abstract": "Механизм, при котором субъект X устанавливает контакт с субъектом Y, что приводит к повышению уровня доверия и вовлеченности Y по отношению к X.",
+      "members": [
+        1
+      ]
+    }
+  ],
+  "residual": [],
+  "holdout": {
+    "assignments": [],
+    "summary": "tiny tag"
+  },
+  "total_examples": 1,
+  "discovery_n": 1,
+  "holdout_n": 0,
+  "soft_target": [
+    1,
+    1
+  ],
+  "domain_leaks": []
+}

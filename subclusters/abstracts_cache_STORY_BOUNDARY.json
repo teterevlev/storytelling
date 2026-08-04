@@ -1,0 +1,331 @@
+[
+  {
+    "n": 2,
+    "mechanism": "Создание ожидания через упоминание известного объекта.",
+    "steps": [
+      "X упоминается как легендарный, вызывая интерес и ожидание у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 15,
+    "mechanism": "Создание напряжения через нестабильность и ожидание разрушения.",
+    "steps": [
+      "X (тяжёлая кабина) находится в нестабильном состоянии (слабые подушки).",
+      "Y (внешнее воздействие) усиливает нестабильность.",
+      "Z (ожидание разрушения) вызывает напряжение у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 24,
+    "mechanism": "Создание напряжения через описание сложной схемы угона.",
+    "steps": [
+      "X описывает сложную схему угона, включая детали, которые делают её казаться почти неуловимой."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 27,
+    "mechanism": "Recognition of past experience to establish credibility or familiarity.",
+    "steps": [
+      "X mentions a past instance of similar action or event to create a sense of continuity or reliability."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 31,
+    "mechanism": "Создание чувства древности и таинственности.",
+    "steps": [
+      "X упоминается как древний и загадочный объект.",
+      "Y описывается как имеющий уникальную историю."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 4,
+    "mechanism": "Transition from old to new technology creates a sense of progress and relief.",
+    "steps": [
+      "X (old technology) is replaced by Y (new technology) → Audience feels a sense of progress and relief."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 18,
+    "mechanism": "Recognition and nostalgia trigger through familiar reference.",
+    "steps": [
+      "X mentions a well-known object or concept.",
+      "Y recalls past experiences or emotions associated with X.",
+      "Z feels a sense of nostalgia or recognition."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 22,
+    "mechanism": "Создание напряжения через неожиданное раскрытие информации.",
+    "steps": [
+      "X говорит Y, что вызывает интерес.",
+      "X неожиданно раскрывает Z, что усиливает напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 26,
+    "mechanism": "Создание ощущения близости и доступности к новому месту.",
+    "steps": [
+      "X упоминается как ближайший к Y, создавая ощущение доступности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 5,
+    "mechanism": "Создание интриги и ожидания через необычное прозвище.",
+    "steps": [
+      "X получает необычное прозвище → Y вызывает любопытство и ожидание у аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 13,
+    "mechanism": "Use of metaphor to evoke a sense of abandonment and decay.",
+    "steps": [
+      "X is compared to Y to highlight its current state."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 21,
+    "mechanism": "Создание напряжения через обсуждение рискованного плана.",
+    "steps": [
+      "X обсуждают план, который предполагает рискованные действия.",
+      "Упоминание конкретной цели Y добавляет реалистичности и срочности.",
+      "Зритель ощущает нарастающее напряжение и интерес к последствиям."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 25,
+    "mechanism": "Создание интриги через постепенное раскрытие информации.",
+    "steps": [
+      "X намекает на что-то без прямого упоминания.",
+      "Y предлагает аудитории догадаться, о чем идет речь.",
+      "Z раскрывает информацию, подтверждая догадки аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 3,
+    "mechanism": "Создание чувства гордости или ностальгии через упоминание значимого объекта.",
+    "steps": [
+      "Упоминание X вызывает ассоциации с достижениями или воспоминаниями."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 14,
+    "mechanism": "Expectation of future events or consequences.",
+    "steps": [
+      "X acquires Y, leading to anticipation of how Y will be used or its impact."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 19,
+    "mechanism": "Создание напряжения через раскрытие специализации.",
+    "steps": [
+      "X раскрывает специализацию Y, что добавляет элемент напряжения и ожидания."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 28,
+    "mechanism": "Создание ожидания и интереса к будущему событию.",
+    "steps": [
+      "X упоминает о процессе создания Y, который будет иметь значительные характеристики.",
+      "Y описывается как нечто впечатляющее или уникальное.",
+      "Зритель начинает ожидать завершения Y и его последствий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 7,
+    "mechanism": "Создание ассоциации с известным и надежным объектом.",
+    "steps": [
+      "X упоминается как 'бессмертный', создавая ассоциацию с надежностью и долговечностью."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 23,
+    "mechanism": "Создание интриги через упоминание известной личности.",
+    "steps": [
+      "X упоминает Y, известного в Z, вызывая интерес и интригу у аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 8,
+    "mechanism": "Introduction of a new element to set the scene or context.",
+    "steps": [
+      "X introduces a new element Y to establish context or background."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание атмосферы через упоминание известного места.",
+    "steps": [
+      "X упоминается → Y вызывает ассоциации и эмоции у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 20,
+    "mechanism": "Создание впечатления значимости и ценности через упоминание больших чисел.",
+    "steps": [
+      "X упоминает объект Y с большим числом Z → У зрителя создается впечатление значимости и ценности объекта Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 29,
+    "mechanism": "Создание интереса и ожидания через упоминание уникального элемента.",
+    "steps": [
+      "X упоминает уникальный элемент Y, вызывая интерес и ожидание у аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 6,
+    "mechanism": "Создание чувства ностальгии и связи с прошлым.",
+    "steps": [
+      "X упоминает объект из прошлого → Y вызывает у зрителя воспоминания и эмоции, связанные с этим объектом."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 1,
+    "mechanism": "Создание таинственной и зловещей атмосферы вокруг X.",
+    "steps": [
+      "X упоминается с негативными эпитетами и ассоциациями.",
+      "Используются слова, вызывающие чувство страха или уважения.",
+      "Зритель начинает воспринимать X как нечто опасное или мистическое."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 12,
+    "mechanism": "Создание ожидания и интереса через описание.",
+    "steps": [
+      "X описывается как большой и привлекательный, вызывая у Y желание узнать больше."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 30,
+    "mechanism": "Introduction of a new concept or idea that shifts the focus or direction of the narrative.",
+    "steps": [
+      "X introduces a new concept or idea → This shifts the focus or direction of the narrative."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 16,
+    "mechanism": "Recognition and nostalgia trigger emotional connection.",
+    "steps": [
+      "X (object) is described with specific details → Y (audience) recalls past experiences or emotions associated with similar objects → Z (emotional connection or nostalgia) is triggered."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 17,
+    "mechanism": "X принимает решение, которое кажется нелогичным, но приносит ему удовлетворение.",
+    "steps": [
+      "X следует указаниям, чтобы избавиться от Y.",
+      "X получает вознаграждение за Y.",
+      "X использует вознаграждение и свои ресурсы, чтобы приобрести Z, аналогичное Y.",
+      "X испытывает радость от приобретения Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 10,
+    "mechanism": "Создание ожидания через упоминание известного объекта.",
+    "steps": [
+      "Упоминание X вызывает у зрителя ожидание или интерес."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 9,
+    "mechanism": "Создание ожидания и интриги через упоминание неизвестного элемента.",
+    "steps": [
+      "X упоминается как нечто значимое, но не раскрывается полностью.",
+      "Y обещает раскрытие или объяснение X в будущем.",
+      "Z создаёт ожидание и интригу у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  }
+]

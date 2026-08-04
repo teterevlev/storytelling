@@ -1,0 +1,290 @@
+{
+  "tag": "PACING_BEAT",
+  "total_examples": 51,
+  "discovery_n": 28,
+  "holdout_n": 23,
+  "soft_target": [
+    8,
+    16
+  ],
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Контраст и ожидание",
+      "formula": "X → контраст → ожидание",
+      "abstract": "Создание ожидания через контраст и сравнение.",
+      "members": [
+        3,
+        5,
+        47
+      ],
+      "sort_order": 1
+    },
+    {
+      "id": 2,
+      "name": "Условия и проблемы",
+      "formula": "X → условия/проблемы → ожидание",
+      "abstract": "Создание ожидания через упоминание условий или проблем.",
+      "members": [
+        40,
+        11
+      ],
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Повторение и вариация",
+      "formula": "X → повторение/вариация → ожидание",
+      "abstract": "Создание ожидания через повторение и вариацию.",
+      "members": [
+        9,
+        50
+      ],
+      "sort_order": 3
+    },
+    {
+      "id": 4,
+      "name": "Риск и сложность",
+      "formula": "X → увеличение риска/сложности → напряжение",
+      "abstract": "Создание напряжения через увеличение риска или сложности.",
+      "members": [
+        7,
+        24
+      ],
+      "sort_order": 4
+    },
+    {
+      "id": 5,
+      "name": "Пауза и темп",
+      "formula": "X → пауза/изменение темпа → ожидание",
+      "abstract": "Создание ожидания через паузу или изменение темпа.",
+      "members": [
+        8,
+        20,
+        26
+      ],
+      "sort_order": 5
+    },
+    {
+      "id": 6,
+      "name": "Сомнение и разрешение",
+      "formula": "X → сомнение → разрешение",
+      "abstract": "Создание напряжения через сомнение и его разрешение.",
+      "members": [
+        27
+      ],
+      "sort_order": 6
+    },
+    {
+      "id": 7,
+      "name": "Инструменты и средства",
+      "formula": "X → инструмент/средство → ожидание",
+      "abstract": "Создание ожидания через упоминание инструмента или средства.",
+      "members": [
+        41
+      ],
+      "sort_order": 7
+    },
+    {
+      "id": 8,
+      "name": "Намеренное действие",
+      "formula": "X → намеренное действие → напряжение",
+      "abstract": "Создание напряжения через намеренное действие.",
+      "members": [
+        17
+      ],
+      "sort_order": 8
+    },
+    {
+      "id": 9,
+      "name": "Завершенность и удовлетворение",
+      "formula": "X → завершенность → удовлетворение",
+      "abstract": "Создание ощущения завершенности и удовлетворения.",
+      "members": [
+        46
+      ],
+      "sort_order": 9
+    },
+    {
+      "id": 10,
+      "name": "Обещание раскрытия",
+      "formula": "X → обещание → ожидание",
+      "abstract": "Создание ожидания и вовлечения через обещание раскрытия информации.",
+      "members": [
+        6,
+        38
+      ],
+      "sort_order": 10
+    },
+    {
+      "id": 11,
+      "name": "Интрига и ожидание",
+      "formula": "X → интрига → ожидание",
+      "abstract": "Создание интриги и ожидания у зрителя.",
+      "members": [
+        22
+      ],
+      "sort_order": 11
+    },
+    {
+      "id": 12,
+      "name": "Честность и зрелость",
+      "formula": "X → честность → зрелость",
+      "abstract": "Создание ощущения честности и зрелости.",
+      "members": [
+        10
+      ],
+      "sort_order": 12
+    },
+    {
+      "id": 13,
+      "name": "Масштаб и значимость",
+      "formula": "X → масштаб → значимость",
+      "abstract": "Создание ощущения масштаба и значимости через упоминание расстояний.",
+      "members": [
+        23
+      ],
+      "sort_order": 13
+    },
+    {
+      "id": 14,
+      "name": "Возврат к событиям",
+      "formula": "X → возврат → ожидание",
+      "abstract": "Создание ожидания через возврат к предыдущим событиям.",
+      "members": [
+        51
+      ],
+      "sort_order": 14
+    }
+  ],
+  "residual": [
+    2,
+    4,
+    49,
+    1,
+    35,
+    45
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 37,
+        "cluster_id": 5,
+        "confidence": "high"
+      },
+      {
+        "n": 42,
+        "cluster_id": 14,
+        "confidence": "medium"
+      },
+      {
+        "n": 33,
+        "cluster_id": 6,
+        "confidence": "high"
+      },
+      {
+        "n": 48,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 29,
+        "cluster_id": 11,
+        "confidence": "medium"
+      },
+      {
+        "n": 43,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 16,
+        "cluster_id": 5,
+        "confidence": "high"
+      },
+      {
+        "n": 39,
+        "cluster_id": 11,
+        "confidence": "medium"
+      },
+      {
+        "n": 21,
+        "cluster_id": 6,
+        "confidence": "medium"
+      },
+      {
+        "n": 44,
+        "cluster_id": 2,
+        "confidence": "medium"
+      },
+      {
+        "n": 31,
+        "cluster_id": 11,
+        "confidence": "medium"
+      },
+      {
+        "n": 15,
+        "cluster_id": 5,
+        "confidence": "high"
+      },
+      {
+        "n": 36,
+        "cluster_id": 3,
+        "confidence": "high"
+      },
+      {
+        "n": 32,
+        "cluster_id": 6,
+        "confidence": "medium"
+      },
+      {
+        "n": 34,
+        "cluster_id": 14,
+        "confidence": "medium"
+      },
+      {
+        "n": 28,
+        "cluster_id": 7,
+        "confidence": "medium"
+      },
+      {
+        "n": 19,
+        "cluster_id": 8,
+        "confidence": "medium"
+      },
+      {
+        "n": 18,
+        "cluster_id": 12,
+        "confidence": "medium"
+      },
+      {
+        "n": 14,
+        "cluster_id": 5,
+        "confidence": "high"
+      },
+      {
+        "n": 12,
+        "cluster_id": 5,
+        "confidence": "high"
+      },
+      {
+        "n": 13,
+        "cluster_id": 1,
+        "confidence": "high"
+      },
+      {
+        "n": 25,
+        "cluster_id": 5,
+        "confidence": "high"
+      },
+      {
+        "n": 30,
+        "cluster_id": 9,
+        "confidence": "medium"
+      }
+    ],
+    "summary": "The assignments were made based on the mechanisms described and their alignment with the existing clusters in the whitelist. High confidence assignments indicate a strong match between the mechanism and the cluster's abstract and formula."
+  },
+  "domain_leaks": [],
+  "revised_notes": []
+}

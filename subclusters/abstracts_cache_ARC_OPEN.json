@@ -1,0 +1,918 @@
+[
+  {
+    "n": 20,
+    "mechanism": "Создание интереса и вовлеченности через необычное представление.",
+    "steps": [
+      "X вызывает внимание через необычное или неожиданное представление."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 38,
+    "mechanism": "Создание ожидания через упоминание необычной технологии.",
+    "steps": [
+      "X упоминает необычную технологию → Y вызывает интерес и ожидание у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 57,
+    "mechanism": "Создание напряжения через упоминание опасной деятельности.",
+    "steps": [
+      "X упоминает опасную деятельность Y, чтобы вызвать интерес и напряжение у аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 99,
+    "mechanism": "Создание визуального или эмоционального образа будущего, вызывающего размышления и эмоции.",
+    "steps": [
+      "X вызывает зрителя представить будущее Y",
+      "Y становится более реальным и ощутимым для зрителя",
+      "Зритель начинает размышлять о возможных последствиях и изменениях"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 91,
+    "mechanism": "Создание надежды через представление альтернативных решений.",
+    "steps": [
+      "X предлагает альтернативные идеи, чтобы показать, что есть другие пути решения проблемы.",
+      "Y воспринимает это как надежду на возможные решения, даже если основной план кажется сложным или недостижимым."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 30,
+    "mechanism": "Создание ожидания и последующее его разрушение.",
+    "steps": [
+      "X создаёт ожидание, что Y будет сделано качественно.",
+      "X решает сэкономить на Y, разрушая ожидание."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 6,
+    "mechanism": "Unexpected event creates surprise and tension.",
+    "steps": [
+      "X is happening → Unexpected Y occurs → Audience feels surprise and tension"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 92,
+    "mechanism": "Создание ожидания и его разрушение для усиления интереса.",
+    "steps": [
+      "X создаёт ожидание чего-то значительного.",
+      "Y разрушает это ожидание, предлагая что-то менее значительное, но всё ещё интересное."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 58,
+    "mechanism": "X рассматривает возможные пути для Y, чтобы подчеркнуть неопределенность и множественность исходов.",
+    "steps": [
+      "X → рассматривает возможные пути для Y",
+      "Y → может восстановиться, продаться, разобрать на части",
+      "X → подчеркивает неопределенность и множественность исходов"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 97,
+    "mechanism": "Создание ощущения неизбежности и усиление напряжения.",
+    "steps": [
+      "X движется к Y, где события происходят чаще."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 15,
+    "mechanism": "Создание напряжения через упоминание ненадежности системы.",
+    "steps": [
+      "X упоминает о ненадежности Y.",
+      "Y вызывает у зрителя чувство тревоги и ожидание возможных проблем."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 56,
+    "mechanism": "Demonstrating gradual detachment from a situation.",
+    "steps": [
+      "X is involved in a situation for a long time.",
+      "X occasionally offers help or advice.",
+      "X slowly distances themselves from the situation."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 25,
+    "mechanism": "Создание ощущения безысходности через описание объекта.",
+    "steps": [
+      "X описывается как нечто абсолютное и неизбежное.",
+      "Y подчеркивает отсутствие надежды или выхода.",
+      "Z усиливает чувство безысходности через детали или сравнения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 98,
+    "mechanism": "Создание или разрушение новых возможностей через взаимодействие.",
+    "steps": [
+      "X встречает Y → X и Y взаимодействуют → Возможности изменяются (создаются или уничтожаются)."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 96,
+    "mechanism": "Сравнение двух идей для создания ассоциации и понимания.",
+    "steps": [
+      "X имеет уникальный механизм.",
+      "Y имеет похожий механизм на X.",
+      "Сравнение Y с X вызывает ассоциацию и понимание Y через известный X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 5,
+    "mechanism": "Создание ожидания будущих событий.",
+    "steps": [
+      "X сообщает о предстоящем времени, создавая ожидание будущих событий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 33,
+    "mechanism": "Внезапное появление нового элемента вызывает удивление и интерес.",
+    "steps": [
+      "X появляется в окружающей среде → Люди испытывают удивление и интерес"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 83,
+    "mechanism": "Использование неожиданного элемента для усиления существующего ресурса.",
+    "steps": [
+      "X предлагает использовать Y для усиления Z.",
+      "Зритель удивляется и заинтересовывается необычным подходом."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 43,
+    "mechanism": "Создание напряжения через неожиданное предложение.",
+    "steps": [
+      "X предлагает Y, что вызывает шок и напряжение у Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 100,
+    "mechanism": "Создание надежды через объединение и сотрудничество.",
+    "steps": [
+      "X объединяются в группу, чтобы преодолеть трудности.",
+      "Группа использует совместные усилия для достижения цели.",
+      "Успех группы дает надежду на будущее."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 10,
+    "mechanism": "Recognition of excellence in a specific context.",
+    "steps": [
+      "X is acknowledged as outstanding for its purpose."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 32,
+    "mechanism": "Collective nostalgia and excitement are triggered by recalling a shared past experience.",
+    "steps": [
+      "X recalls a past event → Y shares their memory → Z feels a sense of nostalgia and excitement."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 66,
+    "mechanism": "Создание доверия через принятие ответственности.",
+    "steps": [
+      "X заявляет о своей роли как гаранта.",
+      "Y воспринимает X как надежного и ответственного.",
+      "Z чувствует уверенность в безопасности сделки."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 14,
+    "mechanism": "Создание атмосферы и погружение в контекст.",
+    "steps": [
+      "X упоминает удалённые и суровые места → Y вызывает у зрителя чувство изоляции и экстремальных условий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 37,
+    "mechanism": "Создание контраста между ожиданиями и реальностью для усиления эмоционального отклика.",
+    "steps": [
+      "X создается с высокими ожиданиями → X оказывается неудачным и вызывает разочарование и стыд."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 82,
+    "mechanism": "Создание чувства удивления и расширения горизонтов через открытие нового.",
+    "steps": [
+      "X (аппарат) достигает Y (далекой точки) → Z (новая информация) становится доступной → зритель испытывает удивление и восхищение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 55,
+    "mechanism": "Создание напряжения через описание процесса разборки и продажи объекта.",
+    "steps": [
+      "X → Описание процесса разборки → Описание продажи частей → Создание напряжения через детализацию."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 95,
+    "mechanism": "Создание ожидания и последующее его изменение для усиления интереса.",
+    "steps": [
+      "X создаёт ожидание, что телескоп будет использовать определённую линзу.",
+      "Y изменяет это ожидание, уточняя, что линза будет другой."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 16,
+    "mechanism": "Создание контраста для усиления восприятия персонажа.",
+    "steps": [
+      "X демонстрирует грубость и архаичность, что контрастирует с современными ожиданиями безопасности.",
+      "Y усиливает восприятие X через противопоставление с нормами.",
+      "Z вызывает у зрителя чувство напряжения и дискомфорта."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 23,
+    "mechanism": "Создание контраста между ожиданием и реальностью для усиления эмоционального эффекта.",
+    "steps": [
+      "X создаёт ожидание, что Y соответствует определённым стандартам.",
+      "Z заявляет, что Y не соответствует этим стандартам, усиливая контраст."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 70,
+    "mechanism": "Создание чувства беспокойства и необходимости защиты.",
+    "steps": [
+      "X упоминает о возможности угрозы.",
+      "Y осознает, что не может полностью защититься от Z.",
+      "Y начинает чувствовать беспокойство и необходимость в дополнительных мерах защиты."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 87,
+    "mechanism": "Постепенное увеличение приводит к достижению цели.",
+    "steps": [
+      "X увеличивается до тех пор, пока не достигается желаемый результат."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 40,
+    "mechanism": "Highlighting absurdity through contrast and exaggeration.",
+    "steps": [
+      "X is presented as the peak of cynicism.",
+      "X is described as a mockery of common sense.",
+      "X is linked to a specific program or event."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 19,
+    "mechanism": "Создание контраста между ожиданиями и реальностью для усиления эмоционального воздействия.",
+    "steps": [
+      "X создаёт ожидание высокого статуса или успеха.",
+      "Y показывает резкий переход к унижению или провалу.",
+      "Z усиливает чувство стыда или разочарования у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 51,
+    "mechanism": "Создание ощущения неуверенности или замешательства у зрителя.",
+    "steps": [
+      "X использует повторяющиеся слова и звуки, чтобы создать впечатление неуверенности или замешательства."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 94,
+    "mechanism": "Создание эффекта узнавания и связи с предыдущей информацией.",
+    "steps": [
+      "X напоминает о ранее упомянутом Y.",
+      "Y вызывает чувство узнавания и связи у аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 27,
+    "mechanism": "Введение объекта через описание его характеристик.",
+    "steps": [
+      "X сталкивается с Y → Описание Y через его характеристики."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 7,
+    "mechanism": "Создание впечатления величия и уникальности.",
+    "steps": [
+      "X упоминается как знаменитый, чтобы вызвать уважение и интерес.",
+      "Y описывается как имеющий необычное количество элементов, что подчеркивает его уникальность.",
+      "Z добавляется как связанный с чем-то мощным или впечатляющим, усиливая эффект."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 74,
+    "mechanism": "Highlighting the impact of changing circumstances on behavior.",
+    "steps": [
+      "X → People adapt to new conditions due to lack of resources."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 86,
+    "mechanism": "Создание интереса и вовлеченности через обсуждение инновационного проекта.",
+    "steps": [
+      "X упоминает проект Y, который связан с интересной или инновационной технологией.",
+      "Y вызывает у аудитории интерес и желание узнать больше о его возможностях и применении."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 13,
+    "mechanism": "Transformation of raw materials into a functional structure.",
+    "steps": [
+      "X (raw materials) → Y (assembled structure) → Z (finished product)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 41,
+    "mechanism": "Создание ощущения важности и эксклюзивности через обсуждение значительных затрат.",
+    "steps": [
+      "X упоминает значительные затраты → Y чувствует важность и эксклюзивность обсуждаемого."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 76,
+    "mechanism": "Контраст между двумя путями вызывает размышления о выборе и последствиях.",
+    "steps": [
+      "X сталкивается с выбором между двумя путями.",
+      "Один путь ведет к стабильности и успеху.",
+      "Другой путь ведет к упадку и безвозвратности.",
+      "Контраст между путями подчеркивает важность выбора."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 88,
+    "mechanism": "Создание решения для преодоления ограничения пространства.",
+    "steps": [
+      "X сталкивается с ограничением пространства.",
+      "X разрабатывает решение, чтобы соответствовать ограничению.",
+      "Решение включает в себя изменение структуры Y.",
+      "Y становится более компактным и удобным для использования в ограниченном пространстве."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 18,
+    "mechanism": "Создание напряжения через выявление скрытой проблемы.",
+    "steps": [
+      "X → выявление скрытой проблемы → усиление напряжения"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 24,
+    "mechanism": "Создание чувства тревоги и реализма через описание ситуации.",
+    "steps": [
+      "X описывает ситуацию как страшную, но реальную → Y чувствует тревогу и осознает реальность происходящего."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 48,
+    "mechanism": "Создание ощущения уверенности и надежности через упоминание защиты.",
+    "steps": [
+      "X упоминает Y как защищенный.",
+      "Z чувствует уверенность и надежность."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 89,
+    "mechanism": "Создание ожидания и интереса к будущим возможностям.",
+    "steps": [
+      "X упоминает о новых возможностях или улучшениях.",
+      "Y представляет потенциальные достижения или открытия.",
+      "Z вызывает у зрителя ожидание и интерес к будущему."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание ощущения беспомощности и уязвимости.",
+    "steps": [
+      "X сталкивается с ситуацией, где у него нет контроля или власти.",
+      "X осознает свою беспомощность в данной ситуации.",
+      "Зритель чувствует сочувствие или тревогу за X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 22,
+    "mechanism": "Labeling creates a perception that influences how others view X.",
+    "steps": [
+      "X is given a label → The label carries a negative connotation → Others perceive X through the lens of this label"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 53,
+    "mechanism": "Создание напряжения через задачу с риском и неизвестностью.",
+    "steps": [
+      "X получает задание с высоким риском и неизвестными факторами.",
+      "X должен выполнить задачу, несмотря на потенциальные опасности и сложности.",
+      "Зритель ощущает напряжение и интерес к тому, как X справится с задачей."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 84,
+    "mechanism": "Создание чувства удивления и интереса через представление чего-то необычного или далекого.",
+    "steps": [
+      "X представляет Y, что вызывает у зрителя чувство удивления и интереса."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 2,
+    "mechanism": "Создание уникальности через добавление неожиданного элемента.",
+    "steps": [
+      "X добавляет Y к Z, создавая уникальный эффект."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 34,
+    "mechanism": "Создание узнаваемости и ностальгии через упоминание известного элемента.",
+    "steps": [
+      "X упоминает известный элемент, вызывая у Y чувство узнаваемости и ностальгии."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 78,
+    "mechanism": "Создание доверия и авторитета через обращение к аудитории.",
+    "steps": [
+      "X демонстрирует свои качества (ум, опыт) → Y просит X обратиться к аудитории → Z усиливает доверие и авторитет X в глазах аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 12,
+    "mechanism": "Создание ощущения безысходности и ограничения.",
+    "steps": [
+      "X сталкивается с непреодолимой системой.",
+      "X осознает невозможность изменений.",
+      "X чувствует себя подавленным и ограниченным."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 26,
+    "mechanism": "Transformation of an object to serve a new purpose.",
+    "steps": [
+      "X is modified with Y to become Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 47,
+    "mechanism": "Создание ощущения простоты и легкости в достижении цели.",
+    "steps": [
+      "X → Описание задачи как простой и легкой для выполнения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 85,
+    "mechanism": "Создание ожидания через упоминание неизвестного термина.",
+    "steps": [
+      "X упоминает Y, вызывая интерес и ожидание у аудитории."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 3,
+    "mechanism": "Создание контраста для усиления восприятия.",
+    "steps": [
+      "X представляется как ошибка.",
+      "X описывается как тщательно спланированное действие.",
+      "Контраст между X и Y усиливает восприятие Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 79,
+    "mechanism": "Создание ощущения отчуждения и непринадлежности.",
+    "steps": [
+      "X указывает, что Y не является частью Z.",
+      "Y чувствует себя чужим в Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 31,
+    "mechanism": "Создание чувства ностальгии и общности через упоминание знакомого опыта.",
+    "steps": [
+      "X упоминает знакомый опыт → Y вспоминает личные переживания → Y чувствует ностальгию и общность с другими, кто переживал то же самое."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 93,
+    "mechanism": "Создание интереса через обещание раскрытия тайны или сложной информации.",
+    "steps": [
+      "X предлагает способ Y, который обещает раскрыть сложную или скрытую информацию."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 17,
+    "mechanism": "Collaboration and resource sharing lead to a successful outcome.",
+    "steps": [
+      "X has a component.",
+      "Y has another component.",
+      "X and Y combine their components.",
+      "The combination leads to a successful outcome."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 36,
+    "mechanism": "Создание ощущения упадка и безысходности.",
+    "steps": [
+      "X остаётся неизменным, несмотря на ожидания улучшения → Усиливается чувство безысходности и упадка."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 90,
+    "mechanism": "Expectation of future advancements in technology creates anticipation and excitement.",
+    "steps": [
+      "X describes a future technological advancement → Audience anticipates the potential impact and benefits of this advancement."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 46,
+    "mechanism": "Показать, как нужда приводит к поиску ресурсов с высокими издержками.",
+    "steps": [
+      "X испытывает нужду → X ищет ресурсы → Y предлагает ресурсы с высокими издержками → X соглашается на условия Y"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 8,
+    "mechanism": "Создание напряжения через физическую связь объектов.",
+    "steps": [
+      "X физически привязан к Y, создавая ощущение неизбежности или опасности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 68,
+    "mechanism": "Создание контраста между ожиданиями и реальностью для усиления интереса.",
+    "steps": [
+      "X → Ожидание, что Y связано с Z.",
+      "Y → Описание, что Y не связано с Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 9,
+    "mechanism": "Создание контраста между ожиданием и реальностью для усиления впечатления.",
+    "steps": [
+      "X (ожидание) → Y (реальность)",
+      "Y значительно отличается от X, вызывая удивление или недоумение у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 35,
+    "mechanism": "Expectation of change or improvement followed by uncertainty or failure.",
+    "steps": [
+      "X attempts a significant effort → Y anticipates positive outcome → Z faces uncertainty or failure instead"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 29,
+    "mechanism": "Expectation of durability is subverted by immediate failure.",
+    "steps": [
+      "X is expected to be durable.",
+      "X fails immediately, contrary to expectations."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 64,
+    "mechanism": "Reflection on past roles or experiences can lead to self-awareness or nostalgia.",
+    "steps": [
+      "X recalls a past role or experience.",
+      "X reflects on the significance or impact of that role.",
+      "X experiences feelings of self-awareness or nostalgia."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 1,
+    "mechanism": "Принятие решения и действие без колебаний.",
+    "steps": [
+      "X → быстрое принятие решения → Y → немедленное действие"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 42,
+    "mechanism": "Создание ощущения тесноты и необычности расположения.",
+    "steps": [
+      "X (двигатель) находится в необычном месте Y (кабина), создавая ощущение Z (тесноты и необычности)."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 71,
+    "mechanism": "Создание ощущения безопасности и уверенности через обсуждение необходимых мер предосторожности.",
+    "steps": [
+      "X обсуждает важность Y для обеспечения безопасности и уверенности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 4,
+    "mechanism": "Создание ощущения неизбежности и напряжения через постепенное нарастание угрозы.",
+    "steps": [
+      "X сталкивается с начальной угрозой.",
+      "Угроза постепенно усиливается, создавая напряжение.",
+      "X осознает, что избежать угрозы невозможно.",
+      "Напряжение достигает кульминации, когда X вынужден действовать."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 28,
+    "mechanism": "Использование метафоры для передачи интенсивных ощущений.",
+    "steps": [
+      "X (металл кузова) → сравнивается с Y (симфония боли) для усиления восприятия через ассоциацию с интенсивными эмоциями."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 75,
+    "mechanism": "Сравнение текущего состояния с прошлым вызывает чувство улучшения ситуации.",
+    "steps": [
+      "X (текущее состояние) → меньше, чем Y (прошлое состояние) → чувство улучшения"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 21,
+    "mechanism": "Создание ощущения ностальгии и связи с прошлым через описание узнаваемых элементов.",
+    "steps": [
+      "X описывает знакомые элементы Y, вызывая у зрителя чувство ностальгии и связи с прошлым."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 39,
+    "mechanism": "Создание контраста между ожиданиями и реальностью для усиления эмоционального эффекта.",
+    "steps": [
+      "X (ожидание сложного ответа) → Y (получение простого ответа) → Z (осознание значимости простого ответа)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 44,
+    "mechanism": "Создание чувства справедливости через наказание за нарушение.",
+    "steps": [
+      "X нарушает правило.",
+      "Y, представляющий систему, применяет наказание к X.",
+      "Зритель ощущает удовлетворение от восстановления порядка."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 73,
+    "mechanism": "Создание контраста между ожиданиями и реальностью для усиления эмоционального отклика.",
+    "steps": [
+      "X (ожидание) → Y (реальность) → Z (эмоциональный отклик)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 81,
+    "mechanism": "Внутренний конфликт между привязанностью к знакомому и желанием новых возможностей.",
+    "steps": [
+      "X испытывает привязанность к текущему месту.",
+      "X задумывается о возможностях в другом месте.",
+      "X чувствует внутренний конфликт между комфортом и стремлением к новому."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 61,
+    "mechanism": "Создание напряжения через скрытность и автономность.",
+    "steps": [
+      "X действует скрытно и автономно, не заявляя о себе, что создает напряжение и интригу."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  }
+]

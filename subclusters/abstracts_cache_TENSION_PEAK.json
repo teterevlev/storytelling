@@ -1,0 +1,1118 @@
+[
+  {
+    "n": 31,
+    "mechanism": "Создание напряжения через внутренний конфликт и внешние раздражители.",
+    "steps": [
+      "X испытывает внутренний конфликт из-за Y.",
+      "X сталкивается с внешними раздражителями, усиливающими его состояние.",
+      "Эмоции X достигают пика, создавая напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 72,
+    "mechanism": "Создание напряжения через внезапное событие и его последствия.",
+    "steps": [
+      "X происходит внезапно, вызывая шок и тревогу.",
+      "Y демонстрирует немедленные последствия события.",
+      "Z усиливает ощущение опасности и уязвимости."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 107,
+    "mechanism": "Создание напряжения через неизвестность и страх.",
+    "steps": [
+      "X описывается как очень тёмное и неизвестное место.",
+      "Y чувствует страх и беспокойство из-за неизвестности.",
+      "Z усиливает напряжение, представляя возможные угрозы."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 111,
+    "mechanism": "Создание напряжения через внезапное изменение обстановки.",
+    "steps": [
+      "X → внезапное изменение обстановки → усиление напряжения у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 118,
+    "mechanism": "Создание напряжения через угрозу разрушения системы.",
+    "steps": [
+      "X → неверный поворот",
+      "Y → угроза разрушения системы",
+      "Z → усиление напряжения"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 24,
+    "mechanism": "Создание напряжения через угрозу серьёзных последствий.",
+    "steps": [
+      "X сталкивается с возможностью Y, которая ведёт к Z.",
+      "Z представляет собой серьёзную угрозу или наказание.",
+      "Напряжение усиливается из-за неизбежности или серьёзности Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 65,
+    "mechanism": "Escalation of tension through unexpected disruption.",
+    "steps": [
+      "X (doors opening) → Y (items spilling onto the road) → Z (danger to vehicles)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 110,
+    "mechanism": "Escalation of tension through inevitability and confrontation.",
+    "steps": [
+      "X expresses a sense of inevitability and confrontation, suggesting that no matter where they go, the outcome will be the same, increasing tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 117,
+    "mechanism": "Building tension through the revelation of extreme distances and challenges.",
+    "steps": [
+      "X introduces a concept that requires a significant distance to achieve.",
+      "Y emphasizes the vastness of this distance by comparing it to known references.",
+      "Z highlights the challenge and rarity of reaching such distances, creating a sense of awe and tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 50,
+    "mechanism": "Создание напряжения через внезапное изменение ситуации.",
+    "steps": [
+      "X движется по стабильной поверхности.",
+      "X сталкивается с неожиданным препятствием.",
+      "X теряет контроль и оказывается в сложной ситуации."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 123,
+    "mechanism": "Создание напряжения через осознание хрупкости ситуации.",
+    "steps": [
+      "X → осознание, что малейшая ошибка может привести к катастрофическим последствиям.",
+      "Y → усиление чувства неотвратимости и значимости момента.",
+      "Z → зритель ощущает напряжение и страх перед возможной потерей."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 57,
+    "mechanism": "Создание напряжения через трансформацию объекта.",
+    "steps": [
+      "X трансформируется в Y, увеличивая напряжение и ожидание."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 109,
+    "mechanism": "Building tension through the anticipation of negative consequences.",
+    "steps": [
+      "X suggests an action that seems beneficial.",
+      "Y warns about potential negative outcomes if the action is taken.",
+      "The warning creates a sense of impending danger or conflict.",
+      "The audience anticipates the possible negative consequences, increasing tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 113,
+    "mechanism": "Building anticipation and suspense through prolonged focus.",
+    "steps": [
+      "X maintains focus on a single element for an extended period → Y creates anticipation and suspense as the audience waits for a change or revelation."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 121,
+    "mechanism": "Создание напряжения через внезапное изменение или угрозу.",
+    "steps": [
+      "X представляет стабильность или длительный процесс.",
+      "Y вводит внезапное изменение или угрозу.",
+      "Z показывает последствия, которые могут разрушить X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 12,
+    "mechanism": "Создание напряжения через физическую сложность и дискомфорт.",
+    "steps": [
+      "X сталкивается с задачей, требующей физической гибкости и усилий.",
+      "Y испытывает дискомфорт и напряжение из-за необычной позы и усилий.",
+      "Z ощущает нарастание напряжения из-за необходимости выполнить задачу в сложных условиях."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 106,
+    "mechanism": "Создание напряжения через осознание неизбежности и безысходности ситуации.",
+    "steps": [
+      "X осознает, что Y не изменится, пока Z продолжается.",
+      "X чувствует напряжение из-за понимания, что Y опасно и неизбежно."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 108,
+    "mechanism": "Создание напряжения через угрозу разоблачения.",
+    "steps": [
+      "X (персонаж) находится в ситуации, где его действия могут быть раскрыты.",
+      "Y (обстоятельства) усиливают вероятность разоблачения.",
+      "Z (персонаж) осознает риск и испытывает напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "3.json"
+  },
+  {
+    "n": 115,
+    "mechanism": "Создание напряжения через сравнение и преувеличение.",
+    "steps": [
+      "X сравнивается с Y, чтобы подчеркнуть его малость или величие.",
+      "Используется преувеличение, чтобы усилить восприятие разницы.",
+      "Зритель ощущает напряжение из-за контраста между X и Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 126,
+    "mechanism": "Создание максимального напряжения через угрозу неминуемой катастрофы.",
+    "steps": [
+      "X достигает критической точки, где последствия кажутся неизбежными.",
+      "Y усиливает ощущение надвигающейся катастрофы.",
+      "Z подчеркивает безвыходность ситуации."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 17,
+    "mechanism": "Создание неожиданного и опасного поворота событий для усиления напряжения.",
+    "steps": [
+      "X движется по пути → Y происходит неожиданное событие (срабатывание мины) → Z возникает чувство опасности и напряжения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 87,
+    "mechanism": "Building tension through physical and mental exhaustion.",
+    "steps": [
+      "X experiences prolonged stress and noise → X becomes physically and mentally exhausted → X reaches a peak of tension and discomfort."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 114,
+    "mechanism": "Создание напряжения через ожидание и неопределенность.",
+    "steps": [
+      "X длится долго, создавая ожидание.",
+      "Y предполагает, что результат может быть незначительным.",
+      "Z усиливает напряжение через неопределенность исхода."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 125,
+    "mechanism": "Создание максимального напряжения перед разрешением ситуации.",
+    "steps": [
+      "X нарастает, создавая ожидание.",
+      "Y достигает пика, усиливая напряжение.",
+      "Z находится на грани, вызывая максимальное беспокойство."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 21,
+    "mechanism": "Escalation of stakes creates tension and anticipation.",
+    "steps": [
+      "X increases to an extreme level, causing concern or urgency."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 71,
+    "mechanism": "Escalation of danger and uncertainty to heighten tension.",
+    "steps": [
+      "X experiences a force that pushes them towards a perilous situation.",
+      "Y is introduced as an even more dangerous possibility.",
+      "The uncertainty of X's outcome creates heightened tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 116,
+    "mechanism": "Создание напряжения через сравнение и усиление разрыва.",
+    "steps": [
+      "X сравнивается с Y, чтобы показать значительное отставание.",
+      "Используется усиление, чтобы подчеркнуть величину разрыва."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 124,
+    "mechanism": "Создание напряжения через ожидание разрешения ситуации.",
+    "steps": [
+      "X создаёт паузу в развитии событий.",
+      "Y усиливает ожидание и напряжение.",
+      "Z намекает на неизбежное разрешение, но не раскрывает его."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 51,
+    "mechanism": "Создание ощущения крайней точки напряжения и безысходности.",
+    "steps": [
+      "X достигает предела, где исчезают иллюзии и начинается суровая реальность.",
+      "Y осознает, что прежние ожидания были ложными.",
+      "Z сталкивается с необходимостью выживания в новых условиях."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 90,
+    "mechanism": "Создание напряжения через внезапную и критическую неисправность.",
+    "steps": [
+      "X внезапно перестает работать, создавая угрозу или проблему.",
+      "Y осознает серьезность ситуации и испытывает стресс.",
+      "Z необходимо быстро найти решение, чтобы избежать негативных последствий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 112,
+    "mechanism": "Создание напряжения через ограничение информации и ожидание раскрытия.",
+    "steps": [
+      "X ограничивает информацию, создавая ожидание.",
+      "Y усиливает ожидание, подчеркивая ограничение.",
+      "Z обещает раскрытие, усиливая напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "4.txt"
+  },
+  {
+    "n": 119,
+    "mechanism": "Создание резкого контраста для усиления напряжения.",
+    "steps": [
+      "X (длительное спокойствие) → Y (внезапное изгнание в холодную пустоту)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 69,
+    "mechanism": "Создание напряжения через физическое и эмоциональное напряжение персонажа.",
+    "steps": [
+      "X испытывает физическое напряжение, выраженное через Y.",
+      "X демонстрирует эмоциональное напряжение через Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 54,
+    "mechanism": "Создание напряжения через внезапное препятствие.",
+    "steps": [
+      "X внезапно появляется на пути Y, создавая неожиданное препятствие.",
+      "Y вынужден быстро реагировать на появление X, что усиливает напряжение.",
+      "Зритель ощущает нарастающее беспокойство из-за непредсказуемости ситуации."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 122,
+    "mechanism": "Создание ощущения максимальной угрозы или опасности для усиления напряжения.",
+    "steps": [
+      "X достигает точки максимальной угрозы или опасности.",
+      "Y осознает, что ситуация близка к катастрофе.",
+      "Z усиливает чувство неотвратимости или безысходности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 36,
+    "mechanism": "Создание напряжения через ощущение опасности и дискомфорта.",
+    "steps": [
+      "X сталкивается с проблемой Y, которая создает риск или дискомфорт.",
+      "Y усиливается, подчеркивая недостаточность решения.",
+      "Зритель ощущает нарастающее напряжение из-за невозможности X справиться с Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 56,
+    "mechanism": "Создание напряжения через ожидание и неизвестность.",
+    "steps": [
+      "X начинает действие, которое может привести к неожиданному результату.",
+      "Y происходит, усиливая чувство неопределенности и тревоги.",
+      "Z усиливает ощущение опасности или дискомфорта."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 120,
+    "mechanism": "Создание напряжения через осознание величия и уязвимости.",
+    "steps": [
+      "X вызывает чувство величия и древности.",
+      "Y осознаёт, что X пережил множество испытаний.",
+      "Z понимает, что X всё ещё уязвим."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "5.2.txt"
+  },
+  {
+    "n": 20,
+    "mechanism": "Building tension through the introduction of an unexpected and significant anomaly.",
+    "steps": [
+      "X introduces an unexpected and significant anomaly → Audience feels tension and anticipation about the implications of this anomaly."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 82,
+    "mechanism": "Создание напряжения через кульминацию и неожиданный поворот.",
+    "steps": [
+      "X достигает критической точки, создавая напряжение.",
+      "Y происходит неожиданно, усиливая эффект.",
+      "Z вызывает эмоциональную реакцию у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 10,
+    "mechanism": "Создание напряжения через угрозу неминуемой опасности.",
+    "steps": [
+      "X находится в опасной ситуации.",
+      "Y представляет собой непосредственную угрозу для X.",
+      "Z усиливает ощущение неизбежности и безвыходности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 59,
+    "mechanism": "Создание напряжения через описание опасности и негативных характеристик.",
+    "steps": [
+      "X описывается как обладающий опасными и неприятными свойствами, усиливая чувство тревоги и ожидания."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 34,
+    "mechanism": "Building tension through physical struggle and transformation.",
+    "steps": [
+      "X experiences intense physical exertion → X undergoes a dramatic transformation due to the struggle → Y (audience) feels tension and concern for X's well-being."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 83,
+    "mechanism": "Создание напряжения через угрозу потери важного ресурса.",
+    "steps": [
+      "X получает угрозу от Y, что если X не выполнит условие, то потеряет важный ресурс.",
+      "Угроза Y усиливает напряжение, так как ресурс важен для X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 42,
+    "mechanism": "Создание напряжения через внезапное разрушение защиты.",
+    "steps": [
+      "X → внезапное разрушение Y, создающее ощущение уязвимости и опасности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 86,
+    "mechanism": "Создание напряжения через внезапное изменение состояния.",
+    "steps": [
+      "X (спокойное состояние) → Y (внезапное оживление и вибрация) → Z (ощущение напряжения и ожидания)"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 45,
+    "mechanism": "Building tension through the depiction of exploitation and dehumanization.",
+    "steps": [
+      "X describes people as a resource being consumed without remorse.",
+      "Y uses metaphorical language to emphasize the severity of the exploitation.",
+      "Z highlights the lack of empathy or guilt from those in power."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 88,
+    "mechanism": "Создание напряжения через физическое усилие и нестабильность.",
+    "steps": [
+      "X испытывает физическое напряжение, управляя Y.",
+      "Y нестабильно и требует постоянного внимания.",
+      "X вынужден постоянно корректировать свои действия, чтобы избежать Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 30,
+    "mechanism": "Создание напряжения через неожиданный и тревожный звук.",
+    "steps": [
+      "X (неожиданный звук) вызывает у Y (зрителя) чувство тревоги и ожидания."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 100,
+    "mechanism": "Создание напряжения через описание уязвимости и опасности.",
+    "steps": [
+      "X описывает уязвимость объектов, усиливая чувство опасности и беспомощности.",
+      "Y приводит к негативным последствиям, усиливая напряжение.",
+      "Z усиливает ощущение неизбежности и безысходности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 55,
+    "mechanism": "Building tension by introducing an uncontrollable and dangerous element.",
+    "steps": [
+      "X is introduced as an uncontrollable and dangerous element.",
+      "Y realizes the potential threat of X.",
+      "Z must find a way to deal with or escape from X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 102,
+    "mechanism": "Создание напряжения через близость к опасности.",
+    "steps": [
+      "X описывает ситуацию, где Y находится в непосредственной близости от Z, создавая ощущение угрозы."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 4,
+    "mechanism": "Escalation of tension through struggle and limitation.",
+    "steps": [
+      "X struggles to perform beyond its capacity, creating tension.",
+      "Y is introduced as a limitation or obstacle.",
+      "X's struggle against Y heightens tension, reaching a peak."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 94,
+    "mechanism": "Building tension through the failure of a critical component.",
+    "steps": [
+      "X experiences increasing pressure.",
+      "X reaches a breaking point.",
+      "X fails, leading to heightened tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 81,
+    "mechanism": "Создание ощущения неизбежности и упадка через описание разрушения.",
+    "steps": [
+      "X (объект) постепенно разрушается.",
+      "Y (детали разрушения) усиливают ощущение упадка.",
+      "Z (время) подчеркивает скорость и неизбежность процесса."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 22,
+    "mechanism": "Создание напряжения через внезапное и необратимое событие.",
+    "steps": [
+      "X (шальная пуля) → Y (пробивает бензобак) → Z (грузовик взрывается) → Экипажу нет шанса на спасение"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 63,
+    "mechanism": "Создание напряжения через возможность ошибки.",
+    "steps": [
+      "X → Возможность ошибки Y вызывает напряжение Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 47,
+    "mechanism": "Создание напряжения через угрозу и неизвестность.",
+    "steps": [
+      "X описывается как нечто угрожающее и опасное.",
+      "Y намекает на скрытую опасность, усиливая чувство тревоги.",
+      "Z усиливает эффект, подчеркивая потенциальные последствия для окружающих."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 91,
+    "mechanism": "Создание напряжения через визуальное представление опасности.",
+    "steps": [
+      "X (объект) нагревается до Y (яркий цвет), указывая на Z (потенциальную опасность)."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 5,
+    "mechanism": "Создание напряжения через преодоление трудностей.",
+    "steps": [
+      "X сталкивается с трудностью при выполнении задачи.",
+      "Y сопровождается звуковыми эффектами, усиливающими восприятие сложности.",
+      "Z достигается с большим усилием, подчеркивая напряженность момента."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 105,
+    "mechanism": "Building tension through escalating challenges and risks.",
+    "steps": [
+      "X faces a difficult decision → X takes a risky action → X deals with immediate problems → X anticipates a potential disaster."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 29,
+    "mechanism": "Escalation of tension through visual indicators.",
+    "steps": [
+      "X (visual indicator) moves from normal to dangerous levels, creating a sense of urgency and impending crisis."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 103,
+    "mechanism": "Создание напряжения через осознание риска и опасности.",
+    "steps": [
+      "X описывает ситуацию, где Y находится в опасной и нестабильной обстановке.",
+      "Y осознает, что малейшая ошибка может привести к серьёзным последствиям.",
+      "Z понимает, что ставки высоки, и это вызывает чувство тревоги и напряжения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 11,
+    "mechanism": "Создание ощущения опасности и дискомфорта через описание экстремальных условий.",
+    "steps": [
+      "X описывает экстремальные условия, вызывая у Y ощущение опасности и дискомфорта."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 43,
+    "mechanism": "Создание напряжения через описание разрушительного действия.",
+    "steps": [
+      "X описывает разрушительное действие Y, усиливая напряжение и тревогу у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 75,
+    "mechanism": "Создание неожиданного и шокирующего момента для усиления напряжения.",
+    "steps": [
+      "X происходит внезапно и с неожиданной силой, вызывая шок и страх у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 99,
+    "mechanism": "Создание напряжения через кульминацию конфликта.",
+    "steps": [
+      "X достигает критической точки в конфликте.",
+      "Y сталкивается с последствиями действий X.",
+      "Z вынужден принять решение или действие, чтобы разрешить ситуацию."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 23,
+    "mechanism": "Создание максимального напряжения и шока у зрителя.",
+    "steps": [
+      "X описывает ситуацию с высокой степенью опасности и безысходности.",
+      "Y усиливает восприятие зрителем серьёзности и необратимости происходящего.",
+      "Z вызывает у зрителя сильные эмоциональные реакции, такие как страх или ужас."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 39,
+    "mechanism": "Building tension through escalating danger and loss of control.",
+    "steps": [
+      "X experiences loss of control, increasing the sense of danger.",
+      "Y, a large and heavy object, becomes unstable, amplifying the threat.",
+      "Z, the situation, reaches a critical point, heightening tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 25,
+    "mechanism": "Escalation of destructive actions creates tension.",
+    "steps": [
+      "X performs increasingly harmful actions → Tension builds as the impact of X's actions becomes more severe."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 76,
+    "mechanism": "Создание ощущения внезапности и потери стабильности.",
+    "steps": [
+      "X (событие) происходит резко и неожиданно, создавая чувство дестабилизации.",
+      "Y (ресурс или поддержка) внезапно прекращается, усиливая ощущение кризиса."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 1,
+    "mechanism": "Создание напряжения через физическое усилие и риск.",
+    "steps": [
+      "X сталкивается с препятствием.",
+      "Y увеличивает усилие, чтобы преодолеть его.",
+      "Z демонстрирует признаки перегрузки, создавая ощущение опасности."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 26,
+    "mechanism": "Создание напряжения через осознание потерь и бессмысленности действий.",
+    "steps": [
+      "X (ресурсы) → Y (тяжёлый труд) → Z (бессмысленная трата) → Осознание зрителем потерь и бессмысленности"
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 84,
+    "mechanism": "Создание напряжения через принятие неожиданного решения.",
+    "steps": [
+      "X принимает решение, которое кажется нелогичным или рискованным.",
+      "Y, обладая экспертными знаниями, испытывает шок или недоумение.",
+      "Z, наблюдая за реакцией Y, ощущает нарастающее напряжение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 78,
+    "mechanism": "Создание напряжения через рискованное действие.",
+    "steps": [
+      "X выполняет рискованное действие.",
+      "Y осознает опасность и испытывает страх.",
+      "Z усиливает напряжение через физическую реакцию, например, потоотделение."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 52,
+    "mechanism": "Escalation of perceived danger to heighten tension.",
+    "steps": [
+      "X is presented as a minor incident in normal conditions.",
+      "X is recontextualized in a more vulnerable situation, increasing perceived risk.",
+      "The contrast between normal and vulnerable outcomes heightens tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 64,
+    "mechanism": "Создание напряжения через физическое воздействие и звуковой эффект.",
+    "steps": [
+      "X сталкивается с Y, создавая резкий звук.",
+      "Звук усиливает ощущение опасности и нестабильности.",
+      "Зритель ощущает напряжение из-за возможных последствий."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 19,
+    "mechanism": "Создание напряжения через описание уязвимости и неизбежной угрозы.",
+    "steps": [
+      "X описывает тонкую преграду между Y и Z.",
+      "X подчеркивает, что Z не встречает сопротивления.",
+      "X описывает, как Z преодолевает преграду."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 77,
+    "mechanism": "Escalation of threat leading to a peak of tension.",
+    "steps": [
+      "X is threatened by Y, creating a sense of danger.",
+      "Y's actions become increasingly destructive, heightening tension.",
+      "The situation reaches a peak as Y causes irreversible damage to X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 32,
+    "mechanism": "Escalation of consequences creates tension and urgency.",
+    "steps": [
+      "X (initial failure) leads to Y (loss of rewards), which escalates to Z (severe repercussions)."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 93,
+    "mechanism": "Создание напряжения через контраст между хрупкостью и нагрузкой.",
+    "steps": [
+      "X (хрупкость) сталкивается с Y (большая нагрузка) → Возникает напряжение из-за риска разрушения."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 37,
+    "mechanism": "Создание ощущения неизбежной опасности и срочности.",
+    "steps": [
+      "X сталкивается с ситуацией, где Y приводит к Z, что вызывает страх и напряжение у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 67,
+    "mechanism": "Создание напряжения через сравнение и преувеличение.",
+    "steps": [
+      "X сравнивается с Y, чтобы подчеркнуть его интенсивность.",
+      "Y является более мощным или угрожающим, чем X.",
+      "Зритель ощущает усиление напряжения из-за несоответствия между X и Y."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 89,
+    "mechanism": "Создание напряжения через неожиданное событие.",
+    "steps": [
+      "X движется стабильно → Y происходит резонанс → Z происходит неожиданное событие."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 27,
+    "mechanism": "Building tension through vivid imagery and emotional weight.",
+    "steps": [
+      "X describes a setting with intense sensory details and emotional burden.",
+      "Y highlights the insignificance of human effort in the face of bureaucratic indifference.",
+      "Z creates a peak in tension by contrasting human struggle with institutional apathy."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 13,
+    "mechanism": "Escalation of tension through physical deterioration.",
+    "steps": [
+      "X experiences increasing physical discomfort.",
+      "X's condition worsens progressively.",
+      "The culmination is reached when X's body part fails completely."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 40,
+    "mechanism": "Создание напряжения через внезапное разрушение.",
+    "steps": [
+      "X падает на Y → Y разрушается неожиданным образом."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 66,
+    "mechanism": "Escalation of conflict and tension among individuals to highlight desperation and aversion.",
+    "steps": [
+      "X individuals use various strategies to avoid an undesirable task.",
+      "Y individuals simulate conditions to escape responsibility.",
+      "Z individuals engage in verbal and physical altercations to express frustration and resistance."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 33,
+    "mechanism": "Building tension through vivid and unsettling imagery.",
+    "steps": [
+      "X is described with intense, negative adjectives, creating a sense of danger and unease.",
+      "Y is portrayed as a threat to health and safety, heightening the tension.",
+      "Z is depicted as a potential cause of violent outcomes, amplifying the fear."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 104,
+    "mechanism": "Building tension through escalating discomfort.",
+    "steps": [
+      "X experiences increasing discomfort.",
+      "Y reaches a critical point, heightening tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 49,
+    "mechanism": "Создание напряжения через внезапное исчезновение.",
+    "steps": [
+      "X внезапно исчезает в Y, вызывая у зрителя чувство тревоги и ожидания."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 73,
+    "mechanism": "Escalation of tension through unexpected impact.",
+    "steps": [
+      "X shifts unexpectedly → Y is struck → Z is affected, increasing tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 85,
+    "mechanism": "Создание ощущения мощи и напряжения через описание силы и её воздействия.",
+    "steps": [
+      "X описывается как обладающий сокрушительной силой.",
+      "Y (трактор) используется для демонстрации, как X влияет на окружающее.",
+      "Z (вибрация) усиливается, чтобы подчеркнуть мощь X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 14,
+    "mechanism": "Создание напряжения через физическое воздействие и его последствия.",
+    "steps": [
+      "X испытывает физическое воздействие.",
+      "Воздействие передаётся через Y.",
+      "Y вызывает дискомфорт или боль в Z."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 80,
+    "mechanism": "Создание напряжения через описание небрежности и потенциальных последствий.",
+    "steps": [
+      "X описывает действие, которое кажется небрежным или неправильным.",
+      "Y подразумевает, что это действие может привести к негативным последствиям.",
+      "Z усиливает чувство тревоги или беспокойства у зрителя."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 46,
+    "mechanism": "Создание напряжения через ощущение потери контроля и опасности.",
+    "steps": [
+      "X сталкивается с новой ситуацией Y.",
+      "Y вызывает у X чувство страха и беспомощности.",
+      "X осознает, что не может контролировать ситуацию Y.",
+      "Это осознание усиливает напряжение и страх у X."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 62,
+    "mechanism": "Создание напряжения через сравнение и преувеличение.",
+    "steps": [
+      "X сравнивается с Y, чтобы подчеркнуть его недостатки.",
+      "X описывается как крайний случай Y, чтобы усилить негативное восприятие.",
+      "Используется преувеличение, чтобы вызвать у зрителя чувство тревоги или недовольства."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  },
+  {
+    "n": 53,
+    "mechanism": "Building tension through a sudden and unexpected event.",
+    "steps": [
+      "X is moving smoothly → Y makes a slight adjustment → Z suddenly goes wrong, creating tension."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "1.json"
+  },
+  {
+    "n": 97,
+    "mechanism": "Создание напряжения через описание опасности и безысходности.",
+    "steps": [
+      "X описывает опасность столкновения.",
+      "Y подчеркивает неизбежность и фатальность исхода.",
+      "Z усиливает напряжение через отсутствие шансов на выживание."
+    ],
+    "candidate_residual": false,
+    "residual_reason": null,
+    "filename": "2.json"
+  }
+]
