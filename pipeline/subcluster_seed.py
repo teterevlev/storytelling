@@ -273,13 +273,29 @@ def numbered_blocks_for_tag(conn, tag: str, task_ids: list[str]) -> dict[int, di
 
 
 def seed_tag_subclusters(conn, review_path: Path) -> int:
-    """Upsert clusters from review markdown. Returns number of upserted rows."""
+    """Upsert clusters from review markdown. Returns number of upserted rows.
+
+    Canon fields are routed into RU or EN columns by language detection.
+    The opposite-language columns are preserved on update.
+    """
+    from .subcluster_i18n import ensure_subcluster_i18n_columns, field_lang, is_language_neutral
+
     if not review_path.is_file():
         return 0
+    ensure_subcluster_i18n_columns(conn)
     parsed = parse_review_markdown(review_path.read_text(encoding="utf-8"))
     task_ids = resolve_review_task_ids(conn)
-    # Ensure columns exist (caller may also migrate)
     count = 0
+
+    def split_field(value: str | None) -> tuple[str | None, str | None]:
+        if not value:
+            return None, None
+        if is_language_neutral(value):
+            return value, value
+        if field_lang(value, default="ru") == "en":
+            return None, value
+        return value, None
+
     for parent_tag, clusters in parsed.items():
         numbered = numbered_blocks_for_tag(conn, parent_tag, task_ids)
         for c in clusters:
@@ -289,32 +305,84 @@ def seed_tag_subclusters(conn, review_path: Path) -> int:
                 if item and item.get("text"):
                     exemplars.append(item)
             examples_json = json.dumps(exemplars, ensure_ascii=False)
-            conn.execute(
+
+            name = (c.get("name") or "").strip() or f"cluster-{c['sort_order']}"
+            formula = (c.get("formula") or "").strip() or None
+            abstract = (c.get("abstract") or "").strip() or None
+            name_ru, name_en = split_field(name)
+            formula_ru, formula_en = split_field(formula)
+            abstract_ru, abstract_en = split_field(abstract)
+
+            existing = conn.execute(
                 """
-                INSERT INTO tag_subclusters
-                    (parent_tag, slug, name, formula, abstract, notes, examples_json, sort_order, status)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ON CONFLICT(parent_tag, slug) DO UPDATE SET
-                    name = excluded.name,
-                    formula = excluded.formula,
-                    abstract = excluded.abstract,
-                    notes = excluded.notes,
-                    examples_json = excluded.examples_json,
-                    sort_order = excluded.sort_order,
-                    status = excluded.status
+                SELECT id, name, formula, abstract, name_en, formula_en, abstract_en
+                FROM tag_subclusters
+                WHERE parent_tag = ? AND slug = ?
                 """,
-                (
-                    parent_tag,
-                    c["slug"],
-                    c["name"],
-                    c.get("formula") or None,
-                    c.get("abstract") or None,
-                    c.get("notes") or None,
-                    examples_json,
-                    c["sort_order"],
-                    c["status"],
-                ),
-            )
+                (parent_tag, c["slug"]),
+            ).fetchone()
+
+            if existing:
+                new_name = name_ru or existing["name"] or name_en or name
+                new_formula = formula_ru if formula_ru is not None else existing["formula"]
+                new_abstract = abstract_ru if abstract_ru is not None else existing["abstract"]
+                new_name_en = name_en if name_en is not None else existing["name_en"]
+                new_formula_en = formula_en if formula_en is not None else existing["formula_en"]
+                new_abstract_en = abstract_en if abstract_en is not None else existing["abstract_en"]
+                # If canon brought EN and EN col empty, fill it; keep RU cols intact unless canon RU
+                if name_en and not existing["name_en"]:
+                    new_name_en = name_en
+                if formula_en and not (existing["formula_en"] or "").strip():
+                    new_formula_en = formula_en
+                if abstract_en and not (existing["abstract_en"] or "").strip():
+                    new_abstract_en = abstract_en
+                conn.execute(
+                    """
+                    UPDATE tag_subclusters SET
+                        name = ?, formula = ?, abstract = ?,
+                        name_en = ?, formula_en = ?, abstract_en = ?,
+                        notes = ?, examples_json = ?, sort_order = ?, status = ?
+                    WHERE id = ?
+                    """,
+                    (
+                        new_name,
+                        new_formula,
+                        new_abstract,
+                        new_name_en,
+                        new_formula_en,
+                        new_abstract_en,
+                        c.get("notes") or None,
+                        examples_json,
+                        c["sort_order"],
+                        c["status"],
+                        existing["id"],
+                    ),
+                )
+            else:
+                insert_name = name_ru or name_en or name
+                conn.execute(
+                    """
+                    INSERT INTO tag_subclusters
+                        (parent_tag, slug, name, formula, abstract,
+                         name_en, formula_en, abstract_en,
+                         notes, examples_json, sort_order, status)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        parent_tag,
+                        c["slug"],
+                        insert_name,
+                        formula_ru if formula_ru is not None else formula_en,
+                        abstract_ru if abstract_ru is not None else abstract_en,
+                        name_en or None,
+                        formula_en,
+                        abstract_en,
+                        c.get("notes") or None,
+                        examples_json,
+                        c["sort_order"],
+                        c["status"],
+                    ),
+                )
             count += 1
     return count
 

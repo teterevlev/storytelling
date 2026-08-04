@@ -3333,7 +3333,7 @@ __TAG_COLOR_CSS__
 
         async function loadTagGuide(options = {}) {
             if (tagGuideData && !options.force) return tagGuideData;
-            const res = await fetch('/tags/guide');
+            const res = await fetch(`/tags/guide?lang=${encodeURIComponent(currentLang || 'ru')}`);
             if (!res.ok) throw new Error(t('tagGuide.loadFailed'));
             tagGuideData = await res.json();
             return tagGuideData;

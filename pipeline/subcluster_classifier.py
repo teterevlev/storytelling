@@ -11,15 +11,17 @@ from typing import Any, Optional
 from openai import OpenAI
 
 from .content_lang import detect_content_lang, normalize_content_lang
+from .subcluster_i18n import localize_subcluster_dict, pick_localized_fields
 
 MODEL = "gpt-4o"
 BATCH_SIZE = 25
 
 
-def load_active_subclusters(conn, parent_tag: str) -> list[dict]:
+def load_active_subclusters(conn, parent_tag: str, content_lang: str = "ru") -> list[dict]:
     rows = conn.execute(
         """
-        SELECT id, slug, name, formula, abstract, notes, examples_json, sort_order, status
+        SELECT id, slug, name, formula, abstract, name_en, formula_en, abstract_en,
+               notes, examples_json, sort_order, status
         FROM tag_subclusters
         WHERE parent_tag = ?
           AND status = 'active'
@@ -30,10 +32,11 @@ def load_active_subclusters(conn, parent_tag: str) -> list[dict]:
         (parent_tag,),
     ).fetchall()
     out = []
+    lang = normalize_content_lang(content_lang)
     for row in rows:
-        d = dict(row)
+        d = localize_subcluster_dict(dict(row), lang)
         try:
-            d["examples"] = json.loads(d["examples_json"] or "[]")
+            d["examples"] = json.loads(d.get("examples_json") or "[]")
         except (TypeError, json.JSONDecodeError):
             d["examples"] = []
         out.append(d)
@@ -52,8 +55,7 @@ def build_classify_system_prompt(
         parts = [
             f"You classify story-beat blocks tagged {parent_tag} by psychological mechanism.",
             "",
-            "SCRIPT LANGUAGE: English. Cluster catalog labels may be in another language — "
-            "ignore catalog language/domain wording; match by mechanism only.",
+            "SCRIPT LANGUAGE: English. Cluster catalog below is also in English.",
             "",
             "Hard rules:",
             "- Ignore topic, plot, characters, objects, countries, and facts.",
@@ -72,8 +74,7 @@ def build_classify_system_prompt(
         parts = [
             f"Ты классифицируешь story-beat блоки с тегом {parent_tag} по психологическому механизму.",
             "",
-            "ЯЗЫК СКРИПТА: русский. Подписи кластеров в каталоге могут быть на другом языке — "
-            "игнорируй язык/домен каталога; сопоставляй только по механизму.",
+            "ЯЗЫК СКРИПТА: русский. Каталог кластеров ниже тоже на русском.",
             "",
             "Правила (обязательны):",
             "- Игнорируй тему, сюжет, персонажей, объекты, страны и факты.",
@@ -89,14 +90,21 @@ def build_classify_system_prompt(
             "СПИСОК КЛАСТЕРОВ (только эти):",
         ]
     for sc in subclusters:
+        picked = pick_localized_fields(sc, lang)
+        title = picked["name"] or sc.get("name") or ""
         parts.append("")
-        parts.append(f"### Кластер {sc['sort_order']} — {sc['name']} (slug={sc['slug']})")
-        if sc.get("formula"):
+        heading = (
+            f"### Cluster {sc['sort_order']} — {title} (slug={sc['slug']})"
+            if lang == "en"
+            else f"### Кластер {sc['sort_order']} — {title} (slug={sc['slug']})"
+        )
+        parts.append(heading)
+        if picked.get("formula"):
             parts.append("Formula:" if lang == "en" else "Формула:")
-            parts.append(sc["formula"])
-        if sc.get("abstract"):
+            parts.append(picked["formula"])
+        if picked.get("abstract"):
             label = "Abstract" if lang == "en" else "Абстрактно"
-            parts.append(f'{label}: "{sc["abstract"]}"')
+            parts.append(f'{label}: "{picked["abstract"]}"')
         examples = sc.get("examples") or []
         if examples:
             parts.append("Reference examples:" if lang == "en" else "Эталонные примеры:")

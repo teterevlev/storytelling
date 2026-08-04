@@ -26,6 +26,7 @@ from pipeline.subcluster_classifier import (
     classify_task_unassigned_blocks,
     load_active_subclusters,
 )
+from pipeline.subcluster_i18n import localize_subcluster_dict, pick_localized_fields
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = "db.sqlite"
@@ -239,6 +240,11 @@ def db_init():
             conn.execute("ALTER TABLE tag_subclusters ADD COLUMN notes TEXT")
         if "examples_json" not in sc_cols:
             conn.execute("ALTER TABLE tag_subclusters ADD COLUMN examples_json TEXT")
+        from pipeline.subcluster_i18n import (
+            ensure_subcluster_i18n_columns,
+            normalize_existing_subcluster_langs,
+        )
+        ensure_subcluster_i18n_columns(conn)
         conn.execute("""
             CREATE TABLE IF NOT EXISTS block_subcluster_assignments (
                 block_id INTEGER NOT NULL REFERENCES blocks(id) ON DELETE CASCADE,
@@ -259,6 +265,7 @@ def db_init():
         )
         db_migrate_segmented_blocks(conn)
         seed_tag_subclusters(conn, Path(CLUSTERS_REVIEW_PATH))
+        normalize_existing_subcluster_langs(conn)
         demote_domain_leaky_subclusters(conn)
         conn.commit()
 
@@ -794,13 +801,15 @@ def get_locale(locale: str):
 
 
 @app.get("/tags/guide")
-def get_tags_guide():
+def get_tags_guide(lang: str = "ru"):
     """Tag + subcluster reference from DB for the guide view."""
+    locale = normalize_content_lang(lang, default="ru")
     groups: dict[str, list] = {}
     with get_db() as conn:
         rows = conn.execute(
             """
-            SELECT id, parent_tag, slug, name, formula, abstract, notes,
+            SELECT id, parent_tag, slug, name, formula, abstract,
+                   name_en, formula_en, abstract_en, notes,
                    examples_json, sort_order, status
             FROM tag_subclusters
             WHERE status = 'active'
@@ -808,7 +817,7 @@ def get_tags_guide():
             """
         ).fetchall()
         for row in rows:
-            d = dict(row)
+            d = localize_subcluster_dict(dict(row), locale)
             try:
                 examples = json.loads(d.pop("examples_json") or "[]")
             except (TypeError, json.JSONDecodeError):
@@ -829,6 +838,7 @@ def get_tags_guide():
         "tags": ordered_tags,
         "definitions": {t: TAG_DEFINITIONS.get(t, "") for t in ordered_tags},
         "groups": {t: groups[t] for t in ordered_tags},
+        "lang": locale,
     }
 
 
@@ -840,7 +850,8 @@ def get_tag_reference():
     with get_db() as conn:
         for row in conn.execute(
             """
-            SELECT id, parent_tag, slug, name, formula, abstract, notes,
+            SELECT id, parent_tag, slug, name, formula, abstract,
+                   name_en, formula_en, abstract_en, notes,
                    examples_json, sort_order, status
             FROM tag_subclusters
             ORDER BY parent_tag ASC, sort_order ASC, id ASC
@@ -852,7 +863,9 @@ def get_tag_reference():
             except (TypeError, json.JSONDecodeError):
                 d.pop("examples_json", None)
                 d["examples"] = []
-            subclusters_by_tag.setdefault(d["parent_tag"], []).append(d)
+            subclusters_by_tag.setdefault(d["parent_tag"], []).append(
+                localize_subcluster_dict(d, "ru")
+            )
 
         cursor = conn.cursor()
         cursor.execute(
@@ -868,8 +881,14 @@ def get_tag_reference():
                 t.filename,
                 t.source_note,
                 t.source_url,
+                t.content_lang AS task_content_lang,
                 s.sort_order AS subcluster_sort_order,
-                s.name AS subcluster_name,
+                s.name AS name_ru,
+                s.name_en AS name_en,
+                s.formula AS formula_ru,
+                s.formula_en AS formula_en,
+                s.abstract AS abstract_ru,
+                s.abstract_en AS abstract_en,
                 s.slug AS subcluster_slug,
                 s.id AS subcluster_id
             FROM blocks b
@@ -889,6 +908,21 @@ def get_tag_reference():
                 continue
             if tag not in examples:
                 examples[tag] = []
+            locale = normalize_content_lang(row["task_content_lang"], default="ru")
+            if row["subcluster_id"]:
+                picked = pick_localized_fields(
+                    {
+                        "name": row["name_ru"],
+                        "name_en": row["name_en"],
+                        "formula": row["formula_ru"],
+                        "formula_en": row["formula_en"],
+                        "abstract": row["abstract_ru"],
+                        "abstract_en": row["abstract_en"],
+                    },
+                    locale,
+                )
+            else:
+                picked = {"name": None, "formula": None, "abstract": None}
             examples[tag].append({
                 "block_id": row["block_id"],
                 "text": text,
@@ -899,8 +933,11 @@ def get_tag_reference():
                 "reasoning": row["reasoning"] or "",
                 "loop_id": row["loop_id"],
                 "tension_score": row["tension_score"],
+                "content_lang": locale,
                 "subcluster_sort_order": row["subcluster_sort_order"],
-                "subcluster_name": row["subcluster_name"],
+                "subcluster_name": picked["name"],
+                "subcluster_formula": picked["formula"],
+                "subcluster_abstract": picked["abstract"],
                 "subcluster_slug": row["subcluster_slug"],
                 "subcluster_id": row["subcluster_id"],
             })
@@ -916,11 +953,13 @@ def get_tag_reference():
 
 
 @app.get("/tags/{tag}/subclusters")
-def list_tag_subclusters(tag: str):
+def list_tag_subclusters(tag: str, lang: str = "ru"):
+    locale = normalize_content_lang(lang, default="ru")
     with get_db() as conn:
         rows = conn.execute(
             """
-            SELECT id, parent_tag, slug, name, formula, abstract, notes,
+            SELECT id, parent_tag, slug, name, formula, abstract,
+                   name_en, formula_en, abstract_en, notes,
                    examples_json, sort_order, status
             FROM tag_subclusters
             WHERE parent_tag = ?
@@ -933,7 +972,7 @@ def list_tag_subclusters(tag: str):
         ).fetchall()
         out = []
         for row in rows:
-            d = dict(row)
+            d = localize_subcluster_dict(dict(row), locale)
             try:
                 d["examples"] = json.loads(d.pop("examples_json") or "[]")
             except (TypeError, json.JSONDecodeError):
@@ -1095,18 +1134,24 @@ def tag_classify_status(tag: str):
 def get_task_subclusters(task_id: str):
     """Lightweight per-block subcluster info for one task (loaded on demand)."""
     with get_db() as conn:
-        task = conn.execute("SELECT id FROM tasks WHERE id = ?", (task_id,)).fetchone()
+        task = conn.execute(
+            "SELECT id, content_lang FROM tasks WHERE id = ?", (task_id,)
+        ).fetchone()
         if not task:
             raise HTTPException(status_code=404, detail="Task not found")
+        locale = normalize_content_lang(task["content_lang"], default="ru")
         rows = conn.execute(
             """
             SELECT
                 b.position,
                 b.tag,
                 s.sort_order AS subcluster_sort_order,
-                s.name AS subcluster_name,
-                s.formula AS subcluster_formula,
-                s.abstract AS subcluster_abstract,
+                s.name AS name_ru,
+                s.name_en AS name_en,
+                s.formula AS formula_ru,
+                s.formula_en AS formula_en,
+                s.abstract AS abstract_ru,
+                s.abstract_en AS abstract_en,
                 s.slug AS subcluster_slug
             FROM blocks b
             LEFT JOIN block_subcluster_assignments a
@@ -1117,9 +1162,38 @@ def get_task_subclusters(task_id: str):
             """,
             (task_id,),
         ).fetchall()
+        blocks = []
+        for row in rows:
+            d = dict(row)
+            if d.get("subcluster_sort_order") is not None:
+                picked = pick_localized_fields(
+                    {
+                        "name": d.pop("name_ru", None),
+                        "name_en": d.pop("name_en", None),
+                        "formula": d.pop("formula_ru", None),
+                        "formula_en": d.pop("formula_en", None),
+                        "abstract": d.pop("abstract_ru", None),
+                        "abstract_en": d.pop("abstract_en", None),
+                    },
+                    locale,
+                )
+                d["subcluster_name"] = picked["name"]
+                d["subcluster_formula"] = picked["formula"]
+                d["subcluster_abstract"] = picked["abstract"]
+            else:
+                for k in (
+                    "name_ru", "name_en", "formula_ru", "formula_en",
+                    "abstract_ru", "abstract_en",
+                ):
+                    d.pop(k, None)
+                d["subcluster_name"] = None
+                d["subcluster_formula"] = None
+                d["subcluster_abstract"] = None
+            blocks.append(d)
         return {
             "task_id": task_id,
-            "blocks": [dict(row) for row in rows],
+            "content_lang": locale,
+            "blocks": blocks,
         }
 
 

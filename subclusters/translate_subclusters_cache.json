@@ -1,0 +1,1429 @@
+{
+  "by_id": {
+    "1070": {
+      "en": {
+        "name": "Analogy for Explaining Complexity",
+        "formula": "X → comparison with Y to highlight difficulty of achieving Z.",
+        "abstract": "Using an analogy helps explain why achieving two goals simultaneously can be difficult. This is achieved by comparing situation X with a more understandable or known situation Y to highlight the challenges associated with achieving goal Z."
+      }
+    },
+    "998": {
+      "en": {
+        "name": "Contrast of Expectations and Reality",
+        "formula": "X → contrast of expectations and reality\n→ emotional reaction",
+        "abstract": "The contrast between expectations and reality triggers various emotional reactions, such as surprise, humor, or disappointment."
+      }
+    },
+    "999": {
+      "en": {
+        "name": "Completion and Satisfaction",
+        "formula": "X → completion of action or period\n→ sense of completion",
+        "abstract": "Completing an action or period evokes a sense of completion and satisfaction, sometimes accompanied by nostalgia."
+      }
+    },
+    "1000": {
+      "en": {
+        "name": "Tension and Anticipation of Consequences",
+        "formula": "X → anticipation or inevitability of negative consequences\n→ tension",
+        "abstract": "Anticipation or inevitability of negative consequences creates tension and a sense of danger."
+      }
+    },
+    "1001": {
+      "en": {
+        "name": "Awareness of Change or Loss",
+        "formula": "X → awareness of change or loss\n→ sense of loss",
+        "abstract": "Awareness of change or loss evokes a sense of loss or regret."
+      }
+    },
+    "1002": {
+      "en": {
+        "name": "Anticipation of Future Events",
+        "formula": "X → anticipation of future events\n→ hope",
+        "abstract": "Creating anticipation of future events or changes evokes hope."
+      }
+    },
+    "1003": {
+      "en": {
+        "name": "Inevitability and Lack of Choice",
+        "formula": "X → awareness of inevitability\n→ lack of choice",
+        "abstract": "Awareness of inevitability or lack of choice evokes a sense of completion."
+      }
+    },
+    "1004": {
+      "en": {
+        "name": "Nostalgia Through Comparison",
+        "formula": "X → comparison of past and present\n→ nostalgia",
+        "abstract": "Nostalgia is created through the comparison of past and present."
+      }
+    },
+    "1005": {
+      "en": {
+        "name": "Satisfaction from Overcoming",
+        "formula": "X → overcoming difficulties\n→ satisfaction",
+        "abstract": "Satisfaction is achieved through overcoming difficulties."
+      }
+    },
+    "972": {
+      "en": {
+        "name": "Interest Through the Unusual",
+        "formula": "X → unusual presentation\n→ interest and engagement",
+        "abstract": "Creating interest and engagement through unusual presentation or mention."
+      }
+    },
+    "973": {
+      "en": {
+        "name": "Tension Through Danger",
+        "formula": "X → mention of danger\n→ tension",
+        "abstract": "Creating tension through mention of danger or unreliability."
+      }
+    },
+    "974": {
+      "en": {
+        "name": "Expectation and Disruption",
+        "formula": "X → expectation\n→ disruption of expectation",
+        "abstract": "Creating expectation and its disruption to enhance interest."
+      }
+    },
+    "975": {
+      "en": {
+        "name": "Hope Through Solutions",
+        "formula": "X → alternative solutions\n→ hope",
+        "abstract": "Creating hope through presenting alternative solutions or unification."
+      }
+    },
+    "976": {
+      "en": {
+        "name": "Image of the Future",
+        "formula": "X → visual/emotional image\n→ reflection and emotions",
+        "abstract": "Creating a visual or emotional image of the future that evokes reflection and emotions."
+      }
+    },
+    "977": {
+      "en": {
+        "name": "Expectation Contrast",
+        "formula": "X → expectations\n→ contrast with reality",
+        "abstract": "Creating a contrast between expectations and reality to enhance emotional response."
+      }
+    },
+    "978": {
+      "en": {
+        "name": "Inevitability and Tension",
+        "formula": "X → sense of inevitability\n→ increased tension",
+        "abstract": "Creating a sense of inevitability and increasing tension."
+      }
+    },
+    "979": {
+      "en": {
+        "name": "Grandeur and Uniqueness",
+        "formula": "X → description/comparison\n→ grandeur and uniqueness",
+        "abstract": "Creating a sense of grandeur and uniqueness through description or comparison."
+      }
+    },
+    "980": {
+      "en": {
+        "name": "Trust and Confidence",
+        "formula": "X → taking responsibility\n→ trust and confidence",
+        "abstract": "Creating trust and confidence through taking responsibility or protection."
+      }
+    },
+    "981": {
+      "en": {
+        "name": "Helplessness and Vulnerability",
+        "formula": "X → helplessness\n→ vulnerability",
+        "abstract": "Creating a sense of helplessness and vulnerability."
+      }
+    },
+    "982": {
+      "en": {
+        "name": "Recognition and Connection",
+        "formula": "X → recognition\n→ connection with previous",
+        "abstract": "Creating an effect of recognition and connection with previous information or elements."
+      }
+    },
+    "983": {
+      "en": {
+        "name": "Atmosphere and Immersion",
+        "formula": "X → description\n→ immersion in context",
+        "abstract": "Creating atmosphere and immersion in context through description."
+      }
+    },
+    "984": {
+      "en": {
+        "name": "Importance and Exclusivity",
+        "formula": "X → significant costs\n→ importance and exclusivity",
+        "abstract": "Creating a sense of importance and exclusivity through discussing significant costs or resources."
+      }
+    },
+    "985": {
+      "en": {
+        "name": "Constraint Resolution",
+        "formula": "X → solution\n→ overcoming constraints",
+        "abstract": "Creating a solution to overcome space or resource constraints."
+      }
+    },
+    "986": {
+      "en": {
+        "name": "Uncertainty and Confusion",
+        "formula": "X → uncertainty\n→ confusion",
+        "abstract": "Creating a sense of uncertainty or confusion in the viewer."
+      }
+    },
+    "1037": {
+      "en": {
+        "name": "Tension and Discomfort",
+        "formula": "X → expectation disruption\n→ tension",
+        "abstract": "Creating tension through unexpected changes, danger, or discomfort."
+      }
+    },
+    "1038": {
+      "en": {
+        "name": "Process Completion"
+      },
+      "ru": {
+        "abstract": "Эти механизмы включают разрешение ситуации или завершение процесса, часто приводя к завершению или удовлетворению."
+      }
+    },
+    "1039": {
+      "en": {
+        "name": "Return to the Beginning"
+      },
+      "ru": {
+        "abstract": "Эти механизмы включают возвращение к прошлым элементам или началу для создания ощущения непрерывности или завершенности."
+      }
+    },
+    "1040": {
+      "en": {
+        "name": "Contrast to Enhance Effect"
+      },
+      "ru": {
+        "abstract": "Эти механизмы включают создание контраста или сюрприза для усиления восприятия или эффекта."
+      }
+    },
+    "1041": {
+      "en": {
+        "name": "Search for New Resource"
+      },
+      "ru": {
+        "abstract": "Эти механизмы включают осознание необходимости нового элемента или ресурса для решения проблемы или выполнения задачи."
+      }
+    },
+    "874": {
+      "en": {
+        "name": "Contrast of Expectations and Reality",
+        "formula": "X (expectation) → Y (reality)\n→ Enhancement of emotional effect",
+        "abstract": "Creating contrast between expectations and reality enhances emotional impact."
+      }
+    },
+    "875": {
+      "en": {
+        "name": "Tension through Constraints",
+        "formula": "X faces constraints → Tension is created",
+        "abstract": "Creating tension through limited resources or opportunities."
+      }
+    },
+    "876": {
+      "en": {
+        "name": "Grandeur through Characteristics",
+        "formula": "X mentions characteristics → Enhancement of perception of grandeur or uniqueness",
+        "abstract": "Creating a sense of grandeur, significance, or uniqueness through description of characteristics."
+      }
+    },
+    "877": {
+      "en": {
+        "name": "Importance through Need",
+        "formula": "X expresses need for Y → Enhancement of perception of importance",
+        "abstract": "Creating a sense of necessity or importance through expression of need."
+      }
+    },
+    "878": {
+      "en": {
+        "name": "Historic Significance through Time",
+        "formula": "X mentions age or historical context → Enhancement of perception of antiquity or significance",
+        "abstract": "Creating a sense of antiquity or historical significance through mention of time."
+      }
+    },
+    "879": {
+      "en": {
+        "name": "Tension through Threat",
+        "formula": "X faces threat or vulnerability → Tension is created",
+        "abstract": "Creating tension through description of danger or vulnerability."
+      }
+    },
+    "880": {
+      "en": {
+        "name": "Expectation through Prospects",
+        "formula": "X mentions prospects → Y begins to expect",
+        "abstract": "Creating anticipation and interest in future events or discoveries."
+      }
+    },
+    "881": {
+      "en": {
+        "name": "Safety through Stability",
+        "formula": "X mentions protection or stability → Enhanced sense of safety",
+        "abstract": "Creating a sense of safety or confidence through mentioning protection or stability."
+      }
+    },
+    "882": {
+      "en": {
+        "name": "Complexity through Stages",
+        "formula": "X describes process or stages → Enhanced perception of complexity",
+        "abstract": "Creating a sense of complexity or grandeur of a task through describing process or stages."
+      }
+    },
+    "883": {
+      "en": {
+        "name": "Tension through Ambiguity",
+        "formula": "X mentions ambiguity or dilemma → Tension is created",
+        "abstract": "Creating a sense of tension through ambiguity or moral dilemma."
+      }
+    },
+    "884": {
+      "en": {
+        "name": "Multifaceted through Diversity",
+        "formula": "X describes diversity of actions or traits → Enhanced perception of multifaceted nature",
+        "abstract": "Creating a sense of diversity or multifaceted nature through describing actions or traits."
+      }
+    },
+    "885": {
+      "en": {
+        "name": "Negligence through Flaws",
+        "formula": "X describes flaws → Enhanced perception of negligence",
+        "abstract": "Creating a sense of negligence or unreliability through describing flaws."
+      }
+    },
+    "886": {
+      "en": {
+        "name": "Harmony through Contrast",
+        "formula": "X demonstrates contrast → Enhanced perception of complexity and harmony",
+        "abstract": "Creating a sense of complexity and harmony through contrast."
+      }
+    },
+    "887": {
+      "en": {
+        "name": "Reliability through Experience",
+        "formula": "X demonstrates experience or knowledge → Enhanced perception of reliability",
+        "abstract": "Creating a sense of reliability and trust through demonstrating experience or knowledge."
+      }
+    },
+    "888": {
+      "en": {
+        "name": "Abundance through Plenty",
+        "formula": "X describes plenty → Enhanced perception of abundance",
+        "abstract": "Creating a sense of abundance or carefreeness through describing plenty."
+      }
+    },
+    "889": {
+      "en": {
+        "name": "Surprise through Unusual",
+        "formula": "X presents unusual object → Enhanced perception of surprise",
+        "abstract": "Creating a sense of surprise or admiration through presenting an unusual object."
+      }
+    },
+    "1072": {
+      "en": {
+        "name": "Exclusivity and Reward Mechanism",
+        "formula": "X supports Y → X receives exclusive materials and bonuses → X feels special",
+        "abstract": "A mechanism where supporting X leads to receiving exclusive materials and bonuses, creating a sense of exclusivity and value for X."
+      }
+    },
+    "1073": {
+      "en": {
+        "name": "Ambiguity as Tension Tool",
+        "abstract": "A mechanism using ambiguity to create a sense of anticipation and tension in the audience. When a character or narrator leaves a phrase unfinished or ambiguous, it evokes uncertainty and a desire to know more, enhancing emotional tension."
+      },
+      "ru": {
+        "formula": "X → Y → Z"
+      }
+    },
+    "1074": {
+      "en": {
+        "name": "Trust Establishment Mechanism",
+        "formula": "X → Y trusts X",
+        "abstract": "A mechanism where subject X establishes contact with subject Y, leading to increased trust and engagement from Y towards X."
+      }
+    },
+    "1069": {
+      "en": {
+        "name": "Irony",
+        "formula": "X (expectation) → Y (reality, which greatly differs from expectation)",
+        "abstract": "Creating a contrast between expectation and reality to enhance comedic effect."
+      }
+    },
+    "1075": {
+      "en": {
+        "name": "Emotional Contrast Through Music",
+        "abstract": "The mechanism of creating emotional contrast involves changing musical accompaniment, which evokes an unexpected emotional response and leads to a sense of surprise or reevaluation."
+      },
+      "ru": {
+        "formula": "X → Y → Z"
+      }
+    },
+    "1013": {
+      "en": {
+        "name": "False Promise",
+        "formula": "Expectation → Non-fulfillment → Disappointment/distrust",
+        "abstract": "Creating expectation through a promise that will not be fulfilled, causing disappointment or distrust."
+      }
+    },
+    "1014": {
+      "en": {
+        "name": "Deceptive Success",
+        "abstract": "Creating a false expectation of easy gain or success that is not fulfilled."
+      }
+    },
+    "1015": {
+      "en": {
+        "name": "False Security",
+        "abstract": "Creating a false sense of security or stability that is then disrupted."
+      }
+    },
+    "1016": {
+      "en": {
+        "name": "Unrealized Resolution",
+        "abstract": "Creating a false expectation of problem resolution that is not fulfilled."
+      }
+    },
+    "1017": {
+      "en": {
+        "name": "Emotional Deception",
+        "abstract": "Creating a false expectation that enhances emotional impact."
+      }
+    },
+    "1018": {
+      "en": {
+        "name": "Illusory Achievement",
+        "abstract": "Creating a false sense of completion or achievement that is not fulfilled."
+      }
+    },
+    "1019": {
+      "en": {
+        "name": "Imaginary Harmony",
+        "abstract": "Creating a false expectation of harmony or stability that may be disrupted."
+      }
+    },
+    "1020": {
+      "en": {
+        "name": "Ironic Expectation",
+        "abstract": "Creating a false expectation that evokes surprise or irony."
+      }
+    },
+    "1051": {
+      "en": {
+        "name": "Tension and Resolution",
+        "formula": "X → tension → resolution",
+        "abstract": "Creating tension and its resolution through overcoming difficulties or dangers."
+      }
+    },
+    "1052": {
+      "en": {
+        "name": "Expectation and Satisfaction",
+        "formula": "expectation → satisfaction",
+        "abstract": "Creating expectation and its satisfaction."
+      }
+    },
+    "1053": {
+      "en": {
+        "name": "Completion and Satisfaction",
+        "formula": "task → completion\n→ satisfaction",
+        "abstract": "Creating a sense of completion and satisfaction from a completed task or confirmed opinion."
+      }
+    },
+    "1054": {
+      "en": {
+        "name": "Contrast and Impression",
+        "formula": "contrast → impression enhancement",
+        "abstract": "Creating contrast to enhance impression or humor."
+      }
+    },
+    "1055": {
+      "en": {
+        "name": "Accessibility and Simplicity",
+        "formula": "solution → accessibility\n→ simplicity",
+        "abstract": "Creating a sense of accessibility and simplicity through practical solutions."
+      }
+    },
+    "1056": {
+      "en": {
+        "name": "Unexpected Twist",
+        "formula": "expectation → twist\n→ revelation",
+        "abstract": "Creating an unexpected twist through revealing hidden information or softening consequences."
+      }
+    },
+    "1057": {
+      "en": {
+        "name": "Renewal and Progress",
+        "formula": "improvement → renewal\n→ progress",
+        "abstract": "Creating a sense of renewal and progress through metaphorical description or enhancement."
+      }
+    },
+    "965": {
+      "en": {
+        "name": "Expectation of Revelation",
+        "formula": "Mention X/Y → expectation of revelation/explanation",
+        "abstract": "These examples create an expectation of revelation or explanation by mentioning X or Y."
+      }
+    },
+    "966": {
+      "en": {
+        "name": "Questions Without Answers",
+        "formula": "X raises question → expectation of answer/explanation",
+        "abstract": "These examples create expectation through a question or hint that requires an answer or explanation."
+      }
+    },
+    "967": {
+      "en": {
+        "name": "Feature of X",
+        "formula": "Mention X → X described as more",
+        "abstract": "These examples create expectation by mentioning X as something more or special."
+      }
+    },
+    "968": {
+      "en": {
+        "name": "Intentions and Proposals",
+        "formula": "X indicates intention/proposal → expectation of revelation",
+        "abstract": "These examples create expectation through an intention or proposal that is not fully revealed."
+      }
+    },
+    "969": {
+      "en": {
+        "name": "Comparisons and Analogies",
+        "formula": "Comparison/analogy X with Y → expectation of explanation",
+        "abstract": "These examples create expectation through a comparison or analogy that requires further explanation."
+      }
+    },
+    "970": {
+      "en": {
+        "name": "Problems and Threats",
+        "formula": "Mention problem/threat X → expectation of resolution",
+        "abstract": "These examples create expectation by mentioning a problem or threat that requires resolution."
+      }
+    },
+    "1022": {
+      "en": {
+        "name": "Contrast and Expectation",
+        "formula": "X → contrast → expectation",
+        "abstract": "Creating expectation through contrast and comparison."
+      }
+    },
+    "1023": {
+      "en": {
+        "name": "Conditions and Problems",
+        "formula": "X → conditions/problems → anticipation",
+        "abstract": "Creating anticipation through mentioning conditions or problems."
+      }
+    },
+    "1024": {
+      "en": {
+        "name": "Repetition and Variation",
+        "formula": "X → repetition/variation → anticipation",
+        "abstract": "Creating anticipation through repetition and variation."
+      }
+    },
+    "1025": {
+      "en": {
+        "name": "Risk and Complexity",
+        "formula": "X → increased risk/complexity → tension",
+        "abstract": "Creating tension through increased risk or complexity."
+      }
+    },
+    "1026": {
+      "en": {
+        "name": "Pause and Tempo",
+        "formula": "X → pause/change of tempo → anticipation",
+        "abstract": "Creating anticipation through a pause or change in tempo."
+      }
+    },
+    "1027": {
+      "en": {
+        "name": "Doubt and Resolution",
+        "formula": "X → doubt → resolution",
+        "abstract": "Creating tension through doubt and its resolution."
+      }
+    },
+    "1028": {
+      "en": {
+        "name": "Tools and Means",
+        "formula": "X → tool/means → anticipation",
+        "abstract": "Creating anticipation through mentioning a tool or means."
+      }
+    },
+    "1029": {
+      "en": {
+        "name": "Deliberate Action",
+        "formula": "X → deliberate action → tension",
+        "abstract": "Creating tension through deliberate action."
+      }
+    },
+    "1030": {
+      "en": {
+        "name": "Completion and Satisfaction",
+        "formula": "X → completion → satisfaction",
+        "abstract": "Creating a sense of completion and satisfaction."
+      }
+    },
+    "1031": {
+      "en": {
+        "name": "Promise of Revelation",
+        "formula": "X → promise → anticipation",
+        "abstract": "Creating anticipation and engagement through a promise of revelation."
+      }
+    },
+    "1032": {
+      "en": {
+        "name": "Intrigue and Anticipation",
+        "formula": "X → intrigue → anticipation",
+        "abstract": "Creating intrigue and anticipation for the viewer."
+      }
+    },
+    "1033": {
+      "en": {
+        "name": "Honesty and Maturity",
+        "formula": "X → honesty → maturity",
+        "abstract": "Creating a sense of honesty and maturity."
+      }
+    },
+    "1034": {
+      "en": {
+        "name": "Scale and Significance",
+        "formula": "X → scale → significance",
+        "abstract": "Creating a sense of scale and significance through mentioning distances."
+      }
+    },
+    "1035": {
+      "en": {
+        "name": "Return to Events",
+        "formula": "X → return → anticipation",
+        "abstract": "Creating anticipation through returning to previous events."
+      }
+    },
+    "910": {
+      "en": {
+        "name": "Reliability and Evidence",
+        "formula": "X provides data → Y considers X reliable\n→ Claim is supported by evidence",
+        "abstract": "Creating an impression of reliability and accuracy through the use of specific data or evidence."
+      }
+    },
+    "911": {
+      "en": {
+        "name": "Highlighting Superiority through Comparison",
+        "formula": "X describes Y's features to emphasize power and strength.\nX claims Y is an absolute masterpiece, creating an impression of uniqueness and superiority.\nX is compared to Y to highlight its impressive quality or capability.",
+        "abstract": "Creating an impression of power, strength, or superiority through feature description or comparison."
+      }
+    },
+    "912": {
+      "en": {
+        "name": "Anxiety through Destruction and Threat",
+        "formula": "X undergoes destruction, causing the viewer to feel anxiety and anticipation.\nX describes a group as technically equipped → Y feels threatened and tense due to potential danger from the group.",
+        "abstract": "Creating a sense of destruction, chaos, or threat."
+      }
+    },
+    "913": {
+      "en": {
+        "name": "Harmony through Interaction and Comfort",
+        "formula": "X interacts with Y, creating a sense of Z.\nX describes comfortable conditions in Y, emphasizing the absence of problems thanks to Z.",
+        "abstract": "Creating a sense of harmony, balance, or comfort through element interaction or condition description."
+      }
+    },
+    "914": {
+      "en": {
+        "name": "Technical Tension and Issues",
+        "formula": "X faces a recurring problem Y, causing concern and tension.\nX discusses the possibility of Y without physical presence.\nX questions the reason.\nY explains the reason using technical details.",
+        "abstract": "Creating tension through discussion of technical issues or possibilities."
+      }
+    },
+    "915": {
+      "en": {
+        "name": "Scientific Understanding through Explanation",
+        "formula": "X explains how Y affects Z, creating an unexpected effect.\nX (map) → Y (temperature distribution) → Z (sense of discovery or understanding)",
+        "abstract": "Creating a sense of credibility or scientific understanding through explanation or visualization."
+      }
+    },
+    "916": {
+      "en": {
+        "name": "Significance through Large Numbers",
+        "formula": "X mentions large numbers related to a product or service.\nY perceives this as a sign of significance or success.",
+        "abstract": "Creating a sense of significance or success through mentioning large numbers or achievements."
+      }
+    },
+    "917": {
+      "en": {
+        "name": "Safety through Observation and Systems",
+        "formula": "X mentions a system that ensures Y.\nY is associated with safety and reliability.\nX (person) observes Y (another person) to ensure safety.",
+        "abstract": "Creating a sense of safety, reliability, or control through system description or observation."
+      }
+    },
+    "918": {
+      "en": {
+        "name": "Progress through Improvement and Modernization",
+        "formula": "X adds Y to Z to show improvement.\nX acquires advanced tools from Y, Z, and W to show improvement.",
+        "abstract": "Creating a sense of progress, improvement, or modernization through adding new elements or acquisition."
+      }
+    },
+    "919": {
+      "en": {
+        "name": "Fatigue from Constant Demands",
+        "formula": "X requires constant attention and effort.\nY causes a feeling of fatigue and irritation.\nZ emphasizes the inevitability and endlessness of the process.",
+        "abstract": "Creating a sense of fatigue, dissatisfaction, or hopelessness through description of constant demands or constraints."
+      }
+    },
+    "920": {
+      "en": {
+        "name": "Exclusivity through Comparison and Variety",
+        "formula": "X costs more than Y and Z → X is perceived as more valuable and exclusive.\nX mentions numerous options of Y to emphasize variety and innovation.",
+        "abstract": "Creating a sense of exclusivity, value, or uniqueness through comparison or description."
+      }
+    },
+    "921": {
+      "en": {
+        "name": "Danger through Complexity and Terrain",
+        "formula": "X → Description of difficult terrain → Heightened sense of danger and complexity.\nX faces a recurring problem Y, causing anxiety and tension.",
+        "abstract": "Creating a sense of complexity or danger through the description of difficult terrain or technical aspects."
+      }
+    },
+    "922": {
+      "en": {
+        "name": "Control through Barriers and Limitations",
+        "formula": "X creates a barrier to limit Y's access to resource Z.\nX (metal structure) absorbs energy Y (explosion), dissipating it and protecting Z (internal content) from damage.",
+        "abstract": "Creating a sense of control or limitation through the use of barriers or technical means."
+      }
+    },
+    "923": {
+      "en": {
+        "name": "Scientific Possibilities through Simulations",
+        "formula": "X claims that Y is theoretically possible.\nX mentions simulations that show Z.",
+        "abstract": "Creating a sense of scientific progress or possibility through theoretical claims or simulations."
+      }
+    },
+    "924": {
+      "en": {
+        "name": "Irony through Quality Contrast",
+        "abstract": "Creating a sense of irony or critique through the contrast between quality and cost."
+      },
+      "ru": {
+        "formula": "X (плохое качество) → Y (низкая стоимость) → Z (ирония/критика)"
+      }
+    },
+    "925": {
+      "en": {
+        "name": "Surprise through Unusual Capabilities",
+        "formula": "X demonstrates abilities that seem incredible or impossible.\nY overcomes obstacles considered insurmountable.",
+        "abstract": "Creating a sense of surprise and admiration through the description of unusual capabilities or achievements."
+      }
+    },
+    "926": {
+      "en": {
+        "name": "Reliability through Systems and Features",
+        "formula": "X mentions a system that ensures Y.\nY is associated with safety and reliability.",
+        "abstract": "Creating a sense of reliability and safety through the description of systems or features."
+      }
+    },
+    "927": {
+      "en": {
+        "name": "Achievement through Detail and Exploration",
+        "formula": "X → obtaining more detailed information → ability to see details.",
+        "abstract": "Creating a sense of progress and achievement through exploration or detailing."
+      }
+    },
+    "929": {
+      "en": {
+        "name": "Tension and Contradictions",
+        "formula": "X → opposing actions\n→ contradiction",
+        "abstract": "Creating tension through opposing actions and contradictions."
+      }
+    },
+    "930": {
+      "en": {
+        "name": "Expectation and Resolution",
+        "formula": "X → expectation\n→ resolution/disappointment",
+        "abstract": "Creating expectation and subsequent resolution or disappointment."
+      }
+    },
+    "931": {
+      "en": {
+        "name": "Uncertainty and Expectation",
+        "formula": "X → uncertainty\n→ expectation",
+        "abstract": "Creating tension through uncertainty and expectation."
+      }
+    },
+    "932": {
+      "en": {
+        "name": "Contrast of Expectations and Reality",
+        "formula": "X → expectations\n→ reality",
+        "abstract": "Contrast between expectations and reality to enhance emotional effect."
+      }
+    },
+    "933": {
+      "en": {
+        "name": "Intrigue and Reflection",
+        "formula": "X → intrigue\n→ reflection",
+        "abstract": "Creating intrigue and stimulating reflection through questions and unknown elements."
+      }
+    },
+    "934": {
+      "en": {
+        "name": "Threat and Vulnerability",
+        "formula": "X → threat\n→ vulnerability",
+        "abstract": "Creating tension through discussion of threat and vulnerability."
+      }
+    },
+    "935": {
+      "en": {
+        "name": "Surprise and Absurdity",
+        "formula": "X → familiar\n→ unusual context",
+        "abstract": "Creating a sense of surprise and curiosity by presenting the familiar in an unusual context or absurd events."
+      }
+    },
+    "936": {
+      "en": {
+        "name": "Sudden Change",
+        "formula": "X → sudden change\n→ danger",
+        "abstract": "Creating tension through sudden change in situation or danger."
+      }
+    },
+    "937": {
+      "en": {
+        "name": "Absurdity and Contrast",
+        "formula": "X → exaggeration\n→ contrast",
+        "abstract": "Creating a sense of absurdity through exaggeration and contrast."
+      }
+    },
+    "938": {
+      "en": {
+        "name": "Uncertainty and Intrigue",
+        "formula": "X → questions\n→ possibilities",
+        "abstract": "Creating a sense of uncertainty and intrigue through posing questions and discussing possibilities."
+      }
+    },
+    "939": {
+      "en": {
+        "name": "Danger and Chaos",
+        "formula": "X → danger\n→ chaos",
+        "abstract": "Creating tension through the description of danger and chaos."
+      }
+    },
+    "940": {
+      "en": {
+        "name": "Moral Dilemma",
+        "formula": "X → expectations\n→ reality",
+        "abstract": "Creating a moral dilemma or cognitive dissonance through contrast between expectations and reality."
+      }
+    },
+    "941": {
+      "en": {
+        "name": "Injustice and Disappointment",
+        "formula": "X → expectations\n→ reality",
+        "abstract": "Creating a sense of injustice and disappointment through contrast between expectations and reality."
+      }
+    },
+    "942": {
+      "en": {
+        "name": "Power and Choice",
+        "formula": "X → motivation\n→ possibilities",
+        "abstract": "Creating a sense of power and freedom of choice through questions about motivation and possibilities."
+      }
+    },
+    "943": {
+      "en": {
+        "name": "Isolation and Absurdity",
+        "formula": "X → isolation\n→ absurdity",
+        "abstract": "Creating a sense of isolation and futility through the description of an absurd situation."
+      }
+    },
+    "944": {
+      "en": {
+        "name": "Resource Availability",
+        "formula": "X → availability\n→ resource"
+      },
+      "ru": {
+        "abstract": "Уточнение доступности или доступа к ресурсу."
+      }
+    },
+    "945": {
+      "en": {
+        "name": "Technological Possibilities",
+        "formula": "X → expectation\n→ technology"
+      },
+      "ru": {
+        "abstract": "Ожидание и любопытство относительно технологических возможностей."
+      }
+    },
+    "946": {
+      "en": {
+        "name": "Social Identity",
+        "formula": "X → Judgment\n→ Identity",
+        "abstract": "Overcoming societal judgment and restoring social identity."
+      }
+    },
+    "988": {
+      "en": {
+        "name": "Expectation Contrast",
+        "formula": "Expectation → Reality\n→ Relief",
+        "abstract": "Creating contrast between expectations and reality to enhance the feeling of relief."
+      }
+    },
+    "989": {
+      "en": {
+        "name": "Problem Resolution",
+        "formula": "Problem → Solution\n→ Relief",
+        "abstract": "Creating a sense of relief through resolving a problem or tension."
+      }
+    },
+    "990": {
+      "en": {
+        "name": "Humor and Irony",
+        "formula": "Tension → Humor\n→ Relief",
+        "abstract": "Creating relief through humor or irony."
+      }
+    },
+    "991": {
+      "en": {
+        "name": "Threat Removal",
+        "formula": "Threat → Elimination\n→ Relief",
+        "abstract": "Creating relief through the removal of a threat or danger."
+      }
+    },
+    "992": {
+      "en": {
+        "name": "Condition Comparison",
+        "formula": "Difficult Conditions → Comparison\n→ Relief",
+        "abstract": "Creating relief through comparison with more difficult conditions or situations."
+      }
+    },
+    "993": {
+      "en": {
+        "name": "Conflict Resolution",
+        "formula": "Conflict → Resolution\n→ Relief",
+        "abstract": "Creating relief through resolving a conflict or misunderstanding."
+      }
+    },
+    "994": {
+      "en": {
+        "name": "Goal Achievement",
+        "formula": "Expectation → Achievement\n→ Relief",
+        "abstract": "Creating relief through achieving a goal or ending a wait."
+      }
+    },
+    "995": {
+      "en": {
+        "name": "Physical Action",
+        "formula": "Tension → Action\n→ Relief",
+        "abstract": "Creating relief through physical action or state."
+      }
+    },
+    "996": {
+      "en": {
+        "name": "Stability in Chaos",
+        "formula": "Chaos → Stability\n→ Relief",
+        "abstract": "Creating a sense of stability and reliability in a chaotic situation."
+      }
+    },
+    "892": {
+      "en": {
+        "name": "Greatness Through Description"
+      },
+      "ru": {
+        "formula": "X описывает Y (космические явления, масштаб, историческая значимость) → Z испытывает удивление, трепет или величие.",
+        "abstract": "Сцены создают чувство удивления, трепета или величия через описания масштаба, космических явлений или исторической значимости."
+      }
+    },
+    "893": {
+      "en": {
+        "name": "Mastery Through Overcoming"
+      },
+      "ru": {
+        "formula": "X сталкивается с вызовом Y → X использует умение/находчивость, чтобы преодолеть Y → Z наблюдает и испытывает восхищение или напряжение.",
+        "abstract": "Сцены демонстрируют усилия, находчивость или умение в преодолении вызовов или достижении целей."
+      }
+    },
+    "894": {
+      "en": {
+        "name": "Instability and Discomfort"
+      },
+      "ru": {
+        "formula": "X замечает Y (непредсказуемое поведение, нестабильность) → X испытывает дискомфорт или напряжение.",
+        "abstract": "Сцены создают чувство нестабильности или дискомфорта через непредсказуемые или тревожные элементы."
+      }
+    },
+    "895": {
+      "en": {
+        "name": "Intrigue through Surprise"
+      },
+      "ru": {
+        "formula": "X сталкивается с неожиданным элементом Y → Z испытывает интерес или любопытство.",
+        "abstract": "Сцены создают интерес или любопытство через неожиданные элементы или загадочные сигналы."
+      }
+    },
+    "896": {
+      "en": {
+        "name": "Humor through Surprise"
+      },
+      "ru": {
+        "formula": "X повторяет или варьирует Y → Z вводит неожиданный элемент → Аудитория испытывает удивление или юмор.",
+        "abstract": "Сцены используют повторение, вариацию или неожиданные связи для создания удивления или юмора."
+      }
+    },
+    "897": {
+      "en": {
+        "name": "Time Pressure"
+      },
+      "ru": {
+        "formula": "X упоминает ограничение времени/ресурсов → Y испытывает срочность или давление.",
+        "abstract": "Сцены создают чувство срочности или давления через временные ограничения или быстрое истощение ресурсов."
+      }
+    },
+    "898": {
+      "en": {
+        "name": "Tension through Dialogue"
+      },
+      "ru": {
+        "formula": "X использует диалог/обстановку для создания напряжения → Y испытывает напряжение или удивление.",
+        "abstract": "Сцены создают напряжение или ожидание через диалог, обстановку или неожиданный успех."
+      }
+    },
+    "899": {
+      "en": {
+        "name": "Scale through Comparison"
+      },
+      "ru": {
+        "formula": "X сравнивает Y с Z → Аудитория воспринимает масштаб или значимость.",
+        "abstract": "Сцены вызывают чувство масштаба или значимости через сравнения или измерения."
+      }
+    },
+    "900": {
+      "en": {
+        "name": "Preparation and Transition"
+      },
+      "ru": {
+        "formula": "X инициирует движение/подготовку → Y воспринимает готовность или переход.",
+        "abstract": "Сцены создают чувство движения, подготовки или перехода."
+      }
+    },
+    "901": {
+      "en": {
+        "name": "Risk and Vulnerability"
+      },
+      "ru": {
+        "formula": "X демонстрирует уязвимость/риск → Y испытывает напряжение или эмпатию.",
+        "abstract": "Сцены создают напряжение через физическую уязвимость или рискованные действия."
+      }
+    },
+    "902": {
+      "en": {
+        "name": "Confidence through Abundance"
+      },
+      "ru": {
+        "formula": "X демонстрирует изобилие/стабильность → Y чувствует безопасность или уверенность.",
+        "abstract": "Сцены создают чувство изобилия, стабильности или безопасности."
+      }
+    },
+    "903": {
+      "en": {
+        "name": "Contrast and Harmony"
+      },
+      "ru": {
+        "formula": "X и Y сравниваются → Аудитория воспринимает контраст или гармонию.",
+        "abstract": "Сцены подчеркивают различия или сходства для создания контраста или гармонии."
+      }
+    },
+    "904": {
+      "en": {
+        "name": "Connection through Nostalgia"
+      },
+      "ru": {
+        "formula": "X упоминает знакомый элемент → Аудитория вспоминает личный опыт → Аудитория испытывает ностальгию или связь.",
+        "abstract": "Сцены вызывают чувство ностальгии или связи через знакомые элементы или личный опыт."
+      }
+    },
+    "905": {
+      "en": {
+        "name": "Humility through Imperfection"
+      },
+      "ru": {
+        "formula": "X показывает ограничение/несовершенный результат → Аудитория соотносит себя с X и чувствует смирение.",
+        "abstract": "Сцены демонстрируют ограничения или несовершенства, чтобы вызвать чувство соотнесенности или смирения."
+      }
+    },
+    "906": {
+      "en": {
+        "name": "Mystery through Anomaly"
+      },
+      "ru": {
+        "formula": "X сталкивается с неожиданным сигналом/аномалией → Аудитория чувствует тайну или ожидание.",
+        "abstract": "Сцены создают чувство тайны или ожидания через неожиданные сигналы или аномалии."
+      }
+    },
+    "907": {
+      "en": {
+        "name": "Understanding through Example"
+      },
+      "ru": {
+        "formula": "X вводит концепцию → X использует пример/демонстрацию → Аудитория понимает концепцию.",
+        "abstract": "Сцены иллюстрируют концепции или идеи через практические примеры или демонстрации."
+      }
+    },
+    "908": {
+      "en": {
+        "name": "Intimacy through Closeness"
+      },
+      "ru": {
+        "formula": "X приближается к Y → Аудитория чувствует близость или сосредоточенность.",
+        "abstract": "Сцены создают чувство близости или сосредоточенности через близость или детальное наблюдение."
+      }
+    },
+    "1043": {
+      "en": {
+        "name": "Expectation and Intrigue",
+        "formula": "X → expectation\n→ intrigue",
+        "abstract": "Creating anticipation and interest through mention of significant objects or events."
+      }
+    },
+    "1044": {
+      "en": {
+        "name": "Risk and Instability",
+        "abstract": "Creating tension through instability or risk."
+      }
+    },
+    "1045": {
+      "en": {
+        "name": "Gradual Revelation",
+        "abstract": "Creating intrigue and tension through gradual or unexpected information disclosure."
+      }
+    },
+    "1046": {
+      "en": {
+        "name": "Echo of Antiquity",
+        "abstract": "Creating a sense of antiquity, mystery, or nostalgia through mention of objects or events."
+      }
+    },
+    "1047": {
+      "en": {
+        "name": "Familiar Associations",
+        "abstract": "Creating association with reliability or familiarity through mention of known objects or personalities."
+      }
+    },
+    "1048": {
+      "en": {
+        "name": "New Scene Elements",
+        "abstract": "Creating context or scene through introduction of new elements or technologies."
+      }
+    },
+    "1049": {
+      "en": {
+        "name": "Complex Schemes",
+        "abstract": "Creating tension through revelation of complex or specialized plans and schemes."
+      }
+    },
+    "863": {
+      "en": {
+        "name": "Event Anticipation",
+        "formula": "X → anticipation\nanticipation → tension",
+        "abstract": "Tension is created through anticipation or expectation of an event."
+      }
+    },
+    "864": {
+      "en": {
+        "name": "Threat and Danger",
+        "formula": "X → threat\nthreat → tension",
+        "abstract": "Tension is created through threat or danger."
+      }
+    },
+    "865": {
+      "en": {
+        "name": "Problem Awareness",
+        "formula": "X realizes Y\nY → tension",
+        "abstract": "Tension is created through awareness of something troubling."
+      }
+    },
+    "866": {
+      "en": {
+        "name": "Expectation Mismatch",
+        "formula": "Expectation X\nX does not meet expectations",
+        "abstract": "Tension is created through the contrast between expectation and reality."
+      }
+    },
+    "867": {
+      "en": {
+        "name": "Need for Precision",
+        "formula": "X demands precision\nprecision → tension",
+        "abstract": "Tension is created through the need for control or precision."
+      }
+    },
+    "868": {
+      "en": {
+        "name": "Difficulty Achieving Goal",
+        "formula": "X requires overcoming difficulties\ndifficulties → tension",
+        "abstract": "Tension is created through the difficulty or challenge of achieving a goal."
+      }
+    },
+    "869": {
+      "en": {
+        "name": "Change and Instability",
+        "formula": "X causes instability\ninstability → tension",
+        "abstract": "Tension is created through change or instability."
+      }
+    },
+    "870": {
+      "en": {
+        "name": "Element Contrast",
+        "formula": "X contrasts with Y\ncontrast → tension",
+        "abstract": "Tension is created through the contrast between two elements."
+      }
+    },
+    "871": {
+      "en": {
+        "name": "Uncertainty and Risk",
+        "formula": "X → uncertainty\nuncertainty → tension",
+        "abstract": "Tension is created through uncertainty or risk."
+      }
+    },
+    "872": {
+      "en": {
+        "name": "Test and Challenge",
+        "formula": "X → test\ntest → tension",
+        "abstract": "Tension is created through a test or challenge."
+      }
+    },
+    "948": {
+      "en": {
+        "name": "Sudden Event",
+        "formula": "X → sudden event → increased tension",
+        "abstract": "Tension is created through sudden changes and events."
+      }
+    },
+    "949": {
+      "en": {
+        "name": "Threat and Danger",
+        "formula": "X → threat → increased tension",
+        "abstract": "Tension is created through threat and danger."
+      }
+    },
+    "950": {
+      "en": {
+        "name": "Unknown and Uncertainty",
+        "formula": "X → unknown → increased tension",
+        "abstract": "Tension is created through the unknown and uncertainty."
+      }
+    },
+    "951": {
+      "en": {
+        "name": "Physical or Emotional Pressure",
+        "formula": "X experiences pressure → increased tension",
+        "abstract": "Tension is created through physical or emotional pressure."
+      }
+    },
+    "952": {
+      "en": {
+        "name": "Realization of Hopelessness",
+        "formula": "X → realization of inevitability → tension increase",
+        "abstract": "Creating tension through realization of inevitability and hopelessness."
+      }
+    },
+    "953": {
+      "en": {
+        "name": "Contrast and Comparison",
+        "formula": "X compared to Y → tension increase",
+        "abstract": "Creating tension through comparison and contrast."
+      }
+    },
+    "954": {
+      "en": {
+        "name": "Anticipation of Climax",
+        "formula": "X → anticipation → climax",
+        "abstract": "Creating tension through anticipation and climax."
+      }
+    },
+    "955": {
+      "en": {
+        "name": "Struggle and Confrontation",
+        "formula": "X → struggle → tension increase",
+        "abstract": "Creating tension through physical or emotional struggle."
+      }
+    },
+    "956": {
+      "en": {
+        "name": "Destruction and Vulnerability",
+        "formula": "X → destruction → tension increase",
+        "abstract": "Creating tension through destruction and vulnerability."
+      }
+    },
+    "957": {
+      "en": {
+        "name": "Description of Danger",
+        "formula": "X described as dangerous → tension increase",
+        "abstract": "Creating tension through description of danger and negative traits."
+      }
+    },
+    "958": {
+      "en": {
+        "name": "Threat of Exposure",
+        "formula": "X → threat of exposure/mistake → tension increase",
+        "abstract": "Creating tension through threat of exposure or mistake."
+      }
+    },
+    "959": {
+      "en": {
+        "name": "Visual and Sound Cues",
+        "formula": "X → visual/sound indicator → tension increase",
+        "abstract": "Creating tension through visual or sound indicators."
+      }
+    },
+    "960": {
+      "en": {
+        "name": "Realization of Fragility",
+        "formula": "X → realization of fragility → tension increase",
+        "abstract": "Creating tension through realization of fragility or vulnerability."
+      }
+    },
+    "961": {
+      "en": {
+        "name": "Transformation and Change",
+        "formula": "X → transformation → tension increase",
+        "abstract": "Creating tension through transformation or change of state."
+      }
+    },
+    "962": {
+      "en": {
+        "name": "Climax of Confrontation",
+        "formula": "X → climax of conflict → tension increase",
+        "abstract": "Creating tension through climax of conflict or confrontation."
+      }
+    },
+    "963": {
+      "en": {
+        "name": "Threat of Loss",
+        "formula": "X → threat of loss → tension increase",
+        "abstract": "Creating tension through threat of loss or system destruction."
+      }
+    },
+    "1007": {
+      "en": {
+        "name": "Expectation Violation",
+        "formula": "X → expectation Y\n→ Y does not occur",
+        "abstract": "Creating surprise through expectation violation and contrast."
+      }
+    },
+    "1008": {
+      "en": {
+        "name": "Perception Change",
+        "formula": "X → new information\n→ perception change",
+        "abstract": "Changing perception or understanding of a situation through realization or new information."
+      }
+    },
+    "1009": {
+      "en": {
+        "name": "Tension Through Threat",
+        "formula": "X → risk Y\n→ tension from consequences",
+        "abstract": "Creating tension through threat or possibility of negative consequences."
+      }
+    },
+    "1010": {
+      "en": {
+        "name": "Atmosphere of Hopelessness",
+        "formula": "X → immersion in darkness\n→ Y as catalyst",
+        "abstract": "Creating an atmosphere of hopelessness and decline."
+      }
+    },
+    "1011": {
+      "en": {
+        "name": "Contrast of Suffering and System",
+        "formula": "X → suffering from Y\n→ Z ignores X",
+        "abstract": "Creating emotional tension through contrast between personal suffering and impersonal system."
+      }
+    },
+    "1067": {
+      "en": {
+        "name": "Intrigue and Anticipation",
+        "abstract": "Creating interest through contrast and exaggeration, enhancing anticipation and leaving the viewer intrigued."
+      },
+      "ru": {
+        "formula": "X → Y → Z"
+      }
+    },
+    "1068": {
+      "en": {
+        "name": "Surprise and Shock",
+        "abstract": "Creating expectation of a normal outcome followed by sudden expectation violation causing shock."
+      },
+      "ru": {
+        "formula": "X → Y"
+      }
+    },
+    "1065": {
+      "en": {
+        "name": "Completion and Gratitude",
+        "formula": "X → Discussion completion\n→ Expression of gratitude",
+        "abstract": "Creating a sense of completion and satisfaction from received information."
+      }
+    },
+    "1066": {
+      "en": {
+        "name": "Completion with Expectation",
+        "formula": "X → Discussion completion\n→ Hint at future",
+        "abstract": "Creating a sense of completion and anticipation."
+      }
+    },
+    "1063": {
+      "en": {
+        "name": "Expectation of Revelation",
+        "formula": "X → promise Y\n→ anticipation and interest",
+        "abstract": "Creating expectation of information revelation, sparking interest and curiosity, holding viewer's attention."
+      }
+    },
+    "1064": {
+      "ru": {
+        "name": "Призыв к действию",
+        "formula": "X → Аудитория предпринимает действие Y",
+        "abstract": "Побуждение аудитории к конкретному действию через вовлечение, указание или срочность."
+      }
+    },
+    "1071": {
+      "ru": {
+        "name": "Формирование соглашения и усиление доверия",
+        "formula": "X → Y: X выражает согласие; Y подтверждает понимание и выгоду",
+        "abstract": "Механизм, который способствует созданию консенсуса и укрепляет доверие между сторонами. Включает выражение согласия одной стороной и признание понимания и пользы другой стороной."
+      }
+    },
+    "1076": {
+      "ru": {
+        "name": "Механизм повторяющегося ритма",
+        "formula": "X → Повторение фразы → Y → Акцент на теме → Z → Гипнотический эффект",
+        "abstract": "Этот механизм включает повторение фразы для создания ритмического и гипнотического эффекта, который подчеркивает тему и вызывает медитативное состояние у аудитории."
+      }
+    },
+    "891": {
+      "ru": {
+        "name": "Напряжение и ожидание",
+        "formula": "X → ограниченная видимость/неожиданный исход/нерешённая ситуация → Z ожидает разрешения",
+        "abstract": "Сцены создают напряжение и ожидание через механизмы, такие как ограниченная видимость, неожиданные исходы и нерешённые ситуации, вызывая желание разрешения."
+      }
+    },
+    "1059": {
+      "ru": {
+        "name": "Подчеркивание контраста",
+        "formula": "X → Y (контраст)\n→ Подчеркивание Y",
+        "abstract": "Использование контраста между двумя сущностями или событиями для подчеркивания уникальности или некомпетентности одного."
+      }
+    },
+    "1060": {
+      "ru": {
+        "name": "Переходный мост",
+        "formula": "X → Переходный элемент\n→ Y",
+        "abstract": "Переход между темами с использованием общего элемента или характеристики в качестве моста."
+      }
+    },
+    "1061": {
+      "ru": {
+        "name": "Контрастный переход",
+        "formula": "X → Y (контраст)\n→ Переход через различие",
+        "abstract": "Обеспечение перехода между темами путем подчеркивания контрастов или различий."
+      }
+    },
+    "1062": {
+      "ru": {
+        "name": "Временная прогрессия",
+        "formula": "Прошлое (X) → Настоящее (Y)\n→ Будущее (Z)",
+        "abstract": "Подчеркивание течения времени для создания чувства прогрессии и контекста."
+      }
+    }
+  }
+}
