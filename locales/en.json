@@ -171,6 +171,18 @@
     "tooltipReasoning": "reasoning",
     "tooltipChunk": "chunk"
   },
+  "mapper": {
+    "column": "Column",
+    "columnPlaceholder": "Select a column",
+    "inputTitle": "Input",
+    "outputTitle": "Result",
+    "inputPlaceholder": "Paste one line per tag from the selected column…",
+    "copy": "Copy",
+    "copied": "Copied",
+    "empty": "Select a column and paste lines to build XML.",
+    "missingTag": "(no tag #{{n}} in column)",
+    "noSubtype": "(no subtype formula/abstract)"
+  },
   "clipboard": {
     "jsonCopied": "JSON copied to clipboard!",
     "jsonFailed": "Could not copy JSON: {{error}}",

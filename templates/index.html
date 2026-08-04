@@ -758,6 +758,128 @@
             background: rgba(6, 182, 212, 0.1);
         }
 
+        .mapper-panel {
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mapper-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .mapper-toolbar label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .mapper-toolbar select {
+            appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.72);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 0.35rem 1.75rem 0.35rem 0.65rem;
+            font: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+            min-width: 12rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+        }
+
+        .mapper-toolbar select:focus {
+            outline: none;
+            border-color: var(--accent-secondary);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.12);
+        }
+
+        .mapper-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 220px;
+        }
+
+        @media (max-width: 900px) {
+            .mapper-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mapper-pane {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            min-height: 220px;
+        }
+
+        .mapper-pane + .mapper-pane {
+            border-left: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 900px) {
+            .mapper-pane + .mapper-pane {
+                border-left: none;
+                border-top: 1px solid var(--border-color);
+            }
+        }
+
+        .mapper-pane-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            padding: 0.55rem 0.85rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .mapper-pane textarea,
+        .mapper-pane pre {
+            flex: 1;
+            margin: 0;
+            min-height: 180px;
+            border: none;
+            resize: vertical;
+            background: rgba(3, 7, 18, 0.55);
+            color: var(--text-main);
+            font: inherit;
+            font-family: 'Fira Code', ui-monospace, monospace;
+            font-size: 0.8rem;
+            line-height: 1.45;
+            padding: 0.85rem;
+            outline: none;
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow: auto;
+        }
+
+        .mapper-pane textarea:focus {
+            box-shadow: inset 0 0 0 1px rgba(6, 182, 212, 0.35);
+        }
+
+        .mapper-pane pre {
+            color: #a5f3fc;
+        }
+
         .tag-flow {
             display: flex;
             flex-direction: column;
@@ -1833,6 +1955,30 @@ __TAG_COLOR_CSS__
                         </div>
                     </div>
 
+                    <div class="mapper-panel" id="mapperPanel">
+                        <div class="mapper-toolbar">
+                            <label for="mapperColumnSelect" data-i18n="mapper.column">Column</label>
+                            <select id="mapperColumnSelect" onchange="rebuildMapperXml()">
+                                <option value="" data-i18n="mapper.columnPlaceholder">Select a column</option>
+                            </select>
+                        </div>
+                        <div class="mapper-grid">
+                            <div class="mapper-pane">
+                                <div class="mapper-pane-head">
+                                    <span data-i18n="mapper.inputTitle">Input</span>
+                                </div>
+                                <textarea id="mapperInput" data-i18n-placeholder="mapper.inputPlaceholder" placeholder="Paste one line per tag…" oninput="rebuildMapperXml()"></textarea>
+                            </div>
+                            <div class="mapper-pane">
+                                <div class="mapper-pane-head">
+                                    <span data-i18n="mapper.outputTitle">Result</span>
+                                    <button type="button" class="btn" id="mapperCopyBtn" style="padding: 0.2rem 0.55rem; font-size: 0.72rem;" onclick="copyMapperXml()" data-i18n="mapper.copy">Copy</button>
+                                </div>
+                                <pre id="mapperOutput"></pre>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Logs Output -->
                     <div class="console-panel">
                         <div class="panel-title" data-i18n="task.consoleTitle">Process log</div>
@@ -2001,6 +2147,8 @@ __TAG_COLOR_CSS__
                 resetConsolePlaceholder();
             }
             if (currentTaskData) renderTaskContentLang(currentTaskData);
+            refreshMapperColumnSelect();
+            rebuildMapperXml();
         }
 
         function localeTag() {
@@ -2526,12 +2674,19 @@ __TAG_COLOR_CSS__
             currentTaskId = null;
             currentTaskData = null;
             lastRenderedStructure = null;
+            structureColumnsMeta = {};
+            mapperLastColumnKey = '';
             if (pollInterval) clearInterval(pollInterval);
             
             document.getElementById('detailsContainer').style.display = 'none';
             document.getElementById('uploadSection').style.display = 'flex';
             document.getElementById('fileInput').value = '';
             resetConsolePlaceholder();
+            const mapperInput = document.getElementById('mapperInput');
+            const mapperOutput = document.getElementById('mapperOutput');
+            if (mapperInput) mapperInput.value = '';
+            if (mapperOutput) mapperOutput.textContent = '';
+            refreshMapperColumnSelect();
             
             document.querySelectorAll('.history-item').forEach(item => {
                 item.classList.remove('active');
@@ -2629,23 +2784,49 @@ __TAG_COLOR_CSS__
             }
         }
 
-        function renderColumnTitle(label, iconSvg) {
+        function renderColumnTitle(label, iconSvg, columnKey) {
             return `
                 <div class="tag-group-title">
                     <span class="tag-group-title-label">
                         ${iconSvg}
                         ${escapeHtml(label)}
                     </span>
-                    <button type="button" class="btn-copy-column" onclick="copyColumnTags(this)" title="${escapeHtml(t('structure.copyColumn'))}">⎘</button>
+                    <button type="button" class="btn-copy-column" data-column-key="${escapeHtml(columnKey || '')}" onclick="copyColumnTags(this)" title="${escapeHtml(t('structure.copyColumn'))}">⎘</button>
                 </div>
             `;
+        }
+
+        function tagDefinition(tag) {
+            if (!tag) return '';
+            if (I18N.tags && I18N.tags[tag]) return I18N.tags[tag];
+            if (String(tag).startsWith('CUSTOM:') && I18N.tags && I18N.tags.CUSTOM) {
+                return I18N.tags.CUSTOM;
+            }
+            return '';
+        }
+
+        function formatTagGlossary(tags) {
+            const seen = new Set();
+            const lines = [];
+            for (const tag of tags) {
+                if (!tag || seen.has(tag)) continue;
+                seen.add(tag);
+                const desc = tagDefinition(tag);
+                lines.push(desc ? `${tag} — ${desc}` : tag);
+            }
+            return lines.join('\n');
         }
 
         function copyColumnTags(btn) {
             const column = btn.closest('.structure-column');
             if (!column) return;
-            const tags = [...column.querySelectorAll('.visual-tag')].map(el => el.dataset.tag || el.textContent.trim());
-            const text = tags.join('\n');
+            const key = btn.dataset.columnKey;
+            const meta = (key && structureColumnsMeta[key]) || null;
+            const tags = meta
+                ? meta.tags.slice()
+                : [...column.querySelectorAll('.visual-tag')].map(el => el.dataset.tag || el.textContent.trim());
+            const glossary = formatTagGlossary(tags);
+            const text = glossary ? `${tags.join('\n')}\n\n${glossary}` : tags.join('\n');
             navigator.clipboard.writeText(text).then(() => {
                 const prev = btn.textContent;
                 btn.textContent = '✓';
@@ -2658,6 +2839,17 @@ __TAG_COLOR_CSS__
         // Rendering visual tags list
         const beatTooltipStore = {};
         let taskSubclusterByPosition = null; // loaded only via Classify button
+        let structureColumnsMeta = {};
+        let mapperLastColumnKey = '';
+
+        function escapeXml(str) {
+            return String(str ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&apos;');
+        }
 
         function escapeHtml(str) {
             if (str === null || str === undefined) return '—';
@@ -2866,12 +3058,15 @@ __TAG_COLOR_CSS__
             lastRenderedStructure = { structure, segmentedBlocks, treeJson };
             if (!structure) {
                 container.innerHTML = escapeHtml(t('structure.noData'));
+                structureColumnsMeta = {};
+                refreshMapperColumnSelect();
                 return;
             }
 
             Object.keys(beatTooltipStore).forEach(k => delete beatTooltipStore[k]);
             let beatIdCounter = 0;
             structure = enrichStructureWithBlocks(structure, segmentedBlocks, treeJson);
+            structureColumnsMeta = {};
 
             const introIcon = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"></path></svg>';
             const storyIcon = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path></svg>';
@@ -2879,10 +3074,31 @@ __TAG_COLOR_CSS__
 
             const columns = [];
 
+            const registerColumn = (key, labelKey, labelVars, tagPattern, blocks) => {
+                const tags = (tagPattern || []).slice();
+                const enrichedBlocks = (tags).map((tag, idx) => {
+                    let block = (blocks && blocks[idx]) ? { ...blocks[idx] } : {
+                        text: '',
+                        tag,
+                        block_index: null,
+                    };
+                    block = attachSubclusterToBlock(block);
+                    return block;
+                });
+                structureColumnsMeta[key] = {
+                    key,
+                    labelKey,
+                    labelVars: labelVars || {},
+                    tags,
+                    blocks: enrichedBlocks,
+                };
+            };
+
             if (structure.intro && structure.intro.tag_pattern && structure.intro.tag_pattern.length > 0) {
+                registerColumn('intro', 'structure.intro', {}, structure.intro.tag_pattern, structure.intro.blocks);
                 columns.push(`
-                <div class="structure-column">
-                    ${renderColumnTitle(t('structure.intro'), introIcon)}
+                <div class="structure-column" data-column-key="intro">
+                    ${renderColumnTitle(t('structure.intro'), introIcon, 'intro')}
                     <div class="tag-flow">
                         ${renderTagsList(structure.intro.tag_pattern, structure.intro.blocks, beatIdCounter)}
                     </div>
@@ -2892,11 +3108,14 @@ __TAG_COLOR_CSS__
 
             if (structure.stories && structure.stories.length > 0) {
                 structure.stories.forEach((story, idx) => {
+                    const key = `story-${idx}`;
+                    const labelVars = { n: idx + 1 };
+                    registerColumn(key, 'structure.story', labelVars, story.tag_pattern, story.blocks);
                     const listHtml = renderTagsList(story.tag_pattern, story.blocks, beatIdCounter);
                     beatIdCounter += (story.tag_pattern || []).length;
                     columns.push(`
-                    <div class="structure-column">
-                        ${renderColumnTitle(t('structure.story', { n: idx + 1 }), storyIcon)}
+                    <div class="structure-column" data-column-key="${key}">
+                        ${renderColumnTitle(t('structure.story', labelVars), storyIcon, key)}
                         <div class="tag-flow">
                             ${listHtml}
                         </div>
@@ -2905,9 +3124,10 @@ __TAG_COLOR_CSS__
             }
 
             if (structure.outro && structure.outro.tag_pattern && structure.outro.tag_pattern.length > 0) {
+                registerColumn('outro', 'structure.outro', {}, structure.outro.tag_pattern, structure.outro.blocks);
                 columns.push(`
-                <div class="structure-column">
-                    ${renderColumnTitle(t('structure.outro'), outroIcon)}
+                <div class="structure-column" data-column-key="outro">
+                    ${renderColumnTitle(t('structure.outro'), outroIcon, 'outro')}
                     <div class="tag-flow">
                         ${renderTagsList(structure.outro.tag_pattern, structure.outro.blocks, beatIdCounter)}
                     </div>
@@ -2919,6 +3139,100 @@ __TAG_COLOR_CSS__
                 : `<span style="color: var(--text-muted); font-size: 0.9rem;">${escapeHtml(t('structure.noDisplay'))}</span>`;
 
             bindBeatTooltips();
+            refreshMapperColumnSelect();
+            rebuildMapperXml();
+        }
+
+        function columnLabel(meta) {
+            if (!meta) return '';
+            return t(meta.labelKey, meta.labelVars || {});
+        }
+
+        function refreshMapperColumnSelect() {
+            const select = document.getElementById('mapperColumnSelect');
+            if (!select) return;
+            const prev = mapperLastColumnKey || select.value;
+            const keys = Object.keys(structureColumnsMeta);
+            const options = [
+                `<option value="">${escapeHtml(t('mapper.columnPlaceholder'))}</option>`,
+                ...keys.map(key => {
+                    const meta = structureColumnsMeta[key];
+                    return `<option value="${escapeHtml(key)}">${escapeHtml(columnLabel(meta))}</option>`;
+                }),
+            ];
+            select.innerHTML = options.join('');
+            if (prev && structureColumnsMeta[prev]) {
+                select.value = prev;
+                mapperLastColumnKey = prev;
+            } else {
+                select.value = '';
+                mapperLastColumnKey = '';
+            }
+        }
+
+        function formatMapperTask(block) {
+            const formula = String(block?.subcluster_formula || '').trim();
+            const abstract = String(block?.subcluster_abstract || '').trim();
+            if (formula && abstract) return `${formula}: ${abstract}`;
+            if (formula) return formula;
+            if (abstract) return abstract;
+            return t('mapper.noSubtype');
+        }
+
+        function rebuildMapperXml() {
+            const select = document.getElementById('mapperColumnSelect');
+            const inputEl = document.getElementById('mapperInput');
+            const outputEl = document.getElementById('mapperOutput');
+            if (!select || !inputEl || !outputEl) return;
+
+            const key = select.value || '';
+            mapperLastColumnKey = key;
+            const meta = key ? structureColumnsMeta[key] : null;
+            const lines = String(inputEl.value || '')
+                .split(/\r?\n/)
+                .map(line => line.trimEnd())
+                .filter(line => line.trim() !== '');
+
+            if (!meta || !lines.length) {
+                outputEl.textContent = t('mapper.empty');
+                return;
+            }
+
+            const items = lines.map((line, idx) => {
+                const n = idx + 1;
+                const block = meta.blocks[idx];
+                const taskBody = block
+                    ? formatMapperTask(block)
+                    : t('mapper.missingTag', { n: String(n) });
+                return [
+                    `<item id="${n}">`,
+                    `<input>`,
+                    escapeXml(line),
+                    `</input>`,
+                    `<task>`,
+                    escapeXml(taskBody),
+                    `</task>`,
+                    `</item>`,
+                ].join('\n');
+            });
+            outputEl.textContent = items.join('\n\n');
+        }
+
+        async function copyMapperXml() {
+            const outputEl = document.getElementById('mapperOutput');
+            if (!outputEl) return;
+            const text = outputEl.textContent || '';
+            try {
+                await navigator.clipboard.writeText(text);
+                const btn = document.getElementById('mapperCopyBtn');
+                if (btn) {
+                    const prev = btn.textContent;
+                    btn.textContent = t('mapper.copied');
+                    setTimeout(() => { btn.textContent = t('mapper.copy'); }, 1200);
+                }
+            } catch (err) {
+                alert(t('clipboard.copyFailed', { error: err }));
+            }
         }
 
         function renderTagsList(tagPattern, blocks, idOffset = 0) {

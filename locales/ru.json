@@ -171,6 +171,18 @@
     "tooltipReasoning": "reasoning",
     "tooltipChunk": "chunk"
   },
+  "mapper": {
+    "column": "Колонка",
+    "columnPlaceholder": "Выберите колонку",
+    "inputTitle": "Ввод",
+    "outputTitle": "Результат",
+    "inputPlaceholder": "Вставьте по одной строке на каждый тег выбранной колонки…",
+    "copy": "Скопировать",
+    "copied": "Скопировано",
+    "empty": "Выберите колонку и вставьте строки, чтобы собрать XML.",
+    "missingTag": "(нет тега №{{n}} в колонке)",
+    "noSubtype": "(нет formula/abstract подтипа)"
+  },
   "clipboard": {
     "jsonCopied": "JSON скопирован в буфер обмена!",
     "jsonFailed": "Не удалось скопировать JSON: {{error}}",
