@@ -4,6 +4,7 @@ import json
 import uuid
 import datetime
 import traceback
+from pathlib import Path
 from typing import Optional
 from threading import Thread
 
@@ -17,11 +18,25 @@ from pipeline.chunker import chunk_text
 from pipeline.segmenter import segment_text
 from pipeline.tree_builder import build_tree, annotate_stats
 from pipeline.structure_extractor import extract_structure
+from pipeline.taxonomy import TAG_DEFINITIONS
+from pipeline.subcluster_seed import seed_tag_subclusters, demote_domain_leaky_subclusters
+from pipeline.subcluster_classifier import (
+    classify_unassigned_blocks,
+    classify_task_unassigned_blocks,
+    load_active_subclusters,
+)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = "db.sqlite"
 LOCALE_DIR = os.path.join(BASE_DIR, "locales")
 AVAILABLE_LOCALES = ("en", "ru")
+# Pragmatic canon from one more clustering pass (see PRAGMATIC_FREEZE.md).
+CLUSTERS_REVIEW_PATH = os.path.join(
+    BASE_DIR, "subclusters", "clusters_canon.md"
+)
+
+# In-memory classify job status: tag -> dict
+_classify_jobs: dict[str, dict] = {}
 
 
 def load_local_env():
@@ -72,6 +87,10 @@ class BlockSubclustersUpdate(BaseModel):
     secondary_subcluster_ids: list[int] = []
     source: str = "manual"
     notes: Optional[str] = None
+
+
+class ClassifyRequest(BaseModel):
+    openai_api_key: str = ""
 
 
 BLOCK_CORE_KEYS = frozenset({
@@ -193,11 +212,18 @@ def db_init():
                 name TEXT NOT NULL,
                 formula TEXT,
                 abstract TEXT,
+                notes TEXT,
+                examples_json TEXT,
                 sort_order INTEGER DEFAULT 0,
                 status TEXT NOT NULL DEFAULT 'active',
                 UNIQUE(parent_tag, slug)
             )
         """)
+        sc_cols = {row["name"] for row in conn.execute("PRAGMA table_info(tag_subclusters)").fetchall()}
+        if "notes" not in sc_cols:
+            conn.execute("ALTER TABLE tag_subclusters ADD COLUMN notes TEXT")
+        if "examples_json" not in sc_cols:
+            conn.execute("ALTER TABLE tag_subclusters ADD COLUMN examples_json TEXT")
         conn.execute("""
             CREATE TABLE IF NOT EXISTS block_subcluster_assignments (
                 block_id INTEGER NOT NULL REFERENCES blocks(id) ON DELETE CASCADE,
@@ -217,6 +243,8 @@ def db_init():
             "ON block_subcluster_assignments(subcluster_id)"
         )
         db_migrate_segmented_blocks(conn)
+        seed_tag_subclusters(conn, Path(CLUSTERS_REVIEW_PATH))
+        demote_domain_leaky_subclusters(conn)
         conn.commit()
 
 
@@ -705,15 +733,72 @@ def get_locale(locale: str):
         return JSONResponse(content=json.load(f))
 
 
+@app.get("/tags/guide")
+def get_tags_guide():
+    """Tag + subcluster reference from DB for the guide view."""
+    groups: dict[str, list] = {}
+    with get_db() as conn:
+        rows = conn.execute(
+            """
+            SELECT id, parent_tag, slug, name, formula, abstract, notes,
+                   examples_json, sort_order, status
+            FROM tag_subclusters
+            WHERE status = 'active'
+            ORDER BY parent_tag ASC, sort_order ASC, id ASC
+            """
+        ).fetchall()
+        for row in rows:
+            d = dict(row)
+            try:
+                examples = json.loads(d.pop("examples_json") or "[]")
+            except (TypeError, json.JSONDecodeError):
+                d.pop("examples_json", None)
+                examples = []
+            if not isinstance(examples, list):
+                examples = []
+            d["examples"] = examples[:2]
+            groups.setdefault(d["parent_tag"], []).append(d)
+
+    # Prefer taxonomy order, then any extra parent tags from DB
+    ordered_tags = [t for t in TAG_DEFINITIONS.keys() if t in groups]
+    for tag in groups:
+        if tag not in ordered_tags:
+            ordered_tags.append(tag)
+
+    return {
+        "tags": ordered_tags,
+        "definitions": {t: TAG_DEFINITIONS.get(t, "") for t in ordered_tags},
+        "groups": {t: groups[t] for t in ordered_tags},
+    }
+
+
 @app.get("/tags/reference")
 def get_tag_reference():
     """Aggregate block texts by tag across all tasks (from normalized blocks table)."""
     examples: dict[str, list] = {tag: [] for tag in TAG_COLORS}
+    subclusters_by_tag: dict[str, list] = {}
     with get_db() as conn:
+        for row in conn.execute(
+            """
+            SELECT id, parent_tag, slug, name, formula, abstract, notes,
+                   examples_json, sort_order, status
+            FROM tag_subclusters
+            ORDER BY parent_tag ASC, sort_order ASC, id ASC
+            """
+        ).fetchall():
+            d = dict(row)
+            try:
+                d["examples"] = json.loads(d.pop("examples_json") or "[]")
+            except (TypeError, json.JSONDecodeError):
+                d.pop("examples_json", None)
+                d["examples"] = []
+            subclusters_by_tag.setdefault(d["parent_tag"], []).append(d)
+
         cursor = conn.cursor()
         cursor.execute(
             """
             SELECT
+                b.id AS block_id,
                 b.tag,
                 b.text,
                 b.reasoning,
@@ -722,9 +807,16 @@ def get_tag_reference():
                 b.task_id,
                 t.filename,
                 t.source_note,
-                t.source_url
+                t.source_url,
+                s.sort_order AS subcluster_sort_order,
+                s.name AS subcluster_name,
+                s.slug AS subcluster_slug,
+                s.id AS subcluster_id
             FROM blocks b
             JOIN tasks t ON t.id = b.task_id
+            LEFT JOIN block_subcluster_assignments a
+                ON a.block_id = b.id AND a.is_primary = 1
+            LEFT JOIN tag_subclusters s ON s.id = a.subcluster_id
             WHERE b.tag IS NOT NULL AND b.tag != ''
               AND b.text IS NOT NULL AND TRIM(b.text) != ''
             ORDER BY t.created_at DESC, b.position ASC
@@ -738,6 +830,7 @@ def get_tag_reference():
             if tag not in examples:
                 examples[tag] = []
             examples[tag].append({
+                "block_id": row["block_id"],
                 "text": text,
                 "task_id": row["task_id"],
                 "filename": row["filename"],
@@ -746,12 +839,19 @@ def get_tag_reference():
                 "reasoning": row["reasoning"] or "",
                 "loop_id": row["loop_id"],
                 "tension_score": row["tension_score"],
+                "subcluster_sort_order": row["subcluster_sort_order"],
+                "subcluster_name": row["subcluster_name"],
+                "subcluster_slug": row["subcluster_slug"],
+                "subcluster_id": row["subcluster_id"],
             })
     counts = {tag: len(items) for tag, items in examples.items()}
+    # Include tags that only appear as CUSTOM:* etc.
+    all_tags = list(dict.fromkeys(list(TAG_COLORS.keys()) + list(examples.keys()) + list(subclusters_by_tag.keys())))
     return {
-        "tags": list(TAG_COLORS.keys()),
+        "tags": all_tags,
         "counts": counts,
         "examples": examples,
+        "subclusters": subclusters_by_tag,
     }
 
 
@@ -760,14 +860,251 @@ def list_tag_subclusters(tag: str):
     with get_db() as conn:
         rows = conn.execute(
             """
-            SELECT id, parent_tag, slug, name, formula, abstract, sort_order, status
+            SELECT id, parent_tag, slug, name, formula, abstract, notes,
+                   examples_json, sort_order, status
             FROM tag_subclusters
             WHERE parent_tag = ?
-            ORDER BY sort_order ASC, id ASC
+            ORDER BY
+                CASE WHEN status = 'residual' THEN 1 ELSE 0 END,
+                sort_order ASC,
+                id ASC
             """,
             (tag,),
         ).fetchall()
-        return [dict(row) for row in rows]
+        out = []
+        for row in rows:
+            d = dict(row)
+            try:
+                d["examples"] = json.loads(d.pop("examples_json") or "[]")
+            except (TypeError, json.JSONDecodeError):
+                d.pop("examples_json", None)
+                d["examples"] = []
+            out.append(d)
+        return out
+
+
+def _classify_counts(conn, tag: str, task_id: Optional[str] = None) -> dict:
+    params: list = [tag]
+    task_clause = ""
+    if task_id:
+        task_clause = "AND b.task_id = ?"
+        params.append(task_id)
+    total = conn.execute(
+        f"SELECT COUNT(*) AS c FROM blocks b WHERE b.tag = ? {task_clause}",
+        params,
+    ).fetchone()["c"]
+    assigned = conn.execute(
+        f"""
+        SELECT COUNT(DISTINCT b.id) AS c
+        FROM blocks b
+        JOIN block_subcluster_assignments a ON a.block_id = b.id
+        WHERE b.tag = ? {task_clause}
+        """,
+        params,
+    ).fetchone()["c"]
+    return {
+        "total": total,
+        "assigned": assigned,
+        "pending": max(0, total - assigned),
+    }
+
+
+def _task_classify_counts(conn, task_id: str) -> dict:
+    total = conn.execute(
+        "SELECT COUNT(*) AS c FROM blocks WHERE task_id = ?", (task_id,)
+    ).fetchone()["c"]
+    assigned = conn.execute(
+        """
+        SELECT COUNT(DISTINCT b.id) AS c
+        FROM blocks b
+        JOIN block_subcluster_assignments a ON a.block_id = b.id
+        WHERE b.task_id = ?
+        """,
+        (task_id,),
+    ).fetchone()["c"]
+    return {
+        "total": total,
+        "assigned": assigned,
+        "pending": max(0, total - assigned),
+    }
+
+
+def _run_classify_job(tag: str, api_key: str):
+    job = _classify_jobs.setdefault(f"tag:{tag}", {})
+    job.update({"running": True, "error": None, "assigned_now": 0})
+    try:
+        client = OpenAI(api_key=api_key)
+
+        def on_batch(assigned, pending):
+            job["assigned_now"] = assigned
+            job["batch_pending"] = pending
+            with get_db() as conn:
+                job.update(_classify_counts(conn, tag))
+
+        with get_db() as conn:
+            job.update(_classify_counts(conn, tag))
+            result = classify_unassigned_blocks(
+                client, conn, tag, on_batch_done=on_batch
+            )
+            job["assigned_now"] = result.get("assigned") or 0
+            if result.get("error"):
+                job["error"] = result["error"]
+            job.update(_classify_counts(conn, tag))
+    except Exception as exc:
+        job["error"] = str(exc)
+    finally:
+        job["running"] = False
+
+
+def _run_task_classify_job(task_id: str, api_key: str):
+    job_key = f"task:{task_id}"
+    job = _classify_jobs.setdefault(job_key, {})
+    job.update({"running": True, "error": None, "assigned_now": 0, "current_tag": None})
+    try:
+        client = OpenAI(api_key=api_key)
+
+        def on_progress(tag, assigned, pending):
+            job["current_tag"] = tag
+            job["assigned_now"] = (job.get("assigned_now") or 0)
+            with get_db() as conn:
+                counts = _task_classify_counts(conn, task_id)
+                job.update(counts)
+
+        with get_db() as conn:
+            job.update(_task_classify_counts(conn, task_id))
+            result = classify_task_unassigned_blocks(
+                client, conn, task_id, on_progress=on_progress
+            )
+            job["assigned_now"] = result.get("assigned") or 0
+            if result.get("error"):
+                job["error"] = result["error"]
+            job.update(_task_classify_counts(conn, task_id))
+            job["current_tag"] = None
+    except Exception as exc:
+        job["error"] = str(exc)
+    finally:
+        job["running"] = False
+
+
+@app.post("/tags/{tag}/classify")
+def start_tag_classify(tag: str, payload: Optional[ClassifyRequest] = None):
+    payload = payload or ClassifyRequest()
+    api_key = resolve_openai_api_key(payload.openai_api_key)
+    if not api_key:
+        raise HTTPException(
+            status_code=400,
+            detail="OpenAI API key is required. Set OPENAI_API_KEY or enter it in the interface.",
+        )
+    job_key = f"tag:{tag}"
+    existing = _classify_jobs.get(job_key) or {}
+    if existing.get("running"):
+        with get_db() as conn:
+            counts = _classify_counts(conn, tag)
+        return {"status": "already_running", **counts, "running": True}
+
+    with get_db() as conn:
+        active = load_active_subclusters(conn, tag)
+        if not active:
+            raise HTTPException(
+                status_code=400,
+                detail=f"No active subclusters seeded for tag {tag}",
+            )
+        counts = _classify_counts(conn, tag)
+        if counts["pending"] == 0:
+            return {"status": "nothing_to_do", **counts, "running": False}
+
+    _classify_jobs[job_key] = {**counts, "running": True, "error": None, "assigned_now": 0}
+    Thread(target=_run_classify_job, args=(tag, api_key), daemon=True).start()
+    return {"status": "started", **counts, "running": True}
+
+
+@app.get("/tags/{tag}/classify/status")
+def tag_classify_status(tag: str):
+    with get_db() as conn:
+        counts = _classify_counts(conn, tag)
+    job = _classify_jobs.get(f"tag:{tag}") or {}
+    return {
+        **counts,
+        "running": bool(job.get("running")),
+        "error": job.get("error"),
+        "assigned_now": job.get("assigned_now", 0),
+    }
+
+
+@app.get("/tasks/{task_id}/subclusters")
+def get_task_subclusters(task_id: str):
+    """Lightweight per-block subcluster info for one task (loaded on demand)."""
+    with get_db() as conn:
+        task = conn.execute("SELECT id FROM tasks WHERE id = ?", (task_id,)).fetchone()
+        if not task:
+            raise HTTPException(status_code=404, detail="Task not found")
+        rows = conn.execute(
+            """
+            SELECT
+                b.position,
+                b.tag,
+                s.sort_order AS subcluster_sort_order,
+                s.name AS subcluster_name,
+                s.formula AS subcluster_formula,
+                s.abstract AS subcluster_abstract,
+                s.slug AS subcluster_slug
+            FROM blocks b
+            LEFT JOIN block_subcluster_assignments a
+                ON a.block_id = b.id AND a.is_primary = 1
+            LEFT JOIN tag_subclusters s ON s.id = a.subcluster_id
+            WHERE b.task_id = ?
+            ORDER BY b.position ASC
+            """,
+            (task_id,),
+        ).fetchall()
+        return {
+            "task_id": task_id,
+            "blocks": [dict(row) for row in rows],
+        }
+
+
+@app.post("/tasks/{task_id}/classify")
+def start_task_classify(task_id: str, payload: Optional[ClassifyRequest] = None):
+    payload = payload or ClassifyRequest()
+    api_key = resolve_openai_api_key(payload.openai_api_key)
+    if not api_key:
+        raise HTTPException(
+            status_code=400,
+            detail="OpenAI API key is required. Set OPENAI_API_KEY or enter it in the interface.",
+        )
+    with get_db() as conn:
+        task = conn.execute("SELECT id, status FROM tasks WHERE id = ?", (task_id,)).fetchone()
+        if not task:
+            raise HTTPException(status_code=404, detail="Task not found")
+        counts = _task_classify_counts(conn, task_id)
+
+    job_key = f"task:{task_id}"
+    existing = _classify_jobs.get(job_key) or {}
+    if existing.get("running"):
+        return {"status": "already_running", **counts, "running": True}
+    if counts["pending"] == 0:
+        return {"status": "nothing_to_do", **counts, "running": False}
+
+    _classify_jobs[job_key] = {**counts, "running": True, "error": None, "assigned_now": 0}
+    Thread(target=_run_task_classify_job, args=(task_id, api_key), daemon=True).start()
+    return {"status": "started", **counts, "running": True}
+
+
+@app.get("/tasks/{task_id}/classify/status")
+def task_classify_status(task_id: str):
+    with get_db() as conn:
+        task = conn.execute("SELECT id FROM tasks WHERE id = ?", (task_id,)).fetchone()
+        if not task:
+            raise HTTPException(status_code=404, detail="Task not found")
+        counts = _task_classify_counts(conn, task_id)
+    job = _classify_jobs.get(f"task:{task_id}") or {}
+    return {
+        **counts,
+        "running": bool(job.get("running")),
+        "error": job.get("error"),
+        "assigned_now": job.get("assigned_now", 0),
+        "current_tag": job.get("current_tag"),
+    }
 
 
 @app.get("/tags/{tag}/blocks")

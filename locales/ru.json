@@ -5,21 +5,23 @@
   },
   "nav": {
     "workspace": "Рабочая область",
-    "tagReference": "Tag reference"
+    "tagReference": "Тексты по тегам",
+    "tagGuide": "Справка по тегам"
   },
   "tagRef": {
-    "title": "Tag reference",
+    "title": "Тексты по тегам",
     "description": "Нажмите на тег, чтобы увидеть все найденные тексты с этой разметкой по обработанным сценариям.",
     "selectPrompt": "Выберите тег выше, чтобы увидеть соответствующие тексты.",
     "noExamples": "Пока нет фрагментов с этим тегом.",
     "noDescription": "Описание отсутствует.",
     "examplesCount": "{{count}} фрагментов",
     "unknownFile": "Без названия",
-    "loadFailed": "Не удалось загрузить справку по тегам.",
+    "loadFailed": "Не удалось загрузить тексты по тегам.",
     "copyTexts": "Копировать",
     "copied": "Тексты скопированы в буфер.",
     "colText": "Текст",
     "colSource": "Источник",
+    "colSubtype": "Подтип",
     "filterSources": "Источники",
     "resetFilter": "Показать все",
     "excludeSource": "Убрать источник",
@@ -27,7 +29,26 @@
     "unknownSource": "Без источника",
     "noExamplesFiltered": "Нет фрагментов для выбранных источников.",
     "sourceCounts": "{{tagCount}}/{{total}}",
-    "sourceCountsHint": "{{tagCount}} по этому тегу, {{total}} всего"
+    "sourceCountsHint": "{{tagCount}} по этому тегу, {{total}} всего",
+    "unclassified": "Неклассифицированные",
+    "classify": "Классифицировать",
+    "classifying": "Классификация…",
+    "classifyPending": "Без подтипа: {{count}}",
+    "classifyDoneAll": "Все фрагменты с подтипами",
+    "classifyNothing": "Нечего классифицировать.",
+    "classifyFailed": "Ошибка классификации: {{error}}",
+    "classifyNeedKey": "Нужен OpenAI API key для классификации."
+  },
+  "tagGuide": {
+    "title": "Справка по тегам",
+    "description": "Описание функциональных тегов и их психологических подтипов (субкластеров) из базы данных.",
+    "loadFailed": "Не удалось загрузить справку по тегам.",
+    "empty": "Субкластеры ещё не загружены в базу.",
+    "colCluster": "Кластер",
+    "colFormula": "Формула",
+    "colAbstract": "Абстрактно",
+    "colExamples": "Два примера",
+    "noExamples": "Нет эталонных примеров"
   },
   "common": {
     "cancel": "Отмена",
@@ -103,8 +124,21 @@
     "processing": "// Идет обработка, подождите...",
     "marking": "Идет разметка сценария...",
     "runError": "Ошибка обработки сценария:",
+    "errorPrefix": "// Ошибка выполнения:\n// {{message}}",
     "deleteConfirm": "Вы уверены, что хотите удалить эту запись?",
-    "deleteTitle": "Удалить"
+    "deleteTitle": "Удалить",
+    "classify": "Классифицировать",
+    "classifying": "Классификация…",
+    "classifyPending": "Без подтипа: {{count}}",
+    "classifyDone": "Готово: размечено {{assigned}} из {{pending}}.",
+    "classifyDoneAll": "Все блоки с подтипами",
+    "classifyReady": "Нажмите, чтобы показать подтипы",
+    "classifyLoaded": "Подтипы загружены в структуру",
+    "classifyNothing": "Нечего классифицировать.",
+    "classifyFailed": "Ошибка классификации: {{error}}",
+    "classifyNeedKey": "Нужен OpenAI API key для классификации.",
+    "subclustersLoading": "Загрузка подтипов…",
+    "subclustersLoadFailed": "Не удалось загрузить подтипы."
   },
   "status": {
     "pending": "pending",

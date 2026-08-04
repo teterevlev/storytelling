@@ -685,11 +685,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
             width: 100%;
             box-sizing: border-box;
             font-size: 0.7rem;
             font-weight: 500;
-            padding: 0.25rem 0.35rem;
+            padding: 0.25rem 1.4rem;
             border-radius: 4px;
             color: #ffffff;
             cursor: help;
@@ -705,8 +706,25 @@
             flex-shrink: 0;
         }
 
-        .visual-tag:hover {
-            transform: scale(1.03);
+        .visual-tag .tag-cluster-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 0.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            min-width: 1.15rem;
+            height: 1.15rem;
+            padding: 0 0.25rem;
+            margin: 0;
+            border-radius: 3px;
+            background: rgba(15, 23, 42, 0.9);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            line-height: 1;
+            flex-shrink: 0;
         }
 
         .visual-tag-wrap {
@@ -885,6 +903,42 @@ __TAG_COLOR_CSS__
             margin-top: 0.45rem;
             font-size: 0.82rem;
             color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .source-classify-btn {
+            padding: 0.2rem 0.65rem !important;
+            font-size: 0.75rem !important;
+            margin-left: 0.15rem;
+        }
+
+        .source-classify-status {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .tag-ref-col-subtype {
+            width: 11rem;
+            max-width: 14rem;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .tag-ref-subtype-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 1.35rem;
+            height: 1.35rem;
+            padding: 0 0.3rem;
+            margin-right: 0.35rem;
+            border-radius: 4px;
+            background: rgba(15, 23, 42, 0.9);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            line-height: 1;
+            vertical-align: middle;
         }
 
         .source-value {
@@ -1056,7 +1110,12 @@ __TAG_COLOR_CSS__
         }
 
         .tag-ref-chip .visual-tag {
+            display: inline-flex;
+            align-items: center;
             width: var(--tag-width);
+            max-width: var(--tag-width);
+            flex: 0 0 var(--tag-width);
+            box-sizing: border-box;
             cursor: pointer;
             white-space: nowrap;
             padding: 0.3rem 0.45rem;
@@ -1069,13 +1128,20 @@ __TAG_COLOR_CSS__
             overflow: hidden;
             text-overflow: ellipsis;
             min-width: 0;
+            flex: 1 1 auto;
         }
 
         .tag-ref-chip .tag-ref-count {
             flex-shrink: 0;
+            margin-left: 0.45rem;
+            padding: 0.12rem 0.4rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            color: #fff;
             font-variant-numeric: tabular-nums;
-            opacity: 0.9;
-            font-weight: 600;
+            font-size: 0.68rem;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
         .tag-ref-chip:hover {
@@ -1369,6 +1435,167 @@ __TAG_COLOR_CSS__
             padding: 3rem 1rem;
         }
 
+        .tag-guide-body {
+            flex: 1;
+            overflow: auto;
+            padding: 0 1.5rem 2rem;
+        }
+
+        .tag-guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .tag-guide-table th,
+        .tag-guide-table td {
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 0.85rem;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .tag-guide-table thead th {
+            position: sticky;
+            top: 0;
+            background: #0d121c;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            z-index: 1;
+        }
+
+        .tag-guide-table thead th:first-child,
+        .tag-guide-table tbody td:first-child {
+            width: 15%;
+        }
+
+        .tag-guide-group-row td {
+            background: rgba(139, 92, 246, 0.12);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.25);
+            padding: 0.85rem 0.85rem;
+        }
+
+        .tag-guide-group-head {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .tag-guide-group-title {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .tag-guide-group-desc {
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            font-weight: 400;
+            line-height: 1.45;
+            max-width: 70rem;
+        }
+
+        .tag-guide-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .tag-guide-details {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            overflow: hidden;
+        }
+
+        .tag-guide-details > summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0.9rem;
+            user-select: none;
+        }
+
+        .tag-guide-details > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .tag-guide-details > summary::before {
+            content: '▶';
+            flex-shrink: 0;
+            margin-top: 0.35rem;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            width: 0.9rem;
+        }
+
+        .tag-guide-details[open] > summary::before {
+            content: '▼';
+        }
+
+        .tag-guide-details .tag-guide-group-head {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .tag-guide-details-body {
+            padding: 0 0.75rem 0.85rem;
+        }
+
+        .tag-guide-details .tag-guide-table thead th {
+            position: static;
+        }
+
+        .tag-guide-cluster {
+            width: 15%;
+            white-space: normal;
+            font-weight: 600;
+            min-width: 0;
+        }
+
+        .tag-guide-formula {
+            white-space: pre-line;
+            color: var(--text-main);
+            min-width: 14rem;
+            max-width: 22rem;
+            line-height: 1.4;
+        }
+
+        .tag-guide-abstract {
+            font-style: italic;
+            color: var(--text-muted);
+            min-width: 12rem;
+            max-width: 18rem;
+            line-height: 1.4;
+        }
+
+        .tag-guide-examples {
+            min-width: 16rem;
+            max-width: 28rem;
+        }
+
+        .tag-guide-example {
+            display: block;
+            margin-bottom: 0.55rem;
+            line-height: 1.4;
+            color: var(--text-main);
+        }
+
+        .tag-guide-example:last-child {
+            margin-bottom: 0;
+        }
+
+        .tag-guide-example-n {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-right: 0.25rem;
+        }
+
         .main-container.hidden {
             display: none;
         }
@@ -1385,7 +1612,8 @@ __TAG_COLOR_CSS__
         </div>
         <nav class="header-nav" aria-label="Main">
             <button type="button" class="nav-link active" data-view="workspace" onclick="switchAppView('workspace')" data-i18n="nav.workspace">Workspace</button>
-            <button type="button" class="nav-link" data-view="tagReference" onclick="switchAppView('tagReference')" data-i18n="nav.tagReference">Tag reference</button>
+            <button type="button" class="nav-link" data-view="tagReference" onclick="switchAppView('tagReference')" data-i18n="nav.tagReference">Texts by tag</button>
+            <button type="button" class="nav-link" data-view="tagGuide" onclick="switchAppView('tagGuide')" data-i18n="nav.tagGuide">Tag guide</button>
         </nav>
         <div class="header-actions">
             <div class="lang-switcher">
@@ -1459,6 +1687,10 @@ __TAG_COLOR_CSS__
                             <span data-i18n="source.label">Source:</span>
                             <span class="source-value" id="taskSourceValue"></span>
                             <button type="button" class="source-edit-btn" onclick="editCurrentTaskSource()" data-i18n="task.edit">Edit</button>
+                            <button type="button" class="btn btn-primary source-classify-btn" id="taskClassifyBtn" style="display: none;" onclick="startTaskClassify()">
+                                <span data-i18n="task.classify">Classify subtypes</span>
+                            </button>
+                            <span class="source-classify-status" id="taskClassifyStatus"></span>
                         </div>
                     </div>
                     <div class="details-actions">
@@ -1509,14 +1741,24 @@ __TAG_COLOR_CSS__
         </main>
     </div>
 
-    <section class="tag-ref-view" id="tagReferenceView" aria-label="Tag reference">
+    <section class="tag-ref-view" id="tagReferenceView" aria-label="Texts by tag">
         <div class="tag-ref-header">
-            <h1 data-i18n="tagRef.title">Tag reference</h1>
+            <h1 data-i18n="tagRef.title">Texts by tag</h1>
             <p data-i18n="tagRef.description">Click a tag to browse every matching passage found across your processed scripts.</p>
         </div>
         <div class="tag-ref-chips" id="tagRefChips"></div>
         <div class="tag-ref-body" id="tagRefBody">
             <div class="tag-ref-empty" data-i18n="tagRef.selectPrompt">Select a tag above to see matching texts.</div>
+        </div>
+    </section>
+
+    <section class="tag-ref-view" id="tagGuideView" aria-label="Tag guide">
+        <div class="tag-ref-header">
+            <h1 data-i18n="tagGuide.title">Tag guide</h1>
+            <p data-i18n="tagGuide.description">Definitions of functional tags and their psychological subtypes from the database.</p>
+        </div>
+        <div class="tag-guide-body" id="tagGuideBody">
+            <div class="tag-ref-empty" data-i18n="tagGuide.empty">No subclusters have been seeded yet.</div>
         </div>
     </section>
 
@@ -1553,8 +1795,11 @@ __TAG_COLOR_CSS__
         let lastRenderedStructure = null;
         let currentAppView = 'workspace';
         let tagReferenceData = null;
+        let tagGuideData = null;
         let selectedTagRef = null;
         let tagRefExcludedSources = new Set();
+        let taskClassifyTimer = null;
+        let tagRefClassifyTimer = null;
         const TAG_LIST = __TAG_LIST_JSON__;
         const OPENAI_KEY_FROM_ENV = __OPENAI_KEY_FROM_ENV__;
         const OPENAI_KEY_STORAGE = 'storytelling_openai_api_key';
@@ -1599,7 +1844,13 @@ __TAG_COLOR_CSS__
             }
             if (currentAppView === 'tagReference') {
                 await loadTagReference({ force: true });
+                renderTagReferenceChips();
                 if (selectedTagRef) selectTagReference(selectedTagRef);
+                else renderTagReferenceBody(null);
+            }
+            if (currentAppView === 'tagGuide') {
+                await loadTagGuide({ force: true });
+                renderTagGuide();
             }
         }
 
@@ -1971,6 +2222,7 @@ __TAG_COLOR_CSS__
         // Selection
         async function selectTask(taskId) {
             currentTaskId = taskId;
+            taskSubclusterByPosition = null;
             if (pollInterval) clearInterval(pollInterval);
             
             // Mark active in list
@@ -1986,6 +2238,10 @@ __TAG_COLOR_CSS__
         }
 
         async function fetchAndRenderTask(taskId) {
+            if (currentTaskId !== taskId) {
+                taskSubclusterByPosition = null;
+            }
+            currentTaskId = taskId;
             try {
                 const res = await fetch(`/tasks/${taskId}`);
                 if (!res.ok) throw new Error(t('task.fetchFailed'));
@@ -2014,6 +2270,10 @@ __TAG_COLOR_CSS__
                             ${escapeHtml(t('task.marking'))}
                          </div>`;
                     lastRenderedStructure = null;
+                    const classifyBtn = document.getElementById('taskClassifyBtn');
+                    const classifyStatus = document.getElementById('taskClassifyStatus');
+                    if (classifyBtn) classifyBtn.style.display = 'none';
+                    if (classifyStatus) classifyStatus.textContent = '';
                     startPolling(taskId);
                 } else if (task.status === 'completed') {
                     document.getElementById('downloadBtn').style.display = 'flex';
@@ -2021,6 +2281,7 @@ __TAG_COLOR_CSS__
                     document.getElementById('jsonContent').innerText = jsonStr;
                     
                     renderVisualStructure(task.structure_json, task.segmented_blocks, task.tree_json);
+                    await refreshTaskClassifyButton(taskId);
                 } else {
                     document.getElementById('downloadBtn').style.display = 'none';
                     document.getElementById('jsonContent').innerText = t('task.errorPrefix', { message: task.error_message || '' });
@@ -2030,6 +2291,10 @@ __TAG_COLOR_CSS__
                             <span style="font-size: 0.85rem; color: var(--text-muted); font-family: monospace; display: block; margin-top: 0.5rem;">${escapeHtml(task.error_message)}</span>
                          </div>`;
                     lastRenderedStructure = null;
+                    const classifyBtn = document.getElementById('taskClassifyBtn');
+                    const classifyStatus = document.getElementById('taskClassifyStatus');
+                    if (classifyBtn) classifyBtn.style.display = 'none';
+                    if (classifyStatus) classifyStatus.textContent = '';
                 }
             } catch (error) {
                 console.error(error);
@@ -2189,22 +2454,6 @@ __TAG_COLOR_CSS__
             }
         }
 
-        function renderTagLegend() {
-            const tags = I18N.tags || {};
-            const items = Object.entries(tags).map(([tag, desc]) => `
-                <div class="tag-legend-item">
-                    <span class="visual-tag vtag-${tag}" title="${tag}">${tag}</span>
-                    <span class="tag-legend-desc">${escapeHtml(desc)}</span>
-                </div>
-            `).join('');
-            return `
-                <div class="tag-legend">
-                    <div class="tag-legend-title">${escapeHtml(t('structure.legendTitle'))}</div>
-                    <div class="tag-legend-list">${items}</div>
-                </div>
-            `;
-        }
-
         function renderColumnTitle(label, iconSvg) {
             return `
                 <div class="tag-group-title">
@@ -2220,7 +2469,7 @@ __TAG_COLOR_CSS__
         function copyColumnTags(btn) {
             const column = btn.closest('.structure-column');
             if (!column) return;
-            const tags = [...column.querySelectorAll('.visual-tag')].map(el => el.textContent.trim());
+            const tags = [...column.querySelectorAll('.visual-tag')].map(el => el.dataset.tag || el.textContent.trim());
             const text = tags.join('\n');
             navigator.clipboard.writeText(text).then(() => {
                 const prev = btn.textContent;
@@ -2233,6 +2482,7 @@ __TAG_COLOR_CSS__
 
         // Rendering visual tags list
         const beatTooltipStore = {};
+        let taskSubclusterByPosition = null; // loaded only via Classify button
 
         function escapeHtml(str) {
             if (str === null || str === undefined) return '—';
@@ -2255,7 +2505,7 @@ __TAG_COLOR_CSS__
         function blocksFromTreeBeats(beats, allBlocks) {
             return beats.map(b => {
                 const block = allBlocks[b.index];
-                return block ? block : {
+                const base = block ? { ...block } : {
                     text: b.text || '',
                     tag: b.tag || '',
                     tension_score: b.tension_score ?? null,
@@ -2263,6 +2513,8 @@ __TAG_COLOR_CSS__
                     reasoning: b.reasoning || '',
                     chunk_index: b.chunk_index ?? null,
                 };
+                base.block_index = b.index;
+                return base;
             });
         }
 
@@ -2311,7 +2563,10 @@ __TAG_COLOR_CSS__
             // fallback без tree_json — последовательная нарезка (может расходиться между историями)
             let offset = 0;
             const take = (n) => {
-                const slice = allBlocks.slice(offset, offset + n);
+                const slice = allBlocks.slice(offset, offset + n).map((block, i) => ({
+                    ...block,
+                    block_index: offset + i,
+                }));
                 offset += n;
                 return slice;
             };
@@ -2330,16 +2585,37 @@ __TAG_COLOR_CSS__
             return enriched;
         }
 
+        function attachSubclusterToBlock(block) {
+            if (!block || taskSubclusterByPosition == null) return block;
+            const idx = block.block_index;
+            if (idx == null || !taskSubclusterByPosition[idx]) return block;
+            const sc = taskSubclusterByPosition[idx];
+            return {
+                ...block,
+                subcluster_sort_order: sc.subcluster_sort_order,
+                subcluster_name: sc.subcluster_name,
+                subcluster_formula: sc.subcluster_formula,
+                subcluster_abstract: sc.subcluster_abstract,
+            };
+        }
+
         function formatBeatTooltipHtml(block) {
             const fields = [
                 ['text', block.text],
                 ['tag', block.tag],
+                ['subcluster', block.subcluster_sort_order != null
+                    ? `${block.subcluster_sort_order} — ${block.subcluster_name || ''}`
+                    : null],
+                ['formula', block.subcluster_formula],
+                ['abstract', block.subcluster_abstract],
                 ['tension_score', block.tension_score],
                 ['loop_id', block.loop_id],
                 ['reasoning', block.reasoning],
                 ['chunk_index', block.chunk_index],
             ];
-            return fields.map(([key, val]) => `
+            return fields
+                .filter(([, val]) => val !== null && val !== undefined && String(val).trim() !== '')
+                .map(([key, val]) => `
                 <div class="tag-tooltip-row">
                     <span class="tag-tooltip-key">${key}:</span>
                     <span class="tag-tooltip-val">${escapeHtml(val)}</span>
@@ -2440,7 +2716,7 @@ __TAG_COLOR_CSS__
             }
 
             container.innerHTML = columns.length > 0
-                ? renderTagLegend() + `<div class="structure-scroll"><div class="structure-columns">${columns.join('')}</div></div>`
+                ? `<div class="structure-scroll"><div class="structure-columns">${columns.join('')}</div></div>`
                 : `<span style="color: var(--text-muted); font-size: 0.9rem;">${escapeHtml(t('structure.noDisplay'))}</span>`;
 
             bindBeatTooltips();
@@ -2449,20 +2725,26 @@ __TAG_COLOR_CSS__
         function renderTagsList(tagPattern, blocks, idOffset = 0) {
             if (!tagPattern || tagPattern.length === 0) return `<span style="color: var(--text-muted); font-size: 0.8rem;">${escapeHtml(t('structure.noTags'))}</span>`;
             return tagPattern.map((tag, idx) => {
-                const block = (blocks && blocks[idx]) ? blocks[idx] : {
+                let block = (blocks && blocks[idx]) ? blocks[idx] : {
                     text: '',
                     tag: tag,
                     tension_score: null,
                     loop_id: null,
                     reasoning: '',
                     chunk_index: null,
+                    block_index: null,
                 };
+                block = attachSubclusterToBlock(block);
                 const beatId = `beat-${idOffset + idx}`;
                 beatTooltipStore[beatId] = block;
                 const cleanTag = tag.startsWith('CUSTOM:') ? 'CUSTOM' : tag;
+                const order = block.subcluster_sort_order;
+                const badge = (taskSubclusterByPosition != null && order != null)
+                    ? `<span class="tag-cluster-num" title="${escapeHtml(block.subcluster_name || '')}">${Number(order)}</span>`
+                    : '';
                 return `
                     <div class="visual-tag-wrap" data-beat-id="${beatId}">
-                        <span class="visual-tag vtag-${cleanTag}">${escapeHtml(tag)}</span>
+                        <span class="visual-tag vtag-${cleanTag}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}${badge}</span>
                     </div>
                 `;
             }).join('');
@@ -2501,7 +2783,7 @@ __TAG_COLOR_CSS__
         }
 
         async function switchAppView(view) {
-            if (!['workspace', 'tagReference'].includes(view)) return;
+            if (!['workspace', 'tagReference', 'tagGuide'].includes(view)) return;
             currentAppView = view;
 
             document.querySelectorAll('.nav-link').forEach(btn => {
@@ -2510,14 +2792,20 @@ __TAG_COLOR_CSS__
 
             const workspaceView = document.getElementById('workspaceView');
             const tagRefView = document.getElementById('tagReferenceView');
+            const tagGuideView = document.getElementById('tagGuideView');
             workspaceView.classList.toggle('hidden', view !== 'workspace');
             tagRefView.classList.toggle('active', view === 'tagReference');
+            tagGuideView.classList.toggle('active', view === 'tagGuide');
 
             if (view === 'tagReference') {
                 await loadTagReference({ force: true });
                 renderTagReferenceChips();
                 if (selectedTagRef) selectTagReference(selectedTagRef);
                 else renderTagReferenceBody(null);
+            }
+            if (view === 'tagGuide') {
+                await loadTagGuide({ force: true });
+                renderTagGuide();
             }
         }
 
@@ -2527,6 +2815,85 @@ __TAG_COLOR_CSS__
             if (!res.ok) throw new Error(t('tagRef.loadFailed'));
             tagReferenceData = await res.json();
             return tagReferenceData;
+        }
+
+        async function loadTagGuide(options = {}) {
+            if (tagGuideData && !options.force) return tagGuideData;
+            const res = await fetch('/tags/guide');
+            if (!res.ok) throw new Error(t('tagGuide.loadFailed'));
+            tagGuideData = await res.json();
+            return tagGuideData;
+        }
+
+        function renderTagGuide() {
+            const body = document.getElementById('tagGuideBody');
+            if (!body) return;
+            if (!tagGuideData || !(tagGuideData.tags || []).length) {
+                body.innerHTML = `<div class="tag-ref-empty">${escapeHtml(t('tagGuide.empty'))}</div>`;
+                return;
+            }
+
+            const groups = tagGuideData.groups || {};
+            const definitions = tagGuideData.definitions || {};
+            const sections = [];
+
+            for (const tag of tagGuideData.tags) {
+                const clusters = groups[tag] || [];
+                if (!clusters.length) continue;
+                const cleanTag = tag.startsWith('CUSTOM:') ? 'CUSTOM' : tag;
+                const desc = definitions[tag] || (I18N.tags && I18N.tags[tag]) || '';
+                const clusterRows = clusters.map(sc => {
+                    const examples = (sc.examples || []).slice(0, 2);
+                    const examplesHtml = examples.length
+                        ? examples.map(ex => {
+                            const text = flattenTagRefText(ex.text || '');
+                            const n = ex.n != null ? `<span class="tag-guide-example-n">[${escapeHtml(String(ex.n))}]</span>` : '';
+                            return `<span class="tag-guide-example">${n}${escapeHtml(text)}</span>`;
+                        }).join('')
+                        : `<span class="tag-guide-example" style="color: var(--text-muted);">${escapeHtml(t('tagGuide.noExamples'))}</span>`;
+                    return `
+                        <tr>
+                            <td class="tag-guide-cluster">${sc.sort_order} — ${escapeHtml(sc.name || '')}</td>
+                            <td class="tag-guide-formula">${escapeHtml(sc.formula || '—')}</td>
+                            <td class="tag-guide-abstract">${escapeHtml(sc.abstract || '—')}</td>
+                            <td class="tag-guide-examples">${examplesHtml}</td>
+                        </tr>
+                    `;
+                }).join('');
+
+                sections.push(`
+                    <details class="tag-guide-details">
+                        <summary>
+                            <div class="tag-guide-group-head">
+                                <div class="tag-guide-group-title">
+                                    <span class="visual-tag vtag-${escapeHtml(cleanTag)}" style="width: var(--tag-width); max-width: var(--tag-width);">${escapeHtml(tag)}</span>
+                                </div>
+                                ${desc ? `<div class="tag-guide-group-desc">${escapeHtml(desc)}</div>` : ''}
+                            </div>
+                        </summary>
+                        <div class="tag-guide-details-body">
+                            <table class="tag-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>${escapeHtml(t('tagGuide.colCluster'))}</th>
+                                        <th>${escapeHtml(t('tagGuide.colFormula'))}</th>
+                                        <th>${escapeHtml(t('tagGuide.colAbstract'))}</th>
+                                        <th>${escapeHtml(t('tagGuide.colExamples'))}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>${clusterRows}</tbody>
+                            </table>
+                        </div>
+                    </details>
+                `);
+            }
+
+            if (!sections.length) {
+                body.innerHTML = `<div class="tag-ref-empty">${escapeHtml(t('tagGuide.empty'))}</div>`;
+                return;
+            }
+
+            body.innerHTML = `<div class="tag-guide-accordion">${sections.join('')}</div>`;
         }
 
         function flattenTagRefText(text) {
@@ -2653,6 +3020,16 @@ __TAG_COLOR_CSS__
             `;
         }
 
+        function formatSubtypeCell(ex) {
+            if (ex && ex.subcluster_sort_order != null && ex.subcluster_name) {
+                return `
+                    <span class="tag-ref-subtype-num" title="${escapeHtml(ex.subcluster_name)}">${Number(ex.subcluster_sort_order)}</span>
+                    <span>${escapeHtml(ex.subcluster_name)}</span>
+                `;
+            }
+            return `<span style="color: var(--text-muted);">${escapeHtml(t('tagRef.unclassified'))}</span>`;
+        }
+
         function renderTagReferenceChips() {
             const container = document.getElementById('tagRefChips');
             if (!container) return;
@@ -2663,9 +3040,10 @@ __TAG_COLOR_CSS__
                 const count = counts[tag] || 0;
                 const active = tag === selectedTagRef ? 'active' : '';
                 const empty = count === 0 ? 'empty' : '';
+                const cleanTag = tag.startsWith('CUSTOM:') ? 'CUSTOM' : tag;
                 return `
                     <button type="button" class="tag-ref-chip ${active} ${empty}" data-tag="${escapeHtml(tag)}" onclick="selectTagReference('${escapeHtml(tag)}')">
-                        <span class="visual-tag vtag-${escapeHtml(tag)}">
+                        <span class="visual-tag vtag-${escapeHtml(cleanTag)}">
                             <span class="tag-ref-chip-name">${escapeHtml(tag)}</span>
                             <span class="tag-ref-count">${count}</span>
                         </span>
@@ -2695,17 +3073,27 @@ __TAG_COLOR_CSS__
             const examples = getFilteredTagRefExamples(tag);
             const desc = (I18N.tags && I18N.tags[tag]) || '';
             const sourceFilterHtml = renderTagRefSourceFilter(tag);
+            const cleanTag = tag.startsWith('CUSTOM:') ? 'CUSTOM' : tag;
+            const unclassifiedCount = allExamples.filter(ex => ex.subcluster_sort_order == null).length;
 
             const meta = `
                 <div class="tag-ref-meta">
                     <div class="tag-ref-meta-title">
-                        <span class="visual-tag vtag-${escapeHtml(tag)}">${escapeHtml(tag)}</span>
+                        <span class="visual-tag vtag-${escapeHtml(cleanTag)}">${escapeHtml(tag)}</span>
                         <span class="tag-ref-meta-count">${escapeHtml(t('tagRef.examplesCount', { count: String(examples.length) }))}</span>
                         ${examples.length ? `
                             <button type="button" class="btn" style="padding: 0.3rem 0.7rem; font-size: 0.78rem;" onclick="copyTagReferenceTexts()">
                                 ${escapeHtml(t('tagRef.copyTexts'))}
                             </button>
                         ` : ''}
+                        ${unclassifiedCount > 0 ? `
+                            <button type="button" class="btn btn-primary" id="tagRefClassifyBtn" style="padding: 0.3rem 0.7rem; font-size: 0.78rem;" onclick="startTagRefClassify('${escapeHtml(tag)}')">
+                                ${escapeHtml(t('tagRef.classify'))}
+                            </button>
+                            <span class="tag-ref-meta-count" id="tagRefClassifyStatus">${escapeHtml(t('tagRef.classifyPending', { count: String(unclassifiedCount) }))}</span>
+                        ` : (allExamples.length ? `
+                            <span class="tag-ref-meta-count" id="tagRefClassifyStatus">${escapeHtml(t('tagRef.classifyDoneAll'))}</span>
+                        ` : '')}
                     </div>
                     <p class="tag-ref-desc">${escapeHtml(desc || t('tagRef.noDescription'))}</p>
                 </div>
@@ -2732,6 +3120,7 @@ __TAG_COLOR_CSS__
                 return `
                     <tr>
                         <td class="tag-ref-col-num">${idx + 1}</td>
+                        <td class="tag-ref-col-subtype">${formatSubtypeCell(ex)}</td>
                         <td class="tag-ref-col-text">${escapeHtml(flatText)}</td>
                         <td class="tag-ref-col-file">
                             <div class="tag-ref-source-cell">
@@ -2752,6 +3141,7 @@ __TAG_COLOR_CSS__
                         <thead>
                             <tr>
                                 <th class="tag-ref-col-num">#</th>
+                                <th class="tag-ref-col-subtype">${escapeHtml(t('tagRef.colSubtype'))}</th>
                                 <th>${escapeHtml(t('tagRef.colText'))}</th>
                                 <th class="tag-ref-col-file">${escapeHtml(t('tagRef.colSource'))}</th>
                             </tr>
@@ -2770,6 +3160,217 @@ __TAG_COLOR_CSS__
                 alert(t('tagRef.copied'));
             }).catch(err => {
                 alert(t('clipboard.copyFailed', { error: err }));
+            });
+        }
+
+        function waitForTagRefClassify(tag) {
+            return new Promise((resolve, reject) => {
+                if (tagRefClassifyTimer) clearInterval(tagRefClassifyTimer);
+                const statusEl = document.getElementById('tagRefClassifyStatus');
+                const btn = document.getElementById('tagRefClassifyBtn');
+                tagRefClassifyTimer = setInterval(async () => {
+                    try {
+                        const stRes = await fetch(`/tags/${encodeURIComponent(tag)}/classify/status`);
+                        const st = await stRes.json();
+                        if (statusEl) {
+                            statusEl.textContent = st.running
+                                ? `${t('tagRef.classifying')} ${st.assigned}/${st.total}`
+                                : t('tagRef.classifying');
+                        }
+                        if (btn) {
+                            btn.disabled = true;
+                            btn.textContent = t('tagRef.classifying');
+                        }
+                        if (!st.running) {
+                            clearInterval(tagRefClassifyTimer);
+                            tagRefClassifyTimer = null;
+                            if (st.error) reject(new Error(st.error));
+                            else resolve(st);
+                        }
+                    } catch (err) {
+                        clearInterval(tagRefClassifyTimer);
+                        tagRefClassifyTimer = null;
+                        reject(err);
+                    }
+                }, 2000);
+            });
+        }
+
+        async function startTagRefClassify(tag) {
+            if (!tag) return;
+            const btn = document.getElementById('tagRefClassifyBtn');
+            const statusEl = document.getElementById('tagRefClassifyStatus');
+            const apiKey = (typeof getStoredOpenAiApiKey === 'function' ? getStoredOpenAiApiKey() : '') || '';
+            if (!OPENAI_KEY_FROM_ENV && !apiKey) {
+                alert(t('tagRef.classifyNeedKey'));
+                return;
+            }
+            if (btn) {
+                btn.disabled = true;
+                btn.textContent = t('tagRef.classifying');
+            }
+            if (statusEl) statusEl.textContent = t('tagRef.classifying');
+
+            try {
+                const res = await fetch(`/tags/${encodeURIComponent(tag)}/classify`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ openai_api_key: apiKey }),
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) {
+                    throw new Error(data.detail || t('tagRef.classifyFailed', { error: res.status }));
+                }
+                if (data.status === 'nothing_to_do') {
+                    if (statusEl) statusEl.textContent = t('tagRef.classifyNothing');
+                } else if (data.running || data.status === 'started' || data.status === 'already_running') {
+                    await waitForTagRefClassify(tag);
+                }
+                await loadTagReference({ force: true });
+                renderTagReferenceChips();
+                selectTagReference(tag);
+            } catch (err) {
+                alert(t('tagRef.classifyFailed', { error: err.message || err }));
+                if (btn) {
+                    btn.disabled = false;
+                    btn.textContent = t('tagRef.classify');
+                }
+                if (statusEl) statusEl.textContent = '';
+            }
+        }
+
+        async function loadAndApplyTaskSubclusters(taskId) {
+            const res = await fetch(`/tasks/${taskId}/subclusters`);
+            if (!res.ok) throw new Error(t('task.subclustersLoadFailed'));
+            const data = await res.json();
+            taskSubclusterByPosition = {};
+            for (const block of data.blocks || []) {
+                taskSubclusterByPosition[block.position] = block;
+            }
+            if (lastRenderedStructure) {
+                renderVisualStructure(
+                    lastRenderedStructure.structure,
+                    lastRenderedStructure.segmentedBlocks,
+                    lastRenderedStructure.treeJson
+                );
+            }
+        }
+
+        async function refreshTaskClassifyButton(taskId) {
+            const btn = document.getElementById('taskClassifyBtn');
+            const statusEl = document.getElementById('taskClassifyStatus');
+            if (!btn || !statusEl || !taskId) return;
+            try {
+                const res = await fetch(`/tasks/${taskId}/classify/status`);
+                if (!res.ok) {
+                    btn.style.display = 'none';
+                    return;
+                }
+                const st = await res.json();
+                if (st.running) {
+                    btn.style.display = 'inline-flex';
+                    btn.disabled = true;
+                    btn.querySelector('span').textContent = t('task.classifying');
+                    statusEl.textContent = st.current_tag
+                        ? `${t('task.classifying')} (${st.current_tag}) ${st.assigned}/${st.total}`
+                        : `${t('task.classifying')} ${st.assigned}/${st.total}`;
+                    return;
+                }
+                btn.disabled = false;
+                btn.querySelector('span').textContent = t('task.classify');
+                btn.style.display = st.total > 0 ? 'inline-flex' : 'none';
+                if (st.pending > 0) {
+                    statusEl.textContent = t('task.classifyPending', { count: String(st.pending) });
+                } else if (taskSubclusterByPosition) {
+                    statusEl.textContent = t('task.classifyLoaded');
+                } else if (st.total > 0) {
+                    statusEl.textContent = t('task.classifyReady');
+                } else {
+                    statusEl.textContent = '';
+                }
+            } catch (err) {
+                btn.style.display = 'none';
+            }
+        }
+
+        async function startTaskClassify() {
+            if (!currentTaskData || !currentTaskData.id) return;
+            const taskId = currentTaskData.id;
+            const btn = document.getElementById('taskClassifyBtn');
+            const statusEl = document.getElementById('taskClassifyStatus');
+
+            try {
+                const statusRes = await fetch(`/tasks/${taskId}/classify/status`);
+                const st = statusRes.ok ? await statusRes.json() : { pending: 0, running: false };
+
+                if (st.running) {
+                    if (statusEl) statusEl.textContent = t('task.classifying');
+                    await waitForTaskClassify(taskId);
+                } else if (st.pending > 0) {
+                    const apiKey = (typeof getStoredOpenAiApiKey === 'function' ? getStoredOpenAiApiKey() : '') || '';
+                    if (!OPENAI_KEY_FROM_ENV && !apiKey) {
+                        alert(t('task.classifyNeedKey'));
+                        return;
+                    }
+                    if (btn) {
+                        btn.disabled = true;
+                        btn.querySelector('span').textContent = t('task.classifying');
+                    }
+                    if (statusEl) statusEl.textContent = t('task.classifying');
+
+                    const res = await fetch(`/tasks/${taskId}/classify`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ openai_api_key: apiKey }),
+                    });
+                    const data = await res.json().catch(() => ({}));
+                    if (!res.ok) {
+                        throw new Error(data.detail || t('task.classifyFailed', { error: res.status }));
+                    }
+                    if (data.status !== 'nothing_to_do' && data.status !== 'already_running') {
+                        await waitForTaskClassify(taskId);
+                    } else if (data.running || data.status === 'already_running') {
+                        await waitForTaskClassify(taskId);
+                    }
+                }
+
+                if (statusEl) statusEl.textContent = t('task.subclustersLoading');
+                await loadAndApplyTaskSubclusters(taskId);
+                if (statusEl) statusEl.textContent = t('task.classifyLoaded');
+                await refreshTaskClassifyButton(taskId);
+            } catch (err) {
+                alert(t('task.classifyFailed', { error: err.message || err }));
+                await refreshTaskClassifyButton(taskId);
+            }
+        }
+
+        function waitForTaskClassify(taskId) {
+            return new Promise((resolve, reject) => {
+                if (taskClassifyTimer) clearInterval(taskClassifyTimer);
+                const statusEl = document.getElementById('taskClassifyStatus');
+                taskClassifyTimer = setInterval(async () => {
+                    try {
+                        const stRes = await fetch(`/tasks/${taskId}/classify/status`);
+                        const st = await stRes.json();
+                        if (statusEl) {
+                            statusEl.textContent = st.running
+                                ? (st.current_tag
+                                    ? `${t('task.classifying')} (${st.current_tag}) ${st.assigned}/${st.total}`
+                                    : `${t('task.classifying')} ${st.assigned}/${st.total}`)
+                                : t('task.classifying');
+                        }
+                        if (!st.running) {
+                            clearInterval(taskClassifyTimer);
+                            taskClassifyTimer = null;
+                            if (st.error) reject(new Error(st.error));
+                            else resolve(st);
+                        }
+                    } catch (err) {
+                        clearInterval(taskClassifyTimer);
+                        taskClassifyTimer = null;
+                        reject(err);
+                    }
+                }, 2000);
             });
         }
 

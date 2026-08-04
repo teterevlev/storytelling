@@ -20,6 +20,8 @@ db.sqlite
 *.sqlite
 *.sqlite3
 structure_*.json
+db.sqlite-shm
+db.sqlite-wal
 
 # OS / editor
 .DS_Store

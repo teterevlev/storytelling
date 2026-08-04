@@ -5,21 +5,23 @@
   },
   "nav": {
     "workspace": "Workspace",
-    "tagReference": "Tag reference"
+    "tagReference": "Texts by tag",
+    "tagGuide": "Tag guide"
   },
   "tagRef": {
-    "title": "Tag reference",
+    "title": "Texts by tag",
     "description": "Click a tag to browse every matching passage found across your processed scripts.",
     "selectPrompt": "Select a tag above to see matching texts.",
     "noExamples": "No passages with this tag yet.",
     "noDescription": "No description available.",
     "examplesCount": "{{count}} passages",
     "unknownFile": "Untitled",
-    "loadFailed": "Could not load tag reference.",
+    "loadFailed": "Could not load texts by tag.",
     "copyTexts": "Copy texts",
     "copied": "Texts copied to clipboard.",
     "colText": "Text",
     "colSource": "Source",
+    "colSubtype": "Subtype",
     "filterSources": "Sources",
     "resetFilter": "Show all",
     "excludeSource": "Exclude source",
@@ -27,7 +29,26 @@
     "unknownSource": "Unknown source",
     "noExamplesFiltered": "No passages left for the selected sources.",
     "sourceCounts": "{{tagCount}}/{{total}}",
-    "sourceCountsHint": "{{tagCount}} for this tag, {{total}} total"
+    "sourceCountsHint": "{{tagCount}} for this tag, {{total}} total",
+    "unclassified": "Unclassified",
+    "classify": "Classify",
+    "classifying": "Classifying…",
+    "classifyPending": "Unclassified: {{count}}",
+    "classifyDoneAll": "All passages have subtypes",
+    "classifyNothing": "Nothing to classify.",
+    "classifyFailed": "Classification failed: {{error}}",
+    "classifyNeedKey": "OpenAI API key is required for classification."
+  },
+  "tagGuide": {
+    "title": "Tag guide",
+    "description": "Definitions of functional tags and their psychological subtypes (subclusters) from the database.",
+    "loadFailed": "Could not load the tag guide.",
+    "empty": "No subclusters have been seeded yet.",
+    "colCluster": "Cluster",
+    "colFormula": "Formula",
+    "colAbstract": "Abstract",
+    "colExamples": "Two examples",
+    "noExamples": "No exemplar texts"
   },
   "common": {
     "cancel": "Cancel",
@@ -105,7 +126,19 @@
     "runError": "Script processing error:",
     "errorPrefix": "// Execution error:\n// {{message}}",
     "deleteConfirm": "Are you sure you want to delete this entry?",
-    "deleteTitle": "Delete"
+    "deleteTitle": "Delete",
+    "classify": "Classify",
+    "classifying": "Classifying…",
+    "classifyPending": "Unclassified: {{count}}",
+    "classifyDone": "Done: assigned {{assigned}} of {{pending}}.",
+    "classifyDoneAll": "All blocks have subtypes",
+    "classifyReady": "Click to show subtypes on structure",
+    "classifyLoaded": "Subtypes loaded into structure",
+    "classifyNothing": "Nothing to classify.",
+    "classifyFailed": "Classification failed: {{error}}",
+    "classifyNeedKey": "OpenAI API key is required for classification.",
+    "subclustersLoading": "Loading subtypes…",
+    "subclustersLoadFailed": "Could not load subtypes."
   },
   "status": {
     "pending": "pending",
