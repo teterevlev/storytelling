@@ -1,0 +1,1926 @@
+{
+  "tag": "TENSION",
+  "total": 487,
+  "discovery_ns": [
+    3,
+    321,
+    399,
+    454,
+    480,
+    67,
+    252,
+    358,
+    461,
+    476,
+    13,
+    228,
+    369,
+    463,
+    484,
+    62,
+    253,
+    404,
+    472,
+    487,
+    100,
+    276,
+    360,
+    468,
+    475,
+    37,
+    263,
+    379,
+    446,
+    482,
+    177,
+    224,
+    366,
+    453,
+    473,
+    70,
+    266,
+    405,
+    433,
+    483,
+    54,
+    317,
+    415,
+    426,
+    479,
+    14,
+    339,
+    391,
+    440,
+    481,
+    158,
+    346,
+    395,
+    436,
+    478,
+    16,
+    353,
+    410,
+    438,
+    477,
+    153,
+    210,
+    408,
+    439,
+    485,
+    53,
+    192,
+    381,
+    442,
+    474,
+    128,
+    202,
+    419,
+    443,
+    486,
+    45,
+    278,
+    384,
+    423,
+    149
+  ],
+  "holdout_ns": [
+    43,
+    241,
+    398,
+    434,
+    6,
+    214,
+    382,
+    425,
+    77,
+    264,
+    385,
+    462,
+    176,
+    213,
+    386,
+    465,
+    65,
+    279,
+    357,
+    429,
+    20,
+    275,
+    421,
+    452,
+    31,
+    260,
+    380,
+    432,
+    142,
+    235
+  ],
+  "abstracts": [
+    {
+      "n": 3,
+      "mechanism": "X вызывает Y, усиливая Z.",
+      "steps": [
+        "X вызывает Y",
+        "Y усиливает Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 321,
+      "mechanism": "X создаёт ощущение Y из-за Z",
+      "steps": [
+        "X создаёт ощущение Y",
+        "Y из-за Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 399,
+      "mechanism": "Создаётся напряжение из-за осознания, что X неизбежно произойдёт.",
+      "steps": [
+        "X знают, что Y произойдёт",
+        "Y создаёт угрозу для X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 454,
+      "mechanism": "X становится слишком Y, чтобы Z мог его выдержать.",
+      "steps": [
+        "X становится слишком Y",
+        "Z не может выдержать X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 480,
+      "mechanism": "X несёт потенциальную угрозу Y.",
+      "steps": [
+        "X → потенциальная угроза",
+        "→ Y испытывает напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 67,
+      "mechanism": "X приводит к Y в условиях Z.",
+      "steps": [
+        "X в условиях Z",
+        "X приводит к Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 252,
+      "mechanism": "X подчеркивает уязвимость Y",
+      "steps": [
+        "X указывает на тонкость Y",
+        "Тонкость Y создает ощущение уязвимости"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 358,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X → вызывает напряжение",
+        "→ из-за Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 461,
+      "mechanism": "X создаёт напряжение из-за необходимости точного контроля.",
+      "steps": [
+        "Появляется X",
+        "X требует точности",
+        "Точность создаёт напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 476,
+      "mechanism": "X будет выброшен в Y как Z.",
+      "steps": [
+        "X → вероятный исход",
+        "→ выброшен в Y",
+        "→ как Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 13,
+      "mechanism": "X представляет собой испытание для Y.",
+      "steps": [
+        "X → испытание",
+        "испытание → Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 228,
+      "mechanism": "X вызывает у Y напряжение или дискомфорт",
+      "steps": [
+        "X → вызывает у Y",
+        "→ напряжение или дискомфорт"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 369,
+      "mechanism": "X создаёт напряжение из-за Y, который фиксирует каждое движение.",
+      "steps": [
+        "X начинает движение",
+        "Y фиксирует каждое движение X",
+        "→ напряжение из-за постоянного наблюдения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 463,
+      "mechanism": "X вызывает напряжение из-за сложности достижения Y.",
+      "steps": [
+        "Некоторые X могут достичь Y",
+        "Y невероятно сложное"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 484,
+      "mechanism": "X воспринимается как Y, но на самом деле это временное состояние перед Z.",
+      "steps": [
+        "X воспринимается как Y",
+        "Y оказывается временным состоянием",
+        "→ Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 62,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X вызывает напряжение",
+        "из-за Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 253,
+      "mechanism": "X создаёт угрозу для Y из-за недостатка Z.",
+      "steps": [
+        "X создаёт угрозу для Y",
+        "из-за недостатка Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 404,
+      "mechanism": "X создает напряжение из-за Y.",
+      "steps": [
+        "X → ожидание",
+        "ожидание → напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 472,
+      "mechanism": "Упоминание Y создает ожидание сложности или проблемы.",
+      "steps": [
+        "Упоминание Y → ожидание сложности",
+        "→ ожидание проблемы"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 487,
+      "mechanism": "X вызывает постепенное изменение Y, создавая напряжение.",
+      "steps": [
+        "X → Y",
+        "Y → напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 100,
+      "mechanism": "X не может удовлетворить потребности Y.",
+      "steps": [
+        "X не может произвести столько Y, сколько требуется Z.",
+        "→ Возникает напряжение из-за несоответствия возможностей и потребностей."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 276,
+      "mechanism": "X вызывает нестабильность в Y, создавая напряжение.",
+      "steps": [
+        "X прикреплён к Y",
+        "Y ведёт себя непредсказуемо",
+        "→ напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 360,
+      "mechanism": "X создает ощущение неопределенности и риска.",
+      "steps": [
+        "X упоминается как лотерея",
+        "→ вызывает чувство неопределенности и риска"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 468,
+      "mechanism": "X требует преодоления множества сложностей для достижения Y.",
+      "steps": [
+        "X требует преодоления множества сложностей",
+        "→ достижение Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 475,
+      "mechanism": "X вызывает напряжение из-за противоречия с Y.",
+      "steps": [
+        "X → ожидание Y",
+        "Y не происходит → напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 37,
+      "mechanism": "X осознаёт, что Y находится в неожиданном месте.",
+      "steps": [
+        "X садится",
+        "X понимает, что Y находится в неожиданном месте",
+        "→ напряжение из-за необычного расположения Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 263,
+      "mechanism": "X испытывает потребность в Y, чтобы чувствовать себя Z.",
+      "steps": [
+        "X испытывает потребность в Y",
+        "Y позволяет X чувствовать себя Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 379,
+      "mechanism": "X должен быть готов к Y, чтобы избежать Z.",
+      "steps": [
+        "X должен быть готов к Y",
+        "чтобы избежать Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 446,
+      "mechanism": "X может быть настолько Y, что Z может оказаться слишком большим.",
+      "steps": [
+        "X → настолько Y",
+        "Y → Z слишком большим"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 482,
+      "mechanism": "X нарастает, создавая ожидание Y.",
+      "steps": [
+        "X нарастает",
+        "→ ожидание Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 177,
+      "mechanism": "X создаёт угрозу для Y.",
+      "steps": [
+        "X → потеря контроля",
+        "потеря контроля → угроза для Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 224,
+      "mechanism": "X падает до критического уровня из-за Y.",
+      "steps": [
+        "X падает до критического уровня",
+        "Y приводит к ухудшению X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 366,
+      "mechanism": "X кажется простым, но Y вызывает сомнения в простоте.",
+      "steps": [
+        "X кажется простым",
+        "Y вызывает сомнения в простоте"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 453,
+      "mechanism": "X не соответствует ожиданиям Y.",
+      "steps": [
+        "X не соответствует ожиданиям Y",
+        "→ возникает напряжение из-за несоответствия"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 473,
+      "mechanism": "X происходит слишком часто и точно для обычного Y.",
+      "steps": [
+        "X происходит",
+        "Частота и точность X вызывают сомнения в его природе"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 70,
+      "mechanism": "X вызывает напряжение из-за своей величины.",
+      "steps": [
+        "X → ожидание",
+        "ожидание → напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 266,
+      "mechanism": "X вызывает разочарование из-за Y.",
+      "steps": [
+        "Ожидание чего-то значительного → X",
+        "X вызывает разочарование из-за Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 405,
+      "mechanism": "X выражает сомнение в успехе Y.",
+      "steps": [
+        "X задаёт вопрос о достаточности Y",
+        "X утверждает, что шансов нет"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 433,
+      "mechanism": "X подчеркивает сложность и точность Y.",
+      "steps": [
+        "X → упоминание малых величин",
+        "→ подчеркивание сложности и точности Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 483,
+      "mechanism": "Угроза X вызывает ожидание Y.",
+      "steps": [
+        "Угроза X",
+        "→ ожидание Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 54,
+      "mechanism": "X пытаются избежать Y, используя Z, что вызывает сильные эмоции.",
+      "steps": [
+        "X пытаются избежать Y",
+        "используют Z",
+        "Z вызывает сильные эмоции"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 317,
+      "mechanism": "X создаёт угрозу, последствия которой неизвестны.",
+      "steps": [
+        "X создаёт угрозу",
+        "Угроза приводит к Y",
+        "Y неизвестно"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 415,
+      "mechanism": "X создаёт напряжение, предлагая Y, что вызывает недоверие у Z.",
+      "steps": [
+        "X предлагает Y",
+        "Y вызывает недоверие у Z",
+        "→ напряжение между X и Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 426,
+      "mechanism": "Создание контраста между X и Y для усиления напряжения.",
+      "steps": [
+        "X представляется как малое.",
+        "Y представляется как огромное.",
+        "Контраст между X и Y усиливает напряжение."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 479,
+      "mechanism": "X не гарантирует Y.",
+      "steps": [
+        "X → ожидание Y",
+        "→ отсутствие гарантии Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 14,
+      "mechanism": "X демонстрирует Y через сравнение с Z.",
+      "steps": [
+        "X → сравнение с Z",
+        "→ демонстрация Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 339,
+      "mechanism": "описание X создает ожидание Y",
+      "steps": [
+        "описание X",
+        "создает ожидание Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 391,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X → вызывает страх",
+        "страх → напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 440,
+      "mechanism": "X не может получить Y, что создает напряжение из-за неопределенности.",
+      "steps": [
+        "X не может получить Y",
+        "→ создается напряжение",
+        "→ из-за неопределенности"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 481,
+      "mechanism": "X создаёт напряжение из-за угрозы Y.",
+      "steps": [
+        "X → угроза Y",
+        "→ напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 158,
+      "mechanism": "X не происходит, несмотря на Y.",
+      "steps": [
+        "Ожидание, что Y приведет к X",
+        "Y происходит",
+        "X не происходит"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 346,
+      "mechanism": "X создаёт Y, что делает Z невозможным.",
+      "steps": [
+        "X создаёт Y",
+        "Y делает Z невозможным"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 395,
+      "mechanism": "Упоминание о Y создает напряжение из-за предполагаемой угрозы.",
+      "steps": [
+        "Упоминание о Y",
+        "Предполагаемая угроза от Y",
+        "Создание напряжения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 436,
+      "mechanism": "X создаёт Y, что усиливает Z.",
+      "steps": [
+        "X → понижение Y",
+        "понижение Y → усиление Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 478,
+      "mechanism": "X продолжается, но Y усиливается.",
+      "steps": [
+        "X продолжается",
+        "Y усиливается",
+        "→ Z нарастает"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 16,
+      "mechanism": "Создаётся напряжение через указание на скрытую угрозу X, которая не находится в ожидаемых местах Y.",
+      "steps": [
+        "Угроза X упоминается",
+        "Уточняется, что X не находится в местах Y",
+        "Возникает напряжение из-за неизвестности местоположения X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 353,
+      "mechanism": "X создаёт напряжение из-за несоответствия между обещанием и реальностью.",
+      "steps": [
+        "Ожидание Y → Обнаружение X",
+        "X противоречит Y",
+        "→ Напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 410,
+      "mechanism": "X подчеркивает напряженность в Y.",
+      "steps": [
+        "X упоминает Y.",
+        "Y создает ощущение напряженности."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 438,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X → сложнее",
+        "→ напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 477,
+      "mechanism": "Неожиданное появление X создает напряжение.",
+      "steps": [
+        "Появление X",
+        "→ Создание напряжения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 153,
+      "mechanism": "X испытывают Y из-за постоянной угрозы Z.",
+      "steps": [
+        "X испытывают Y",
+        "из-за постоянной угрозы Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 210,
+      "mechanism": "X вызывает страх из-за Y.",
+      "steps": [
+        "X → вызывает страх",
+        "страх → из-за Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 408,
+      "mechanism": "X осознаёт, что Y может привести к нежелательным последствиям из-за Z.",
+      "steps": [
+        "X осознаёт, что Y",
+        "Y может привести к нежелательным последствиям",
+        "Причина нежелательных последствий - Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 439,
+      "mechanism": "X создаёт ожидание Y, но Y оказывается меньше, чем ожидалось.",
+      "steps": [
+        "Ожидание X",
+        "Ожидание Y",
+        "Y оказывается меньше, чем ожидалось"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 485,
+      "mechanism": "X и Y сближаются, создавая угрозу.",
+      "steps": [
+        "X и Y → сближение",
+        "сближение → угроза"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 53,
+      "mechanism": "X вызывает сильное нежелание и страх у Y.",
+      "steps": [
+        "X вызывает страх у Y",
+        "Y отказывается выполнять действие"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 192,
+      "mechanism": "X создаёт контраст с Y, вызывая напряжение.",
+      "steps": [
+        "X создаёт впечатление прочности и тяжести.",
+        "Y выглядит несоразмерно и неустойчиво.",
+        "Контраст между X и Y вызывает напряжение."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 381,
+      "mechanism": "X создаёт напряжение, когда Y движется к Z.",
+      "steps": [
+        "X создаёт напряжение",
+        "Y движется к Z",
+        "→ напряжение усиливается"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 442,
+      "mechanism": "X создает ожидание трудности в Y.",
+      "steps": [
+        "X → ожидание трудности",
+        "→ Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 474,
+      "mechanism": "X замечает, что Y имеет регулярность.",
+      "steps": [
+        "X замечает Y",
+        "Y имеет регулярность"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 128,
+      "mechanism": "X создаёт угрозу Y при условии Z",
+      "steps": [
+        "X → угроза Y",
+        "условие Z → X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 202,
+      "mechanism": "X создаёт угрозу для Y, который не может быстро избежать её.",
+      "steps": [
+        "X создаёт угрозу",
+        "Y не может быстро избежать угрозы"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 419,
+      "mechanism": "X осознаёт Y, несмотря на Z.",
+      "steps": [
+        "X → осознание Y",
+        "Z → не отменяет Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 443,
+      "mechanism": "X требует Y для достижения Z",
+      "steps": [
+        "X → недостаточно Y",
+        "→ требуется больше Y для достижения Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 486,
+      "mechanism": "X начинает свою незримую работу, создавая ожидание последствий.",
+      "steps": [
+        "X начинает свою незримую работу",
+        "→ ожидание последствий"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 45,
+      "mechanism": "X создает ощущение Y из-за Z",
+      "steps": [
+        "X = положение над Y",
+        "Y = напряжение",
+        "Z = минимальная защита между X и Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 278,
+      "mechanism": "X создает напряжение из-за Y.",
+      "steps": [
+        "X вызывает Y",
+        "Y создает напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 384,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X → ожидание",
+        "ожидание → напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 423,
+      "mechanism": "Создание ожидания разрешения проблемы.",
+      "steps": [
+        "Упоминание X",
+        "Создание ожидания разрешения X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 149,
+      "mechanism": "Создание X вызывает Y.",
+      "steps": [
+        "Создание X",
+        "X вызывает Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 43,
+      "mechanism": "Создаётся ожидание, что X станет ещё хуже.",
+      "steps": [
+        "X → ожидание ухудшения",
+        "→ усиление напряжения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 241,
+      "mechanism": "X создаёт напряжение из-за своей нестабильности.",
+      "steps": [
+        "X имеет свойство Y.",
+        "Y приводит к Z.",
+        "Z вызывает напряжение."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 398,
+      "mechanism": "X вызывает напряжение из-за необъяснимого исчезновения Y.",
+      "steps": [
+        "X → необъяснимое исчезновение Y",
+        "→ напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 434,
+      "mechanism": "X подчеркивает ограниченность Y в восприятии Z.",
+      "steps": [
+        "X утверждает ограниченность Y",
+        "Y касается восприятия Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 6,
+      "mechanism": "X создаёт угрозу для Y из-за недостатка Z.",
+      "steps": [
+        "Недостаток Z создаёт угрозу для Y",
+        "X усиливает угрозу"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 214,
+      "mechanism": "X держится на Y, создавая напряжение.",
+      "steps": [
+        "X держится на Y",
+        "→ создается напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 382,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X → проблемы",
+        "проблемы → напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 425,
+      "mechanism": "X не может быть достигнуто из-за Y.",
+      "steps": [
+        "Ожидание X",
+        "Y препятствует достижению X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 77,
+      "mechanism": "X создаёт атмосферу Y, усиливая ощущение Z.",
+      "steps": [
+        "X → атмосфера Y",
+        "атмосфера Y → ощущение Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 264,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X вызывает Y",
+        "Y приводит к Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 385,
+      "mechanism": "X выражает сомнение в возможности Y.",
+      "steps": [
+        "X → выражает сомнение",
+        "→ Y не может быть предсказано"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 462,
+      "mechanism": "X вызывает напряжение из-за длительности Y.",
+      "steps": [
+        "X требует Y",
+        "Y создаёт напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 176,
+      "mechanism": "X стремится к Y, создавая напряжение.",
+      "steps": [
+        "X стремится к Y",
+        "создаётся напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 213,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X вызывает напряжение",
+        "Y усиливает напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 386,
+      "mechanism": "Зависимость Y от X создает напряжение.",
+      "steps": [
+        "X влияет на Y",
+        "Y вызывает ожидание"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 465,
+      "mechanism": "X не будет соответствовать ожиданиям Y.",
+      "steps": [
+        "Ожидание Y",
+        "X не соответствует Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 65,
+      "mechanism": "X создаёт напряжение из-за Y.",
+      "steps": [
+        "X пересыхает",
+        "→ Y вызывает напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 279,
+      "mechanism": "X создаёт ожидание высокого качества, но Y разочаровывает.",
+      "steps": [
+        "X создаёт ожидание высокого качества",
+        "Y разочаровывает"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 357,
+      "mechanism": "X требует Y для успешного выполнения.",
+      "steps": [
+        "X требует Y",
+        "Y необходимо для успешного выполнения X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 429,
+      "mechanism": "X создаёт напряжение из-за Y.",
+      "steps": [
+        "X → ожидание",
+        "ожидание → напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 20,
+      "mechanism": "X создаёт нарастающее напряжение из-за постепенного ухудшения Y.",
+      "steps": [
+        "X начинает ухудшаться",
+        "Y становится слабее",
+        "Z деформируется",
+        "→ нарастающее напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 275,
+      "mechanism": "X приводит к Y, создавая угрозу для Z.",
+      "steps": [
+        "X → Y",
+        "Y создаёт угрозу для Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 421,
+      "mechanism": "X рассматривает возможность перемещения из Y в Z, оценивая потенциальные выгоды и потери.",
+      "steps": [
+        "X считает Y менее развитым, чем Z",
+        "X сравнивает численные показатели Y и Z",
+        "X задается вопросами о различиях в активности и возможностях между Y и Z",
+        "X размышляет о социальных и экономических аспектах жизни в Y и Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 452,
+      "mechanism": "X создает ограничение для достижения Y.",
+      "steps": [
+        "X → ограничение",
+        "ограничение → невозможность достижения Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 31,
+      "mechanism": "X сталкивается с Y, создавая напряжение.",
+      "steps": [
+        "X сталкивается с Y",
+        "→ создаётся напряжение"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 260,
+      "mechanism": "X вызывает у Y постоянное чувство угрозы.",
+      "steps": [
+        "Y сталкивается с X",
+        "Y испытывает страх"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 380,
+      "mechanism": "X вызывает напряжение из-за Y.",
+      "steps": [
+        "X → ожидание",
+        "ожидание → напряжение",
+        "напряжение → Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 432,
+      "mechanism": "Создаётся напряжение из-за отсутствия прямого подтверждения существования X.",
+      "steps": [
+        "Упоминание X",
+        "Указание на отсутствие прямого подтверждения X",
+        "Создание напряжения из-за неизвестности"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 142,
+      "mechanism": "X не соответствует ожиданиям Y",
+      "steps": [
+        "Ожидание, что X будет подходить для Y",
+        "Факт, что X не подходит для Y",
+        "→ Возникает напряжение из-за несоответствия"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 235,
+      "mechanism": "X создаёт Y, что вызывает Z.",
+      "steps": [
+        "X создаёт Y",
+        "Y вызывает Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    }
+  ],
+  "draft": {
+    "clusters": [
+      {
+        "temp_id": 1,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через ожидание или угрозу.",
+        "draft_steps": [
+          "X → ожидание/угроза",
+          "→ напряжение"
+        ],
+        "members": [
+          399,
+          480,
+          358,
+          461,
+          369,
+          463,
+          62,
+          404,
+          487,
+          276,
+          475,
+          70,
+          391,
+          438,
+          477,
+          381,
+          442,
+          486,
+          278,
+          384
+        ],
+        "why_not_split": "Все примеры используют ожидание или угрозу как основной механизм создания напряжения."
+      },
+      {
+        "temp_id": 2,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через несоответствие или противоречие.",
+        "draft_steps": [
+          "X → несоответствие/противоречие",
+          "→ напряжение"
+        ],
+        "members": [
+          454,
+          13,
+          100,
+          475,
+          453,
+          158,
+          353
+        ],
+        "why_not_split": "Все примеры используют несоответствие или противоречие как основной механизм создания напряжения."
+      },
+      {
+        "temp_id": 3,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через угрозу или уязвимость.",
+        "draft_steps": [
+          "X → угроза/уязвимость",
+          "→ напряжение"
+        ],
+        "members": [
+          252,
+          253,
+          177,
+          317,
+          128,
+          202,
+          485
+        ],
+        "why_not_split": "Все примеры используют угрозу или уязвимость как основной механизм создания напряжения."
+      },
+      {
+        "temp_id": 4,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через ожидание или предвкушение.",
+        "draft_steps": [
+          "X → ожидание/предвкушение",
+          "→ напряжение"
+        ],
+        "members": [
+          482,
+          483,
+          339,
+          442,
+          486
+        ],
+        "why_not_split": "Все примеры используют ожидание или предвкушение как основной механизм создания напряжения."
+      },
+      {
+        "temp_id": 5,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через контраст или сравнение.",
+        "draft_steps": [
+          "X → контраст/сравнение",
+          "→ напряжение"
+        ],
+        "members": [
+          192,
+          426
+        ],
+        "why_not_split": "Все примеры используют контраст или сравнение как основной механизм создания напряжения."
+      }
+    ],
+    "residual": [
+      3,
+      321,
+      67,
+      476,
+      228,
+      13,
+      404,
+      472,
+      360,
+      468,
+      37,
+      263,
+      379,
+      446,
+      224,
+      366,
+      473,
+      266,
+      405,
+      433,
+      54,
+      415,
+      479,
+      14,
+      439,
+      53,
+      210,
+      408,
+      419,
+      443,
+      45,
+      149
+    ]
+  },
+  "revised": {
+    "clusters": [
+      {
+        "temp_id": 1,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через ожидание или угрозу.",
+        "draft_steps": [
+          "X → ожидание/угроза",
+          "→ напряжение"
+        ],
+        "members": [
+          399,
+          480,
+          358,
+          461,
+          369,
+          463,
+          62,
+          404,
+          487,
+          276,
+          70,
+          391,
+          438,
+          477,
+          381,
+          442,
+          486,
+          278,
+          384
+        ],
+        "why_not_split": "Все примеры используют ожидание или угрозу как основной механизм создания напряжения."
+      },
+      {
+        "temp_id": 2,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через несоответствие или противоречие.",
+        "draft_steps": [
+          "X → несоответствие/противоречие",
+          "→ напряжение"
+        ],
+        "members": [
+          454,
+          13,
+          100,
+          475,
+          453,
+          158,
+          353
+        ],
+        "why_not_split": "Все примеры используют несоответствие или противоречие как основной механизм создания напряжения."
+      },
+      {
+        "temp_id": 3,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через угрозу или уязвимость.",
+        "draft_steps": [
+          "X → угроза/уязвимость",
+          "→ напряжение"
+        ],
+        "members": [
+          252,
+          253,
+          177,
+          317,
+          128,
+          202,
+          485
+        ],
+        "why_not_split": "Все примеры используют угрозу или уязвимость как основной механизм создания напряжения."
+      },
+      {
+        "temp_id": 4,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через ожидание или предвкушение.",
+        "draft_steps": [
+          "X → ожидание/предвкушение",
+          "→ напряжение"
+        ],
+        "members": [
+          482,
+          483,
+          339
+        ],
+        "why_not_split": "Все примеры используют ожидание или предвкушение как основной механизм создания напряжения."
+      },
+      {
+        "temp_id": 5,
+        "because": "Все эти примеры работают одинаково, потому что они создают напряжение через контраст или сравнение.",
+        "draft_steps": [
+          "X → контраст/сравнение",
+          "→ напряжение"
+        ],
+        "members": [
+          192,
+          426
+        ],
+        "why_not_split": "Все примеры используют контраст или сравнение как основной механизм создания напряжения."
+      }
+    ],
+    "residual": [
+      3,
+      321,
+      67,
+      476,
+      228,
+      472,
+      360,
+      468,
+      37,
+      263,
+      379,
+      446,
+      224,
+      366,
+      473,
+      266,
+      405,
+      433,
+      54,
+      415,
+      479,
+      14,
+      439,
+      53,
+      210,
+      408,
+      419,
+      443,
+      45,
+      149
+    ],
+    "notes": [
+      "Объединены кластеры с одинаковыми механизмами.",
+      "Некоторые примеры изначально были в нескольких кластерах, но были распределены по наиболее подходящим.",
+      "Примеры без четкого механизма помещены в residual."
+    ]
+  },
+  "named": {
+    "clusters": [
+      {
+        "temp_id": 1,
+        "name": "Ожидание/Угроза",
+        "formula": "X → ожидание/угроза\n→ напряжение",
+        "abstract": "Напряжение создаётся через ожидание или угрозу, которые неизбежно произойдут."
+      },
+      {
+        "temp_id": 2,
+        "name": "Несоответствие/Противоречие",
+        "formula": "X → несоответствие/противоречие\n→ напряжение",
+        "abstract": "Напряжение возникает из-за несоответствия или противоречия между ожиданиями и реальностью."
+      },
+      {
+        "temp_id": 3,
+        "name": "Угроза/Уязвимость",
+        "formula": "X → угроза/уязвимость\n→ напряжение",
+        "abstract": "Напряжение создаётся через угрозу или уязвимость, которые делают ситуацию нестабильной."
+      },
+      {
+        "temp_id": 4,
+        "name": "Ожидание/Предвкушение",
+        "formula": "X → ожидание/предвкушение\n→ напряжение",
+        "abstract": "Напряжение возникает из-за ожидания или предвкушения будущих событий."
+      },
+      {
+        "temp_id": 5,
+        "name": "Контраст/Сравнение",
+        "formula": "X → контраст/сравнение\n→ напряжение",
+        "abstract": "Напряжение усиливается через контраст или сравнение между двумя элементами."
+      }
+    ]
+  },
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Ожидание/Угроза",
+      "formula": "X → ожидание/угроза\n→ напряжение",
+      "abstract_line": "Напряжение создаётся через ожидание или угрозу, которые неизбежно произойдут.",
+      "members": [
+        399,
+        480,
+        358,
+        461,
+        369,
+        463,
+        62,
+        404,
+        487,
+        276,
+        70,
+        391,
+        438,
+        477,
+        381,
+        442,
+        486,
+        278,
+        384
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Несоответствие/Противоречие",
+      "formula": "X → несоответствие/противоречие\n→ напряжение",
+      "abstract_line": "Напряжение возникает из-за несоответствия или противоречия между ожиданиями и реальностью.",
+      "members": [
+        454,
+        13,
+        100,
+        475,
+        453,
+        158,
+        353
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Угроза/Уязвимость",
+      "formula": "X → угроза/уязвимость\n→ напряжение",
+      "abstract_line": "Напряжение создаётся через угрозу или уязвимость, которые делают ситуацию нестабильной.",
+      "members": [
+        252,
+        253,
+        177,
+        317,
+        128,
+        202,
+        485
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Ожидание/Предвкушение",
+      "formula": "X → ожидание/предвкушение\n→ напряжение",
+      "abstract_line": "Напряжение возникает из-за ожидания или предвкушения будущих событий.",
+      "members": [
+        482,
+        483,
+        339
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Контраст/Сравнение",
+      "formula": "X → контраст/сравнение\n→ напряжение",
+      "abstract_line": "Напряжение усиливается через контраст или сравнение между двумя элементами.",
+      "members": [
+        192,
+        426
+      ]
+    }
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 43,
+        "cluster_id": 4,
+        "confidence": "medium",
+        "note": "Ожидание ухудшения связано с ожиданием будущих событий."
+      },
+      {
+        "n": 241,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Нестабильность создает угрозу, что соответствует кластеру 'Угроза/Уязвимость'."
+      },
+      {
+        "n": 398,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Необъяснимое исчезновение создает уязвимость и угрозу."
+      },
+      {
+        "n": 434,
+        "cluster_id": 2,
+        "confidence": "medium",
+        "note": "Ограниченность восприятия создает противоречие."
+      },
+      {
+        "n": 6,
+        "cluster_id": 3,
+        "confidence": "high",
+        "note": "Угроза для Y из-за недостатка Z соответствует кластеру 'Угроза/Уязвимость'."
+      },
+      {
+        "n": 214,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Держание на Y создает нестабильность и угрозу."
+      },
+      {
+        "n": 382,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Проблемы создают угрозу и напряжение."
+      },
+      {
+        "n": 425,
+        "cluster_id": 2,
+        "confidence": "medium",
+        "note": "Несоответствие ожидания и реальности."
+      },
+      {
+        "n": 77,
+        "cluster_id": 5,
+        "confidence": "medium",
+        "note": "Атмосфера и ощущение связаны с контрастом."
+      },
+      {
+        "n": 264,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Напряжение из-за Y связано с угрозой."
+      },
+      {
+        "n": 385,
+        "cluster_id": 2,
+        "confidence": "medium",
+        "note": "Сомнение в возможности Y создает противоречие."
+      },
+      {
+        "n": 462,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Длительность Y создает угрозу и напряжение."
+      },
+      {
+        "n": 176,
+        "cluster_id": 4,
+        "confidence": "medium",
+        "note": "Стремление к Y связано с ожиданием будущих событий."
+      },
+      {
+        "n": 213,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Напряжение из-за Y связано с угрозой."
+      },
+      {
+        "n": 386,
+        "cluster_id": 4,
+        "confidence": "medium",
+        "note": "Зависимость создает ожидание."
+      },
+      {
+        "n": 465,
+        "cluster_id": 2,
+        "confidence": "high",
+        "note": "Несоответствие ожиданиям Y."
+      },
+      {
+        "n": 65,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Пересыхание создает угрозу."
+      },
+      {
+        "n": 279,
+        "cluster_id": 2,
+        "confidence": "high",
+        "note": "Несоответствие ожиданиям высокого качества."
+      },
+      {
+        "n": 357,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Необходимость Y создает уязвимость."
+      },
+      {
+        "n": 429,
+        "cluster_id": 4,
+        "confidence": "medium",
+        "note": "Ожидание создает напряжение."
+      },
+      {
+        "n": 20,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Постепенное ухудшение создает угрозу."
+      },
+      {
+        "n": 275,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Угроза для Z связана с кластером 'Угроза/Уязвимость'."
+      },
+      {
+        "n": 421,
+        "cluster_id": 5,
+        "confidence": "medium",
+        "note": "Сравнение между Y и Z."
+      },
+      {
+        "n": 452,
+        "cluster_id": 2,
+        "confidence": "medium",
+        "note": "Ограничение создает противоречие."
+      },
+      {
+        "n": 31,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Столкновение создает угрозу."
+      },
+      {
+        "n": 260,
+        "cluster_id": 3,
+        "confidence": "high",
+        "note": "Постоянное чувство угрозы."
+      },
+      {
+        "n": 380,
+        "cluster_id": 4,
+        "confidence": "medium",
+        "note": "Ожидание создает напряжение."
+      },
+      {
+        "n": 432,
+        "cluster_id": 2,
+        "confidence": "medium",
+        "note": "Отсутствие подтверждения создает противоречие."
+      },
+      {
+        "n": 142,
+        "cluster_id": 2,
+        "confidence": "high",
+        "note": "Несоответствие ожиданиям Y."
+      },
+      {
+        "n": 235,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Y вызывает Z, что создает угрозу."
+      }
+    ],
+    "summary": "Большинство механизмов связаны с угрозой или несоответствием, что соответствует кластерам 'Угроза/Уязвимость' и 'Несоответствие/Противоречие'."
+  }
+}

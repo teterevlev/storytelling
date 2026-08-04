@@ -1,0 +1,1722 @@
+{
+  "tag": "OPEN_LOOP",
+  "total": 102,
+  "discovery_ns": [
+    20,
+    34,
+    62,
+    89,
+    101,
+    15,
+    53,
+    71,
+    73,
+    102,
+    11,
+    44,
+    67,
+    77,
+    25,
+    39,
+    61,
+    97,
+    28,
+    51,
+    66,
+    92,
+    7,
+    47,
+    60,
+    99,
+    6,
+    48,
+    72,
+    95,
+    13,
+    56,
+    63,
+    98,
+    12,
+    59,
+    65,
+    88,
+    16,
+    41,
+    69,
+    75,
+    10,
+    43,
+    70,
+    82,
+    27,
+    55,
+    64,
+    74,
+    31,
+    46,
+    68,
+    86,
+    23,
+    49,
+    83,
+    17,
+    33,
+    90,
+    29,
+    35,
+    96,
+    2,
+    52,
+    79,
+    14,
+    38,
+    91,
+    19,
+    36
+  ],
+  "holdout_ns": [
+    3,
+    58,
+    94,
+    18,
+    42,
+    78,
+    22,
+    45,
+    84,
+    30,
+    54,
+    93,
+    5,
+    37,
+    87,
+    26,
+    32,
+    81,
+    8,
+    57,
+    85,
+    9,
+    40,
+    76,
+    24,
+    50,
+    80,
+    1,
+    100,
+    4
+  ],
+  "abstracts": [
+    {
+      "n": 20,
+      "mechanism": "X вызывает вопрос о последствиях Y.",
+      "steps": [
+        "X → вопрос",
+        "вопрос → ожидание ответа"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 34,
+      "mechanism": "X упоминается как нечто большее, чем Y.",
+      "steps": [
+        "X упоминается",
+        "X описывается как нечто большее, чем Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 62,
+      "mechanism": "X создаёт ожидание завершения действия Y.",
+      "steps": [
+        "X → ожидание Y",
+        "→ ожидание завершения Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 89,
+      "mechanism": "Упоминается X, который вызывает ожидание дальнейшего раскрытия.",
+      "steps": [
+        "Упоминается X",
+        "Создается ожидание дальнейшего раскрытия X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 101,
+      "mechanism": "X фиксирует Y, создавая ощущение Z.",
+      "steps": [
+        "X фиксирует Y",
+        "создаётся ощущение Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 15,
+      "mechanism": "X предлагает представить себя в роли Y.",
+      "steps": [
+        "X предлагает Y",
+        "→ ожидание раскрытия роли Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 53,
+      "mechanism": "Упоминание X создаёт ожидание раскрытия Y.",
+      "steps": [
+        "Упоминание X",
+        "Создаётся ожидание раскрытия Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 71,
+      "mechanism": "X задает вопрос Y, который вызывает ожидание объяснения.",
+      "steps": [
+        "X задает вопрос Y",
+        "Y вызывает ожидание объяснения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 73,
+      "mechanism": "X создаёт ожидание будущих открытий или исследований.",
+      "steps": [
+        "X → ожидание",
+        "→ будущие открытия"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 102,
+      "mechanism": "X вызывает вопрос о том, как Y произошло.",
+      "steps": [
+        "X → вызывает вопрос",
+        "→ как Y произошло"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "5.2.txt"
+    },
+    {
+      "n": 11,
+      "mechanism": "X создаёт ожидание раскрытия Y.",
+      "steps": [
+        "X создаёт ожидание",
+        "→ раскрытие Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 44,
+      "mechanism": "Создаётся ожидание раскрытия X, который описывается как крайне негативный.",
+      "steps": [
+        "Упоминание X как чего-то крайне негативного",
+        "Создание ожидания раскрытия X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 67,
+      "mechanism": "X упоминает прошлое событие Y, оставляя детали нераскрытыми.",
+      "steps": [
+        "X упоминает Y",
+        "Y остаётся без подробностей"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 77,
+      "mechanism": "X создаёт ожидание объяснения Y.",
+      "steps": [
+        "X упоминается",
+        "→ создаётся ожидание объяснения Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 25,
+      "mechanism": "Создаётся ожидание угрозы от X.",
+      "steps": [
+        "Упоминается X.",
+        "Создаётся ожидание угрозы от X."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 39,
+      "mechanism": "X вызывает сильное негативное восприятие Y в Z.",
+      "steps": [
+        "X вызывает Y",
+        "Y вызывает негативное восприятие в Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 61,
+      "mechanism": "X намекает на возможность Y, вызывая ожидание раскрытия.",
+      "steps": [
+        "X упоминает Y",
+        "Y вызывает ожидание дальнейшего объяснения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 97,
+      "mechanism": "X предполагает возможность Y, создавая ожидание Z.",
+      "steps": [
+        "X предполагает возможность Y",
+        "создаётся ожидание Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 28,
+      "mechanism": "Упоминается X, создавая ожидание дальнейшего раскрытия.",
+      "steps": [
+        "Упоминается X",
+        "Создается ожидание дальнейшего раскрытия"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 51,
+      "mechanism": "Создаётся ожидание раскрытия X, но X не раскрывается.",
+      "steps": [
+        "Упоминание X",
+        "Создание ожидания раскрытия X",
+        "X не раскрывается"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 66,
+      "mechanism": "У X есть одна очень большая проблема в случае Y.",
+      "steps": [
+        "X имеет проблему",
+        "Y создаёт условия для проблемы"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 92,
+      "mechanism": "X создаёт ожидание Y, но не завершает его.",
+      "steps": [
+        "X создаёт ожидание Y",
+        "но не завершает его"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 7,
+      "mechanism": "X, который не делал Y, он делал Z.",
+      "steps": [
+        "Ожидание Y от X",
+        "X не делает Y",
+        "X делает Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 47,
+      "mechanism": "Создание Y рядом с X вызывает ожидание изменений.",
+      "steps": [
+        "X существует",
+        "Y создается рядом с X",
+        "→ ожидание изменений"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 60,
+      "mechanism": "X выражает намерение сделать Y с целью Z.",
+      "steps": [
+        "X выражает намерение",
+        "→ Y с целью Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 99,
+      "mechanism": "X вызывает вопрос о Y, создавая ожидание ответа.",
+      "steps": [
+        "X вызывает вопрос о Y",
+        "→ ожидание ответа"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 6,
+      "mechanism": "Упоминание X, который выделяется среди Y.",
+      "steps": [
+        "Упоминание X",
+        "X выделяется среди Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 48,
+      "mechanism": "X вызывает ожидание объяснения Y.",
+      "steps": [
+        "X вызывает вопрос",
+        "→ ожидание объяснения Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 72,
+      "mechanism": "X обозначает намерение, но не раскрывает детали или результат.",
+      "steps": [
+        "X обозначает намерение",
+        "→ Y не раскрывает детали или результат"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 95,
+      "mechanism": "X упоминает о Y, создавая ожидание раскрытия деталей.",
+      "steps": [
+        "X упоминает о Y",
+        "→ создается ожидание раскрытия деталей"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 13,
+      "mechanism": "У X есть скрытая Y.",
+      "steps": [
+        "У X есть Y",
+        "Y скрыта от Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 56,
+      "mechanism": "Создаётся ожидание раскрытия более серьёзного факта.",
+      "steps": [
+        "X намекает на наличие Y",
+        "Y остаётся нераскрытым, создавая ожидание"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 63,
+      "mechanism": "X вызывает вопрос о надежности Y",
+      "steps": [
+        "X → вызывает вопрос",
+        "вопрос → о надежности Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 98,
+      "mechanism": "X предлагает альтернативу Y, создавая ожидание решения.",
+      "steps": [
+        "X предлагает альтернативу Y",
+        "создаётся ожидание решения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 12,
+      "mechanism": "X обладает Y, что вызывает Z у наблюдателя.",
+      "steps": [
+        "X обладает Y",
+        "Y вызывает Z у наблюдателя"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 59,
+      "mechanism": "Сравнение X с Y, где Y вызывает сильные ассоциации и эмоции.",
+      "steps": [
+        "X описывается как устаревший и неэффективный.",
+        "Y описывается как мощный и вызывающий сильные эмоции.",
+        "Сравнение X с Y усиливает восприятие Y."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 65,
+      "mechanism": "X вызывает ожидание Y, но не объясняет, как это возможно.",
+      "steps": [
+        "X → ожидание Y",
+        "→ отсутствие объяснения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 88,
+      "mechanism": "Создаётся ожидание раскрытия информации о возможностях X.",
+      "steps": [
+        "Упоминание X → ожидание раскрытия возможностей X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 16,
+      "mechanism": "X требует Y, но Y невозможно без Z.",
+      "steps": [
+        "X требует Y",
+        "Y невозможно без Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 41,
+      "mechanism": "Создаётся ожидание раскрытия решения X, принятого в Y.",
+      "steps": [
+        "X принимается в Y",
+        "Создаётся ожидание раскрытия X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 69,
+      "mechanism": "X слышит обсуждение Y, создавая ожидание раскрытия деталей.",
+      "steps": [
+        "X слышит Y",
+        "Y создаёт ожидание раскрытия"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 75,
+      "mechanism": "X вызывает ожидание возможности Y.",
+      "steps": [
+        "X вызывает вопрос о возможности Y",
+        "→ ожидание ответа"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 10,
+      "mechanism": "Упоминание X создает ожидание раскрытия деталей в будущем.",
+      "steps": [
+        "Упоминание X",
+        "Создание ожидания раскрытия X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 43,
+      "mechanism": "X вызывает вопрос о Y, создавая ожидание раскрытия.",
+      "steps": [
+        "X вызывает вопрос о Y",
+        "создаётся ожидание раскрытия"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 70,
+      "mechanism": "X вызывает ожидание раскрытия информации о Y.",
+      "steps": [
+        "X упоминает Y",
+        "→ ожидание раскрытия Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 82,
+      "mechanism": "Создание ожидания раскрытия X/Y.",
+      "steps": [
+        "Упоминание X.",
+        "Создание ожидания раскрытия Y."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 27,
+      "mechanism": "X упоминается без дальнейшего объяснения или контекста.",
+      "steps": [
+        "Упоминание X",
+        "Ожидание дальнейшего раскрытия"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 55,
+      "mechanism": "X создаёт ожидание, что Y, но Z показывает, что это не так.",
+      "steps": [
+        "X создаёт ожидание, что Y",
+        "но Z показывает, что это не так"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 64,
+      "mechanism": "X вызывает вопрос о стоимости Y.",
+      "steps": [
+        "X вызывает вопрос",
+        "→ ожидание ответа"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 74,
+      "mechanism": "Создаётся ожидание получения детальной информации о X, если Y существует.",
+      "steps": [
+        "X может содержать Y",
+        "Если Y существует, то X будет детализированным"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 31,
+      "mechanism": "Упоминание X как начальной стадии Y создает ожидание дальнейшего развития.",
+      "steps": [
+        "Упоминание X как начальной стадии Y",
+        "Создание ожидания дальнейшего развития"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 46,
+      "mechanism": "X вызывает ожидание раскрытия Y.",
+      "steps": [
+        "X упоминается",
+        "→ ожидание раскрытия Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 68,
+      "mechanism": "Упоминание X создаёт ожидание раскрытия деталей.",
+      "steps": [
+        "Упоминание X",
+        "Создаётся ожидание раскрытия деталей X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "3.json"
+    },
+    {
+      "n": 86,
+      "mechanism": "Упоминается X, но также вводится Y, создавая ожидание дальнейшего обсуждения.",
+      "steps": [
+        "Упоминается X",
+        "Вводится Y",
+        "Создаётся ожидание дальнейшего обсуждения Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 23,
+      "mechanism": "X открывал Y, когда дело доходило до Z.",
+      "steps": [
+        "X → открывал Y",
+        "→ когда дело доходило до Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 49,
+      "mechanism": "X представляет Y, создавая ожидание будущих событий.",
+      "steps": [
+        "X представляет Y",
+        "→ создается ожидание будущих событий"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 83,
+      "mechanism": "X создаёт ожидание объяснения через аналогию с Y.",
+      "steps": [
+        "X упоминается",
+        "Y упоминается как аналогия",
+        "ожидание объяснения через Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 17,
+      "mechanism": "X вызывает Y, создавая ожидание разрешения.",
+      "steps": [
+        "X → Y",
+        "→ ожидание разрешения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 33,
+      "mechanism": "X создаёт ожидание раскрытия Y.",
+      "steps": [
+        "X создаёт ожидание",
+        "ожидание связано с Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 90,
+      "mechanism": "X можно улучшить, объединив Y и Z.",
+      "steps": [
+        "Есть X, который можно улучшить.",
+        "Y и Z объединяются для улучшения X."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 29,
+      "mechanism": "Упоминается X, но не раскрывается его полная природа или последствия.",
+      "steps": [
+        "Упоминается X",
+        "X подразумевает Y, но Y не раскрывается"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 35,
+      "mechanism": "X намекает на Y, создавая ожидание раскрытия.",
+      "steps": [
+        "X упоминается как часть проблемы",
+        "Y добавляется как вторая часть проблемы",
+        "Создается ожидание раскрытия полной картины проблемы"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 96,
+      "mechanism": "X создаёт ожидание будущего Y, несмотря на текущие ограничения.",
+      "steps": [
+        "X создаёт ожидание будущего Y",
+        "несмотря на текущие ограничения → ожидание будущего Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 2,
+      "mechanism": "X вызывает ожидание раскрытия Y.",
+      "steps": [
+        "X упоминается",
+        "→ ожидание раскрытия Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 52,
+      "mechanism": "Создание ожидания раскрытия X, в которую трудно поверить.",
+      "steps": [
+        "Упоминание X, в которую трудно поверить → Создание ожидания раскрытия X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 79,
+      "mechanism": "Упоминание X создаёт ожидание будущего обсуждения.",
+      "steps": [
+        "Упоминание X",
+        "Создаётся ожидание будущего обсуждения X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 14,
+      "mechanism": "Создание ожидания раскрытия X/Y.",
+      "steps": [
+        "Задается вопрос о X.",
+        "Создается ожидание раскрытия Y."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 38,
+      "mechanism": "X предлагает возможность оправдания Y, создавая ожидание будущего объяснения.",
+      "steps": [
+        "X предлагает оправдать Y",
+        "Создается ожидание будущего объяснения"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 91,
+      "mechanism": "Создаётся ожидание раскрытия информации о размере X, который решает задачу Y.",
+      "steps": [
+        "Упоминание задачи Y",
+        "Создание ожидания о раскрытии информации о размере X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 19,
+      "mechanism": "X с Y, разработанным в прошлом, выпускался до Z.",
+      "steps": [
+        "X с Y",
+        "Y разработан в прошлом",
+        "X выпускался до Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 36,
+      "mechanism": "Создание ожидания через добавление Y к X.",
+      "steps": [
+        "X → добавление Y",
+        "→ ожидание изменений"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 3,
+      "mechanism": "Создаётся ожидание раскрытия X, но вместо этого даётся Y, усиливающее интригу.",
+      "steps": [
+        "Заявление о X",
+        "Утверждение о Y, усиливающее интригу"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 58,
+      "mechanism": "Создание ожидания раскрытия X/Y.",
+      "steps": [
+        "Задается вопрос о X.",
+        "Создается ожидание раскрытия Y."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 94,
+      "mechanism": "X обещает возможность узнать Y, создавая ожидание Z.",
+      "steps": [
+        "X обещает возможность узнать Y",
+        "создаётся ожидание Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 18,
+      "mechanism": "X создаёт ожидание Y",
+      "steps": [
+        "X → ожидание Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 42,
+      "mechanism": "Упоминание X без дальнейших деталей вызывает ожидание раскрытия.",
+      "steps": [
+        "Упоминание X",
+        "→ Ожидание деталей о X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 78,
+      "mechanism": "X упоминается, создавая ожидание раскрытия примера.",
+      "steps": [
+        "Упоминание X",
+        "Создание ожидания примера"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 22,
+      "mechanism": "Создаётся ожидание раскрытия тайны о X.",
+      "steps": [
+        "Упоминание X",
+        "Создание ожидания о тайне, связанной с X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 45,
+      "mechanism": "Упоминание X создаёт ожидание раскрытия Y.",
+      "steps": [
+        "Упоминание X",
+        "Создаётся ожидание раскрытия Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 84,
+      "mechanism": "X упоминается как важный аспект Y, но не объясняется.",
+      "steps": [
+        "Упоминание X как важного аспекта Y",
+        "Отсутствие объяснения X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 30,
+      "mechanism": "X предлагает рассмотреть Y с точки зрения Z, создавая ожидание раскрытия.",
+      "steps": [
+        "X предлагает рассмотреть Y",
+        "создаётся ожидание раскрытия через Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 54,
+      "mechanism": "X вызывает ожидание раскрытия Y",
+      "steps": [
+        "X → ожидание",
+        "ожидание → раскрытие Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 93,
+      "mechanism": "Если X не удается привычным способом, можно использовать Y.",
+      "steps": [
+        "X не удается привычным способом",
+        "→ использовать Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 5,
+      "mechanism": "X не ухудшается, Y остаётся в хорошем состоянии",
+      "steps": [
+        "X не ухудшается",
+        "Y остаётся в хорошем состоянии"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 37,
+      "mechanism": "X выбирает путь, который одновременно простой и опасный.",
+      "steps": [
+        "X выбирает путь",
+        "путь простой",
+        "путь опасный"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 87,
+      "mechanism": "X требует Y для достижения Z.",
+      "steps": [
+        "X требует Y",
+        "Y необходимо для достижения Z"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 26,
+      "mechanism": "X сталкивается с неожиданной и сложной задачей Y, вызывая интригу и ожидание результата.",
+      "steps": [
+        "X сталкивается с задачей Y",
+        "→ вызывает интригу и ожидание результата"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 32,
+      "mechanism": "Создаётся ожидание раскрытия X, которое кажется невероятным.",
+      "steps": [
+        "Упоминается X, который кажется невероятным.",
+        "Создаётся обещание раскрыть детали X."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 81,
+      "mechanism": "X выражает желание Y, создавая ожидание будущего действия.",
+      "steps": [
+        "X выражает желание Y",
+        "→ создается ожидание будущего действия"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 8,
+      "mechanism": "Создаётся ожидание объяснения X.",
+      "steps": [
+        "Упоминание X → ожидание объяснения X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 57,
+      "mechanism": "X вызывает ожидание раскрытия Y.",
+      "steps": [
+        "X упоминается как важный элемент.",
+        "Возникает ожидание объяснения Y."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 85,
+      "mechanism": "Создаётся ожидание раскрытия X.",
+      "steps": [
+        "Упоминается X.",
+        "Создаётся ожидание, что X будет раскрыто."
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 9,
+      "mechanism": "Создание ожидания будущего события через намек на его значимость.",
+      "steps": [
+        "X (жара) → Y (разминка)",
+        "Y → ожидание Z (главное испытание)"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 40,
+      "mechanism": "X вызывает ожидание раскрытия Y.",
+      "steps": [
+        "X упоминается",
+        "→ ожидание раскрытия Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 76,
+      "mechanism": "X обещает возможность Y, если Z будет увеличено.",
+      "steps": [
+        "Z увеличивается",
+        "→ X обещает Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 24,
+      "mechanism": "Задается вопрос о неизвестной ситуации X.",
+      "steps": [
+        "Задается вопрос о X",
+        "Создается ожидание раскрытия X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 50,
+      "mechanism": "X ставит Y задачу, создавая ожидание выполнения.",
+      "steps": [
+        "X ставит Y задачу",
+        "→ ожидание выполнения задачи"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "2.json"
+    },
+    {
+      "n": 80,
+      "mechanism": "X вызывает ожидание Y, но не раскрывает деталей.",
+      "steps": [
+        "X упоминается как идея",
+        "Y описывается как уникальная функция",
+        "→ ожидание раскрытия деталей Y"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 1,
+      "mechanism": "Создаётся ожидание раскрытия X, но оно не происходит.",
+      "steps": [
+        "Упоминание X",
+        "Создание ожидания раскрытия X",
+        "Отсутствие раскрытия X"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    },
+    {
+      "n": 100,
+      "mechanism": "X создаёт ожидание Y, но не раскрывает деталей.",
+      "steps": [
+        "X создаёт ожидание Y",
+        "Y не раскрывается"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "4.txt"
+    },
+    {
+      "n": 4,
+      "mechanism": "X содержит Y, что изменяет его восприятие с Z на что-то более угрожающее.",
+      "steps": [
+        "X содержит Y",
+        "Y изменяет восприятие X с Z на более угрожающее"
+      ],
+      "candidate_residual": false,
+      "residual_reason": null,
+      "filename": "1.json"
+    }
+  ],
+  "draft": {
+    "clusters": [
+      {
+        "temp_id": 1,
+        "because": "Все эти примеры работают одинаково, потому что они создают ожидание раскрытия информации или объяснения после упоминания или намека на что-то.",
+        "draft_steps": [
+          "Упоминание или намек на X → ожидание раскрытия или объяснения Y"
+        ],
+        "members": [
+          11,
+          2,
+          46,
+          70,
+          77,
+          53,
+          89,
+          28,
+          68,
+          95,
+          82,
+          10,
+          79,
+          31,
+          27,
+          29,
+          33,
+          35,
+          56,
+          88,
+          41,
+          69,
+          86,
+          44,
+          25,
+          52,
+          51,
+          61,
+          43,
+          48,
+          38,
+          83,
+          70,
+          14,
+          91,
+          74,
+          49,
+          96,
+          73,
+          62
+        ],
+        "why_not_split": "Все примеры связаны с созданием ожидания раскрытия или объяснения, что является основным механизмом воздействия."
+      },
+      {
+        "temp_id": 2,
+        "because": "Все эти примеры работают одинаково, потому что они вызывают вопрос, который создает ожидание ответа.",
+        "draft_steps": [
+          "X вызывает вопрос о Y → ожидание ответа"
+        ],
+        "members": [
+          20,
+          99,
+          102,
+          64,
+          63,
+          75,
+          71
+        ],
+        "why_not_split": "Все примеры связаны с созданием вопроса, который вызывает ожидание ответа, что является основным механизмом воздействия."
+      },
+      {
+        "temp_id": 3,
+        "because": "Все эти примеры работают одинаково, потому что они создают ожидание будущих изменений или событий.",
+        "draft_steps": [
+          "X → ожидание будущих изменений или событий"
+        ],
+        "members": [
+          47,
+          36,
+          49,
+          97,
+          92,
+          65
+        ],
+        "why_not_split": "Все примеры связаны с созданием ожидания будущих изменений или событий, что является основным механизмом воздействия."
+      }
+    ],
+    "residual": [
+      34,
+      101,
+      15,
+      7,
+      60,
+      6,
+      72,
+      66,
+      39,
+      12,
+      59,
+      16,
+      55,
+      90,
+      19,
+      23
+    ]
+  },
+  "revised": {
+    "clusters": [
+      {
+        "temp_id": 1,
+        "because": "Все эти примеры работают одинаково, потому что они создают ожидание раскрытия информации или объяснения после упоминания или намека на что-то.",
+        "draft_steps": [
+          "Упоминание или намек на X → ожидание раскрытия или объяснения Y"
+        ],
+        "members": [
+          11,
+          2,
+          46,
+          70,
+          77,
+          53,
+          89,
+          28,
+          68,
+          95,
+          82,
+          10,
+          79,
+          31,
+          27,
+          29,
+          33,
+          35,
+          56,
+          88,
+          41,
+          69,
+          86,
+          44,
+          25,
+          52,
+          51,
+          61,
+          43,
+          48,
+          38,
+          83,
+          14,
+          91,
+          74
+        ],
+        "why_not_split": "Все примеры связаны с созданием ожидания раскрытия или объяснения, что является основным механизмом воздействия."
+      },
+      {
+        "temp_id": 2,
+        "because": "Все эти примеры работают одинаково, потому что они вызывают вопрос, который создает ожидание ответа.",
+        "draft_steps": [
+          "X вызывает вопрос о Y → ожидание ответа"
+        ],
+        "members": [
+          20,
+          99,
+          102,
+          64,
+          63,
+          75,
+          71
+        ],
+        "why_not_split": "Все примеры связаны с созданием вопроса, который вызывает ожидание ответа, что является основным механизмом воздействия."
+      },
+      {
+        "temp_id": 3,
+        "because": "Все эти примеры работают одинаково, потому что они создают ожидание будущих изменений или событий.",
+        "draft_steps": [
+          "X → ожидание будущих изменений или событий"
+        ],
+        "members": [
+          47,
+          36,
+          49,
+          97,
+          92,
+          65,
+          96
+        ],
+        "why_not_split": "Все примеры связаны с созданием ожидания будущих изменений или событий, что является основным механизмом воздействия."
+      }
+    ],
+    "residual": [
+      34,
+      101,
+      15,
+      7,
+      60,
+      6,
+      72,
+      66,
+      39,
+      12,
+      59,
+      16,
+      90,
+      19,
+      23
+    ],
+    "notes": [
+      "Примеры с механизмами, связанными с ожиданием раскрытия или объяснения, были объединены в один кластер.",
+      "Примеры, вызывающие вопросы и создающие ожидание ответа, были объединены в другой кластер.",
+      "Примеры, создающие ожидание будущих изменений или событий, были объединены в третий кластер.",
+      "Некоторые примеры, не соответствующие устойчивым механизмам, были помещены в residual."
+    ]
+  },
+  "named": {
+    "clusters": [
+      {
+        "temp_id": 1,
+        "name": "Ожидание раскрытия",
+        "formula": "Упоминание X → ожидание раскрытия Y",
+        "abstract": "Создание ожидания раскрытия информации или объяснения после упоминания или намека на что-то."
+      },
+      {
+        "temp_id": 2,
+        "name": "Вопрос-ответ",
+        "formula": "X вызывает вопрос о Y → ожидание ответа",
+        "abstract": "Создание вопроса, который вызывает ожидание ответа."
+      },
+      {
+        "temp_id": 3,
+        "name": "Ожидание изменений",
+        "formula": "X → ожидание будущих изменений или событий",
+        "abstract": "Создание ожидания будущих изменений или событий."
+      }
+    ]
+  },
+  "catalog": [
+    {
+      "id": 1,
+      "name": "Ожидание раскрытия",
+      "formula": "Упоминание X → ожидание раскрытия Y",
+      "abstract_line": "Создание ожидания раскрытия информации или объяснения после упоминания или намека на что-то.",
+      "members": [
+        11,
+        2,
+        46,
+        70,
+        77,
+        53,
+        89,
+        28,
+        68,
+        95,
+        82,
+        10,
+        79,
+        31,
+        27,
+        29,
+        33,
+        35,
+        56,
+        88,
+        41,
+        69,
+        86,
+        44,
+        25,
+        52,
+        51,
+        61,
+        43,
+        48,
+        38,
+        83,
+        14,
+        91,
+        74
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Вопрос-ответ",
+      "formula": "X вызывает вопрос о Y → ожидание ответа",
+      "abstract_line": "Создание вопроса, который вызывает ожидание ответа.",
+      "members": [
+        20,
+        99,
+        102,
+        64,
+        63,
+        75,
+        71
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Ожидание изменений",
+      "formula": "X → ожидание будущих изменений или событий",
+      "abstract_line": "Создание ожидания будущих изменений или событий.",
+      "members": [
+        47,
+        36,
+        49,
+        97,
+        92,
+        65,
+        96
+      ]
+    }
+  ],
+  "holdout": {
+    "assignments": [
+      {
+        "n": 3,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Механизм создания ожидания раскрытия информации, но вместо этого дается другая информация, усиливающая интригу, соответствует ожиданию раскрытия."
+      },
+      {
+        "n": 58,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Создание ожидания раскрытия информации после вопроса соответствует ожиданию раскрытия."
+      },
+      {
+        "n": 94,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Обещание узнать что-то, создавая ожидание, соответствует ожиданию будущих изменений или событий."
+      },
+      {
+        "n": 18,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Создание ожидания будущих изменений или событий."
+      },
+      {
+        "n": 42,
+        "cluster_id": 1,
+        "confidence": "high",
+        "note": "Упоминание без деталей вызывает ожидание раскрытия информации."
+      },
+      {
+        "n": 78,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Упоминание создает ожидание раскрытия примера, что соответствует ожиданию раскрытия."
+      },
+      {
+        "n": 22,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Создание ожидания раскрытия тайны соответствует ожиданию раскрытия информации."
+      },
+      {
+        "n": 45,
+        "cluster_id": 1,
+        "confidence": "high",
+        "note": "Упоминание создает ожидание раскрытия информации."
+      },
+      {
+        "n": 84,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Упоминание важного аспекта без объяснения вызывает ожидание раскрытия."
+      },
+      {
+        "n": 30,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Предложение рассмотреть что-то с точки зрения создает ожидание раскрытия."
+      },
+      {
+        "n": 54,
+        "cluster_id": 1,
+        "confidence": "high",
+        "note": "Создание ожидания раскрытия информации."
+      },
+      {
+        "n": 93,
+        "cluster_id": "residual",
+        "confidence": "low",
+        "note": "Механизм не связан с ожиданием раскрытия или изменений."
+      },
+      {
+        "n": 5,
+        "cluster_id": "residual",
+        "confidence": "low",
+        "note": "Механизм не связан с ожиданием раскрытия или изменений."
+      },
+      {
+        "n": 37,
+        "cluster_id": "residual",
+        "confidence": "low",
+        "note": "Механизм не связан с ожиданием раскрытия или изменений."
+      },
+      {
+        "n": 87,
+        "cluster_id": "residual",
+        "confidence": "low",
+        "note": "Механизм не связан с ожиданием раскрытия или изменений."
+      },
+      {
+        "n": 26,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Неожиданная задача вызывает интригу и ожидание результата, что соответствует ожиданию изменений."
+      },
+      {
+        "n": 32,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Создание ожидания раскрытия невероятного соответствует ожиданию раскрытия."
+      },
+      {
+        "n": 81,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Выражение желания создает ожидание будущего действия, что соответствует ожиданию изменений."
+      },
+      {
+        "n": 8,
+        "cluster_id": 1,
+        "confidence": "high",
+        "note": "Создание ожидания объяснения соответствует ожиданию раскрытия."
+      },
+      {
+        "n": 57,
+        "cluster_id": 1,
+        "confidence": "high",
+        "note": "Упоминание вызывает ожидание объяснения, что соответствует ожиданию раскрытия."
+      },
+      {
+        "n": 85,
+        "cluster_id": 1,
+        "confidence": "high",
+        "note": "Создание ожидания раскрытия информации."
+      },
+      {
+        "n": 9,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Создание ожидания будущего события через намек соответствует ожиданию изменений."
+      },
+      {
+        "n": 40,
+        "cluster_id": 1,
+        "confidence": "high",
+        "note": "Упоминание вызывает ожидание раскрытия информации."
+      },
+      {
+        "n": 76,
+        "cluster_id": "residual",
+        "confidence": "low",
+        "note": "Механизм не связан с ожиданием раскрытия или изменений."
+      },
+      {
+        "n": 24,
+        "cluster_id": 2,
+        "confidence": "medium",
+        "note": "Задание вопроса создает ожидание ответа, что соответствует вопрос-ответ."
+      },
+      {
+        "n": 50,
+        "cluster_id": 3,
+        "confidence": "medium",
+        "note": "Постановка задачи создает ожидание выполнения, что соответствует ожиданию изменений."
+      },
+      {
+        "n": 80,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Упоминание идеи создает ожидание раскрытия деталей, что соответствует ожиданию раскрытия."
+      },
+      {
+        "n": 1,
+        "cluster_id": 1,
+        "confidence": "high",
+        "note": "Создание ожидания раскрытия информации, которое не происходит."
+      },
+      {
+        "n": 100,
+        "cluster_id": 1,
+        "confidence": "medium",
+        "note": "Создание ожидания раскрытия информации, но детали не раскрываются."
+      },
+      {
+        "n": 4,
+        "cluster_id": "residual",
+        "confidence": "low",
+        "note": "Механизм не связан с ожиданием раскрытия или изменений."
+      }
+    ],
+    "summary": "Большинство механизмов связаны с ожиданием раскрытия информации (cluster_id 1) или ожиданием изменений (cluster_id 3). Несколько механизмов не соответствуют ни одному из кластеров и отнесены к residual."
+  }
+}
