@@ -103,6 +103,36 @@
             gap: 0.75rem;
         }
 
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin: 0 auto 0 2rem;
+        }
+
+        .nav-link {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .nav-link.active {
+            color: var(--text-main);
+            background: rgba(139, 92, 246, 0.18);
+        }
+
         .lang-switcher {
             display: flex;
             gap: 0.25rem;
@@ -969,6 +999,379 @@ __TAG_COLOR_CSS__
             text-align: center;
             padding: 1rem;
         }
+
+        /* Tag reference page */
+        .tag-ref-view {
+            display: none;
+            flex-direction: column;
+            flex-grow: 1;
+            min-height: calc(100vh - 73px);
+            overflow: hidden;
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .tag-ref-view.active {
+            display: flex;
+        }
+
+        .tag-ref-header {
+            margin-bottom: 1.25rem;
+        }
+
+        .tag-ref-header h1 {
+            margin: 0 0 0.35rem;
+            font-size: 1.35rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+        }
+
+        .tag-ref-header p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 52rem;
+            line-height: 1.45;
+        }
+
+        .tag-ref-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            padding: 1rem 1.15rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .tag-ref-chip {
+            display: inline-flex;
+            border: 1px solid transparent;
+            background: transparent;
+            padding: 0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .tag-ref-chip .visual-tag {
+            width: var(--tag-width);
+            cursor: pointer;
+            white-space: nowrap;
+            padding: 0.3rem 0.45rem;
+            font-size: 0.7rem;
+            gap: 0.35rem;
+            justify-content: space-between;
+        }
+
+        .tag-ref-chip .tag-ref-chip-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+        }
+
+        .tag-ref-chip .tag-ref-count {
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .tag-ref-chip:hover {
+            transform: translateY(-1px);
+        }
+
+        .tag-ref-chip.active {
+            border-color: rgba(255, 255, 255, 0.28);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 6px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .tag-ref-chip.empty .visual-tag {
+            opacity: 0.45;
+        }
+
+        .tag-ref-body {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .tag-ref-meta {
+            padding: 1rem 1.15rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+        }
+
+        .tag-ref-meta-title {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .tag-ref-meta-title .visual-tag {
+            width: var(--tag-width);
+            cursor: default;
+            padding: 0.3rem 0.45rem;
+        }
+
+        .tag-ref-meta-count {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-right: auto;
+        }
+
+        .tag-ref-desc {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tag-ref-table-wrap {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: auto;
+            background: rgba(17, 24, 39, 0.35);
+        }
+
+        .tag-ref-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .tag-ref-table th,
+        .tag-ref-table td {
+            padding: 0.7rem 0.9rem;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tag-ref-table th {
+            position: sticky;
+            top: 0;
+            background: #0f172a;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            z-index: 1;
+        }
+
+        .tag-ref-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag-ref-table tbody tr:hover td {
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .tag-ref-col-num {
+            width: 3rem;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .tag-ref-col-file {
+            width: 14rem;
+            max-width: 16rem;
+        }
+
+        .tag-ref-col-file button,
+        .tag-ref-col-file a {
+            color: var(--accent-secondary);
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            text-align: left;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .tag-ref-col-file button:hover,
+        .tag-ref-col-file a:hover {
+            text-decoration: underline;
+        }
+
+        .tag-ref-col-text {
+            word-break: break-word;
+            line-height: 1.45;
+        }
+
+        .tag-ref-source-cell {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .tag-ref-source-cell-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .tag-ref-exclude-btn {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 1px solid rgba(239, 68, 68, 0.45);
+            border-radius: 6px;
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            font-size: 0.95rem;
+            line-height: 1;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .tag-ref-exclude-btn:hover {
+            background: rgba(239, 68, 68, 0.35);
+            border-color: rgba(239, 68, 68, 0.8);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .tag-ref-filter {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            padding: 0.85rem 1.05rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+        }
+
+        .tag-ref-filter-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .tag-ref-filter-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-ref-filter-reset {
+            border: none;
+            background: transparent;
+            color: var(--accent-secondary);
+            font: inherit;
+            font-size: 0.78rem;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .tag-ref-filter-reset:hover {
+            text-decoration: underline;
+        }
+
+        .tag-ref-filter-reset:disabled {
+            opacity: 0.4;
+            cursor: default;
+            text-decoration: none;
+        }
+
+        .tag-ref-filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag-ref-source-filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            max-width: 100%;
+            padding: 0.25rem 0.3rem 0.25rem 0.55rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.04);
+            font-size: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .tag-ref-source-filter-chip.excluded {
+            opacity: 0.45;
+            text-decoration: line-through;
+        }
+
+        .tag-ref-source-filter-chip .tag-ref-source-filter-label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 16rem;
+        }
+
+        .tag-ref-source-filter-chip .tag-ref-source-filter-counts {
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+            color: var(--text-muted);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .tag-ref-source-filter-chip button {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: none;
+            border-radius: 9999px;
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            cursor: pointer;
+            font-size: 0.85rem;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .tag-ref-source-filter-chip.excluded button {
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+        }
+
+        .tag-ref-source-filter-chip button:hover {
+            background: rgba(239, 68, 68, 0.4);
+            color: #fff;
+        }
+
+        .tag-ref-source-filter-chip.excluded button:hover {
+            background: rgba(16, 185, 129, 0.4);
+            color: #fff;
+        }
+
+        .tag-ref-empty {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .main-container.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -980,6 +1383,10 @@ __TAG_COLOR_CSS__
             </svg>
             <span data-i18n="header.logo">Storytelling Extractor</span>
         </div>
+        <nav class="header-nav" aria-label="Main">
+            <button type="button" class="nav-link active" data-view="workspace" onclick="switchAppView('workspace')" data-i18n="nav.workspace">Workspace</button>
+            <button type="button" class="nav-link" data-view="tagReference" onclick="switchAppView('tagReference')" data-i18n="nav.tagReference">Tag reference</button>
+        </nav>
         <div class="header-actions">
             <div class="lang-switcher">
                 <button type="button" data-lang="en" onclick="setLanguage('en')">EN</button>
@@ -992,7 +1399,7 @@ __TAG_COLOR_CSS__
         </div>
     </header>
 
-    <div class="main-container">
+    <div class="main-container" id="workspaceView">
         <!-- Sidebar containing list of runs -->
         <aside class="sidebar">
             <div class="sidebar-header" data-i18n="sidebar.history">Processing history</div>
@@ -1102,6 +1509,17 @@ __TAG_COLOR_CSS__
         </main>
     </div>
 
+    <section class="tag-ref-view" id="tagReferenceView" aria-label="Tag reference">
+        <div class="tag-ref-header">
+            <h1 data-i18n="tagRef.title">Tag reference</h1>
+            <p data-i18n="tagRef.description">Click a tag to browse every matching passage found across your processed scripts.</p>
+        </div>
+        <div class="tag-ref-chips" id="tagRefChips"></div>
+        <div class="tag-ref-body" id="tagRefBody">
+            <div class="tag-ref-empty" data-i18n="tagRef.selectPrompt">Select a tag above to see matching texts.</div>
+        </div>
+    </section>
+
     <div id="tag-tooltip-float"></div>
 
     <div class="drag-overlay" id="dragOverlay">
@@ -1133,6 +1551,11 @@ __TAG_COLOR_CSS__
         let currentLang = 'en';
         let I18N = {};
         let lastRenderedStructure = null;
+        let currentAppView = 'workspace';
+        let tagReferenceData = null;
+        let selectedTagRef = null;
+        let tagRefExcludedSources = new Set();
+        const TAG_LIST = __TAG_LIST_JSON__;
         const OPENAI_KEY_FROM_ENV = __OPENAI_KEY_FROM_ENV__;
         const OPENAI_KEY_STORAGE = 'storytelling_openai_api_key';
         const LANG_STORAGE = 'storytelling_lang';
@@ -1174,6 +1597,10 @@ __TAG_COLOR_CSS__
             } else {
                 resetConsolePlaceholder();
             }
+            if (currentAppView === 'tagReference') {
+                await loadTagReference({ force: true });
+                if (selectedTagRef) selectTagReference(selectedTagRef);
+            }
         }
 
         async function loadLocale(lang) {
@@ -1189,7 +1616,7 @@ __TAG_COLOR_CSS__
                 val = val?.[part];
             }
             if (typeof val !== 'string') return key;
-            return val.replace(/\\{\\{(\\w+)\\}\\}/g, (_, k) => vars[k] ?? '');
+            return val.replace(/\{\{(\w+)\}\}/g, (_, k) => vars[k] ?? '');
         }
 
         function applyTranslations() {
@@ -1486,7 +1913,7 @@ __TAG_COLOR_CSS__
                 startPolling(currentTaskId);
                 return true;
             } catch (error) {
-                document.getElementById('consoleOutput').innerHTML += `\\n[ERROR] ${escapeHtml(error.message)}\\n`;
+                document.getElementById('consoleOutput').innerHTML += `\n[ERROR] ${escapeHtml(error.message)}\n`;
                 document.getElementById('taskStatus').className = 'status-badge status-failed';
                 document.getElementById('taskStatus').innerText = formatStatus('failed');
                 document.getElementById('visualStructureContent').innerHTML = 
@@ -1575,7 +2002,7 @@ __TAG_COLOR_CSS__
 
                 // Logs
                 const logBox = document.getElementById('consoleOutput');
-                logBox.innerText = task.progress_log.join('\\n');
+                logBox.innerText = task.progress_log.join('\n');
                 logBox.scrollTop = logBox.scrollHeight;
 
                 if (task.status === 'processing' || task.status === 'pending') {
@@ -1619,7 +2046,7 @@ __TAG_COLOR_CSS__
                     
                     // Update logs and status
                     const logBox = document.getElementById('consoleOutput');
-                    logBox.innerText = task.progress_log.join('\\n');
+                    logBox.innerText = task.progress_log.join('\n');
                     logBox.scrollTop = logBox.scrollHeight;
                     
                     document.getElementById('taskStatus').className = `status-badge status-${task.status}`;
@@ -1794,7 +2221,7 @@ __TAG_COLOR_CSS__
             const column = btn.closest('.structure-column');
             if (!column) return;
             const tags = [...column.querySelectorAll('.visual-tag')].map(el => el.textContent.trim());
-            const text = tags.join('\\n');
+            const text = tags.join('\n');
             navigator.clipboard.writeText(text).then(() => {
                 const prev = btn.textContent;
                 btn.textContent = '✓';
@@ -2071,6 +2498,284 @@ __TAG_COLOR_CSS__
             // Find active tab trigger and content
             event.target.classList.add('active');
             document.getElementById(tabId).classList.add('active');
+        }
+
+        async function switchAppView(view) {
+            if (!['workspace', 'tagReference'].includes(view)) return;
+            currentAppView = view;
+
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.view === view);
+            });
+
+            const workspaceView = document.getElementById('workspaceView');
+            const tagRefView = document.getElementById('tagReferenceView');
+            workspaceView.classList.toggle('hidden', view !== 'workspace');
+            tagRefView.classList.toggle('active', view === 'tagReference');
+
+            if (view === 'tagReference') {
+                await loadTagReference({ force: true });
+                renderTagReferenceChips();
+                if (selectedTagRef) selectTagReference(selectedTagRef);
+                else renderTagReferenceBody(null);
+            }
+        }
+
+        async function loadTagReference(options = {}) {
+            if (tagReferenceData && !options.force) return tagReferenceData;
+            const res = await fetch('/tags/reference');
+            if (!res.ok) throw new Error(t('tagRef.loadFailed'));
+            tagReferenceData = await res.json();
+            return tagReferenceData;
+        }
+
+        function flattenTagRefText(text) {
+            return String(text || '').replace(/\s*\n\s*/g, ' ').replace(/[ \t]+/g, ' ').trim();
+        }
+
+        function getTagRefSourceKey(ex) {
+            if (!ex) return '';
+            if (ex.source_url) return `url:${ex.source_url}`;
+            if (ex.source_note) return `note:${ex.source_note}`;
+            if (ex.task_id) return `task:${ex.task_id}`;
+            return `file:${ex.filename || ''}`;
+        }
+
+        function getTagRefSourceLabel(ex) {
+            if (!ex) return t('tagRef.unknownSource');
+            return ex.source_url || ex.source_note || ex.filename || t('tagRef.unknownSource');
+        }
+
+        function collectTagRefSources(currentTag = null) {
+            const byKey = new Map();
+            const examplesByTag = tagReferenceData?.examples || {};
+
+            for (const [tag, list] of Object.entries(examplesByTag)) {
+                for (const ex of list || []) {
+                    const key = getTagRefSourceKey(ex);
+                    if (!key) continue;
+                    let entry = byKey.get(key);
+                    if (!entry) {
+                        entry = {
+                            key,
+                            label: getTagRefSourceLabel(ex),
+                            task_id: ex.task_id,
+                            filename: ex.filename,
+                            source_url: ex.source_url,
+                            source_note: ex.source_note,
+                            totalCount: 0,
+                            tagCount: 0,
+                        };
+                        byKey.set(key, entry);
+                    }
+                    entry.totalCount += 1;
+                    if (currentTag && tag === currentTag) entry.tagCount += 1;
+                }
+            }
+
+            return [...byKey.values()].sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' }));
+        }
+
+        function getFilteredTagRefExamples(tag) {
+            const examples = tagReferenceData?.examples?.[tag] || [];
+            return examples.filter(ex => !tagRefExcludedSources.has(getTagRefSourceKey(ex)));
+        }
+
+        function getFilteredTagRefCounts() {
+            const counts = {};
+            const tags = (tagReferenceData?.tags?.length ? tagReferenceData.tags : TAG_LIST) || [];
+            for (const tag of tags) {
+                counts[tag] = getFilteredTagRefExamples(tag).length;
+            }
+            return counts;
+        }
+
+        function excludeTagRefSource(encodedKey) {
+            const key = decodeURIComponent(encodedKey);
+            tagRefExcludedSources.add(key);
+            renderTagReferenceChips();
+            if (selectedTagRef) renderTagReferenceBody(selectedTagRef);
+        }
+
+        function includeTagRefSource(encodedKey) {
+            const key = decodeURIComponent(encodedKey);
+            tagRefExcludedSources.delete(key);
+            renderTagReferenceChips();
+            if (selectedTagRef) renderTagReferenceBody(selectedTagRef);
+        }
+
+        function resetTagRefSourceFilter() {
+            tagRefExcludedSources.clear();
+            renderTagReferenceChips();
+            if (selectedTagRef) renderTagReferenceBody(selectedTagRef);
+        }
+
+        function renderTagRefSourceFilter(currentTag = null) {
+            const sources = collectTagRefSources(currentTag);
+            if (!sources.length) return '';
+
+            const chips = sources.map(src => {
+                const excluded = tagRefExcludedSources.has(src.key);
+                const encoded = encodeURIComponent(src.key);
+                const action = excluded
+                    ? `includeTagRefSource('${encoded}')`
+                    : `excludeTagRefSource('${encoded}')`;
+                const symbol = excluded ? '+' : '×';
+                const title = excluded ? t('tagRef.includeSource') : t('tagRef.excludeSource');
+                const countsLabel = t('tagRef.sourceCounts', {
+                    tagCount: String(src.tagCount),
+                    total: String(src.totalCount),
+                });
+                const tip = `${src.label} — ${t('tagRef.sourceCountsHint', {
+                    tagCount: String(src.tagCount),
+                    total: String(src.totalCount),
+                })}`;
+                return `
+                    <span class="tag-ref-source-filter-chip ${excluded ? 'excluded' : ''}" title="${escapeHtml(tip)}">
+                        <span class="tag-ref-source-filter-label">${escapeHtml(src.label)}</span>
+                        <span class="tag-ref-source-filter-counts">${escapeHtml(countsLabel)}</span>
+                        <button type="button" onclick="${action}" title="${escapeHtml(title)}">${symbol}</button>
+                    </span>
+                `;
+            }).join('');
+
+            const hasExcluded = tagRefExcludedSources.size > 0;
+            return `
+                <div class="tag-ref-filter">
+                    <div class="tag-ref-filter-head">
+                        <span class="tag-ref-filter-label">${escapeHtml(t('tagRef.filterSources'))}</span>
+                        <button type="button" class="tag-ref-filter-reset" onclick="resetTagRefSourceFilter()" ${hasExcluded ? '' : 'disabled'}>
+                            ${escapeHtml(t('tagRef.resetFilter'))}
+                        </button>
+                    </div>
+                    <div class="tag-ref-filter-chips">${chips}</div>
+                </div>
+            `;
+        }
+
+        function renderTagReferenceChips() {
+            const container = document.getElementById('tagRefChips');
+            if (!container) return;
+            const counts = getFilteredTagRefCounts();
+            const tags = (tagReferenceData?.tags?.length ? tagReferenceData.tags : TAG_LIST) || [];
+
+            container.innerHTML = tags.map(tag => {
+                const count = counts[tag] || 0;
+                const active = tag === selectedTagRef ? 'active' : '';
+                const empty = count === 0 ? 'empty' : '';
+                return `
+                    <button type="button" class="tag-ref-chip ${active} ${empty}" data-tag="${escapeHtml(tag)}" onclick="selectTagReference('${escapeHtml(tag)}')">
+                        <span class="visual-tag vtag-${escapeHtml(tag)}">
+                            <span class="tag-ref-chip-name">${escapeHtml(tag)}</span>
+                            <span class="tag-ref-count">${count}</span>
+                        </span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectTagReference(tag) {
+            selectedTagRef = tag;
+            document.querySelectorAll('.tag-ref-chip').forEach(chip => {
+                chip.classList.toggle('active', chip.dataset.tag === tag);
+            });
+            renderTagReferenceBody(tag);
+        }
+
+        function renderTagReferenceBody(tag) {
+            const body = document.getElementById('tagRefBody');
+            if (!body) return;
+
+            if (!tag) {
+                body.innerHTML = `<div class="tag-ref-empty">${escapeHtml(t('tagRef.selectPrompt'))}</div>`;
+                return;
+            }
+
+            const allExamples = tagReferenceData?.examples?.[tag] || [];
+            const examples = getFilteredTagRefExamples(tag);
+            const desc = (I18N.tags && I18N.tags[tag]) || '';
+            const sourceFilterHtml = renderTagRefSourceFilter(tag);
+
+            const meta = `
+                <div class="tag-ref-meta">
+                    <div class="tag-ref-meta-title">
+                        <span class="visual-tag vtag-${escapeHtml(tag)}">${escapeHtml(tag)}</span>
+                        <span class="tag-ref-meta-count">${escapeHtml(t('tagRef.examplesCount', { count: String(examples.length) }))}</span>
+                        ${examples.length ? `
+                            <button type="button" class="btn" style="padding: 0.3rem 0.7rem; font-size: 0.78rem;" onclick="copyTagReferenceTexts()">
+                                ${escapeHtml(t('tagRef.copyTexts'))}
+                            </button>
+                        ` : ''}
+                    </div>
+                    <p class="tag-ref-desc">${escapeHtml(desc || t('tagRef.noDescription'))}</p>
+                </div>
+            `;
+
+            if (!allExamples.length) {
+                body.innerHTML = meta + `<div class="tag-ref-empty">${escapeHtml(t('tagRef.noExamples'))}</div>`;
+                return;
+            }
+
+            if (!examples.length) {
+                body.innerHTML = meta + sourceFilterHtml + `<div class="tag-ref-empty">${escapeHtml(t('tagRef.noExamplesFiltered'))}</div>`;
+                return;
+            }
+
+            const rows = examples.map((ex, idx) => {
+                const sourceKey = getTagRefSourceKey(ex);
+                const encodedKey = encodeURIComponent(sourceKey);
+                const source = ex.source_url || ex.source_note || '';
+                const sourceHtml = ex.source_url
+                    ? `<div><a href="${escapeHtml(ex.source_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(ex.source_url)}</a></div>`
+                    : (source ? `<div>${escapeHtml(source)}</div>` : '');
+                const flatText = flattenTagRefText(ex.text);
+                return `
+                    <tr>
+                        <td class="tag-ref-col-num">${idx + 1}</td>
+                        <td class="tag-ref-col-text">${escapeHtml(flatText)}</td>
+                        <td class="tag-ref-col-file">
+                            <div class="tag-ref-source-cell">
+                                <div class="tag-ref-source-cell-main">
+                                    <button type="button" onclick="openTaskFromTagRef('${escapeHtml(ex.task_id)}')">${escapeHtml(ex.filename || t('tagRef.unknownFile'))}</button>
+                                    ${sourceHtml}
+                                </div>
+                                <button type="button" class="tag-ref-exclude-btn" title="${escapeHtml(t('tagRef.excludeSource'))}" onclick="excludeTagRefSource('${encodedKey}')">&times;</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            body.innerHTML = meta + sourceFilterHtml + `
+                <div class="tag-ref-table-wrap">
+                    <table class="tag-ref-table">
+                        <thead>
+                            <tr>
+                                <th class="tag-ref-col-num">#</th>
+                                <th>${escapeHtml(t('tagRef.colText'))}</th>
+                                <th class="tag-ref-col-file">${escapeHtml(t('tagRef.colSource'))}</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function copyTagReferenceTexts() {
+            if (!selectedTagRef || !tagReferenceData) return;
+            const examples = getFilteredTagRefExamples(selectedTagRef);
+            const text = examples.map(ex => flattenTagRefText(ex.text)).filter(Boolean).join('\n');
+            navigator.clipboard.writeText(text).then(() => {
+                alert(t('tagRef.copied'));
+            }).catch(err => {
+                alert(t('clipboard.copyFailed', { error: err }));
+            });
+        }
+
+        async function openTaskFromTagRef(taskId) {
+            await switchAppView('workspace');
+            await fetchAndRenderTask(taskId);
         }
     </script>
 </body>

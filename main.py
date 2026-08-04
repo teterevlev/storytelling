@@ -570,6 +570,54 @@ def get_locale(locale: str):
         return JSONResponse(content=json.load(f))
 
 
+@app.get("/tags/reference")
+def get_tag_reference():
+    """Aggregate segmented block texts by tag across all tasks."""
+    examples: dict[str, list] = {tag: [] for tag in TAG_COLORS}
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            """
+            SELECT id, filename, source_note, source_url, segmented_blocks
+            FROM tasks
+            WHERE segmented_blocks IS NOT NULL AND segmented_blocks != ''
+            ORDER BY created_at DESC
+            """
+        )
+        for row in cursor.fetchall():
+            try:
+                blocks = json.loads(row["segmented_blocks"])
+            except (TypeError, json.JSONDecodeError):
+                continue
+            if not isinstance(blocks, list):
+                continue
+            for block in blocks:
+                if not isinstance(block, dict):
+                    continue
+                tag = (block.get("tag") or "").strip()
+                text = (block.get("text") or "").strip()
+                if not tag or not text:
+                    continue
+                if tag not in examples:
+                    examples[tag] = []
+                examples[tag].append({
+                    "text": text,
+                    "task_id": row["id"],
+                    "filename": row["filename"],
+                    "source_note": row["source_note"],
+                    "source_url": row["source_url"],
+                    "reasoning": block.get("reasoning") or "",
+                    "loop_id": block.get("loop_id"),
+                    "tension_score": block.get("tension_score"),
+                })
+    counts = {tag: len(items) for tag, items in examples.items()}
+    return {
+        "tags": list(TAG_COLORS.keys()),
+        "counts": counts,
+        "examples": examples,
+    }
+
+
 @app.get("/", response_class=HTMLResponse)
 def index():
     openai_key_set = bool(os.environ.get("OPENAI_API_KEY"))
@@ -577,13 +625,15 @@ def index():
         f"        .vtag-{tag} {{ background: {color}; }}"
         for tag, color in TAG_COLORS.items()
     )
+    tag_list_json = json.dumps(list(TAG_COLORS.keys()), ensure_ascii=False)
     template_path = os.path.join(BASE_DIR, "templates", "index.html")
     with open(template_path, "r", encoding="utf-8") as f:
         html = f.read()
-    return html.replace("__TAG_COLOR_CSS__", tag_color_css).replace(
-        "__API_KEY_DOT_CLASS__", "active" if openai_key_set else "missing"
-    ).replace(
-        "__OPENAI_KEY_FROM_ENV__", "true" if openai_key_set else "false"
+    return (
+        html.replace("__TAG_COLOR_CSS__", tag_color_css)
+        .replace("__TAG_LIST_JSON__", tag_list_json)
+        .replace("__API_KEY_DOT_CLASS__", "active" if openai_key_set else "missing")
+        .replace("__OPENAI_KEY_FROM_ENV__", "true" if openai_key_set else "false")
     )
 
 

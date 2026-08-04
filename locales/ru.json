@@ -3,6 +3,32 @@
   "header": {
     "logo": "Storytelling Extractor"
   },
+  "nav": {
+    "workspace": "Рабочая область",
+    "tagReference": "Tag reference"
+  },
+  "tagRef": {
+    "title": "Tag reference",
+    "description": "Нажмите на тег, чтобы увидеть все найденные тексты с этой разметкой по обработанным сценариям.",
+    "selectPrompt": "Выберите тег выше, чтобы увидеть соответствующие тексты.",
+    "noExamples": "Пока нет фрагментов с этим тегом.",
+    "noDescription": "Описание отсутствует.",
+    "examplesCount": "{{count}} фрагментов",
+    "unknownFile": "Без названия",
+    "loadFailed": "Не удалось загрузить справку по тегам.",
+    "copyTexts": "Копировать",
+    "copied": "Тексты скопированы в буфер.",
+    "colText": "Текст",
+    "colSource": "Источник",
+    "filterSources": "Источники",
+    "resetFilter": "Показать все",
+    "excludeSource": "Убрать источник",
+    "includeSource": "Вернуть источник",
+    "unknownSource": "Без источника",
+    "noExamplesFiltered": "Нет фрагментов для выбранных источников.",
+    "sourceCounts": "{{tagCount}}/{{total}}",
+    "sourceCountsHint": "{{tagCount}} по этому тегу, {{total}} всего"
+  },
   "common": {
     "cancel": "Отмена",
     "start": "Начать",
