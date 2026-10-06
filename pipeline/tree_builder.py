@@ -40,6 +40,10 @@ def build_tree(blocks):
             "loop_id": b.get("loop_id"),
             "reasoning": b.get("reasoning"),
             "chunk_index": b.get("chunk_index"),
+            "start": b.get("start"),
+            "end": b.get("end"),
+            "start_ms": b.get("start_ms"),
+            "end_ms": b.get("end_ms"),
         }
 
         if tag == "STORY_BOUNDARY":

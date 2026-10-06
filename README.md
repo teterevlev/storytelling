@@ -16,25 +16,42 @@ The output is meant for analysis and reuse: study how successful videos are pace
 
 ## Typical workflow
 
-- Upload a `.txt` script, drop a file anywhere on the page, or paste text directly.
+- Upload a `.txt` / `.srt` script, drop a file anywhere on the page, paste text/SRT, or paste a YouTube URL.
 - Optionally attach a source note or URL (e.g. the original YouTube link) for your reference library.
-- Review the result in the browser; download `structure.json` when processing finishes.
+- Review the result in the browser; download compact or extended `structure.json` when processing finishes.
 - Browse past runs in local history; edit titles and sources as needed.
 
 Pre-segmented `.json` files can be uploaded to skip the AI step and run only tree building and structure extraction.
 
 ## Setup
 
+From the `storytelling` directory, create a virtualenv and install dependencies:
+
 ```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
 pip install fastapi uvicorn openai python-multipart
+```
+
+Also install **yt-dlp** on your PATH (needed for YouTube URL captions):
+
+```bash
+brew install yt-dlp
+# or: pip install yt-dlp
 ```
 
 Set an OpenAI API key via `OPENAI_API_KEY` (environment variable or `storytelling/.env`). If none is configured, you can enter a key in the web UI for the current browser session.
 
-From the `storytelling` directory:
+Run the app (with the venv activated):
 
 ```bash
-python3 main.py
+python main.py
+```
+
+Or without activating:
+
+```bash
+.venv/bin/python main.py
 ```
 
 Open `http://127.0.0.1:8000`.
@@ -42,6 +59,10 @@ Open `http://127.0.0.1:8000`.
 ## Inputs and outputs
 
 **TXT** — plain script text; chunked and segmented automatically.
+
+**YouTube URL** — paste a watch/shorts link; captions are fetched with `yt-dlp` as json3, normalized (rolling-line dedupe + sentence split), then segmented with word-level `start`/`end` on blocks.
+
+**SRT** — SubRip subtitles (file upload or paste). Rolling auto-caption overlaps are removed, text is sentence-split, and per-word times are approximated inside each cue.
 
 **JSON** — existing segmentation as a list of blocks or `{ "blocks": [...] }`, each block with at least `text`, `tag`, and related metadata.
 
@@ -53,7 +74,10 @@ Open `http://127.0.0.1:8000`.
 | `tree_json` | Hierarchical narrative tree |
 | `structure_json` | Downloadable tag pattern (intro / stories / outro) |
 
-Downloaded `structure.json` contains only abstract tag sequences — no source text or hover details.
+**Downloads:**
+
+- Compact `*_structure.json` — only abstract tag sequences (no source text).
+- Extended `*_structure_extended.json` — same layout plus each block’s `text`, `subcluster`, `abstract`, `tension`, and (for captions/URL) `start`/`end`, plus the video `source`. Also shown in the **Extended JSON** tab.
 
 ## Project layout
 

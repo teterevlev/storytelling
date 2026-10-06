@@ -74,13 +74,13 @@
   },
   "upload": {
     "title": "Загрузить сценарий",
-    "description": "Перетащите файл .txt или .json в любое место окна или нажмите для выбора",
+    "description": "Перетащите файл .txt, .json или .srt в любое место окна или нажмите для выбора",
     "pasteTitle": "Или вставьте текст сценария",
-    "pasteDescription": "Вставьте текст ниже и запустите анализ сразу, без выбора файла и дополнительных окон.",
-    "pastePlaceholder": "Вставьте сценарий сюда...",
+    "pasteDescription": "Вставьте текст, SRT или URL YouTube. По ссылке субтитры скачиваются через yt-dlp.",
+    "pastePlaceholder": "Вставьте сценарий, SRT или URL YouTube…",
     "analyze": "Анализировать текст",
     "pasteRequired": "Вставьте текст сценария перед запуском анализа.",
-    "invalidFormat": "Пожалуйста, выберите файл в формате .txt или .json",
+    "invalidFormat": "Пожалуйста, выберите файл в формате .txt, .json или .srt",
     "contentLang": "Язык скрипта",
     "contentLangAuto": "Авто",
     "contentLangRu": "Русский",
@@ -89,7 +89,7 @@
   },
   "dragOverlay": {
     "title": "Отпустите файл, чтобы загрузить",
-    "hint": "Поддерживаются .txt и .json"
+    "hint": "Поддерживаются .txt, .json и .srt"
   },
   "source": {
     "label": "Источник:",
@@ -114,10 +114,13 @@
     "edit": "Редактировать",
     "newFile": "Новый файл",
     "downloadJson": "Скачать JSON",
+    "downloadExtendedJson": "Скачать расширенный JSON",
     "tabStructure": "Структура сценария",
     "tabJson": "Исходный JSON",
+    "tabExtendedJson": "Расширенный JSON",
     "structurePending": "Структура будет отображена после завершения анализа.",
     "copyJson": "Копировать в буфер",
+    "extendedJsonUnavailable": "// Расширенный JSON для этой задачи недоступен.",
     "consoleTitle": "Лог выполнения процесса",
     "consoleWaiting": "Ожидание логов...",
     "uploading": "Отправка файла на сервер...\n",
@@ -167,6 +170,7 @@
     "tooltipFormula": "формула",
     "tooltipAbstract": "абстрактно",
     "tooltipTension": "напряжение",
+    "tooltipTimecode": "таймкод",
     "tooltipLoopId": "loop_id",
     "tooltipReasoning": "reasoning",
     "tooltipChunk": "chunk"
@@ -184,7 +188,8 @@
     "noSubtype": "(нет formula/abstract подтипа)"
   },
   "clipboard": {
-    "jsonCopied": "JSON скопирован в буфер обмена!",
+    "copied": "Скопировано в буфер",
+    "jsonCopied": "JSON скопирован в буфер",
     "jsonFailed": "Не удалось скопировать JSON: {{error}}",
     "copyFailed": "Не удалось скопировать: {{error}}"
   },

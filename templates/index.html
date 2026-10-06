@@ -512,12 +512,22 @@
 
         .details-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
+            gap: 1rem;
             background: var(--bg-surface);
             padding: 1.25rem 1.5rem;
             border-radius: 12px;
             border: 1px solid var(--border-color);
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .details-header-main {
+            flex: 1 1 auto;
+            min-width: 0;
+            overflow: hidden;
         }
 
         .details-header h2 {
@@ -530,18 +540,28 @@
             align-items: center;
             gap: 0.5rem;
             min-width: 0;
+            max-width: 100%;
         }
 
         .title-row h2 {
+            flex: 1 1 auto;
             min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
+        .title-row .source-edit-btn {
+            flex-shrink: 0;
+        }
+
         .details-actions {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
             gap: 0.75rem;
+            flex-shrink: 0;
+            max-width: 100%;
         }
 
         .btn {
@@ -689,10 +709,31 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        #jsonTab {
-            overflow-x: auto;
+        #jsonTab,
+        #extendedJsonTab {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
             max-height: 70vh;
-            overflow-y: auto;
+            overflow: auto;
+            box-sizing: border-box;
+        }
+
+        #jsonTab pre,
+        #extendedJsonTab pre {
+            margin: 0;
+            width: max-content;
+            min-width: 100%;
+            max-width: none;
+            white-space: pre;
+            word-break: normal;
+            overflow-wrap: normal;
+        }
+
+        #jsonTab pre code,
+        #extendedJsonTab pre code {
+            display: block;
+            white-space: inherit;
         }
 
         pre {
@@ -1806,6 +1847,50 @@ __TAG_COLOR_CSS__
         .main-container.hidden {
             display: none;
         }
+
+        .toast-stack {
+            position: fixed;
+            right: 1.25rem;
+            bottom: 1.25rem;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            pointer-events: none;
+            max-width: min(22rem, calc(100vw - 2rem));
+        }
+
+        .toast {
+            pointer-events: auto;
+            padding: 0.7rem 0.95rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(17, 24, 39, 0.96);
+            color: var(--text-main);
+            font-size: 0.875rem;
+            line-height: 1.35;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast-success {
+            border-color: rgba(16, 185, 129, 0.35);
+        }
+
+        .toast-error {
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .toast-info {
+            border-color: rgba(6, 182, 212, 0.35);
+        }
     </style>
 </head>
 <body>
@@ -1864,8 +1949,8 @@ __TAG_COLOR_CSS__
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path>
                     </svg>
                     <h3 data-i18n="upload.title">Upload a script</h3>
-                    <p data-i18n="upload.description">Drag a .txt or .json file anywhere in the window, or click to browse</p>
-                    <input type="file" id="fileInput" accept=".txt,.json" onchange="handleFileSelect(event)">
+                    <p data-i18n="upload.description">Drag a .txt, .json or .srt file anywhere in the window, or click to browse</p>
+                    <input type="file" id="fileInput" accept=".txt,.json,.srt" onchange="handleFileSelect(event)">
                 </div>
 
                 <div class="paste-section">
@@ -1890,9 +1975,9 @@ __TAG_COLOR_CSS__
             <!-- Details Layout (Hidden initially) -->
             <div class="details-container" id="detailsContainer" style="display: none;">
                 <div class="details-header">
-                    <div>
+                    <div class="details-header-main">
                         <div class="title-row">
-                            <h2 id="taskFilename">filename.txt</h2>
+                            <h2 id="taskFilename" title="">filename.txt</h2>
                             <button type="button" class="source-edit-btn" onclick="editCurrentTaskTitle()" data-i18n="title.edit">Edit</button>
                         </div>
                         <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.25rem;">
@@ -1926,6 +2011,10 @@ __TAG_COLOR_CSS__
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             <span data-i18n="task.downloadJson">Download JSON</span>
                         </button>
+                        <button class="btn" id="downloadExtendedBtn" style="display: none;" onclick="downloadExtendedStructure()">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            <span data-i18n="task.downloadExtendedJson">Download extended JSON</span>
+                        </button>
                     </div>
                 </div>
 
@@ -1935,6 +2024,7 @@ __TAG_COLOR_CSS__
                         <div class="tabs-header">
                             <button class="tab-btn active" onclick="switchTab('visualTab')" data-i18n="task.tabStructure">Script structure</button>
                             <button class="tab-btn" onclick="switchTab('jsonTab')" data-i18n="task.tabJson">Raw JSON</button>
+                            <button class="tab-btn" onclick="switchTab('extendedJsonTab')" data-i18n="task.tabExtendedJson">Extended JSON</button>
                         </div>
                         
                         <!-- Visual Tab -->
@@ -1949,9 +2039,17 @@ __TAG_COLOR_CSS__
                         <!-- JSON Tab -->
                         <div class="tab-content" id="jsonTab">
                             <div style="display: flex; justify-content: flex-end; margin-bottom: 0.5rem;">
-                                <button class="btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="copyJsonToClipboard()" data-i18n="task.copyJson">Copy to clipboard</button>
+                                <button class="btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="copyJsonToClipboard('jsonContent')" data-i18n="task.copyJson">Copy to clipboard</button>
                             </div>
                             <pre><code id="jsonContent"></code></pre>
+                        </div>
+
+                        <!-- Extended JSON Tab -->
+                        <div class="tab-content" id="extendedJsonTab">
+                            <div style="display: flex; justify-content: flex-end; margin-bottom: 0.5rem;">
+                                <button class="btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="copyJsonToClipboard('extendedJsonContent')" data-i18n="task.copyJson">Copy to clipboard</button>
+                            </div>
+                            <pre><code id="extendedJsonContent"></code></pre>
                         </div>
                     </div>
 
@@ -2011,11 +2109,12 @@ __TAG_COLOR_CSS__
     </section>
 
     <div id="tag-tooltip-float"></div>
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-relevant="additions"></div>
 
     <div class="drag-overlay" id="dragOverlay">
         <div class="drag-overlay-content">
             <span data-i18n="dragOverlay.title">Drop the file to upload</span>
-            <span data-i18n="dragOverlay.hint">.txt and .json supported</span>
+            <span data-i18n="dragOverlay.hint">.txt, .json and .srt supported</span>
         </div>
     </div>
 
@@ -2040,6 +2139,7 @@ __TAG_COLOR_CSS__
         let dragDepth = 0;
         let currentLang = 'en';
         let I18N = {};
+        let TAG_DEFS_BY_LANG = { en: {}, ru: {} };
         let lastRenderedStructure = null;
         let currentAppView = 'workspace';
         let tagReferenceData = null;
@@ -2053,6 +2153,21 @@ __TAG_COLOR_CSS__
         const OPENAI_KEY_STORAGE = 'storytelling_openai_api_key';
         const LANG_STORAGE = 'storytelling_lang';
 
+        function showToast(message, type = 'info', durationMs = 2600) {
+            const stack = document.getElementById('toastStack');
+            if (!stack || !message) return;
+            const el = document.createElement('div');
+            el.className = `toast toast-${type}`;
+            el.textContent = String(message);
+            stack.appendChild(el);
+            requestAnimationFrame(() => el.classList.add('show'));
+            const hideMs = Math.max(1200, durationMs);
+            setTimeout(() => {
+                el.classList.remove('show');
+                setTimeout(() => el.remove(), 220);
+            }, hideMs);
+        }
+
         window.addEventListener('DOMContentLoaded', async () => {
             await initI18n();
             setupDragAndDrop();
@@ -2065,9 +2180,22 @@ __TAG_COLOR_CSS__
             const stored = localStorage.getItem(LANG_STORAGE);
             const browserLang = (navigator.language || 'en').toLowerCase().startsWith('ru') ? 'ru' : 'en';
             currentLang = stored || browserLang;
-            await loadLocale(currentLang);
+            await Promise.all([loadLocale(currentLang), preloadTagDefinitions()]);
             applyTranslations();
             updateApiKeyBadge();
+        }
+
+        async function preloadTagDefinitions() {
+            await Promise.all(['en', 'ru'].map(async (lang) => {
+                try {
+                    const res = await fetch(`/locales/${lang}.json`);
+                    if (!res.ok) return;
+                    const data = await res.json();
+                    TAG_DEFS_BY_LANG[lang] = data.tags || {};
+                } catch (err) {
+                    console.warn('Failed to load tag defs', lang, err);
+                }
+            }));
         }
 
         async function setLanguage(lang) {
@@ -2144,6 +2272,8 @@ __TAG_COLOR_CSS__
             if (!currentTaskId) {
                 const jsonEl = document.getElementById('jsonContent');
                 if (jsonEl) jsonEl.innerText = t('task.jsonPlaceholder');
+                const extendedJsonEl = document.getElementById('extendedJsonContent');
+                if (extendedJsonEl) extendedJsonEl.innerText = t('task.jsonPlaceholder');
                 resetConsolePlaceholder();
             }
             if (currentTaskData) renderTaskContentLang(currentTaskData);
@@ -2394,10 +2524,20 @@ __TAG_COLOR_CSS__
             }
 
             const stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
-            const file = new File([text], `pasted_text_${stamp}.txt`, {
+            const looksLikeSrt = /\d{1,2}:\d{2}:\d{2}[,.]\d{1,3}\s*-->\s*\d{1,2}:\d{2}:\d{2}[,.]\d{1,3}/.test(text);
+            const looksLikeYoutubeUrl = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(text)
+                && !text.includes('\n');
+            let ext = 'txt';
+            if (looksLikeSrt) ext = 'srt';
+            else if (looksLikeYoutubeUrl) ext = 'url';
+            const file = new File([text], `pasted_text_${stamp}.${ext}`, {
                 type: 'text/plain;charset=utf-8',
             });
-            const uploaded = await uploadFile(file, { requestSource: false });
+            const uploadOpts = { requestSource: false };
+            if (looksLikeYoutubeUrl) {
+                uploadOpts.source = text.startsWith('http') ? text : `https://${text}`;
+            }
+            const uploaded = await uploadFile(file, uploadOpts);
             if (uploaded) {
                 input.value = '';
             }
@@ -2405,12 +2545,20 @@ __TAG_COLOR_CSS__
 
         // Upload File
         async function uploadFile(file, options = {}) {
-            if (!(file.name.endsWith('.txt') || file.name.endsWith('.json'))) {
+            const lowerName = (file.name || '').toLowerCase();
+            if (!(
+                lowerName.endsWith('.txt')
+                || lowerName.endsWith('.json')
+                || lowerName.endsWith('.srt')
+                || lowerName.endsWith('.url')
+            )) {
                 alert(t('upload.invalidFormat'));
                 return false;
             }
 
-            const isTextUpload = file.name.endsWith('.txt');
+            const isTextUpload = lowerName.endsWith('.txt')
+                || lowerName.endsWith('.srt')
+                || lowerName.endsWith('.url');
             if (isTextUpload && !requireOpenAiApiKeyForTextUpload()) {
                 document.getElementById('fileInput').value = '';
                 return false;
@@ -2441,6 +2589,7 @@ __TAG_COLOR_CSS__
             document.getElementById('uploadSection').style.display = 'none';
             document.getElementById('detailsContainer').style.display = 'grid';
             document.getElementById('taskFilename').innerText = file.name;
+            document.getElementById('taskFilename').title = file.name;
             document.getElementById('taskStatus').className = 'status-badge status-pending';
             document.getElementById('taskStatus').innerText = formatStatus('pending');
             renderTaskSource(source.startsWith('http://') || source.startsWith('https://')
@@ -2448,7 +2597,9 @@ __TAG_COLOR_CSS__
                 : { source_url: null, source_note: source });
             document.getElementById('consoleOutput').innerText = t('task.uploading');
             document.getElementById('downloadBtn').style.display = 'none';
+            document.getElementById('downloadExtendedBtn').style.display = 'none';
             document.getElementById('jsonContent').innerText = t('task.jsonPlaceholder');
+            document.getElementById('extendedJsonContent').innerText = t('task.jsonPlaceholder');
             document.getElementById('visualStructureContent').innerHTML = 
                 `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 1rem; color: var(--text-muted); margin-top: 3rem;">
                     <div class="spinner"></div>
@@ -2571,6 +2722,7 @@ __TAG_COLOR_CSS__
                 currentTaskData = task;
 
                 document.getElementById('taskFilename').innerText = task.filename;
+                document.getElementById('taskFilename').title = task.filename || '';
                 document.getElementById('taskStatus').className = `status-badge status-${task.status}`;
                 document.getElementById('taskStatus').innerText = formatStatus(task.status);
                 
@@ -2586,7 +2738,9 @@ __TAG_COLOR_CSS__
 
                 if (task.status === 'processing' || task.status === 'pending') {
                     document.getElementById('downloadBtn').style.display = 'none';
+                    document.getElementById('downloadExtendedBtn').style.display = 'none';
                     document.getElementById('jsonContent').innerText = t('task.processing');
+                    document.getElementById('extendedJsonContent').innerText = t('task.processing');
                     document.getElementById('visualStructureContent').innerHTML = 
                         `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 1rem; color: var(--text-muted); margin-top: 3rem;">
                             <div class="spinner"></div>
@@ -2600,14 +2754,26 @@ __TAG_COLOR_CSS__
                     startPolling(taskId);
                 } else if (task.status === 'completed') {
                     document.getElementById('downloadBtn').style.display = 'flex';
+                    document.getElementById('downloadExtendedBtn').style.display = 'flex';
                     const jsonStr = JSON.stringify(task.structure_json, null, 2);
                     document.getElementById('jsonContent').innerText = jsonStr;
+                    document.getElementById('extendedJsonContent').innerText = task.structure_extended_json
+                        ? JSON.stringify(task.structure_extended_json, null, 2)
+                        : t('task.extendedJsonUnavailable');
                     
                     renderVisualStructure(task.structure_json, task.segmented_blocks, task.tree_json);
                     await refreshTaskClassifyButton(taskId);
+                    try {
+                        await loadAndApplyTaskSubclusters(taskId);
+                        await refreshTaskClassifyButton(taskId);
+                    } catch (err) {
+                        // Subtypes are optional; structure still works without them.
+                    }
                 } else {
                     document.getElementById('downloadBtn').style.display = 'none';
+                    document.getElementById('downloadExtendedBtn').style.display = 'none';
                     document.getElementById('jsonContent').innerText = t('task.errorPrefix', { message: task.error_message || '' });
+                    document.getElementById('extendedJsonContent').innerText = t('task.errorPrefix', { message: task.error_message || '' });
                     document.getElementById('visualStructureContent').innerHTML = 
                         `<div style="color: var(--accent-danger); text-align: center; margin-top: 3rem; font-weight: 500;">
                             ${escapeHtml(t('task.runError'))}<br>
@@ -2743,6 +2909,12 @@ __TAG_COLOR_CSS__
                 currentTaskData.source_note = data.source_note;
                 currentTaskData.source_url = data.source_url;
                 renderTaskSource(currentTaskData);
+                if (currentTaskData.structure_extended_json) {
+                    currentTaskData.structure_extended_json.source =
+                        data.source_url || data.source_note || null;
+                    document.getElementById('extendedJsonContent').innerText =
+                        JSON.stringify(currentTaskData.structure_extended_json, null, 2);
+                }
                 loadHistory();
             } catch (err) {
                 alert(err.message);
@@ -2778,6 +2950,7 @@ __TAG_COLOR_CSS__
                 const data = await res.json();
                 currentTaskData.filename = data.filename;
                 document.getElementById('taskFilename').innerText = data.filename;
+                document.getElementById('taskFilename').title = data.filename || '';
                 loadHistory();
             } catch (err) {
                 alert(err.message);
@@ -2796,28 +2969,34 @@ __TAG_COLOR_CSS__
             `;
         }
 
-        function tagDefinition(tag) {
+        function taskContentLang() {
+            return normalizeTaskContentLang(currentTaskData && currentTaskData.content_lang);
+        }
+
+        function tagDefinition(tag, lang) {
             if (!tag) return '';
-            if (I18N.tags && I18N.tags[tag]) return I18N.tags[tag];
-            if (String(tag).startsWith('CUSTOM:') && I18N.tags && I18N.tags.CUSTOM) {
-                return I18N.tags.CUSTOM;
-            }
+            const locale = (lang === 'en' || lang === 'ru') ? lang : taskContentLang();
+            const tags = (TAG_DEFS_BY_LANG[locale] && Object.keys(TAG_DEFS_BY_LANG[locale]).length)
+                ? TAG_DEFS_BY_LANG[locale]
+                : ((I18N.tags) || {});
+            if (tags[tag]) return tags[tag];
+            if (String(tag).startsWith('CUSTOM:') && tags.CUSTOM) return tags.CUSTOM;
             return '';
         }
 
-        function formatTagGlossary(tags) {
+        function formatTagGlossary(tags, lang) {
             const seen = new Set();
             const lines = [];
             for (const tag of tags) {
                 if (!tag || seen.has(tag)) continue;
                 seen.add(tag);
-                const desc = tagDefinition(tag);
+                const desc = tagDefinition(tag, lang);
                 lines.push(desc ? `${tag} — ${desc}` : tag);
             }
             return lines.join('\n');
         }
 
-        function copyColumnTags(btn) {
+        async function copyColumnTags(btn) {
             const column = btn.closest('.structure-column');
             if (!column) return;
             const key = btn.dataset.columnKey;
@@ -2825,15 +3004,21 @@ __TAG_COLOR_CSS__
             const tags = meta
                 ? meta.tags.slice()
                 : [...column.querySelectorAll('.visual-tag')].map(el => el.dataset.tag || el.textContent.trim());
-            const glossary = formatTagGlossary(tags);
+            const lang = taskContentLang();
+            if (!TAG_DEFS_BY_LANG[lang] || !Object.keys(TAG_DEFS_BY_LANG[lang]).length) {
+                await preloadTagDefinitions();
+            }
+            const glossary = formatTagGlossary(tags, lang);
             const text = glossary ? `${tags.join('\n')}\n\n${glossary}` : tags.join('\n');
-            navigator.clipboard.writeText(text).then(() => {
+            try {
+                await navigator.clipboard.writeText(text);
                 const prev = btn.textContent;
                 btn.textContent = '✓';
                 setTimeout(() => { btn.textContent = prev; }, 1200);
-            }).catch(err => {
-                alert(t('clipboard.copyFailed', { error: err }));
-            });
+                showToast(t('clipboard.copied'), 'success');
+            } catch (err) {
+                showToast(t('clipboard.copyFailed', { error: err }), 'error');
+            }
         }
 
         // Rendering visual tags list
@@ -3000,6 +3185,7 @@ __TAG_COLOR_CSS__
                 [t('structure.tooltipFormula'), block.subcluster_formula],
                 [t('structure.tooltipAbstract'), block.subcluster_abstract],
                 [t('structure.tooltipTension'), block.tension_score],
+                [t('structure.tooltipTimecode'), (block.start && block.end) ? `${block.start} → ${block.end}` : null],
                 [t('structure.tooltipLoopId'), block.loop_id],
                 [t('structure.tooltipReasoning'), block.reasoning],
                 [t('structure.tooltipChunk'), block.chunk_index],
@@ -3230,8 +3416,9 @@ __TAG_COLOR_CSS__
                     btn.textContent = t('mapper.copied');
                     setTimeout(() => { btn.textContent = t('mapper.copy'); }, 1200);
                 }
+                showToast(t('clipboard.copied'), 'success');
             } catch (err) {
-                alert(t('clipboard.copyFailed', { error: err }));
+                showToast(t('clipboard.copyFailed', { error: err }), 'error');
             }
         }
 
@@ -3265,12 +3452,12 @@ __TAG_COLOR_CSS__
         }
 
         // Copy JSON helper
-        function copyJsonToClipboard() {
-            const codeText = document.getElementById('jsonContent').innerText;
+        function copyJsonToClipboard(elementId = 'jsonContent') {
+            const codeText = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(codeText).then(() => {
-                alert(t('clipboard.jsonCopied'));
+                showToast(t('clipboard.jsonCopied'), 'success');
             }).catch(err => {
-                alert(t('clipboard.jsonFailed', { error: err }));
+                showToast(t('clipboard.jsonFailed', { error: err }), 'error');
             });
         }
 
@@ -3278,6 +3465,12 @@ __TAG_COLOR_CSS__
         function downloadStructure() {
             if (currentTaskId) {
                 window.location.href = `/tasks/${currentTaskId}/download`;
+            }
+        }
+
+        function downloadExtendedStructure() {
+            if (currentTaskId) {
+                window.location.href = `/tasks/${currentTaskId}/download?extended=1`;
             }
         }
 
@@ -3673,9 +3866,9 @@ __TAG_COLOR_CSS__
             const examples = getFilteredTagRefExamples(selectedTagRef);
             const text = examples.map(ex => flattenTagRefText(ex.text)).filter(Boolean).join('\n');
             navigator.clipboard.writeText(text).then(() => {
-                alert(t('tagRef.copied'));
+                showToast(t('tagRef.copied'), 'success');
             }).catch(err => {
-                alert(t('clipboard.copyFailed', { error: err }));
+                showToast(t('clipboard.copyFailed', { error: err }), 'error');
             });
         }
 
@@ -3769,6 +3962,23 @@ __TAG_COLOR_CSS__
                     lastRenderedStructure.segmentedBlocks,
                     lastRenderedStructure.treeJson
                 );
+            }
+            // Refresh extended JSON so newly assigned subtypes appear.
+            try {
+                const taskRes = await fetch(`/tasks/${taskId}`);
+                if (taskRes.ok) {
+                    const task = await taskRes.json();
+                    if (currentTaskData && currentTaskData.id === taskId) {
+                        currentTaskData.structure_extended_json = task.structure_extended_json;
+                        currentTaskData.source_note = task.source_note;
+                        currentTaskData.source_url = task.source_url;
+                    }
+                    document.getElementById('extendedJsonContent').innerText = task.structure_extended_json
+                        ? JSON.stringify(task.structure_extended_json, null, 2)
+                        : t('task.extendedJsonUnavailable');
+                }
+            } catch (err) {
+                console.warn('Failed to refresh extended JSON after subclusters', err);
             }
         }
 

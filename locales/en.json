@@ -74,13 +74,13 @@
   },
   "upload": {
     "title": "Upload a script",
-    "description": "Drag a .txt or .json file anywhere in the window, or click to browse",
+    "description": "Drag a .txt, .json or .srt file anywhere in the window, or click to browse",
     "pasteTitle": "Or paste script text",
-    "pasteDescription": "Paste text below and start analysis without choosing a file or extra dialogs.",
-    "pastePlaceholder": "Paste your script here...",
+    "pasteDescription": "Paste script text, SRT subtitles, or a YouTube URL. URLs fetch auto-captions via yt-dlp.",
+    "pastePlaceholder": "Paste script, SRT, or YouTube URL…",
     "analyze": "Analyze text",
     "pasteRequired": "Paste script text before starting analysis.",
-    "invalidFormat": "Please choose a .txt or .json file",
+    "invalidFormat": "Please choose a .txt, .json or .srt file",
     "contentLang": "Script language",
     "contentLangAuto": "Auto",
     "contentLangRu": "Russian",
@@ -89,7 +89,7 @@
   },
   "dragOverlay": {
     "title": "Drop the file to upload",
-    "hint": ".txt and .json supported"
+    "hint": ".txt, .json and .srt supported"
   },
   "source": {
     "label": "Source:",
@@ -114,10 +114,13 @@
     "edit": "Edit",
     "newFile": "New file",
     "downloadJson": "Download JSON",
+    "downloadExtendedJson": "Download extended JSON",
     "tabStructure": "Script structure",
     "tabJson": "Raw JSON",
+    "tabExtendedJson": "Extended JSON",
     "structurePending": "Structure will appear after analysis completes.",
     "copyJson": "Copy to clipboard",
+    "extendedJsonUnavailable": "// Extended JSON is unavailable for this task.",
     "consoleTitle": "Process log",
     "consoleWaiting": "Waiting for logs...",
     "uploading": "Uploading file to server...\n",
@@ -167,6 +170,7 @@
     "tooltipFormula": "formula",
     "tooltipAbstract": "abstract",
     "tooltipTension": "tension",
+    "tooltipTimecode": "timecode",
     "tooltipLoopId": "loop_id",
     "tooltipReasoning": "reasoning",
     "tooltipChunk": "chunk"
@@ -184,7 +188,8 @@
     "noSubtype": "(no subtype formula/abstract)"
   },
   "clipboard": {
-    "jsonCopied": "JSON copied to clipboard!",
+    "copied": "Copied to clipboard",
+    "jsonCopied": "JSON copied to clipboard",
     "jsonFailed": "Could not copy JSON: {{error}}",
     "copyFailed": "Could not copy: {{error}}"
   },

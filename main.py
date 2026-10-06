@@ -19,7 +19,19 @@ from pipeline.content_lang import detect_content_lang, normalize_content_lang, r
 from pipeline.chunker import chunk_text
 from pipeline.segmenter import segment_text, build_chunk_context_note
 from pipeline.tree_builder import build_tree, annotate_stats
-from pipeline.structure_extractor import extract_structure
+from pipeline.structure_extractor import extract_structure, extract_extended_structure
+from pipeline.srt import looks_like_srt
+from pipeline.caption_normalize import (
+    script_and_words_from_srt,
+    script_and_words_from_word_timeline,
+    attach_timecodes_from_words,
+)
+from pipeline.youtube_captions import (
+    looks_like_youtube_url,
+    fetch_word_timeline,
+    YoutubeCaptionsError,
+    normalize_youtube_url,
+)
 from pipeline.subcluster_seed import seed_tag_subclusters, demote_domain_leaky_subclusters
 from pipeline.subcluster_classifier import (
     classify_unassigned_blocks,
@@ -27,6 +39,70 @@ from pipeline.subcluster_classifier import (
     load_active_subclusters,
 )
 from pipeline.subcluster_i18n import localize_subcluster_dict, pick_localized_fields
+
+
+def load_task_subcluster_rows(conn: sqlite3.Connection, task_id: str, locale: str) -> list[dict]:
+    """Per-block primary subcluster info for a task, ordered by position."""
+    rows = conn.execute(
+        """
+        SELECT
+            b.position,
+            b.tag,
+            s.sort_order AS subcluster_sort_order,
+            s.name AS name_ru,
+            s.name_en AS name_en,
+            s.formula AS formula_ru,
+            s.formula_en AS formula_en,
+            s.abstract AS abstract_ru,
+            s.abstract_en AS abstract_en,
+            s.slug AS subcluster_slug
+        FROM blocks b
+        LEFT JOIN block_subcluster_assignments a
+            ON a.block_id = b.id AND a.is_primary = 1
+        LEFT JOIN tag_subclusters s ON s.id = a.subcluster_id
+        WHERE b.task_id = ?
+        ORDER BY b.position ASC
+        """,
+        (task_id,),
+    ).fetchall()
+    blocks = []
+    for row in rows:
+        d = dict(row)
+        if d.get("subcluster_sort_order") is not None:
+            picked = pick_localized_fields(
+                {
+                    "name": d.pop("name_ru", None),
+                    "name_en": d.pop("name_en", None),
+                    "formula": d.pop("formula_ru", None),
+                    "formula_en": d.pop("formula_en", None),
+                    "abstract": d.pop("abstract_ru", None),
+                    "abstract_en": d.pop("abstract_en", None),
+                },
+                locale,
+            )
+            d["subcluster_name"] = picked["name"]
+            d["subcluster_formula"] = picked["formula"]
+            d["subcluster_abstract"] = picked["abstract"]
+        else:
+            for k in (
+                "name_ru", "name_en", "formula_ru", "formula_en",
+                "abstract_ru", "abstract_en",
+            ):
+                d.pop(k, None)
+            d["subcluster_name"] = None
+            d["subcluster_formula"] = None
+            d["subcluster_abstract"] = None
+        blocks.append(d)
+    return blocks
+
+
+def subclusters_by_position_map(blocks: list[dict]) -> dict[int, dict]:
+    return {
+        int(b["position"]): b
+        for b in blocks
+        if b.get("position") is not None
+    }
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = "db.sqlite"
@@ -453,10 +529,66 @@ def process_scenario(
             client = OpenAI(api_key=api_key)
             content_lang = db_get_content_lang(task_id)
             db_add_log(task_id, f"Script language: {content_lang}")
+
+            script_text = raw_text or ""
+            word_timeline: list = []
+            fname = (filename or "").lower()
+
+            if looks_like_youtube_url(script_text):
+                try:
+                    watch_url = normalize_youtube_url(script_text.strip())
+                except YoutubeCaptionsError as exc:
+                    db_add_log(task_id, f"ERROR: {exc}")
+                    db_update_task(task_id, "failed", error_message=str(exc))
+                    return
+                db_add_log(task_id, f"YouTube URL detected. Fetching captions via yt-dlp ({watch_url})...")
+                try:
+                    words, meta = fetch_word_timeline(watch_url, lang=content_lang)
+                except YoutubeCaptionsError as exc:
+                    db_add_log(task_id, f"ERROR: {exc}")
+                    db_update_task(task_id, "failed", error_message=str(exc))
+                    return
+                script_text, word_timeline = script_and_words_from_word_timeline(words)
+                db_add_log(
+                    task_id,
+                    f"Captions loaded ({meta.get('lang') or content_lang}): "
+                    f"{len(word_timeline)} words → "
+                    f"{script_text.count(chr(10)) + 1} sentences.",
+                )
+                # Fill source from URL when empty
+                with get_db() as conn:
+                    row = conn.execute(
+                        "SELECT source_note, source_url FROM tasks WHERE id = ?",
+                        (task_id,),
+                    ).fetchone()
+                    if row and not row["source_note"] and not row["source_url"]:
+                        db_update_source(task_id, watch_url)
+                        db_add_log(task_id, f"Source set from URL: {watch_url}")
+                # Prefer a readable filename if paste was just a URL
+                if fname.startswith("pasted_") or fname.endswith(".url"):
+                    vid = meta.get("video_id") or "youtube"
+                    with get_db() as conn:
+                        conn.execute(
+                            "UPDATE tasks SET filename = ? WHERE id = ?",
+                            (f"youtube_{vid}.txt", task_id),
+                        )
+                        conn.commit()
+
+            elif fname.endswith(".srt") or looks_like_srt(script_text):
+                script_text, word_timeline = script_and_words_from_srt(script_text)
+                if word_timeline:
+                    db_add_log(
+                        task_id,
+                        f"SRT normalized: {len(word_timeline)} words → "
+                        f"{script_text.count(chr(10)) + 1} sentences "
+                        f"(rolling duplicates removed).",
+                    )
+                else:
+                    db_add_log(task_id, "SRT-like input produced no words; treating as plain text.")
             
             # 1. Chunker
             db_add_log(task_id, "Splitting scenario text into chunks...")
-            chunks = chunk_text(raw_text, target_words=400, max_words=550)
+            chunks = chunk_text(script_text, target_words=400, max_words=550)
             db_add_log(task_id, f"Text split into {len(chunks)} chunks.")
             
             # 2. Segmenter
@@ -512,6 +644,14 @@ def process_scenario(
 
             if demoted:
                 db_add_log(task_id, f"Auto-correction: demoted {len(demoted)} duplicate STORY_BOUNDARY tags to OPEN_LOOP.")
+
+            if word_timeline:
+                attach_timecodes_from_words(all_blocks, word_timeline)
+                timed = sum(1 for b in all_blocks if b.get("start"))
+                db_add_log(
+                    task_id,
+                    f"Attached word-level timecodes to {timed}/{len(all_blocks)} blocks.",
+                )
                 
             # Save segmented blocks
             db_update_task(task_id, "processing", segmented_blocks=json.dumps(all_blocks, ensure_ascii=False))
@@ -549,8 +689,13 @@ def upload_file(
     openai_api_key: str = Form(""),
     content_lang: str = Form(""),
 ):
-    if not (file.filename.endswith('.txt') or file.filename.endswith('.json')):
-        raise HTTPException(status_code=400, detail="Only .txt and .json files are supported.")
+    if not (
+        file.filename.endswith('.txt')
+        or file.filename.endswith('.json')
+        or file.filename.lower().endswith('.srt')
+        or file.filename.lower().endswith('.url')
+    ):
+        raise HTTPException(status_code=400, detail="Only .txt, .json, .srt and YouTube URL pastes are supported.")
         
     task_id = uuid.uuid4().hex
     
@@ -606,12 +751,19 @@ def upload_file(
                 content = file.file.read().decode("cp1251")
             except UnicodeDecodeError:
                 raise HTTPException(status_code=400, detail="Unable to decode file. Please upload a UTF-8 or CP1251 text file.")
+
+        effective_source = source
+        if looks_like_youtube_url(content) and not (source or "").strip():
+            try:
+                effective_source = normalize_youtube_url(content.strip())
+            except YoutubeCaptionsError:
+                effective_source = content.strip()
                 
         db_create_task(
             task_id,
             file.filename,
             raw_text=content,
-            source=source,
+            source=effective_source,
             content_lang=content_lang,
         )
         background_tasks.add_task(process_scenario, task_id, content, file.filename, None, openai_api_key)
@@ -684,7 +836,19 @@ def get_task(task_id: str):
         task_data["tree_json"] = json.loads(task_data["tree_json"]) if task_data["tree_json"] else None
         task_data["structure_json"] = json.loads(task_data["structure_json"]) if task_data["structure_json"] else None
         if task_data["tree_json"]:
+            locale = normalize_content_lang(task_data.get("content_lang"), default="ru")
+            sub_by_pos = subclusters_by_position_map(
+                load_task_subcluster_rows(conn, task_id, locale)
+            )
             task_data["structure_json"] = extract_structure(task_data["tree_json"])
+            task_data["structure_extended_json"] = extract_extended_structure(
+                task_data["tree_json"],
+                source_note=task_data.get("source_note"),
+                source_url=task_data.get("source_url"),
+                subclusters_by_index=sub_by_pos,
+            )
+        else:
+            task_data["structure_extended_json"] = None
         
         # Omit raw text in task details to keep network payload smaller unless needed
         task_data.pop("raw_text", None)
@@ -692,32 +856,55 @@ def get_task(task_id: str):
         return task_data
 
 @app.get("/tasks/{task_id}/download")
-def download_structure(task_id: str):
+def download_structure(task_id: str, extended: int = 0):
     with get_db() as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT filename, structure_json, tree_json FROM tasks WHERE id = ?", (task_id,))
+        cursor.execute(
+            "SELECT filename, structure_json, tree_json, source_note, source_url, content_lang FROM tasks WHERE id = ?",
+            (task_id,),
+        )
         row = cursor.fetchone()
-        if not row or not row["structure_json"]:
+        if not row or not (row["structure_json"] or row["tree_json"]):
             raise HTTPException(status_code=404, detail="Structure JSON not generated yet or task not found")
-            
+
         filename = row["filename"]
         base_name = os.path.splitext(filename)[0]
+        want_extended = bool(extended)
+
         if row["tree_json"]:
-            structure_data = extract_structure(json.loads(row["tree_json"]))
+            tree = json.loads(row["tree_json"])
+            if want_extended:
+                locale = normalize_content_lang(row["content_lang"], default="ru")
+                sub_by_pos = subclusters_by_position_map(
+                    load_task_subcluster_rows(conn, task_id, locale)
+                )
+                structure_data = extract_extended_structure(
+                    tree,
+                    source_note=row["source_note"],
+                    source_url=row["source_url"],
+                    subclusters_by_index=sub_by_pos,
+                )
+            else:
+                structure_data = extract_structure(tree)
         else:
             structure_data = json.loads(row["structure_json"])
-        structure_data = strip_structure_blocks(structure_data)
-        
-        # Save temp file
-        temp_filename = f"structure_{task_id}.json"
+            if want_extended:
+                raise HTTPException(
+                    status_code=404,
+                    detail="Extended structure requires tree_json; re-run processing.",
+                )
+            structure_data = strip_structure_blocks(structure_data)
+
+        suffix = "structure_extended" if want_extended else "structure"
+        temp_filename = f"{suffix}_{task_id}.json"
         with open(temp_filename, "w", encoding="utf-8") as f:
             json.dump(structure_data, f, ensure_ascii=False, indent=2)
-            
+
         return FileResponse(
-            temp_filename, 
-            media_type="application/json", 
-            filename=f"{base_name}_structure.json",
-            background=BackgroundTasks() # Runs clean-up after sending
+            temp_filename,
+            media_type="application/json",
+            filename=f"{base_name}_{suffix}.json",
+            background=BackgroundTasks(),
         )
 
 @app.delete("/tasks/{task_id}")
@@ -1140,56 +1327,7 @@ def get_task_subclusters(task_id: str):
         if not task:
             raise HTTPException(status_code=404, detail="Task not found")
         locale = normalize_content_lang(task["content_lang"], default="ru")
-        rows = conn.execute(
-            """
-            SELECT
-                b.position,
-                b.tag,
-                s.sort_order AS subcluster_sort_order,
-                s.name AS name_ru,
-                s.name_en AS name_en,
-                s.formula AS formula_ru,
-                s.formula_en AS formula_en,
-                s.abstract AS abstract_ru,
-                s.abstract_en AS abstract_en,
-                s.slug AS subcluster_slug
-            FROM blocks b
-            LEFT JOIN block_subcluster_assignments a
-                ON a.block_id = b.id AND a.is_primary = 1
-            LEFT JOIN tag_subclusters s ON s.id = a.subcluster_id
-            WHERE b.task_id = ?
-            ORDER BY b.position ASC
-            """,
-            (task_id,),
-        ).fetchall()
-        blocks = []
-        for row in rows:
-            d = dict(row)
-            if d.get("subcluster_sort_order") is not None:
-                picked = pick_localized_fields(
-                    {
-                        "name": d.pop("name_ru", None),
-                        "name_en": d.pop("name_en", None),
-                        "formula": d.pop("formula_ru", None),
-                        "formula_en": d.pop("formula_en", None),
-                        "abstract": d.pop("abstract_ru", None),
-                        "abstract_en": d.pop("abstract_en", None),
-                    },
-                    locale,
-                )
-                d["subcluster_name"] = picked["name"]
-                d["subcluster_formula"] = picked["formula"]
-                d["subcluster_abstract"] = picked["abstract"]
-            else:
-                for k in (
-                    "name_ru", "name_en", "formula_ru", "formula_en",
-                    "abstract_ru", "abstract_en",
-                ):
-                    d.pop(k, None)
-                d["subcluster_name"] = None
-                d["subcluster_formula"] = None
-                d["subcluster_abstract"] = None
-            blocks.append(d)
+        blocks = load_task_subcluster_rows(conn, task_id, locale)
         return {
             "task_id": task_id,
             "content_lang": locale,
